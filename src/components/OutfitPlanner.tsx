@@ -23,13 +23,6 @@ const OutfitPlanner = () => {
     }
   };
 
-  const getBlurStyle = (blockIndex: number) => {
-    const styleIndex = (currentStyle + blockIndex) % 4;
-    const isSelected = styleIndex === 0;
-    
-    return isSelected ? "" : "blur-sm";
-  };
-
   return (
     <section className="bg-vesty-gradient-soft py-[186px]">
       <div className="container mx-auto px-4">
@@ -81,7 +74,7 @@ const OutfitPlanner = () => {
               {/* Bloques flotantes de outfits */}
               <div className="absolute -right-40 top-0 space-y-4 mx-px">
                 {/* Lunes 6 */}
-                <div className={`rounded-2xl p-4 w-64 shadow-lg transition-all duration-500 ${getBlockStyle(0)} ${getBlurStyle(0)}`}>
+                <div className={`rounded-2xl p-4 w-64 shadow-lg transition-all duration-500 ${getBlockStyle(0)}`}>
                   <div className="flex items-center gap-4">
                     <div className={currentStyle === 0 ? "text-white" : "text-vesty-purple"}>
                       <div className="text-sm font-inter">Lun</div>
@@ -114,7 +107,7 @@ const OutfitPlanner = () => {
                 </div>
 
                 {/* Martes 7 */}
-                <div className={`rounded-2xl p-4 w-64 shadow-lg transition-all duration-500 ${getBlockStyle(1)} ${getBlurStyle(1)}`}>
+                <div className={`rounded-2xl p-4 w-64 shadow-lg transition-all duration-500 ${getBlockStyle(1)}`}>
                   <div className="flex items-center gap-4">
                     <div className={currentStyle === 1 ? "text-white" : "text-vesty-purple"}>
                       <div className="text-sm font-inter">Mar</div>
@@ -135,7 +128,7 @@ const OutfitPlanner = () => {
                 </div>
 
                 {/* Miércoles 8 */}
-                <div className={`rounded-2xl p-4 w-64 shadow-lg transition-all duration-500 ${getBlockStyle(2)} ${getBlurStyle(2)}`}>
+                <div className={`rounded-2xl p-4 w-64 shadow-lg transition-all duration-500 ${getBlockStyle(2)}`}>
                   <div className="flex items-center gap-4">
                     <div className={currentStyle === 2 ? "text-white" : "text-vesty-purple"}>
                       <div className="text-sm font-inter">Mie</div>
@@ -161,7 +154,7 @@ const OutfitPlanner = () => {
                 </div>
 
                 {/* Jueves 9 */}
-                <div className={`rounded-2xl p-4 w-64 shadow-lg transition-all duration-500 ${getBlockStyle(3)} ${getBlurStyle(3)}`}>
+                <div className={`rounded-2xl p-4 w-64 shadow-lg transition-all duration-500 ${getBlockStyle(3)}`}>
                   <div className="flex items-center gap-4">
                     <div className={currentStyle === 3 ? "text-white" : "text-vesty-purple"}>
                       <div className="text-sm font-inter">Jue</div>
