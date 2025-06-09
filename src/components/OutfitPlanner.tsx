@@ -1,5 +1,28 @@
+import { useEffect, useState } from 'react';
+
 const OutfitPlanner = () => {
-  return <section className="bg-vesty-gradient-soft py-[186px]">
+  const [currentStyle, setCurrentStyle] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentStyle(prev => (prev + 1) % 4);
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const getBlockStyle = (blockIndex: number) => {
+    const styleIndex = (currentStyle + blockIndex) % 4;
+    
+    if (styleIndex === 0) {
+      return "bg-vesty-purple text-white";
+    } else {
+      return "bg-white text-vesty-purple";
+    }
+  };
+
+  return (
+    <section className="bg-vesty-gradient-soft py-[186px]">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
           {/* Contenido izquierdo - Mockup */}
@@ -42,46 +65,49 @@ const OutfitPlanner = () => {
 
                 {/* Outfits programados */}
                 <div className="space-y-3">
-                  {/* Martes 7 */}
-                  
-
-                  {/* Miércoles 8 */}
-                  
-
-                  {/* Jueves 9 */}
-                  
+                  {/* Outfits content if any */}
                 </div>
               </div>
 
               {/* Bloques flotantes de outfits */}
               <div className="absolute -right-40 top-0 space-y-4 mx-px">
                 {/* Lunes 6 */}
-                <div className="bg-vesty-purple rounded-2xl p-4 w-64 shadow-lg animate-float">
+                <div className={`rounded-2xl p-4 w-64 shadow-lg transition-colors duration-500 ${getBlockStyle(0)}`}>
                   <div className="flex items-center gap-4">
-                    <div className="text-white">
+                    <div className={currentStyle === 0 ? "text-white" : "text-vesty-purple"}>
                       <div className="text-sm font-inter">Lun</div>
                       <div className="text-2xl font-outfit font-bold">6</div>
                     </div>
                     <div className="flex gap-2 flex-1">
-                      <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center">
-                        <div className="w-8 h-8 bg-gray-200 rounded"></div>
+                      <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center overflow-hidden">
+                        <img 
+                          src="/lovable-uploads/47c614dd-5409-468f-a59d-59f536e39592.png" 
+                          alt="Top verde" 
+                          className="w-full h-full object-cover"
+                        />
                       </div>
-                      <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center">
-                        <div className="w-8 h-8 bg-gray-200 rounded"></div>
+                      <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center overflow-hidden">
+                        <img 
+                          src="/lovable-uploads/4fd9e7b1-941a-4e6b-9172-5f0bae33e962.png" 
+                          alt="Pantalón azul" 
+                          className="w-full h-full object-cover"
+                        />
                       </div>
-                      <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center">
-                        <div className="w-8 h-8 bg-gray-200 rounded"></div>
+                      <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center overflow-hidden">
+                        <img 
+                          src="/lovable-uploads/ef25462f-32eb-4081-bbad-983930f1136a.png" 
+                          alt="Zapatillas blancas" 
+                          className="w-full h-full object-cover"
+                        />
                       </div>
                     </div>
                   </div>
                 </div>
 
                 {/* Martes 7 */}
-                <div className="bg-white rounded-2xl p-4 w-64 shadow-lg animate-float" style={{
-                animationDelay: '0.5s'
-              }}>
+                <div className={`rounded-2xl p-4 w-64 shadow-lg transition-colors duration-500 ${getBlockStyle(1)}`}>
                   <div className="flex items-center gap-4">
-                    <div className="text-vesty-purple">
+                    <div className={currentStyle === 1 ? "text-white" : "text-vesty-purple"}>
                       <div className="text-sm font-inter">Mar</div>
                       <div className="text-2xl font-outfit font-bold">7</div>
                     </div>
@@ -100,11 +126,9 @@ const OutfitPlanner = () => {
                 </div>
 
                 {/* Miércoles 8 */}
-                <div className="bg-white rounded-2xl p-4 w-64 shadow-lg animate-float" style={{
-                animationDelay: '1s'
-              }}>
+                <div className={`rounded-2xl p-4 w-64 shadow-lg transition-colors duration-500 ${getBlockStyle(2)}`}>
                   <div className="flex items-center gap-4">
-                    <div className="text-vesty-purple">
+                    <div className={currentStyle === 2 ? "text-white" : "text-vesty-purple"}>
                       <div className="text-sm font-inter">Mie</div>
                       <div className="text-2xl font-outfit font-bold">8</div>
                     </div>
@@ -120,11 +144,9 @@ const OutfitPlanner = () => {
                 </div>
 
                 {/* Jueves 9 */}
-                <div className="bg-white rounded-2xl p-4 w-64 shadow-lg animate-float" style={{
-                animationDelay: '1.5s'
-              }}>
+                <div className={`rounded-2xl p-4 w-64 shadow-lg transition-colors duration-500 ${getBlockStyle(3)}`}>
                   <div className="flex items-center gap-4">
-                    <div className="text-vesty-purple">
+                    <div className={currentStyle === 3 ? "text-white" : "text-vesty-purple"}>
                       <div className="text-sm font-inter">Jue</div>
                       <div className="text-2xl font-outfit font-bold">9</div>
                     </div>
@@ -159,6 +181,8 @@ const OutfitPlanner = () => {
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default OutfitPlanner;
