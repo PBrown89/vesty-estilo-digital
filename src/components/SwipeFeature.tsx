@@ -134,8 +134,8 @@ const SwipeFeature = () => {
                   src="/lovable-uploads/3ccf15b8-11d2-4754-ad9e-3b1a7b62ab06.png" 
                 />
                 
-                {/* Mockup del teléfono flotante - centrado con el elemento decorativo al lado contrario */}
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -translate-x-6 w-48 h-80 bg-white rounded-3xl shadow-2xl overflow-hidden drop-shadow-xl">
+                {/* Mockup del teléfono flotante - movido más a la izquierda para superponerse */}
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -translate-x-20 w-48 h-80 bg-white rounded-3xl shadow-2xl overflow-hidden drop-shadow-xl">
                   {/* Contenido del mockup */}
                   <div className="p-4 h-full flex flex-col">
                     <div className="text-center mb-4">
@@ -228,7 +228,7 @@ const SwipeFeature = () => {
               </div>
 
               {/* Elemento decorativo */}
-              <div className="absolute -top-4 -left-4 w-16 h-16 border-2 border-purple-200 rounded-full border-dashed animate-float"></div>
+              <div className="absolute -top-4 -right-4 w-16 h-16 border-2 border-purple-200 rounded-full border-dashed animate-float"></div>
             </div>
           </div>
         </div>
