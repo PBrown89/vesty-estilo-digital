@@ -187,13 +187,13 @@ const SwipeFeature = () => {
                           {[...Array(8)].map((_, i) => (
                             <div
                               key={i}
-                              className="absolute text-2xl animate-bounce opacity-0"
+                              className="absolute text-2xl opacity-0 animate-bounce"
                               style={{
                                 left: `${10 + Math.random() * 70}%`,
                                 top: `${20 + Math.random() * 50}%`,
                                 animationDelay: `${i * 0.15}s`,
                                 animationDuration: '1.2s',
-                                animation: `bounce 1.2s ease-out ${i * 0.15}s forwards, fade-out 0.3s ease-out ${0.9 + i * 0.15}s forwards`
+                                animationFillMode: 'forwards'
                               }}
                             >
                               💖
@@ -233,15 +233,6 @@ const SwipeFeature = () => {
           </div>
         </div>
       </div>
-      
-      <style jsx>{`
-        @keyframes fade-out {
-          to {
-            opacity: 0;
-            transform: translateY(-20px);
-          }
-        }
-      `}</style>
     </section>
   );
 };
