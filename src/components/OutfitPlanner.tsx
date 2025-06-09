@@ -1,3 +1,4 @@
+
 const OutfitPlanner = () => {
   return <section className="bg-vesty-gradient-soft py-[186px]">
       <div className="container mx-auto px-4">
@@ -152,8 +153,17 @@ const OutfitPlanner = () => {
             </h2>
             
             <p className="text-lg font-inter text-gray-600 leading-relaxed font-normal">Deja el caos fuera y planifica tus outfits. Haz maletas sin estrés y saca más partido a tu armario.
+            </p>
 
-          </p>
+            <div className="space-y-2">
+              <p className="text-xl font-outfit font-bold text-gray-900">
+                ¿Tienes un evento importante el finde y no sabes qué ponerte?
+              </p>
+              
+              <p className="text-lg font-inter text-gray-600 leading-relaxed">
+                ¡Deja que tus amigas te sugieran echando un ojo a tu armario! nunca había sido tan fácil.
+              </p>
+            </div>
           </div>
         </div>
       </div>
