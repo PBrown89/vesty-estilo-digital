@@ -1,5 +1,3 @@
-
-
 const OutfitPlanner = () => {
   return <section className="bg-vesty-gradient-soft py-[186px]">
       <div className="container mx-auto px-4">
@@ -69,7 +67,7 @@ const OutfitPlanner = () => {
                         <img src="/lovable-uploads/f6d742ff-ae8f-497c-9d9e-fdd473b68796.png" alt="Top" className="w-full h-full object-cover" />
                       </div>
                       <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center overflow-hidden">
-                        <img src="/lovable-uploads/6f74f7b8-976b-4a99-8996-9c629ed5e72a.png" alt="Pants" className="w-full h-full object-cover" />
+                        <img alt="Pants" className="w-full h-full object-cover" src="/lovable-uploads/640ff384-9dbe-46d2-a1af-5522de1daff1.png" />
                       </div>
                       <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center overflow-hidden">
                         <img src="/lovable-uploads/6ff58194-7ecd-49f1-ad1e-d5be8ebd19ae.png" alt="Shoes" className="w-full h-full object-cover" />
@@ -171,4 +169,3 @@ const OutfitPlanner = () => {
     </section>;
 };
 export default OutfitPlanner;
-
