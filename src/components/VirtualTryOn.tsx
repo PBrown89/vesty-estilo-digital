@@ -41,14 +41,14 @@ const VirtualTryOn = () => {
           </div>
 
           {/* Contenido derecho - Mockup */}
-          <div className="relative flex justify-center lg:justify-end">
+          <div className="relative flex justify-center lg:justify-end px-[6px] py-0 my-0 mx-0">
             <div className="relative w-full max-w-md">
               {/* Imagen de fondo con la chica en el sofá al 100% */}
-              <div className="w-full aspect-[4/5] rounded-3xl overflow-hidden relative bg-white mx-0 py-0 my-0 px-[12px]">
+              <div className="w-full aspect-[4/5] rounded-3xl overflow-hidden relative bg-white mx-0 py-0 my-0 px-0">
                 <img src="/lovable-uploads/2e7470d5-25c9-45f2-bf2b-4494746669ed.png" alt="Mujer probándose ropa virtualmente" className="w-full h-full object-contain" />
                 
                 {/* Mockup del teléfono flotante */}
-                <div className="absolute top-8 right-1 w-56 h-[400px] bg-black rounded-3xl shadow-2xl overflow-hidden p-1 my-0 mx-0 py-[4px] px-[4px]">
+                <div className="absolute top-8 right-1 w-56 h-[400px] bg-black rounded-3xl shadow-2xl overflow-hidden p-1 my-1 py-[4px] px-[4px] mx-px">
                   {/* Pantalla del teléfono */}
                   <div className="w-full h-full bg-white rounded-[22px] overflow-hidden relative my-0 px-px py-px">
                     {/* Área principal con slider de comparación */}
