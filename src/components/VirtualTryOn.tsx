@@ -30,7 +30,7 @@ const VirtualTryOn = () => {
           <div className="relative flex justify-center lg:justify-end">
             <div className="relative w-full max-w-md">
               {/* Imagen de fondo con la chica en el sofá al 100% */}
-              <div className="w-full aspect-[4/5] rounded-3xl overflow-hidden bg-gray-100 relative">
+              <div className="w-full aspect-[4/5] rounded-3xl overflow-hidden relative bg-white px-0 mx-0 py-0 my-0">
                 <img src="/lovable-uploads/2e7470d5-25c9-45f2-bf2b-4494746669ed.png" alt="Mujer probándose ropa virtualmente" className="w-full h-full object-contain" />
                 
                 {/* Mockup del teléfono flotante */}
