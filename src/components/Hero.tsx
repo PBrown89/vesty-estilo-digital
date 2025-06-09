@@ -54,18 +54,15 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Contenido derecho - Mockup visual */}
+        {/* Contenido derecho - Imagen */}
         <div className="relative animate-fade-in-right lg:block hidden">
           <div className="relative">
-            {/* Imagen principal simulada */}
-            <div className="w-80 h-96 bg-gradient-to-br from-white to-gray-50 rounded-3xl shadow-2xl flex items-center justify-center border border-gray-100">
-              <div className="text-center">
-                <div className="w-24 h-24 bg-gradient-to-br from-vesty-purple/20 to-pink-200/20 rounded-full mx-auto mb-6 flex items-center justify-center">
-                  <span className="text-4xl">👗</span>
-                </div>
-                <p className="font-inter text-gray-600">Tu estilo personalizado</p>
-              </div>
-            </div>
+            {/* Imagen principal */}
+            <img 
+              src="/lovable-uploads/27123033-2eee-4e8e-8ca4-a5a74c308ad2.png" 
+              alt="Mujer con estilo elegante" 
+              className="w-80 h-96 object-cover rounded-3xl shadow-2xl"
+            />
 
             {/* Elementos flotantes con información */}
             <div className="absolute -top-4 -right-4 bg-white rounded-2xl shadow-lg p-4 animate-float">
