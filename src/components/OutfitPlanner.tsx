@@ -1,3 +1,4 @@
+
 const OutfitPlanner = () => {
   return <section className="bg-vesty-gradient-soft py-[186px]">
       <div className="container mx-auto px-4">
@@ -50,6 +51,87 @@ const OutfitPlanner = () => {
 
                   {/* Jueves 9 */}
                   
+                </div>
+              </div>
+
+              {/* Bloques flotantes de outfits */}
+              <div className="absolute -right-20 top-0 space-y-4">
+                {/* Lunes 6 */}
+                <div className="bg-vesty-purple rounded-2xl p-4 w-64 shadow-lg animate-float">
+                  <div className="flex items-center gap-4">
+                    <div className="text-white">
+                      <div className="text-sm font-inter">Lun</div>
+                      <div className="text-2xl font-outfit font-bold">6</div>
+                    </div>
+                    <div className="flex gap-2 flex-1">
+                      <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center">
+                        <div className="w-8 h-8 bg-gray-200 rounded"></div>
+                      </div>
+                      <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center">
+                        <div className="w-8 h-8 bg-gray-200 rounded"></div>
+                      </div>
+                      <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center">
+                        <div className="w-8 h-8 bg-gray-200 rounded"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Martes 7 */}
+                <div className="bg-white rounded-2xl p-4 w-64 shadow-lg animate-float" style={{animationDelay: '0.5s'}}>
+                  <div className="flex items-center gap-4">
+                    <div className="text-vesty-purple">
+                      <div className="text-sm font-inter">Mar</div>
+                      <div className="text-2xl font-outfit font-bold">7</div>
+                    </div>
+                    <div className="flex gap-2 flex-1">
+                      <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
+                        <div className="w-8 h-8 bg-gray-200 rounded"></div>
+                      </div>
+                      <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
+                        <div className="w-8 h-8 bg-gray-200 rounded"></div>
+                      </div>
+                      <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
+                        <div className="w-8 h-8 bg-gray-200 rounded"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Miércoles 8 */}
+                <div className="bg-white rounded-2xl p-4 w-64 shadow-lg animate-float" style={{animationDelay: '1s'}}>
+                  <div className="flex items-center gap-4">
+                    <div className="text-vesty-purple">
+                      <div className="text-sm font-inter">Mie</div>
+                      <div className="text-2xl font-outfit font-bold">8</div>
+                    </div>
+                    <div className="flex gap-2 flex-1">
+                      <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
+                        <div className="w-8 h-8 bg-gray-200 rounded"></div>
+                      </div>
+                      <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
+                        <div className="w-8 h-8 bg-gray-200 rounded"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Jueves 9 */}
+                <div className="bg-white rounded-2xl p-4 w-64 shadow-lg animate-float" style={{animationDelay: '1.5s'}}>
+                  <div className="flex items-center gap-4">
+                    <div className="text-vesty-purple">
+                      <div className="text-sm font-inter">Jue</div>
+                      <div className="text-2xl font-outfit font-bold">9</div>
+                    </div>
+                    <div className="flex gap-2 flex-1">
+                      <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
+                        <div className="w-8 h-8 bg-gray-200 rounded"></div>
+                      </div>
+                      <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
+                        <div className="w-8 h-8 bg-gray-200 rounded"></div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
