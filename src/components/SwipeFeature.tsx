@@ -134,8 +134,8 @@ const SwipeFeature = () => {
                   src="/lovable-uploads/3ccf15b8-11d2-4754-ad9e-3b1a7b62ab06.png" 
                 />
                 
-                {/* Mockup del teléfono flotante - movido 100px a la izquierda */}
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -translate-x-[100px] w-48 h-80 bg-white rounded-3xl shadow-2xl overflow-hidden">
+                {/* Mockup del teléfono flotante - centrado */}
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-80 bg-white rounded-3xl shadow-2xl overflow-hidden">
                   {/* Contenido del mockup */}
                   <div className="p-4 h-full flex flex-col">
                     <div className="text-center mb-4">
