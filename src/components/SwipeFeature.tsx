@@ -124,105 +124,105 @@ const SwipeFeature = () => {
           </div>
 
           {/* Contenido derecho - Mockup */}
-          <div className="relative flex justify-center lg:justify-end">
-            <div className="relative">
-              {/* Imagen de fondo con las chicas - centrada */}
-              <div className="w-80 h-96 rounded-3xl overflow-hidden bg-gradient-to-br from-orange-100 to-yellow-100 relative flex items-center justify-center">
-                <img 
-                  alt="Chicas usando la app" 
-                  className="w-full h-full object-cover object-center" 
-                  src="/lovable-uploads/3ccf15b8-11d2-4754-ad9e-3b1a7b62ab06.png" 
-                />
-                
-                {/* Mockup del teléfono flotante - centrado con sombra */}
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-80 bg-white rounded-3xl shadow-2xl overflow-hidden">
-                  {/* Contenido del mockup */}
-                  <div className="p-4 h-full flex flex-col">
-                    <div className="text-center mb-4">
-                      <h3 className="font-outfit font-bold text-gray-900">Match clothes</h3>
-                    </div>
-                    
-                    {/* Stack de cartas */}
-                    <div className="flex-1 relative">
-                      {cards.map((card, index) => (
-                        <div
-                          key={card.id}
-                          className={`absolute inset-0 ${card.color} rounded-2xl p-4 transition-all duration-500 ease-out cursor-pointer hover:scale-105`}
-                          style={getCardStyle(index)}
-                          onMouseEnter={() => {
-                            if (index === currentCardIndex && !animatingCard) {
-                              // Hover effect
-                            }
-                          }}
-                        >
-                          {/* Indicador de acción */}
-                          {animatingCard === index && (
-                            <div className="absolute top-2 right-2 z-10">
-                              {animationType === 'like' ? (
-                                <div className="bg-green-500 text-white px-3 py-1 rounded-full text-xs font-inter font-bold">
-                                  LIKE
-                                </div>
-                              ) : (
-                                <div className="bg-red-500 text-white px-3 py-1 rounded-full text-xs font-inter font-bold">
-                                  DISLIKE
-                                </div>
-                              )}
-                            </div>
-                          )}
-                          
-                          {/* Imagen de la prenda centrada */}
-                          <div className="flex items-center justify-center h-full">
-                            <img 
-                              src={card.image} 
-                              alt="Prenda de vestir"
-                              className="max-w-full max-h-full object-contain"
-                            />
+          <div className="relative flex items-center justify-center lg:justify-center min-h-[500px]">
+            <div className="relative w-80 h-96 rounded-3xl overflow-hidden bg-gradient-to-br from-orange-100 to-yellow-100 flex items-center justify-center">
+              <img 
+                alt="Chicas usando la app" 
+                className="w-full h-full object-cover object-center" 
+                src="/lovable-uploads/3ccf15b8-11d2-4754-ad9e-3b1a7b62ab06.png" 
+              />
+              
+              {/* Mockup del teléfono centrado con sombra suave */}
+              <div 
+                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-80 bg-white rounded-xl overflow-hidden transition-transform duration-300 hover:scale-105"
+                style={{
+                  boxShadow: '0px 8px 24px rgba(0, 0, 0, 0.1)'
+                }}
+              >
+                {/* Contenido del mockup */}
+                <div className="p-4 h-full flex flex-col">
+                  <div className="text-center mb-4">
+                    <h3 className="font-outfit font-bold text-gray-900">Match clothes</h3>
+                  </div>
+                  
+                  {/* Stack de cartas */}
+                  <div className="flex-1 relative">
+                    {cards.map((card, index) => (
+                      <div
+                        key={card.id}
+                        className={`absolute inset-0 ${card.color} rounded-2xl p-4 transition-all duration-500 ease-out cursor-pointer hover:scale-105`}
+                        style={getCardStyle(index)}
+                        onMouseEnter={() => {
+                          if (index === currentCardIndex && !animatingCard) {
+                            // Hover effect
+                          }
+                        }}
+                      >
+                        {/* Indicador de acción */}
+                        {animatingCard === index && (
+                          <div className="absolute top-2 right-2 z-10">
+                            {animationType === 'like' ? (
+                              <div className="bg-green-500 text-white px-3 py-1 rounded-full text-xs font-inter font-bold">
+                                LIKE
+                              </div>
+                            ) : (
+                              <div className="bg-red-500 text-white px-3 py-1 rounded-full text-xs font-inter font-bold">
+                                DISLIKE
+                              </div>
+                            )}
                           </div>
+                        )}
+                        
+                        {/* Imagen de la prenda centrada */}
+                        <div className="flex items-center justify-center h-full">
+                          <img 
+                            src={card.image} 
+                            alt="Prenda de vestir"
+                            className="max-w-full max-h-full object-contain"
+                          />
                         </div>
-                      ))}
-                      
-                      {/* Corazones flotantes asincrónicos */}
-                      {showHearts && (
-                        <div className="absolute inset-0 pointer-events-none z-20">
-                          {[...Array(8)].map((_, i) => (
-                            <div
-                              key={i}
-                              className="absolute text-2xl opacity-0 animate-bounce"
-                              style={{
-                                left: `${10 + Math.random() * 70}%`,
-                                top: `${20 + Math.random() * 50}%`,
-                                animationDelay: `${i * 0.15}s`,
-                                animationDuration: '1.2s',
-                                animationFillMode: 'forwards'
-                              }}
-                            >
-                              💖
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                    </div>
+                      </div>
+                    ))}
                     
-                    {/* Botones de acción */}
-                    <div className="flex justify-center gap-4 mt-4">
-                      <button 
-                        onClick={handleDislike}
-                        className="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center hover:bg-red-200 transition-colors"
-                        disabled={animatingCard !== null}
-                      >
-                        <span className="text-red-500 text-lg">✕</span>
-                      </button>
-                      <button className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors">
-                        <span className="text-gray-500 text-lg">↺</span>
-                      </button>
-                      <button 
-                        onClick={handleLike}
-                        className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center hover:bg-green-200 transition-colors"
-                        disabled={animatingCard !== null}
-                      >
-                        <span className="text-green-500 text-lg">♡</span>
-                      </button>
-                    </div>
+                    {/* Corazones flotantes asincrónicos */}
+                    {showHearts && (
+                      <div className="absolute inset-0 pointer-events-none z-20">
+                        {[...Array(8)].map((_, i) => (
+                          <div
+                            key={i}
+                            className="absolute text-2xl opacity-0"
+                            style={{
+                              left: `${10 + Math.random() * 70}%`,
+                              top: `${20 + Math.random() * 50}%`,
+                              animation: `heartFloat 1.2s ease-out ${i * 0.15}s forwards`
+                            }}
+                          >
+                            💖
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                  
+                  {/* Botones de acción */}
+                  <div className="flex justify-center gap-4 mt-4">
+                    <button 
+                      onClick={handleDislike}
+                      className="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center hover:bg-red-200 transition-colors"
+                      disabled={animatingCard !== null}
+                    >
+                      <span className="text-red-500 text-lg">✕</span>
+                    </button>
+                    <button className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors">
+                      <span className="text-gray-500 text-lg">↺</span>
+                    </button>
+                    <button 
+                      onClick={handleLike}
+                      className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center hover:bg-green-200 transition-colors"
+                      disabled={animatingCard !== null}
+                    >
+                      <span className="text-green-500 text-lg">♡</span>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -233,6 +233,25 @@ const SwipeFeature = () => {
           </div>
         </div>
       </div>
+
+      <style>
+        {`
+          @keyframes heartFloat {
+            0% {
+              opacity: 0;
+              transform: translateY(0px) scale(0.5);
+            }
+            50% {
+              opacity: 1;
+              transform: translateY(-20px) scale(1);
+            }
+            100% {
+              opacity: 0;
+              transform: translateY(-40px) scale(0.8);
+            }
+          }
+        `}
+      </style>
     </section>
   );
 };
