@@ -44,24 +44,6 @@ const OutfitPlanner = () => {
 
                 {/* Outfits programados */}
                 <div className="space-y-3">
-                  {/* Lunes 6 */}
-                  <div className="bg-purple-100 rounded-2xl p-3 flex items-center gap-3">
-                    <div className="bg-purple-500 text-white rounded-lg px-2 py-1 text-xs font-outfit font-bold">
-                      Lun<br />6
-                    </div>
-                    <div className="flex gap-2">
-                      <div className="w-8 h-8 bg-gray-200 rounded flex items-center justify-center">
-                        <div className="w-4 h-6 bg-gray-400 rounded-sm"></div>
-                      </div>
-                      <div className="w-8 h-8 bg-white rounded flex items-center justify-center border">
-                        <div className="w-4 h-6 bg-gray-100 rounded-sm"></div>
-                      </div>
-                      <div className="w-8 h-8 bg-gray-100 rounded flex items-center justify-center">
-                        <div className="w-3 h-3 bg-gray-300 rounded-full"></div>
-                      </div>
-                    </div>
-                  </div>
-
                   {/* Martes 7 */}
                   <div className="bg-pink-50 rounded-2xl p-3 flex items-center gap-3">
                     <div className="bg-vesty-purple text-white rounded-lg px-2 py-1 text-xs font-outfit font-bold">
