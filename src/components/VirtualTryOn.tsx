@@ -1,12 +1,13 @@
 
 import { useState, useRef } from 'react';
-import { Slider } from "@/components/ui/slider";
 import { Upload, ArrowLeft, ArrowRight } from 'lucide-react';
 
 const VirtualTryOn = () => {
-  const [sliderValue, setSliderValue] = useState([50]);
+  const [sliderPosition, setSliderPosition] = useState(50);
   const [leftImage, setLeftImage] = useState<string | null>(null);
   const [rightImage, setRightImage] = useState<string | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
   const leftInputRef = useRef<HTMLInputElement>(null);
   const rightInputRef = useRef<HTMLInputElement>(null);
 
@@ -29,6 +30,23 @@ const VirtualTryOn = () => {
     } else {
       rightInputRef.current?.click();
     }
+  };
+
+  const handleMouseDown = () => {
+    setIsDragging(true);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !containerRef.current) return;
+    
+    const rect = containerRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const percentage = (x / rect.width) * 100;
+    setSliderPosition(Math.max(0, Math.min(100, percentage)));
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
   };
 
   return (
@@ -87,97 +105,98 @@ const VirtualTryOn = () => {
                     <div className="flex items-center justify-between px-4 py-2 border-b border-gray-100">
                       <div className="flex items-center gap-2">
                         <ArrowLeft className="w-4 h-4" />
-                        <span className="font-semibold text-sm">Tus pruebas</span>
+                        <span className="font-semibold text-sm">Comparar outfits</span>
                       </div>
-                      <div className="w-4 h-4 border-2 border-red-500 rounded"></div>
                     </div>
 
-                    {/* Área principal con imagen dividida y slider */}
+                    {/* Área principal con slider de comparación */}
                     <div className="px-4 flex-1 relative" style={{ height: '280px' }}>
                       <div className="relative bg-gray-50 rounded-2xl overflow-hidden h-full">
-                        {/* Contenedor de la imagen dividida */}
-                        <div className="relative w-full h-full">
-                          {/* Input files ocultos */}
-                          <input
-                            ref={leftInputRef}
-                            type="file"
-                            accept="image/*"
-                            className="hidden"
-                            onChange={(e) => {
-                              const file = e.target.files?.[0];
-                              if (file) handleImageUpload(file, 'left');
-                            }}
-                          />
-                          <input
-                            ref={rightInputRef}
-                            type="file"
-                            accept="image/*"
-                            className="hidden"
-                            onChange={(e) => {
-                              const file = e.target.files?.[0];
-                              if (file) handleImageUpload(file, 'right');
-                            }}
-                          />
+                        {/* Input files ocultos */}
+                        <input
+                          ref={leftInputRef}
+                          type="file"
+                          accept="image/*"
+                          className="hidden"
+                          onChange={(e) => {
+                            const file = e.target.files?.[0];
+                            if (file) handleImageUpload(file, 'left');
+                          }}
+                        />
+                        <input
+                          ref={rightInputRef}
+                          type="file"
+                          accept="image/*"
+                          className="hidden"
+                          onChange={(e) => {
+                            const file = e.target.files?.[0];
+                            if (file) handleImageUpload(file, 'right');
+                          }}
+                        />
 
-                          {/* Lado izquierdo */}
+                        {/* Contenedor del slider de comparación */}
+                        <div 
+                          ref={containerRef}
+                          className="relative w-full h-full cursor-col-resize select-none"
+                          onMouseMove={handleMouseMove}
+                          onMouseUp={handleMouseUp}
+                          onMouseLeave={handleMouseUp}
+                        >
+                          {/* Imagen de la derecha (fondo completo) */}
+                          <div className="absolute inset-0">
+                            {rightImage ? (
+                              <img 
+                                src={rightImage} 
+                                alt="Imagen derecha" 
+                                className="w-full h-full object-cover"
+                              />
+                            ) : (
+                              <div 
+                                className="w-full h-full flex items-center justify-center bg-gray-300 cursor-pointer"
+                                onClick={() => triggerFileInput('right')}
+                              >
+                                <div className="text-center">
+                                  <Upload className="w-8 h-8 mx-auto mb-2 text-gray-600" />
+                                  <span className="text-xs text-gray-600">Después</span>
+                                </div>
+                              </div>
+                            )}
+                          </div>
+
+                          {/* Imagen de la izquierda (recortada por el slider) */}
                           <div 
-                            className="absolute top-0 left-0 h-full bg-gray-200 overflow-hidden cursor-pointer"
-                            style={{ width: `${sliderValue[0]}%` }}
-                            onClick={() => triggerFileInput('left')}
+                            className="absolute inset-0 overflow-hidden"
+                            style={{ 
+                              clipPath: `polygon(0 0, ${sliderPosition}% 0, ${sliderPosition}% 100%, 0 100%)`
+                            }}
                           >
                             {leftImage ? (
                               <img 
                                 src={leftImage} 
                                 alt="Imagen izquierda" 
                                 className="w-full h-full object-cover"
-                                style={{ 
-                                  width: `${220 * (100 / sliderValue[0])}px`,
-                                  clipPath: `polygon(0 0, 100% 0, 100% 100%, 0 100%)`
-                                }}
                               />
                             ) : (
-                              <div className="w-full h-full flex items-center justify-center bg-gray-300">
+                              <div 
+                                className="w-full h-full flex items-center justify-center bg-gray-200 cursor-pointer"
+                                onClick={() => triggerFileInput('left')}
+                              >
                                 <div className="text-center">
                                   <Upload className="w-8 h-8 mx-auto mb-2 text-gray-500" />
-                                  <span className="text-xs text-gray-500">Añadir foto</span>
-                                </div>
-                              </div>
-                            )}
-                          </div>
-                          
-                          {/* Lado derecho */}
-                          <div 
-                            className="absolute top-0 right-0 h-full bg-gray-300 overflow-hidden cursor-pointer"
-                            style={{ width: `${100 - sliderValue[0]}%` }}
-                            onClick={() => triggerFileInput('right')}
-                          >
-                            {rightImage ? (
-                              <img 
-                                src={rightImage} 
-                                alt="Imagen derecha" 
-                                className="w-full h-full object-cover"
-                                style={{ 
-                                  width: `${220 * (100 / (100 - sliderValue[0]))}px`,
-                                  marginLeft: `-${220 * (sliderValue[0] / (100 - sliderValue[0]))}px`
-                                }}
-                              />
-                            ) : (
-                              <div className="w-full h-full flex items-center justify-center bg-gray-400">
-                                <div className="text-center">
-                                  <Upload className="w-8 h-8 mx-auto mb-2 text-gray-600" />
-                                  <span className="text-xs text-gray-600">Añadir foto</span>
+                                  <span className="text-xs text-gray-500">Antes</span>
                                 </div>
                               </div>
                             )}
                           </div>
 
-                          {/* Línea divisoria */}
+                          {/* Línea divisoria y control deslizante */}
                           <div 
-                            className="absolute top-0 h-full w-0.5 bg-white shadow-lg z-10" 
-                            style={{ left: `${sliderValue[0]}%` }}
+                            className="absolute top-0 h-full w-1 bg-white shadow-lg z-10 cursor-col-resize"
+                            style={{ left: `${sliderPosition}%`, transform: 'translateX(-50%)' }}
+                            onMouseDown={handleMouseDown}
                           >
                             {/* Círculo del slider */}
-                            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full shadow-lg flex items-center justify-center">
+                            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full shadow-lg flex items-center justify-center cursor-col-resize">
                               <div className="flex gap-0.5">
                                 <div className="w-0.5 h-4 bg-gray-400 rounded"></div>
                                 <div className="w-0.5 h-4 bg-gray-400 rounded"></div>
@@ -185,25 +204,13 @@ const VirtualTryOn = () => {
                             </div>
                           </div>
 
-                          {/* Flechas de navegación */}
-                          <button className="absolute left-2 top-1/2 transform -translate-y-1/2 w-6 h-6 bg-black bg-opacity-20 rounded-full flex items-center justify-center">
-                            <ArrowLeft className="w-3 h-3 text-white" />
-                          </button>
-                          <button className="absolute right-2 top-1/2 transform -translate-y-1/2 w-6 h-6 bg-black bg-opacity-20 rounded-full flex items-center justify-center">
-                            <ArrowRight className="w-3 h-3 text-white" />
-                          </button>
-                        </div>
-
-                        {/* Slider funcional (invisible pero controla la división) */}
-                        <div className="absolute bottom-4 left-4 right-4">
-                          <Slider 
-                            value={sliderValue} 
-                            onValueChange={setSliderValue} 
-                            max={100} 
-                            min={0} 
-                            step={1} 
-                            className="w-full opacity-0" 
-                          />
+                          {/* Etiquetas antes/después */}
+                          <div className="absolute top-4 left-4 bg-black bg-opacity-50 text-white px-2 py-1 rounded text-xs">
+                            Antes
+                          </div>
+                          <div className="absolute top-4 right-4 bg-black bg-opacity-50 text-white px-2 py-1 rounded text-xs">
+                            Después
+                          </div>
                         </div>
                       </div>
                     </div>
