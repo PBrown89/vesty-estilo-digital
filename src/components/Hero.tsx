@@ -4,14 +4,7 @@ import { Apple } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section className="min-h-screen flex items-center justify-center bg-white relative overflow-hidden pt-8 pb-8">
-      {/* Formas geométricas de fondo más sutiles */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 right-20 w-48 h-48 bg-gradient-to-br from-purple-100 to-pink-100 rounded-full opacity-20 animate-float"></div>
-        <div className="absolute bottom-32 left-10 w-32 h-32 bg-gradient-to-br from-orange-100 to-yellow-100 rounded-full opacity-25 animate-float" style={{animationDelay: '1s'}}></div>
-        <div className="absolute top-32 left-1/4 w-24 h-24 bg-gradient-to-br from-vesty-purple/10 to-purple-200/10 rounded-full animate-float" style={{animationDelay: '2s'}}></div>
-      </div>
-
+    <section className="min-h-screen flex items-center justify-center bg-white relative overflow-hidden pt-4 pb-8">
       <div className="container mx-auto px-4 grid lg:grid-cols-2 gap-8 items-center relative z-10 max-w-6xl">
         {/* Contenido izquierdo */}
         <div className="animate-fade-in-left flex flex-col justify-center">
