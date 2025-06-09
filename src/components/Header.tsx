@@ -6,25 +6,34 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-purple-100">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
+          {/* Logo centrado a la izquierda */}
           <div className="text-2xl font-bold font-outfit bg-gradient-to-r from-vesty-purple to-pink-500 bg-clip-text text-transparent">
             Vesty
           </div>
           
+          {/* Navegación desktop */}
           <nav className="hidden md:flex items-center space-x-8">
+            <a href="#home" className="font-inter text-gray-700 hover:text-vesty-purple transition-colors">
+              Home
+            </a>
             <a href="#features" className="font-inter text-gray-700 hover:text-vesty-purple transition-colors">
-              Funciones
+              Features
             </a>
-            <a href="#testimonios" className="font-inter text-gray-700 hover:text-vesty-purple transition-colors">
-              Testimonios
+            <a href="#testimonials" className="font-inter text-gray-700 hover:text-vesty-purple transition-colors">
+              Testimonials
             </a>
-            <Button className="bg-vesty-purple hover:bg-purple-600 text-white font-inter">
-              Empieza gratis
+            <a href="#pricing" className="font-inter text-gray-700 hover:text-vesty-purple transition-colors">
+              Pricing
+            </a>
+            <Button className="bg-vesty-purple hover:bg-purple-600 text-white font-inter px-6 py-2 rounded-full">
+              Download App
             </Button>
           </nav>
 
+          {/* Menú móvil */}
           <button 
             className="md:hidden"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -37,13 +46,16 @@ const Header = () => {
           </button>
         </div>
 
+        {/* Menú móvil expandido */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-purple-100">
+          <div className="md:hidden py-4 border-t border-gray-100">
             <nav className="flex flex-col space-y-4">
-              <a href="#features" className="font-inter text-gray-700">Funciones</a>
-              <a href="#testimonios" className="font-inter text-gray-700">Testimonios</a>
-              <Button className="bg-vesty-purple text-white font-inter w-full mt-4">
-                Empieza gratis
+              <a href="#home" className="font-inter text-gray-700">Home</a>
+              <a href="#features" className="font-inter text-gray-700">Features</a>
+              <a href="#testimonials" className="font-inter text-gray-700">Testimonials</a>
+              <a href="#pricing" className="font-inter text-gray-700">Pricing</a>
+              <Button className="bg-vesty-purple text-white font-inter w-full mt-4 rounded-full">
+                Download App
               </Button>
             </nav>
           </div>
