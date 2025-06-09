@@ -10,20 +10,17 @@ const SwipeFeature = () => {
   const cards = [
     {
       id: 1,
-      title: "Vestido floral con carácter simple",
-      image: "/lovable-uploads/47bf4978-5e16-4898-89b7-0d9c0033b6c7.png",
+      image: "/lovable-uploads/cf705711-ff72-4b82-b72e-e2e6541c967f.png",
       color: "bg-yellow-100"
     },
     {
       id: 2,
-      title: "Top verde con detalles únicos",
-      image: "/lovable-uploads/3058937b-1b5d-432f-bf54-99c24ab7a678.png",
+      image: "/lovable-uploads/84ab8ed5-13f9-4248-89fd-f2163104013e.png",
       color: "bg-green-100"
     },
     {
       id: 3,
-      title: "Pantalón de rayas casual",
-      image: "/lovable-uploads/41931d4c-1b40-4520-b2e4-ad97308720da.png",
+      image: "/lovable-uploads/281504be-8d09-46c7-af41-d1edf7d40d62.png",
       color: "bg-blue-100"
     }
   ];
@@ -174,32 +171,29 @@ const SwipeFeature = () => {
                           )}
                           
                           {/* Imagen de la prenda centrada */}
-                          <div className="flex items-center justify-center h-32 mb-4">
+                          <div className="flex items-center justify-center h-full">
                             <img 
                               src={card.image} 
-                              alt={card.title}
+                              alt="Prenda de vestir"
                               className="max-w-full max-h-full object-contain"
                             />
-                          </div>
-                          
-                          <div className="text-center text-sm font-inter text-gray-600">
-                            {card.title}
                           </div>
                         </div>
                       ))}
                       
-                      {/* Corazones flotantes */}
+                      {/* Corazones flotantes asincrónicos */}
                       {showHearts && (
                         <div className="absolute inset-0 pointer-events-none z-20">
-                          {[...Array(6)].map((_, i) => (
+                          {[...Array(8)].map((_, i) => (
                             <div
                               key={i}
-                              className="absolute animate-bounce text-2xl"
+                              className="absolute text-2xl animate-bounce opacity-0"
                               style={{
-                                left: `${20 + i * 15}%`,
-                                top: `${30 + (i % 2) * 20}%`,
-                                animationDelay: `${i * 0.1}s`,
-                                animationDuration: '1s'
+                                left: `${10 + Math.random() * 70}%`,
+                                top: `${20 + Math.random() * 50}%`,
+                                animationDelay: `${i * 0.15}s`,
+                                animationDuration: '1.2s',
+                                animation: `bounce 1.2s ease-out ${i * 0.15}s forwards, fade-out 0.3s ease-out ${0.9 + i * 0.15}s forwards`
                               }}
                             >
                               💖
@@ -239,6 +233,15 @@ const SwipeFeature = () => {
           </div>
         </div>
       </div>
+      
+      <style jsx>{`
+        @keyframes fade-out {
+          to {
+            opacity: 0;
+            transform: translateY(-20px);
+          }
+        }
+      `}</style>
     </section>
   );
 };
