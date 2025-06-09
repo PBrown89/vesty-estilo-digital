@@ -59,8 +59,8 @@ const OutfitPlanner = () => {
                 <div className="bg-vesty-purple rounded-2xl p-4 w-64 shadow-lg animate-float">
                   <div className="flex items-center gap-4">
                     <div className="text-white">
-                      <div className="text-sm font-inter">Lun</div>
-                      <div className="text-2xl font-outfit font-bold">6</div>
+                      <div className="text-sm font-inter">Mar</div>
+                      <div className="text-2xl font-outfit font-bold">11</div>
                     </div>
                     <div className="flex gap-2 flex-1">
                       <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center">
@@ -82,8 +82,8 @@ const OutfitPlanner = () => {
               }}>
                   <div className="flex items-center gap-4">
                     <div className="text-vesty-purple">
-                      <div className="text-sm font-inter">Mar</div>
-                      <div className="text-2xl font-outfit font-bold">7</div>
+                      <div className="text-sm font-inter">Mie</div>
+                      <div className="text-2xl font-outfit font-bold">12</div>
                     </div>
                     <div className="flex gap-2 flex-1">
                       <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
@@ -105,8 +105,8 @@ const OutfitPlanner = () => {
               }}>
                   <div className="flex items-center gap-4">
                     <div className="text-vesty-purple">
-                      <div className="text-sm font-inter">Mie</div>
-                      <div className="text-2xl font-outfit font-bold">8</div>
+                      <div className="text-sm font-inter">Lun</div>
+                      <div className="text-2xl font-outfit font-bold">17</div>
                     </div>
                     <div className="flex gap-2 flex-1">
                       <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
@@ -125,8 +125,8 @@ const OutfitPlanner = () => {
               }}>
                   <div className="flex items-center gap-4">
                     <div className="text-vesty-purple">
-                      <div className="text-sm font-inter">Jue</div>
-                      <div className="text-2xl font-outfit font-bold">9</div>
+                      <div className="text-sm font-inter">Mar</div>
+                      <div className="text-2xl font-outfit font-bold">18</div>
                     </div>
                     <div className="flex gap-2 flex-1">
                       <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
