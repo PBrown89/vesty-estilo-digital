@@ -1,4 +1,3 @@
-
 const Testimonials = () => {
   const testimonials = [
     {
@@ -19,7 +18,7 @@ const Testimonials = () => {
   ];
 
   return (
-    <section id="testimonios" className="py-20 bg-gradient-to-br from-purple-50 to-pink-50">
+    <section id="testimonios" className="py-32 bg-gradient-to-br from-purple-50 to-pink-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-black text-gray-800 mb-6">

@@ -1,4 +1,3 @@
-
 const Problem = () => {
   const problems = [
     {
@@ -19,7 +18,7 @@ const Problem = () => {
   ];
 
   return (
-    <section className="py-20 bg-vesty-gradient-soft">
+    <section className="py-32 bg-vesty-gradient-soft">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-black font-outfit text-gray-800 mb-6">

@@ -1,9 +1,8 @@
-
 import { Button } from "@/components/ui/button";
 
 const FinalCTA = () => {
   return (
-    <section className="py-20 bg-vesty-hero relative overflow-hidden">
+    <section className="py-32 bg-vesty-hero relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-10 left-20 w-24 h-24 bg-white rounded-full animate-float"></div>

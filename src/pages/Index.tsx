@@ -5,8 +5,8 @@ import Problem from "@/components/Problem";
 import SwipeFeature from "@/components/SwipeFeature";
 import OutfitPlanner from "@/components/OutfitPlanner";
 import VirtualTryOn from "@/components/VirtualTryOn";
-import Features from "@/components/Features";
 import Testimonials from "@/components/Testimonials";
+import Pricing from "@/components/Pricing";
 import FinalCTA from "@/components/FinalCTA";
 
 const Index = () => {
@@ -18,8 +18,8 @@ const Index = () => {
       <SwipeFeature />
       <OutfitPlanner />
       <VirtualTryOn />
-      <Features />
       <Testimonials />
+      <Pricing />
       <FinalCTA />
     </div>
   );
