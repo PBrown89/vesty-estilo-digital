@@ -151,9 +151,9 @@ const OutfitPlanner = () => {
               Planifica tus outfits gratis y sin límite
             </h2>
             
-            <p className="text-lg font-inter text-gray-600 leading-relaxed">
-              Deja el caos fuera. Con Vesty planifica tus outfits, haz maletas sin estrés y saca más partido a tu armario.
-            </p>
+            <p className="text-lg font-inter text-gray-600 leading-relaxed font-normal">Deja el caos fuera y planifica tus outfits. Haz maletas sin estrés y saca más partido a tu armario.
+
+          </p>
           </div>
         </div>
       </div>
