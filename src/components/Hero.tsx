@@ -1,8 +1,25 @@
 
 import { Button } from "@/components/ui/button";
 import { Apple } from "lucide-react";
+import { useState, useEffect } from "react";
 
 const Hero = () => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  const images = [
+    "/lovable-uploads/27123033-2eee-4e8e-8ca4-a5a74c308ad2.png",
+    "/lovable-uploads/01b8ef1b-a2ae-4419-9a8b-d9ab8268c831.png", 
+    "/lovable-uploads/fa38c56a-46ea-4942-9720-d15111e89f3f.png"
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [images.length]);
+
   return (
     <section className="min-h-screen flex items-center justify-center bg-white relative overflow-hidden pt-4 pb-6">
       {/* Formas geométricas de fondo más sutiles */}
@@ -72,16 +89,21 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Contenido derecho - Imagen centrada y más grande */}
+        {/* Contenido derecho - Imagen centrada y más grande con rotación automática */}
         <div className="relative animate-fade-in-right flex items-center justify-center lg:block hidden">
           <div className="relative flex items-center justify-center">
-            {/* Imagen principal centrada y completa */}
+            {/* Imagen principal centrada y completa con efecto de transición */}
             <div className="w-96 h-[500px] relative flex items-center justify-center">
-              <img 
-                src="/lovable-uploads/27123033-2eee-4e8e-8ca4-a5a74c308ad2.png" 
-                alt="Mujer con estilo elegante" 
-                className="w-full h-full object-contain"
-              />
+              {images.map((image, index) => (
+                <img 
+                  key={index}
+                  src={image} 
+                  alt={`Mujer con estilo elegante ${index + 1}`} 
+                  className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 ease-in-out ${
+                    index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+                  }`}
+                />
+              ))}
             </div>
 
             {/* Elementos flotantes con información */}
