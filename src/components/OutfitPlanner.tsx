@@ -1,6 +1,5 @@
 const OutfitPlanner = () => {
-  return (
-    <section className="py-32 bg-vesty-gradient-soft">
+  return <section className="py-32 bg-vesty-gradient-soft">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
           {/* Contenido izquierdo - Mockup */}
@@ -29,11 +28,11 @@ const OutfitPlanner = () => {
                 </div>
 
                 <div className="grid grid-cols-7 gap-1 mb-6">
-                  {Array.from({length: 35}, (_, i) => (
-                    <div key={i} className="aspect-square flex items-center justify-center text-xs font-inter">
+                  {Array.from({
+                  length: 35
+                }, (_, i) => <div key={i} className="aspect-square flex items-center justify-center text-xs font-inter">
                       {i >= 5 && i <= 34 ? i - 4 : ''}
-                    </div>
-                  ))}
+                    </div>)}
                 </div>
 
                 {/* Outfits programados */}
@@ -64,15 +63,13 @@ const OutfitPlanner = () => {
 
               {/* Imagen de la modelo */}
               <div className="absolute -right-16 top-8 w-48 h-64 rounded-2xl overflow-hidden">
-                <img 
-                  src="/lovable-uploads/2eff8da6-aa4f-45ac-91cf-42209c1660cc.png" 
-                  alt="Modelo con outfit planificado" 
-                  className="w-full h-full object-cover"
-                />
+                <img alt="Modelo con outfit planificado" className="w-full h-full object-cover" src="/lovable-uploads/16de5b7a-b6db-4233-ba69-ddf05e311221.png" />
               </div>
 
               {/* Elemento decorativo */}
-              <div className="absolute -bottom-4 -right-4 w-20 h-20 bg-gradient-to-br from-purple-200 to-pink-200 rounded-full opacity-50 animate-float" style={{animationDelay: '1s'}}></div>
+              <div className="absolute -bottom-4 -right-4 w-20 h-20 bg-gradient-to-br from-purple-200 to-pink-200 rounded-full opacity-50 animate-float" style={{
+              animationDelay: '1s'
+            }}></div>
             </div>
           </div>
 
@@ -88,8 +85,6 @@ const OutfitPlanner = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default OutfitPlanner;
