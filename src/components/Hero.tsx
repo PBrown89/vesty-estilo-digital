@@ -1,9 +1,10 @@
+
 import { Button } from "@/components/ui/button";
 import { Apple } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section className="min-h-screen flex items-center justify-center bg-white relative overflow-hidden pt-4 pb-8">
+    <section className="min-h-screen flex items-center justify-center bg-white relative overflow-hidden pt-4 pb-6">
       {/* Formas geométricas de fondo más sutiles */}
       <div className="absolute inset-0">
         <div className="absolute top-20 right-20 w-48 h-48 bg-gradient-to-br from-purple-100 to-pink-100 rounded-full opacity-20 animate-float"></div>

@@ -3,12 +3,12 @@ const Problem = () => {
   const problems = [
     {
       emoji: "😩",
-      text: "Tu armario está lleno... pero no tienes nada que ponerte",
+      text: "Mi armario está lleno pero no tengo nada que ponerme",
       delay: "0s"
     },
     {
       emoji: "🙄", 
-      text: "¿Otra vez ese look? Lo sé.",
+      text: "¿Otra vez ese look? ¿No te lo pusiste anteayer?",
       delay: "0.2s"
     },
     {
@@ -22,10 +22,10 @@ const Problem = () => {
     <section className="py-20 bg-vesty-gradient-soft">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-black text-gray-800 mb-6">
+          <h2 className="text-4xl md:text-5xl font-black font-outfit text-gray-800 mb-6">
             Lo sabemos...
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl font-inter text-gray-600 max-w-2xl mx-auto">
             Todas hemos estado ahí. Es hora de cambiar la historia.
           </p>
         </div>
@@ -40,7 +40,7 @@ const Problem = () => {
               <div className="text-6xl mb-4 animate-float" style={{animationDelay: problem.delay}}>
                 {problem.emoji}
               </div>
-              <p className="text-lg font-semibold text-gray-700 leading-relaxed">
+              <p className="text-lg font-semibold font-inter text-gray-700 leading-relaxed">
                 {problem.text}
               </p>
             </div>
@@ -49,7 +49,7 @@ const Problem = () => {
 
         <div className="text-center mt-16">
           <div className="inline-block bg-white rounded-full px-8 py-4 shadow-lg animate-scale-in" style={{animationDelay: '0.6s'}}>
-            <p className="text-xl font-bold text-gray-800">
+            <p className="text-xl font-bold font-outfit text-gray-800">
               ¡Pero ya no más! 💜
             </p>
           </div>
