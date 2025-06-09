@@ -1,3 +1,4 @@
+
 const OutfitPlanner = () => {
   return <section className="bg-vesty-gradient-soft py-[186px]">
       <div className="container mx-auto px-4">
@@ -55,7 +56,7 @@ const OutfitPlanner = () => {
 
               {/* Bloques flotantes de outfits */}
               <div className="absolute -right-40 top-0 space-y-4 mx-px">
-                {/* Lunes 6 */}
+                {/* Martes 11 */}
                 <div className="bg-vesty-purple rounded-2xl p-4 w-64 shadow-lg animate-float">
                   <div className="flex items-center gap-4">
                     <div className="text-white">
@@ -76,7 +77,7 @@ const OutfitPlanner = () => {
                   </div>
                 </div>
 
-                {/* Martes 7 */}
+                {/* Miércoles 12 */}
                 <div className="bg-white rounded-2xl p-4 w-64 shadow-lg animate-float" style={{
                 animationDelay: '0.5s'
               }}>
@@ -86,20 +87,20 @@ const OutfitPlanner = () => {
                       <div className="text-2xl font-outfit font-bold">12</div>
                     </div>
                     <div className="flex gap-2 flex-1">
-                      <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
-                        <div className="w-8 h-8 bg-gray-200 rounded"></div>
+                      <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden">
+                        <img src="/lovable-uploads/27123033-2eee-4e8e-8ca4-a5a74c308ad2.png" alt="Dress" className="w-full h-full object-cover" />
                       </div>
-                      <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
-                        <div className="w-8 h-8 bg-gray-200 rounded"></div>
+                      <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden">
+                        <img src="/lovable-uploads/47bf4978-5e16-4898-89b7-0d9c0033b6c7.png" alt="Jacket" className="w-full h-full object-cover" />
                       </div>
-                      <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
-                        <div className="w-8 h-8 bg-gray-200 rounded"></div>
+                      <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden">
+                        <img src="/lovable-uploads/84ab8ed5-13f9-4248-89fd-f2163104013e.png" alt="Boots" className="w-full h-full object-cover" />
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Miércoles 8 */}
+                {/* Lunes 17 */}
                 <div className="bg-white rounded-2xl p-4 w-64 shadow-lg animate-float" style={{
                 animationDelay: '1s'
               }}>
@@ -109,17 +110,17 @@ const OutfitPlanner = () => {
                       <div className="text-2xl font-outfit font-bold">17</div>
                     </div>
                     <div className="flex gap-2 flex-1">
-                      <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
-                        <div className="w-8 h-8 bg-gray-200 rounded"></div>
+                      <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden">
+                        <img src="/lovable-uploads/2eff8da6-aa4f-45ac-91cf-42209c1660cc.png" alt="Shirt" className="w-full h-full object-cover" />
                       </div>
-                      <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
-                        <div className="w-8 h-8 bg-gray-200 rounded"></div>
+                      <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden">
+                        <img src="/lovable-uploads/3058937b-1b5d-432f-bf54-99c24ab7a678.png" alt="Skirt" className="w-full h-full object-cover" />
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Jueves 9 */}
+                {/* Martes 18 */}
                 <div className="bg-white rounded-2xl p-4 w-64 shadow-lg animate-float" style={{
                 animationDelay: '1.5s'
               }}>
@@ -129,11 +130,11 @@ const OutfitPlanner = () => {
                       <div className="text-2xl font-outfit font-bold">18</div>
                     </div>
                     <div className="flex gap-2 flex-1">
-                      <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
-                        <div className="w-8 h-8 bg-gray-200 rounded"></div>
+                      <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden">
+                        <img src="/lovable-uploads/3ccf15b8-11d2-4754-ad9e-3b1a7b62ab06.png" alt="Sweater" className="w-full h-full object-cover" />
                       </div>
-                      <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
-                        <div className="w-8 h-8 bg-gray-200 rounded"></div>
+                      <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden">
+                        <img src="/lovable-uploads/62d99d17-ffb3-4a9c-9c30-9763e041cc58.png" alt="Pants" className="w-full h-full object-cover" />
                       </div>
                     </div>
                   </div>
