@@ -1,4 +1,3 @@
-
 const OutfitPlanner = () => {
   return <section className="bg-vesty-gradient-soft py-[186px]">
       <div className="container mx-auto px-4">
@@ -55,7 +54,7 @@ const OutfitPlanner = () => {
               </div>
 
               {/* Bloques flotantes de outfits */}
-              <div className="absolute -right-20 top-0 space-y-4">
+              <div className="absolute -right-40 top-0 space-y-4 mx-px">
                 {/* Lunes 6 */}
                 <div className="bg-vesty-purple rounded-2xl p-4 w-64 shadow-lg animate-float">
                   <div className="flex items-center gap-4">
@@ -78,7 +77,9 @@ const OutfitPlanner = () => {
                 </div>
 
                 {/* Martes 7 */}
-                <div className="bg-white rounded-2xl p-4 w-64 shadow-lg animate-float" style={{animationDelay: '0.5s'}}>
+                <div className="bg-white rounded-2xl p-4 w-64 shadow-lg animate-float" style={{
+                animationDelay: '0.5s'
+              }}>
                   <div className="flex items-center gap-4">
                     <div className="text-vesty-purple">
                       <div className="text-sm font-inter">Mar</div>
@@ -99,7 +100,9 @@ const OutfitPlanner = () => {
                 </div>
 
                 {/* Miércoles 8 */}
-                <div className="bg-white rounded-2xl p-4 w-64 shadow-lg animate-float" style={{animationDelay: '1s'}}>
+                <div className="bg-white rounded-2xl p-4 w-64 shadow-lg animate-float" style={{
+                animationDelay: '1s'
+              }}>
                   <div className="flex items-center gap-4">
                     <div className="text-vesty-purple">
                       <div className="text-sm font-inter">Mie</div>
@@ -117,7 +120,9 @@ const OutfitPlanner = () => {
                 </div>
 
                 {/* Jueves 9 */}
-                <div className="bg-white rounded-2xl p-4 w-64 shadow-lg animate-float" style={{animationDelay: '1.5s'}}>
+                <div className="bg-white rounded-2xl p-4 w-64 shadow-lg animate-float" style={{
+                animationDelay: '1.5s'
+              }}>
                   <div className="flex items-center gap-4">
                     <div className="text-vesty-purple">
                       <div className="text-sm font-inter">Jue</div>
