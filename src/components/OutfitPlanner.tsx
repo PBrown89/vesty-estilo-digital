@@ -1,4 +1,3 @@
-
 const OutfitPlanner = () => {
   return <section className="bg-vesty-gradient-soft py-[186px]">
       <div className="container mx-auto px-4">
@@ -88,13 +87,13 @@ const OutfitPlanner = () => {
                     </div>
                     <div className="flex gap-2 flex-1">
                       <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden">
-                        <img src="/lovable-uploads/27123033-2eee-4e8e-8ca4-a5a74c308ad2.png" alt="Dress" className="w-full h-full object-cover" />
+                        <img alt="Dress" className="w-full h-full object-cover" src="/lovable-uploads/b7757449-9828-44a6-af6a-8c4c1c3ce35f.png" />
                       </div>
                       <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden">
-                        <img src="/lovable-uploads/47bf4978-5e16-4898-89b7-0d9c0033b6c7.png" alt="Jacket" className="w-full h-full object-cover" />
+                        <img alt="Jacket" className="w-full h-full object-cover" src="/lovable-uploads/41902657-4625-4674-8c81-c94b985ba5a6.png" />
                       </div>
                       <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden">
-                        <img src="/lovable-uploads/84ab8ed5-13f9-4248-89fd-f2163104013e.png" alt="Boots" className="w-full h-full object-cover" />
+                        <img alt="Boots" className="w-full h-full object-cover" src="/lovable-uploads/861ab992-a454-4e07-85ea-95ec72a54c88.png" />
                       </div>
                     </div>
                   </div>
@@ -111,10 +110,10 @@ const OutfitPlanner = () => {
                     </div>
                     <div className="flex gap-2 flex-1">
                       <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden">
-                        <img src="/lovable-uploads/2eff8da6-aa4f-45ac-91cf-42209c1660cc.png" alt="Shirt" className="w-full h-full object-cover" />
+                        <img alt="Shirt" className="w-full h-full object-cover" src="/lovable-uploads/c930740f-a9cf-422a-9c9e-0cf3692d3aab.png" />
                       </div>
                       <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden">
-                        <img src="/lovable-uploads/3058937b-1b5d-432f-bf54-99c24ab7a678.png" alt="Skirt" className="w-full h-full object-cover" />
+                        <img alt="Skirt" className="w-full h-full object-cover" src="/lovable-uploads/77f972e9-3320-4eab-96b3-3ea99622268f.png" />
                       </div>
                     </div>
                   </div>
@@ -131,10 +130,10 @@ const OutfitPlanner = () => {
                     </div>
                     <div className="flex gap-2 flex-1">
                       <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden">
-                        <img src="/lovable-uploads/3ccf15b8-11d2-4754-ad9e-3b1a7b62ab06.png" alt="Sweater" className="w-full h-full object-cover" />
+                        <img alt="Sweater" className="w-full h-full object-cover" src="/lovable-uploads/fd6ffce6-45ee-437a-8de2-24e9ee6fbb2a.png" />
                       </div>
                       <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden">
-                        <img src="/lovable-uploads/62d99d17-ffb3-4a9c-9c30-9763e041cc58.png" alt="Pants" className="w-full h-full object-cover" />
+                        <img alt="Pants" className="w-full h-full object-cover" src="/lovable-uploads/08261d08-f963-40b8-b172-70e9510863f7.png" />
                       </div>
                     </div>
                   </div>
