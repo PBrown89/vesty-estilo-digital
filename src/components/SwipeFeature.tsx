@@ -1,6 +1,5 @@
 const SwipeFeature = () => {
-  return (
-    <section id="funciones" className="py-32 bg-white">
+  return <section id="funciones" className="py-32 bg-white">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
           {/* Contenido izquierdo */}
@@ -29,11 +28,7 @@ const SwipeFeature = () => {
             <div className="relative">
               {/* Imagen de fondo con las chicas */}
               <div className="w-80 h-96 rounded-3xl overflow-hidden bg-gradient-to-br from-orange-100 to-yellow-100 relative">
-                <img 
-                  src="/lovable-uploads/e09f76fa-e937-4dd8-92ae-5dd0327d7bb9.png" 
-                  alt="Chicas usando la app" 
-                  className="w-full h-full object-cover"
-                />
+                <img alt="Chicas usando la app" className="w-full h-full object-cover" src="/lovable-uploads/3ccf15b8-11d2-4754-ad9e-3b1a7b62ab06.png" />
                 
                 {/* Mockup del teléfono flotante */}
                 <div className="absolute top-8 right-8 w-48 h-80 bg-white rounded-3xl shadow-2xl overflow-hidden">
@@ -75,8 +70,6 @@ const SwipeFeature = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default SwipeFeature;
