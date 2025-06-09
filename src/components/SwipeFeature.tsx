@@ -137,7 +137,7 @@ const SwipeFeature = () => {
                 {/* Mockup del teléfono flotante - centrado con sombra */}
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-80 bg-white rounded-3xl shadow-2xl overflow-hidden">
                   {/* Contenido del mockup */}
-                  <div className="pr-[100px] h-full flex flex-col shadow-[0_8px_32px_rgba(0,0,0,0.12)]" style={{ filter: 'drop-shadow(0 8px 32px rgba(0, 0, 0, 0.12))' }}>
+                  <div className="p-4 h-full flex flex-col">
                     <div className="text-center mb-4">
                       <h3 className="font-outfit font-bold text-gray-900">Match clothes</h3>
                     </div>
