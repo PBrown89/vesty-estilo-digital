@@ -63,14 +63,18 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				'vesty-purple': '#8B5CF6',
+				'vesty-purple': '#735BF2',
 				'vesty-pink': '#EC4899',
 				'vesty-orange': '#F97316',
 			},
+			fontFamily: {
+				'outfit': ['Outfit', 'sans-serif'],
+				'inter': ['Inter', 'sans-serif'],
+			},
 			backgroundImage: {
-				'vesty-gradient': 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 50%, #F97316 100%)',
+				'vesty-gradient': 'linear-gradient(135deg, #735BF2 0%, #EC4899 50%, #F97316 100%)',
 				'vesty-gradient-soft': 'linear-gradient(135deg, #F3E8FF 0%, #FCE7F3 50%, #FEF3E7 100%)',
-				'vesty-hero': 'linear-gradient(135deg, #1E1B4B 0%, #581C87 50%, #BE185D 100%)',
+				'vesty-hero': 'linear-gradient(135deg, #F8F7FF 0%, #FDF4FF 50%, #FFFBF0 100%)',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
