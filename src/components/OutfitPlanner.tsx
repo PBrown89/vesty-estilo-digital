@@ -141,9 +141,7 @@ const OutfitPlanner = () => {
               </div>
 
               {/* Elemento decorativo */}
-              <div className="absolute -bottom-4 -right-4 w-20 h-20 bg-gradient-to-br from-purple-200 to-pink-200 rounded-full opacity-50 animate-float" style={{
-              animationDelay: '1s'
-            }}></div>
+              
             </div>
           </div>
 
