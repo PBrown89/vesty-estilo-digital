@@ -1,36 +1,10 @@
 
 import { useState, useRef } from 'react';
-import { Upload, ArrowLeft, ArrowRight } from 'lucide-react';
 
 const VirtualTryOn = () => {
   const [sliderPosition, setSliderPosition] = useState(50);
-  const [leftImage, setLeftImage] = useState<string | null>(null);
-  const [rightImage, setRightImage] = useState<string | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-  const leftInputRef = useRef<HTMLInputElement>(null);
-  const rightInputRef = useRef<HTMLInputElement>(null);
-
-  const handleImageUpload = (file: File, side: 'left' | 'right') => {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const result = e.target?.result as string;
-      if (side === 'left') {
-        setLeftImage(result);
-      } else {
-        setRightImage(result);
-      }
-    };
-    reader.readAsDataURL(file);
-  };
-
-  const triggerFileInput = (side: 'left' | 'right') => {
-    if (side === 'left') {
-      leftInputRef.current?.click();
-    } else {
-      rightInputRef.current?.click();
-    }
-  };
 
   const handleMouseDown = () => {
     setIsDragging(true);
@@ -85,55 +59,9 @@ const VirtualTryOn = () => {
                 <div className="absolute top-8 right-1 w-56 h-[400px] bg-black rounded-3xl shadow-2xl overflow-hidden p-1 my-0 mx-0 py-[4px] px-[4px]">
                   {/* Pantalla del teléfono */}
                   <div className="w-full h-full bg-white rounded-[22px] overflow-hidden relative my-0 px-px py-px">
-                    {/* Status bar */}
-                    <div className="flex justify-between items-center px-4 py-2 text-xs font-semibold">
-                      <span>9:41</span>
-                      <div className="flex items-center gap-1">
-                        <div className="flex gap-1">
-                          <div className="w-1 h-1 bg-black rounded-full"></div>
-                          <div className="w-1 h-1 bg-black rounded-full"></div>
-                          <div className="w-1 h-1 bg-black rounded-full"></div>
-                          <div className="w-1 h-1 bg-black rounded-full"></div>
-                        </div>
-                        <div className="w-4 h-2 border border-black rounded-sm">
-                          <div className="w-full h-full bg-black rounded-sm"></div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Header de la app */}
-                    <div className="flex items-center justify-between px-4 py-2 border-b border-gray-100">
-                      <div className="flex items-center gap-2">
-                        <ArrowLeft className="w-4 h-4" />
-                        <span className="font-semibold text-sm">Comparar outfits</span>
-                      </div>
-                    </div>
-
                     {/* Área principal con slider de comparación */}
-                    <div className="px-4 flex-1 relative" style={{ height: '280px' }}>
+                    <div className="w-full h-full relative">
                       <div className="relative bg-gray-50 rounded-2xl overflow-hidden h-full">
-                        {/* Input files ocultos */}
-                        <input
-                          ref={leftInputRef}
-                          type="file"
-                          accept="image/*"
-                          className="hidden"
-                          onChange={(e) => {
-                            const file = e.target.files?.[0];
-                            if (file) handleImageUpload(file, 'left');
-                          }}
-                        />
-                        <input
-                          ref={rightInputRef}
-                          type="file"
-                          accept="image/*"
-                          className="hidden"
-                          onChange={(e) => {
-                            const file = e.target.files?.[0];
-                            if (file) handleImageUpload(file, 'right');
-                          }}
-                        />
-
                         {/* Contenedor del slider de comparación */}
                         <div 
                           ref={containerRef}
@@ -142,51 +70,27 @@ const VirtualTryOn = () => {
                           onMouseUp={handleMouseUp}
                           onMouseLeave={handleMouseUp}
                         >
-                          {/* Imagen de la derecha (fondo completo) */}
+                          {/* Imagen de la derecha (fondo completo) - "Después" */}
                           <div className="absolute inset-0">
-                            {rightImage ? (
-                              <img 
-                                src={rightImage} 
-                                alt="Imagen derecha" 
-                                className="w-full h-full object-cover"
-                              />
-                            ) : (
-                              <div 
-                                className="w-full h-full flex items-center justify-center bg-gray-300 cursor-pointer"
-                                onClick={() => triggerFileInput('right')}
-                              >
-                                <div className="text-center">
-                                  <Upload className="w-8 h-8 mx-auto mb-2 text-gray-600" />
-                                  <span className="text-xs text-gray-600">Después</span>
-                                </div>
-                              </div>
-                            )}
+                            <img 
+                              src="/lovable-uploads/62b5a92b-467e-4f7f-96dd-ac35ccc8b9cd.png" 
+                              alt="Imagen después" 
+                              className="w-full h-full object-cover"
+                            />
                           </div>
 
-                          {/* Imagen de la izquierda (recortada por el slider) */}
+                          {/* Imagen de la izquierda (recortada por el slider) - "Antes" */}
                           <div 
                             className="absolute inset-0 overflow-hidden"
                             style={{ 
                               clipPath: `polygon(0 0, ${sliderPosition}% 0, ${sliderPosition}% 100%, 0 100%)`
                             }}
                           >
-                            {leftImage ? (
-                              <img 
-                                src={leftImage} 
-                                alt="Imagen izquierda" 
-                                className="w-full h-full object-cover"
-                              />
-                            ) : (
-                              <div 
-                                className="w-full h-full flex items-center justify-center bg-gray-200 cursor-pointer"
-                                onClick={() => triggerFileInput('left')}
-                              >
-                                <div className="text-center">
-                                  <Upload className="w-8 h-8 mx-auto mb-2 text-gray-500" />
-                                  <span className="text-xs text-gray-500">Antes</span>
-                                </div>
-                              </div>
-                            )}
+                            <img 
+                              src="/lovable-uploads/62b5a92b-467e-4f7f-96dd-ac35ccc8b9cd.png" 
+                              alt="Imagen antes" 
+                              className="w-full h-full object-cover"
+                            />
                           </div>
 
                           {/* Línea divisoria y control deslizante */}
@@ -213,17 +117,6 @@ const VirtualTryOn = () => {
                           </div>
                         </div>
                       </div>
-                    </div>
-
-                    {/* Botones de acción */}
-                    <div className="px-4 py-4 flex gap-2">
-                      <button className="flex-1 py-2 px-4 bg-gray-100 rounded-full text-sm font-medium">
-                        Guardar outfit
-                      </button>
-                      <button className="flex-1 py-2 px-4 bg-black text-white rounded-full text-sm font-medium flex items-center justify-center gap-1">
-                        <span>📤</span>
-                        Compartir
-                      </button>
                     </div>
                   </div>
                 </div>
