@@ -4,25 +4,17 @@ import { Instagram } from "lucide-react";
 
 const FinalCTA = () => {
   return (
-    <footer className="relative bg-gradient-to-br from-slate-700 via-slate-600 to-slate-800 text-white py-16 overflow-hidden">
-      {/* Fun background pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="funPattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
-              <circle cx="20" cy="20" r="3" fill="currentColor" opacity="0.3"/>
-              <path d="M40 10 Q50 20 40 30 Q30 20 40 10" fill="currentColor" opacity="0.2"/>
-              <rect x="60" y="15" width="8" height="8" rx="2" fill="currentColor" opacity="0.25"/>
-              <path d="M15 50 L25 40 L35 50 L25 60 Z" fill="currentColor" opacity="0.2"/>
-              <circle cx="70" cy="45" r="4" fill="currentColor" opacity="0.3"/>
-              <path d="M10 70 Q20 80 30 70 Q20 60 10 70" fill="currentColor" opacity="0.25"/>
-              <rect x="50" y="65" width="6" height="12" rx="3" fill="currentColor" opacity="0.2"/>
-              <path d="M75 75 L85 70 L85 80 Z" fill="currentColor" opacity="0.3"/>
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#funPattern)" />
-        </svg>
-      </div>
+    <footer 
+      className="relative text-white py-16 overflow-hidden"
+      style={{
+        backgroundImage: `url('/lovable-uploads/4a40b92c-c5cf-4587-84b5-a313d92e1515.png')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
+      {/* Overlay for better text readability */}
+      <div className="absolute inset-0 bg-slate-700/80"></div>
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Main footer content */}
@@ -56,7 +48,7 @@ const FinalCTA = () => {
             <ul className="space-y-3">
               <li>
                 <a 
-                  href="#" 
+                  href="/terminos" 
                   className="text-slate-200 hover:text-white transition-colors duration-200 text-sm font-outfit"
                 >
                   Términos y condiciones
