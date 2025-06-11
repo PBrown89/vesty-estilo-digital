@@ -1,6 +1,7 @@
 
+
 import { Button } from "@/components/ui/button";
-import { Instagram, TikTok } from "lucide-react";
+import { Instagram } from "lucide-react";
 
 const FinalCTA = () => {
   return (
@@ -80,13 +81,6 @@ const FinalCTA = () => {
               <a 
                 href="#" 
                 className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-300 hover:text-white hover:bg-gray-700 transition-all duration-200 hover:scale-110"
-                aria-label="TikTok"
-              >
-                <TikTok size={20} />
-              </a>
-              <a 
-                href="#" 
-                className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-300 hover:text-white hover:bg-gray-700 transition-all duration-200 hover:scale-110"
                 aria-label="Instagram"
               >
                 <Instagram size={20} />
@@ -110,3 +104,4 @@ const FinalCTA = () => {
 };
 
 export default FinalCTA;
+
