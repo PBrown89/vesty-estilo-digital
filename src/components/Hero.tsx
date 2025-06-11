@@ -1,6 +1,6 @@
 
 import { Button } from "@/components/ui/button";
-import { Apple, Play } from "lucide-react";
+import { Apple } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const Hero = () => {
@@ -56,7 +56,8 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-4">
             <Button 
               size="lg" 
-              className="bg-gray-900 hover:bg-gray-800 text-white text-lg px-8 py-4 rounded-xl font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-3 border-0"
+              className="text-white text-lg px-8 py-4 rounded-full font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-3 border-0"
+              style={{ backgroundColor: '#735BF2' }}
             >
               <Apple className="w-6 h-6" />
               Descargar para iOS
@@ -65,9 +66,12 @@ const Hero = () => {
             <Button 
               size="lg" 
               variant="outline"
-              className="bg-white border-2 border-gray-200 text-gray-900 hover:bg-gray-50 text-lg px-8 py-4 rounded-xl font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-3"
+              className="bg-white text-gray-900 hover:bg-gray-50 text-lg px-8 py-4 rounded-full font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-3"
+              style={{ borderColor: '#735BF2', borderWidth: '2px' }}
             >
-              <Play className="w-6 h-6" />
+              <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
+              </svg>
               Descargar para Android
             </Button>
           </div>
