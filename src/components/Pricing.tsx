@@ -11,8 +11,6 @@ const Pricing = () => {
         "Planificación de outfits de 2 semanas.",
         "Cantidad de armarios limitados."
       ],
-      buttonText: "Seleccionar plan",
-      buttonStyle: "border-2 border-gray-300 text-gray-700 bg-white hover:bg-gray-50",
       popular: false
     },
     {
@@ -23,8 +21,6 @@ const Pricing = () => {
         "Crea hasta 4 armarios.",
         "60 créditos para usar tanto en el probador como en las pruebas de color."
       ],
-      buttonText: "Seleccionar plan",
-      buttonStyle: "border-2 border-vesty-purple text-vesty-purple bg-white hover:bg-purple-50",
       popular: false
     },
     {
@@ -37,8 +33,6 @@ const Pricing = () => {
         "Experimenta con todas las pruebas de color que necesites.",
         "Combina, prueba y repite sin límites."
       ],
-      buttonText: "Seleccionar plan",
-      buttonStyle: "bg-vesty-gradient text-white hover:opacity-90",
       popular: true
     }
   ];
@@ -62,7 +56,7 @@ const Pricing = () => {
           {plans.map((plan, index) => (
             <div
               key={index}
-              className={`relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col min-h-[500px] ${
+              className={`relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col min-h-[450px] ${
                 plan.popular ? 'border-2 border-vesty-purple scale-105' : 'border border-gray-200'
               }`}
             >
@@ -74,7 +68,7 @@ const Pricing = () => {
                 {plan.price}
               </div>
 
-              <ul className="space-y-4 mb-8 flex-grow">
+              <ul className="space-y-4 flex-grow">
                 {plan.features.map((feature, featureIndex) => (
                   <li key={featureIndex} className="flex items-start gap-3">
                     <div className={`w-5 h-5 rounded-full flex items-center justify-center mt-0.5 flex-shrink-0 ${
@@ -100,10 +94,6 @@ const Pricing = () => {
                   </li>
                 ))}
               </ul>
-
-              <Button className={plan.buttonStyle}>
-                {plan.buttonText}
-              </Button>
             </div>
           ))}
         </div>
