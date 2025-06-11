@@ -62,7 +62,7 @@ const Pricing = () => {
           {plans.map((plan, index) => (
             <div
               key={index}
-              className={`relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col h-full ${
+              className={`relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col min-h-[500px] ${
                 plan.popular ? 'border-2 border-vesty-purple scale-105' : 'border border-gray-200'
               }`}
             >
@@ -77,7 +77,7 @@ const Pricing = () => {
               <ul className="space-y-4 mb-8 flex-grow">
                 {plan.features.map((feature, featureIndex) => (
                   <li key={featureIndex} className="flex items-start gap-3">
-                    <div className={`w-5 h-5 rounded-full flex items-center justify-center mt-0.5 ${
+                    <div className={`w-5 h-5 rounded-full flex items-center justify-center mt-0.5 flex-shrink-0 ${
                       plan.popular ? 'bg-vesty-purple' : 'bg-gray-100'
                     }`}>
                       <svg 
