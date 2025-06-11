@@ -66,6 +66,18 @@ export default {
 				'vesty-purple': '#735BF2',
 				'vesty-pink': '#EC4899',
 				'vesty-orange': '#F97316',
+				'coral': {
+					50: '#FEF7F0',
+					100: '#FDEDE0', 
+					200: '#FADAC1',
+					300: '#F7C8A2',
+					400: '#F4B583',
+					500: '#F1A264',
+					600: '#EE8F45',
+					700: '#EB7C26',
+					800: '#E86907',
+					900: '#C55606'
+				},
 			},
 			fontFamily: {
 				'outfit': ['Outfit', 'sans-serif'],

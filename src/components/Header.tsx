@@ -1,6 +1,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,11 +15,12 @@ const Header = () => {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+    setIsMenuOpen(false);
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm">
-      <div className="container mx-auto px-4">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-100">
+      <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
@@ -33,56 +35,56 @@ const Header = () => {
           <nav className="hidden md:flex items-center space-x-8">
             <button 
               onClick={scrollToTop}
-              className="font-inter text-gray-700 hover:text-vesty-purple transition-colors"
+              className="text-gray-700 hover:text-gray-900 transition-colors font-medium"
             >
               Inicio
             </button>
             <button 
-              onClick={() => scrollToSection('funciones')}
-              className="font-inter text-gray-700 hover:text-vesty-purple transition-colors"
+              onClick={() => scrollToSection('como-funciona')}
+              className="text-gray-700 hover:text-gray-900 transition-colors font-medium"
             >
-              Funciones
+              Cómo funciona
             </button>
             <button 
               onClick={() => scrollToSection('testimonios')}
-              className="font-inter text-gray-700 hover:text-vesty-purple transition-colors"
+              className="text-gray-700 hover:text-gray-900 transition-colors font-medium"
             >
               Testimonios
             </button>
             <button 
               onClick={() => scrollToSection('precios')}
-              className="font-inter text-gray-700 hover:text-vesty-purple transition-colors"
+              className="text-gray-700 hover:text-gray-900 transition-colors font-medium"
             >
               Precios
             </button>
-            <Button className="bg-vesty-purple hover:bg-purple-600 text-white font-inter px-6 py-2 rounded-full">
-              Download App
-            </Button>
           </nav>
+
+          {/* CTA Desktop */}
+          <div className="hidden md:block">
+            <Button className="bg-gray-900 hover:bg-gray-800 text-white px-6 py-2 rounded-lg font-medium">
+              Descargar App
+            </Button>
+          </div>
 
           {/* Menú móvil */}
           <button 
-            className="md:hidden"
+            className="md:hidden p-2"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            <div className="w-6 h-6 flex flex-col justify-center space-y-1">
-              <div className={`h-0.5 bg-gray-700 transition-all ${isMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`}></div>
-              <div className={`h-0.5 bg-gray-700 transition-all ${isMenuOpen ? 'opacity-0' : ''}`}></div>
-              <div className={`h-0.5 bg-gray-700 transition-all ${isMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></div>
-            </div>
+            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
 
         {/* Menú móvil expandido */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-100">
+          <div className="md:hidden py-4 border-t border-gray-100 bg-white">
             <nav className="flex flex-col space-y-4">
-              <button onClick={scrollToTop} className="font-inter text-gray-700 text-left">Inicio</button>
-              <button onClick={() => scrollToSection('funciones')} className="font-inter text-gray-700 text-left">Funciones</button>
-              <button onClick={() => scrollToSection('testimonios')} className="font-inter text-gray-700 text-left">Testimonios</button>
-              <button onClick={() => scrollToSection('precios')} className="font-inter text-gray-700 text-left">Precios</button>
-              <Button className="bg-vesty-purple text-white font-inter w-full mt-4 rounded-full">
-                Download App
+              <button onClick={scrollToTop} className="text-gray-700 text-left font-medium py-2">Inicio</button>
+              <button onClick={() => scrollToSection('como-funciona')} className="text-gray-700 text-left font-medium py-2">Cómo funciona</button>
+              <button onClick={() => scrollToSection('testimonios')} className="text-gray-700 text-left font-medium py-2">Testimonios</button>
+              <button onClick={() => scrollToSection('precios')} className="text-gray-700 text-left font-medium py-2">Precios</button>
+              <Button className="bg-gray-900 text-white w-full mt-4 rounded-lg font-medium">
+                Descargar App
               </Button>
             </nav>
           </div>
