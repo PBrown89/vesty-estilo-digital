@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Instagram } from "lucide-react";
 
@@ -7,14 +6,14 @@ const FinalCTA = () => {
     <footer 
       className="relative text-white py-16 overflow-hidden"
       style={{
-        backgroundImage: `url('/lovable-uploads/4a40b92c-c5cf-4587-84b5-a313d92e1515.png')`,
+        backgroundImage: `url('/lovable-uploads/a61d7ea7-1a24-4edf-9706-d15728310c2c.png')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
       }}
     >
-      {/* Overlay for better text readability */}
-      <div className="absolute inset-0 bg-slate-700/80"></div>
+      {/* Overlay for better text readability with the new background */}
+      <div className="absolute inset-0 bg-black/60"></div>
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Main footer content */}
