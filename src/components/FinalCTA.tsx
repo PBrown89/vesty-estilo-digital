@@ -1,17 +1,14 @@
-
 import { Button } from "@/components/ui/button";
 import { Instagram } from "lucide-react";
-
 const FinalCTA = () => {
-  return (
-    <footer className="relative text-white py-16 overflow-hidden" style={{
-      backgroundImage: `url('/lovable-uploads/55056cdc-2aca-4de0-a017-77259b4fe6de.png')`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat'
-    }}>
+  return <footer className="relative text-white py-16 overflow-hidden" style={{
+    backgroundImage: `url('/lovable-uploads/55056cdc-2aca-4de0-a017-77259b4fe6de.png')`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat'
+  }}>
       {/* Dark overlay for better text readability */}
-      <div className="absolute inset-0 bg-black/60"></div>
+      <div className="absolute inset-0 bg-black/[0.40]"></div>
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Main footer content */}
@@ -72,7 +69,7 @@ const FinalCTA = () => {
               </a>
               <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-gray-200 hover:text-white hover:bg-white/20 transition-all duration-200 hover:scale-110" aria-label="TikTok">
                 <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43V7.56a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.05z"/>
+                  <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43V7.56a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.05z" />
                 </svg>
               </a>
             </div>
@@ -89,8 +86,6 @@ const FinalCTA = () => {
           </p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default FinalCTA;
