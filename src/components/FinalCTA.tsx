@@ -1,20 +1,14 @@
-
 import { Button } from "@/components/ui/button";
 import { Instagram } from "lucide-react";
-
 const FinalCTA = () => {
-  return (
-    <footer 
-      className="relative text-white py-16 overflow-hidden"
-      style={{
-        backgroundImage: `url('/lovable-uploads/55056cdc-2aca-4de0-a017-77259b4fe6de.png')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-      }}
-    >
+  return <footer className="relative text-white py-16 overflow-hidden" style={{
+    backgroundImage: `url('/lovable-uploads/55056cdc-2aca-4de0-a017-77259b4fe6de.png')`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat'
+  }}>
       {/* Dark overlay for better text readability */}
-      <div className="absolute inset-0 bg-black/60"></div>
+      <div className="absolute inset-0 bg-transparent"></div>
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Main footer content */}
@@ -87,8 +81,6 @@ const FinalCTA = () => {
           </p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default FinalCTA;
