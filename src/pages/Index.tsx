@@ -5,6 +5,7 @@ import Problem from "@/components/Problem";
 import SwipeFeature from "@/components/SwipeFeature";
 import OutfitPlanner from "@/components/OutfitPlanner";
 import VirtualTryOn from "@/components/VirtualTryOn";
+import AppDownloadCTA from "@/components/AppDownloadCTA";
 import Testimonials from "@/components/Testimonials";
 import Pricing from "@/components/Pricing";
 import FinalCTA from "@/components/FinalCTA";
@@ -18,6 +19,7 @@ const Index = () => {
       <SwipeFeature />
       <OutfitPlanner />
       <VirtualTryOn />
+      <AppDownloadCTA />
       <Testimonials />
       <Pricing />
       <FinalCTA />
