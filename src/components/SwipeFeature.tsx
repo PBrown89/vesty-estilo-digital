@@ -92,7 +92,7 @@ const SwipeFeature = () => {
       opacity: 0.3
     };
   };
-  return <section id="funciones" className="py-32 bg-white">
+  return <section id="funciones" className="bg-white py-[180px]">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
           {/* Contenido izquierdo */}
