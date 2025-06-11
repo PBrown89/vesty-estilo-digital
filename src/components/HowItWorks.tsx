@@ -3,24 +3,24 @@ const HowItWorks = () => {
   const steps = [
     {
       number: "01",
-      title: "Escanea tu paleta",
-      description: "Tómate una selfie y descubre qué colores te favorecen más. Nuestra IA analiza tu tono de piel en segundos.",
-      image: "/lovable-uploads/27123033-2eee-4e8e-8ca4-a5a74c308ad2.png",
-      bgColor: "bg-purple-50"
-    },
-    {
-      number: "02", 
       title: "Digitaliza tu armario",
       description: "Fotografía tus prendas y organízalas automáticamente. Vesty crea un catálogo visual de todo lo que tienes.",
       image: "/lovable-uploads/01b8ef1b-a2ae-4419-9a8b-d9ab8268c831.png",
       bgColor: "bg-pink-50"
     },
     {
-      number: "03",
+      number: "02", 
       title: "Crea outfits perfectos",
       description: "Recibe sugerencias personalizadas y planifica tus looks. Nunca más tendrás dudas sobre qué ponerte.",
       image: "/lovable-uploads/fa38c56a-46ea-4942-9720-d15111e89f3f.png", 
       bgColor: "bg-yellow-50"
+    },
+    {
+      number: "03",
+      title: "Encuentra el estilo que buscas",
+      description: "Busca prendas que van con tu estilo y que realmente necesitas, pruébatelas y toma una decisión consciente y fundamentada. Se acabaron los arrepentimientos.",
+      image: "/lovable-uploads/27123033-2eee-4e8e-8ca4-a5a74c308ad2.png",
+      bgColor: "bg-purple-50"
     }
   ];
 
