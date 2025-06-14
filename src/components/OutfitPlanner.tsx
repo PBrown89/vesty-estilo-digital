@@ -54,7 +54,7 @@ const OutfitPlanner = () => {
               </div>
 
               {/* Bloques flotantes de outfits */}
-              <div className="absolute -right-40 top-0 space-y-4 mx-px">
+              <div className="mt-8 flex flex-col items-center space-y-4 lg:mt-0 lg:block lg:absolute lg:-right-40 lg:top-0">
                 {/* Martes 11 */}
                 <div className="bg-vesty-purple rounded-2xl p-4 w-64 shadow-lg animate-float">
                   <div className="flex items-center gap-4">
