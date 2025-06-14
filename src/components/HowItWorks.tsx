@@ -1,3 +1,4 @@
+
 import { useInView } from "react-intersection-observer";
 
 const HowItWorks = () => {
@@ -16,7 +17,7 @@ const HowItWorks = () => {
       image: "/lovable-uploads/a70262fc-420a-4478-9893-f0800ea3d26b.png", 
       bgColor: "bg-yellow-50"
     },
-    {
+    { 
       number: "03", 
       title: "Haz match con tu estilo",
       description: "Busca prendas que van con tu estilo y que realmente necesitas, pruébatelas y toma una decisión consciente y fundamentada. Se acabaron los arrepentimientos.",
@@ -79,11 +80,11 @@ const HowItWorks = () => {
 
                 {/* Imagen */}
                 <div className="flex-1 flex justify-center">
-                  <div className={`${step.bgColor} rounded-3xl w-80 h-80 flex items-center justify-center overflow-hidden`}>
+                  <div className={`${step.bgColor} rounded-3xl w-80 h-80 flex items-center justify-center`}>
                     <img 
                       src={step.image} 
                       alt={step.title}
-                      className="w-full h-full object-cover rounded-3xl"
+                      className="h-[120%]"
                     />
                   </div>
                 </div>
