@@ -1,4 +1,3 @@
-
 const HowItWorks = () => {
   const steps = [
     {
@@ -12,7 +11,7 @@ const HowItWorks = () => {
       number: "02",
       title: "Crea outfits perfectos",
       description: "Recibe sugerencias personalizadas y planifica tus looks. Nunca más tendrás dudas sobre qué ponerte.",
-      image: "/lovable-uploads/b79d0ac6-c636-4495-904b-4ca2693042d3.png", 
+      image: "/lovable-uploads/a70262fc-420a-4478-9893-f0800ea3d26b.png", 
       bgColor: "bg-yellow-50"
     },
     {
@@ -76,4 +75,3 @@ const HowItWorks = () => {
 };
 
 export default HowItWorks;
-
