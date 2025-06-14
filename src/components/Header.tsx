@@ -59,9 +59,9 @@ const Header = () => {
       </header>
       
       {/* Menú móvil expandido */}
-      {isMenuOpen && <div className="fixed inset-0 top-16 z-40 bg-white md:hidden">
+      {isMenuOpen && <div className="fixed top-16 left-0 right-0 z-40 bg-white md:hidden shadow-lg animate-scale-in origin-top">
           <div className="container mx-auto px-6">
-              <nav className="flex flex-col space-y-4 py-8">
+              <nav className="flex flex-col space-y-4 pt-8 pb-6">
                 <button onClick={scrollToTop} className="text-gray-700 text-left font-medium py-2">Inicio</button>
                 <button onClick={() => scrollToSection('como-funciona')} className="text-gray-700 text-left font-medium py-2">Cómo funciona</button>
                 <button onClick={() => scrollToSection('testimonios')} className="text-gray-700 text-left font-medium py-2">Testimonios</button>
