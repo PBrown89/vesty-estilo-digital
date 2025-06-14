@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Apple, Star } from "lucide-react";
 const AppDownloadCTA = () => {
@@ -14,7 +15,7 @@ const AppDownloadCTA = () => {
           <h2 className="text-4xl lg:text-5xl font-black leading-tight">
             Descárgala gratis y empieza a crear{" "}
             <span className="bg-gradient-to-r from-vesty-purple via-pink-500 to-coral-500 bg-clip-text text-transparent">
-              tus outfits hoy mismo
+              tus looks hoy mismo
             </span>
           </h2>
 
