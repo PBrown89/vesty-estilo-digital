@@ -70,7 +70,7 @@ const HowItWorks = () => {
                 {/* Imagen */}
                 <div className="flex-1 flex justify-center">
                   <div className={`${step.bgColor} rounded-3xl w-80 h-80 flex items-center justify-center`}>
-                    <img src={step.image} alt={step.title} className="h-[120%] object-contain" />
+                    <img src={step.image} alt={step.title} className="h-[120%] object-cover" />
                   </div>
                 </div>
               </div>;
