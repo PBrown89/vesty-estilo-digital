@@ -20,7 +20,7 @@ const HowItWorks = () => {
       number: "03", 
       title: "Haz match con tu estilo",
       description: "Busca prendas que van con tu estilo y que realmente necesitas, pruébatelas y toma una decisión consciente y fundamentada. Se acabaron los arrepentimientos.",
-      image: "/lovable-uploads/27123033-2eee-4e8e-8ca4-a5a74c308ad2.png",
+      image: "/lovable-uploads/5bfb2d50-21cc-4ed1-9b19-5fe6c0001deb.png",
       bgColor: "bg-purple-50"
     }
   ];
