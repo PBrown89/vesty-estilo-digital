@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Apple, Star } from "lucide-react";
 import { useState, useEffect } from "react";
@@ -51,7 +50,7 @@ const Hero = () => {
             <Button size="lg" className="text-white text-lg px-8 py-4 rounded-full font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-3 border-0" style={{
               backgroundColor: '#735BF2'
             }}>
-              <Apple className="w-6 h-6" />
+              <Apple className="w-6 h-6" fill="white" />
               Descargar para iOS
             </Button>
 
