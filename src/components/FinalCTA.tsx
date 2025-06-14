@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Instagram } from "lucide-react";
 const FinalCTA = () => {
@@ -19,12 +18,12 @@ const FinalCTA = () => {
             <h3 className="text-lg font-bold text-white mb-4">Sobre Vesty</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#" className="text-gray-200 hover:text-white transition-colors duration-200 text-sm">
+                <a href="mailto:vestyappes@gmail.com?subject=Contacto%20desde%20la%20web" className="text-gray-200 hover:text-white transition-colors duration-200 text-sm">
                   Contacta con nosotros
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-200 hover:text-white transition-colors duration-200 text-sm">
+                <a href="mailto:vestyappes@gmail.com?subject=Reporte%20de%20error%20desde%20la%20web" className="text-gray-200 hover:text-white transition-colors duration-200 text-sm">
                   Reportar un error
                 </a>
               </li>
@@ -94,4 +93,3 @@ const FinalCTA = () => {
     </footer>;
 };
 export default FinalCTA;
-
