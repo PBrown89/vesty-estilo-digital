@@ -1,10 +1,11 @@
+
 const HowItWorks = () => {
   const steps = [
     {
       number: "01",
       title: "Digitaliza tu armario",
       description: "Fotografía tus prendas y organízalas automáticamente. Vesty crea un catálogo visual de todo lo que tienes.",
-      image: "/lovable-uploads/724bc0dc-71a2-4589-a4b8-6c1652df8b6b.png",
+      image: "/lovable-uploads/a70262fc-420a-4478-9893-f0800ea3d26b.png",
       bgColor: "bg-pink-50"
     },
     {
@@ -75,3 +76,4 @@ const HowItWorks = () => {
 };
 
 export default HowItWorks;
+
