@@ -1,22 +1,21 @@
 
+import { Star } from "lucide-react";
+
 const Testimonials = () => {
   const testimonials = [
     {
       quote: "¡Me salvó las mañanas! Ahora tardo la mitad en decidir qué ponerme.",
       name: "Carmen López",
-      position: "Diseñadora Gráfica",
       avatar: "/lovable-uploads/3ccf15b8-11d2-4754-ad9e-3b1a7b62ab06.png"
     },
     {
       quote: "Siento que tengo un estilista personal en el móvil. La amo.",
       name: "Sofia Martín", 
-      position: "Marketing Manager",
       avatar: "/lovable-uploads/62d99d17-ffb3-4a9c-9c30-9763e041cc58.png"
     },
     {
       quote: "Antes compraba sin pensar. Ahora cada prenda tiene sentido en mi armario.",
       name: "María García",
-      position: "Estudiante de Psicología",
       avatar: "/lovable-uploads/630fea7e-901e-4327-896e-de41c05a61fb.png"
     }
   ];
@@ -68,9 +67,11 @@ const Testimonials = () => {
                   <p className="font-semibold text-gray-900 text-base">
                     {testimonial.name}
                   </p>
-                  <p className="text-gray-600 text-sm">
-                    {testimonial.position}
-                  </p>
+                  <div className="flex items-center gap-0.5 mt-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
