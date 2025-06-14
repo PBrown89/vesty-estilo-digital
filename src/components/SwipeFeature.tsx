@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 const SwipeFeature = () => {
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
@@ -117,7 +118,7 @@ const SwipeFeature = () => {
           </div>
 
           {/* Contenido derecho - Mockup */}
-          <div className="relative flex justify-center lg:justify-end mx-[35px] my-0 py-0 px-[40px]">
+          <div className="relative flex justify-center lg:justify-end">
             <div className="relative">
               {/* Mockup del teléfono - ahora ocupa toda la altura */}
               <div className="w-80 h-96 bg-white rounded-3xl shadow-2xl overflow-hidden drop-shadow-xl cursor-pointer hover:shadow-3xl transition-all duration-300 hover:scale-105" onClick={handleCardClick}>
