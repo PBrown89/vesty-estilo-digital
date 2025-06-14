@@ -60,9 +60,7 @@ const Header = () => {
               <button onClick={() => scrollToSection('como-funciona')} className="text-gray-700 text-left font-medium py-2">Cómo funciona</button>
               <button onClick={() => scrollToSection('testimonios')} className="text-gray-700 text-left font-medium py-2">Testimonios</button>
               <button onClick={() => scrollToSection('precios')} className="text-gray-700 text-left font-medium py-2">Precios</button>
-              <Button className="bg-gray-900 text-white w-full mt-4 rounded-lg font-medium">
-                Descargar App
-              </Button>
+              
             </nav>
           </div>}
       </div>
