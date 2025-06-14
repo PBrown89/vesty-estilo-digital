@@ -54,9 +54,11 @@ const FinalCTA = () => {
               <Button variant="outline" className="w-full bg-transparent border-gray-400 text-gray-200 hover:bg-white hover:text-gray-900 transition-colors duration-200 text-sm">
                 iOS App Store
               </Button>
-              <Button variant="outline" className="w-full bg-transparent border-gray-400 text-gray-200 hover:bg-white hover:text-gray-900 transition-colors duration-200 text-sm">
-                Google Play
-              </Button>
+              <a href="https://play.google.com/store/search?q=vesty&c=apps&hl=es" target="_blank" rel="noopener noreferrer" className="w-full inline-block">
+                <Button variant="outline" className="w-full bg-transparent border-gray-400 text-gray-200 hover:bg-white hover:text-gray-900 transition-colors duration-200 text-sm">
+                  Google Play
+                </Button>
+              </a>
             </div>
           </div>
 
