@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Instagram } from "lucide-react";
 const FinalCTA = () => {
@@ -51,9 +52,11 @@ const FinalCTA = () => {
           <div className="space-y-4">
             <h3 className="text-lg font-bold text-white mb-4">Descarga la app</h3>
             <div className="space-y-3">
-              <Button variant="outline" className="w-full bg-transparent border-gray-400 text-gray-200 hover:bg-white hover:text-gray-900 transition-colors duration-200 text-sm">
-                iOS App Store
-              </Button>
+              <a href="https://apps.apple.com/es/app/vesty/id6743717284" target="_blank" rel="noopener noreferrer" className="w-full inline-block">
+                <Button variant="outline" className="w-full bg-transparent border-gray-400 text-gray-200 hover:bg-white hover:text-gray-900 transition-colors duration-200 text-sm">
+                  iOS App Store
+                </Button>
+              </a>
               <a href="https://play.google.com/store/search?q=vesty&c=apps&hl=es" target="_blank" rel="noopener noreferrer" className="w-full inline-block">
                 <Button variant="outline" className="w-full bg-transparent border-gray-400 text-gray-200 hover:bg-white hover:text-gray-900 transition-colors duration-200 text-sm">
                   Google Play

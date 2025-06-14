@@ -26,10 +26,12 @@ const AppDownloadCTA = () => {
 
           {/* Botones de descarga */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-            <Button size="lg" className="bg-vesty-purple text-white text-lg px-8 py-4 rounded-full font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-3 border-0">
-              <Apple className="w-6 h-6" fill="white" />
-              Descargar para iOS
-            </Button>
+            <a href="https://apps.apple.com/es/app/vesty/id6743717284" target="_blank" rel="noopener noreferrer">
+              <Button size="lg" className="bg-vesty-purple text-white text-lg px-8 py-4 rounded-full font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-3 border-0">
+                <Apple className="w-6 h-6" fill="white" />
+                Descargar para iOS
+              </Button>
+            </a>
 
             <a href="https://play.google.com/store/search?q=vesty&c=apps&hl=es" target="_blank" rel="noopener noreferrer">
               <Button size="lg" className="text-lg px-8 py-4 rounded-full font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-3 border-2 bg-white text-vesty-purple border-vesty-purple hover:bg-vesty-purple/20">
