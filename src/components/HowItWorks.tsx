@@ -1,3 +1,4 @@
+
 const HowItWorks = () => {
   const steps = [
     {
@@ -58,11 +59,11 @@ const HowItWorks = () => {
 
               {/* Imagen */}
               <div className="flex-1 flex justify-center">
-                <div className={`${step.bgColor} rounded-3xl p-8 w-80 h-80 flex items-center justify-center`}>
+                <div className={`${step.bgColor} rounded-3xl w-80 h-80 flex items-center justify-center overflow-hidden`}>
                   <img 
                     src={step.image} 
                     alt={step.title}
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-cover rounded-3xl"
                   />
                 </div>
               </div>
