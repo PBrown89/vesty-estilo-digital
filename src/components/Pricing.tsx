@@ -7,6 +7,7 @@ const Pricing = () => {
       name: "Gratuito",
       price: "0 €/mes",
       features: [
+        "Prendas ilimitadas en tu armario",
         "Sin créditos disponibles.",
         "Planificación de outfits de 2 semanas.",
         "Cantidad de armarios limitados."
@@ -17,6 +18,7 @@ const Pricing = () => {
       name: "Premium",
       price: "14,99 €/mes",
       features: [
+        "Prendas ilimitadas en tu armario",
         "Planifica hasta 1 mes de outfits.",
         "Crea hasta 4 armarios.",
         "60 créditos para usar tanto en el probador como en las pruebas de color."
@@ -27,6 +29,7 @@ const Pricing = () => {
       name: "Unlimited",
       price: "19,99 €/mes",
       features: [
+        "Prendas ilimitadas en tu armario",
         "Crea todos los outfits que quieras, sin restricciones.",
         "Añade tantos armarios como necesites.",
         "Usa el probador virtual tantas veces como te apetezca.",
