@@ -1,9 +1,30 @@
+
 const OutfitPlanner = () => {
   return <section className="bg-vesty-gradient-soft py-[208px]">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+          {/* Contenido derecho */}
+          <div className="space-y-6 lg:order-2">
+            <h2 className="text-4xl lg:text-5xl font-black font-outfit text-gray-900 leading-tight">
+              Planifica tus outfits gratis y sin límite
+            </h2>
+            
+            <p className="text-lg font-inter text-gray-600 leading-relaxed font-normal">Deja el caos fuera y planifica tus outfits. Haz maletas sin estrés y saca más partido a tu armario.
+            </p>
+
+            <div className="space-y-2">
+              <p className="text-xl font-outfit font-bold text-gray-900">
+                ¿Tienes un evento importante el finde y no sabes qué ponerte?
+              </p>
+              
+              <p className="text-lg font-inter text-gray-600 leading-relaxed">
+                ¡Deja que tus amigas te sugieran echando un ojo a tu armario! nunca había sido tan fácil.
+              </p>
+            </div>
+          </div>
+
           {/* Contenido izquierdo - Mockup */}
-          <div className="relative flex justify-center lg:justify-start">
+          <div className="relative flex justify-center lg:justify-start lg:order-1">
             <div className="relative">
               {/* Mockup principal */}
               <div className="w-80 h-80 bg-white rounded-3xl shadow-2xl overflow-hidden p-6 py-[24px]">
@@ -142,26 +163,6 @@ const OutfitPlanner = () => {
 
               {/* Elemento decorativo */}
               
-            </div>
-          </div>
-
-          {/* Contenido derecho */}
-          <div className="space-y-6">
-            <h2 className="text-4xl lg:text-5xl font-black font-outfit text-gray-900 leading-tight">
-              Planifica tus outfits gratis y sin límite
-            </h2>
-            
-            <p className="text-lg font-inter text-gray-600 leading-relaxed font-normal">Deja el caos fuera y planifica tus outfits. Haz maletas sin estrés y saca más partido a tu armario.
-            </p>
-
-            <div className="space-y-2">
-              <p className="text-xl font-outfit font-bold text-gray-900">
-                ¿Tienes un evento importante el finde y no sabes qué ponerte?
-              </p>
-              
-              <p className="text-lg font-inter text-gray-600 leading-relaxed">
-                ¡Deja que tus amigas te sugieran echando un ojo a tu armario! nunca había sido tan fácil.
-              </p>
             </div>
           </div>
         </div>
