@@ -21,24 +21,18 @@ const Testimonials = () => {
   ];
 
   return (
-    <section id="testimonios" className="py-32 bg-gradient-to-br from-yellow-300 to-yellow-400 relative overflow-hidden">
+    <section id="testimonios" className="py-24 bg-white relative overflow-hidden">
       {/* Elementos decorativos de fondo */}
-      <div className="absolute inset-0">
-        <div className="absolute top-10 left-10 w-6 h-6 border-2 border-white/20 rounded-full"></div>
-        <div className="absolute top-20 right-20 w-4 h-4 bg-white/10 rounded-full"></div>
-        <div className="absolute bottom-20 left-1/4 w-8 h-8 border border-white/15 rotate-45"></div>
-        <div className="absolute top-1/3 right-10 w-3 h-3 bg-white/20 rounded-full"></div>
-        <div className="absolute bottom-32 right-1/3 w-5 h-5 border border-white/10 rounded-full"></div>
-        <div className="absolute top-40 left-1/3 w-2 h-2 bg-white/15 rounded-full"></div>
-        <div className="absolute bottom-40 left-20 w-6 h-6 border border-white/10 rotate-12"></div>
-        <div className="absolute top-16 right-1/4 w-4 h-4 border-2 border-white/15 rotate-45"></div>
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute -top-20 -left-20 w-72 h-72 bg-coral-50/50 rounded-full filter blur-3xl opacity-70"></div>
+        <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-purple-50/50 rounded-full filter blur-3xl opacity-70"></div>
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-black text-gray-800 mb-6">
             A ellos les encanta nuestra app. A ti{" "}
-            <span className="text-gray-900">
+            <span className="bg-gradient-to-r from-vesty-purple via-pink-500 to-coral-500 bg-clip-text text-transparent">
               también te encantará.
             </span>
           </h2>
@@ -48,7 +42,7 @@ const Testimonials = () => {
           {testimonials.map((testimonial, index) => (
             <div 
               key={index}
-              className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 animate-fade-in-up flex flex-col"
+              className="bg-white/60 backdrop-blur-md p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 animate-fade-in-up flex flex-col border border-white/50"
               style={{animationDelay: `${index * 0.2}s`}}
             >
               <blockquote className="text-lg text-gray-800 mb-6 leading-relaxed flex-grow">
