@@ -1,5 +1,6 @@
+
 import { Button } from "@/components/ui/button";
-import { Apple } from "lucide-react";
+import { Apple, Star } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const Hero = () => {
@@ -68,8 +69,10 @@ const Hero = () => {
           {/* Indicadores sociales */}
           <div className="flex items-center gap-6 pt-4">
             <div className="flex items-center gap-2">
-              <div className="flex">
-                {[1, 2, 3, 4, 5].map(star => <span key={star} className="text-yellow-400 text-lg">★</span>)}
+              <div className="flex items-center gap-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+                ))}
               </div>
               <span className="text-sm text-gray-500 font-medium">4.9/5</span>
             </div>
