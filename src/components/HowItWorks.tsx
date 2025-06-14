@@ -1,4 +1,3 @@
-
 import { useInView } from "react-intersection-observer";
 const HowItWorks = () => {
   const steps = [{
@@ -27,7 +26,7 @@ const HowItWorks = () => {
     triggerOnce: true,
     threshold: 0.1
   });
-  return <section id="como-funciona" className="py-24 bg-gray-50 overflow-hidden">
+  return <section id="como-funciona" className="py-24 bg-gray-50">
       <div className="container mx-auto px-6">
         {/* Header */}
         <div ref={headerRef} className={`text-center mb-16 transition-all duration-700 ease-out ${headerInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
