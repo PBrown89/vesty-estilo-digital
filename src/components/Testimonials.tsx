@@ -1,3 +1,4 @@
+
 import { Star } from "lucide-react";
 const Testimonials = () => {
   const testimonials = [{
@@ -23,7 +24,7 @@ const Testimonials = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-black text-gray-800 mb-6">
-            A ellos les encanta nuestra app. A ti{" "}
+            A ti{" "}
             <span className="bg-gradient-to-r from-vesty-purple via-pink-500 to-coral-500 bg-clip-text text-transparent">
               también te encantará.
             </span>
