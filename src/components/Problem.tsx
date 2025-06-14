@@ -1,18 +1,24 @@
+
+import { Clock, Tag, Pencil } from "lucide-react";
+
 const Problem = () => {
   const problems = [
     {
-      emoji: "😩",
-      text: "Mi armario está lleno pero no tengo nada que ponerme",
+      icon: <Clock className="size-12 text-vesty-purple" strokeWidth={1.5} />,
+      title: "Mañanas caóticas",
+      description: "Pierdes tiempo y energía cada día frente a un armario que no te inspira.",
       delay: "0s"
     },
     {
-      emoji: "🙄", 
-      text: "¿Otra vez ese look? ¿No te lo pusiste anteayer?",
+      icon: <Tag className="size-12 text-vesty-pink" strokeWidth={1.5} />,
+      title: "Compras sin sentido",
+      description: "Acumulas ropa por impulso que no usas, desaprovechando tu dinero y espacio.",
       delay: "0.2s"
     },
     {
-      emoji: "😴",
-      text: "Combinar ropa da pereza. Comprar sin pensar, no.",
+      icon: <Pencil className="size-12 text-vesty-orange" strokeWidth={1.5} />,
+      title: "Creatividad bloqueada",
+      description: "Sientes que tu estilo no te representa y vistes en piloto automático, sin confianza.",
       delay: "0.4s"
     }
   ];
@@ -22,34 +28,37 @@ const Problem = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-black font-outfit text-gray-800 mb-6">
-            Lo sabemos...
+            ¿Te suena familiar?
           </h2>
           <p className="text-xl font-inter text-gray-600 max-w-2xl mx-auto">
-            Todas hemos estado ahí. Es hora de cambiar la historia.
+            No estás sola. Es hora de recuperar el control de tu armario y tu estilo.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {problems.map((problem, index) => (
             <div 
               key={index}
-              className="text-center animate-fade-in-up"
+              className="bg-white/70 backdrop-blur-sm p-8 rounded-2xl shadow-lg flex flex-col items-center text-center animate-fade-in-up"
               style={{animationDelay: problem.delay}}
             >
-              <div className="text-6xl mb-4 animate-float" style={{animationDelay: problem.delay}}>
-                {problem.emoji}
+              <div className="mb-4">
+                {problem.icon}
               </div>
-              <p className="text-lg font-semibold font-inter text-gray-700 leading-relaxed">
-                {problem.text}
+              <h3 className="text-xl font-bold font-outfit text-gray-800 mb-3">
+                {problem.title}
+              </h3>
+              <p className="font-inter text-gray-600 leading-relaxed">
+                {problem.description}
               </p>
             </div>
           ))}
         </div>
 
-        <div className="text-center mt-16">
+        <div className="text-center mt-20">
           <div className="inline-block bg-white rounded-full px-8 py-4 shadow-lg animate-scale-in" style={{animationDelay: '0.6s'}}>
             <p className="text-xl font-bold font-outfit text-gray-800">
-              ¡Pero ya no más! 💜
+              ¡Vesty es tu solución! ✨
             </p>
           </div>
         </div>
