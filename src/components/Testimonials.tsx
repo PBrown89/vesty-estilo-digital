@@ -48,10 +48,10 @@ const Testimonials = () => {
           {testimonials.map((testimonial, index) => (
             <div 
               key={index}
-              className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 animate-fade-in-up"
+              className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 animate-fade-in-up flex flex-col"
               style={{animationDelay: `${index * 0.2}s`}}
             >
-              <blockquote className="text-lg text-gray-800 mb-6 leading-relaxed">
+              <blockquote className="text-lg text-gray-800 mb-6 leading-relaxed flex-grow">
                 "{testimonial.quote}"
               </blockquote>
               
