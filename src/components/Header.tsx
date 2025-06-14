@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
@@ -37,9 +36,7 @@ const Header = () => {
               <button onClick={() => scrollToSection('como-funciona')} className="text-gray-700 hover:text-gray-900 transition-colors font-medium">
                 Cómo funciona
               </button>
-              <button onClick={() => scrollToSection('testimonios')} className="text-gray-700 hover:text-gray-900 transition-colors font-medium">
-                Testimonios
-              </button>
+              
               <button onClick={() => scrollToSection('precios')} className="text-gray-700 hover:text-gray-900 transition-colors font-medium">
                 Precios
               </button>
