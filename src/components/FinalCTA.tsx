@@ -69,7 +69,7 @@ const FinalCTA = () => {
           <div className="space-y-4">
             <h3 className="text-lg font-bold text-white mb-4">Síguenos</h3>
             <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-gray-200 hover:text-white hover:bg-white/20 transition-all duration-200 hover:scale-110" aria-label="Instagram">
+              <a href="https://www.instagram.com/vesty_app/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-gray-200 hover:text-white hover:bg-white/20 transition-all duration-200 hover:scale-110" aria-label="Instagram">
                 <Instagram size={20} />
               </a>
               <a href="https://www.tiktok.com/@vestyapp" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-gray-200 hover:text-white hover:bg-white/20 transition-all duration-200 hover:scale-110" aria-label="TikTok">
@@ -94,3 +94,4 @@ const FinalCTA = () => {
     </footer>;
 };
 export default FinalCTA;
+
