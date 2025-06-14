@@ -4,19 +4,19 @@ import { Clock, Tag, Pencil } from "lucide-react";
 const Problem = () => {
   const problems = [
     {
-      icon: <Clock className="size-12 text-vesty-purple" strokeWidth={1.5} />,
+      icon: <Clock className="size-10 text-vesty-purple" strokeWidth={1.5} />,
       title: "Mañanas caóticas",
       description: "Pierdes tiempo y energía cada día frente a un armario que no te inspira.",
       delay: "0s"
     },
     {
-      icon: <Tag className="size-12 text-vesty-pink" strokeWidth={1.5} />,
+      icon: <Tag className="size-10 text-vesty-pink" strokeWidth={1.5} />,
       title: "Compras sin sentido",
       description: "Acumulas ropa por impulso que no usas, desaprovechando tu dinero y espacio.",
       delay: "0.2s"
     },
     {
-      icon: <Pencil className="size-12 text-vesty-orange" strokeWidth={1.5} />,
+      icon: <Pencil className="size-10 text-vesty-orange" strokeWidth={1.5} />,
       title: "Creatividad bloqueada",
       description: "Sientes que tu estilo no te representa y vistes en piloto automático, sin confianza.",
       delay: "0.4s"
@@ -39,7 +39,7 @@ const Problem = () => {
           {problems.map((problem, index) => (
             <div 
               key={index}
-              className="bg-white/70 backdrop-blur-sm p-8 rounded-2xl shadow-lg flex flex-col items-center text-center animate-fade-in-up"
+              className="bg-white/70 backdrop-blur-sm p-8 rounded-2xl shadow-lg flex flex-col items-start text-left animate-fade-in-up"
               style={{animationDelay: problem.delay}}
             >
               <div className="mb-4">
