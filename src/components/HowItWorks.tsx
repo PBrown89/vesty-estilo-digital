@@ -1,3 +1,4 @@
+
 import { useInView } from "react-intersection-observer";
 const HowItWorks = () => {
   const steps = [{
@@ -70,7 +71,7 @@ const HowItWorks = () => {
                 {/* Imagen */}
                 <div className="flex-1 flex justify-center">
                   <div className={`${step.bgColor} rounded-3xl w-80 h-80 flex items-center justify-center`}>
-                    <img src={step.image} alt={step.title} className="h-[120%] object-scale-down" />
+                    <img src={step.image} alt={step.title} className="w-full h-full object-contain" />
                   </div>
                 </div>
               </div>;
