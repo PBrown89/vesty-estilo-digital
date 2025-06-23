@@ -62,7 +62,7 @@ const VirtualTryOn = () => {
             <div 
               ref={containerRef} 
               className="relative w-full aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl cursor-col-resize select-none" 
-              style={{ backgroundColor: '#F7F7F7' }}
+              style={{ backgroundColor: '#FFFFFF' }}
               onMouseMove={handleMouseMove} 
               onMouseUp={handleInteractionEnd} 
               onMouseLeave={handleInteractionEnd} 
