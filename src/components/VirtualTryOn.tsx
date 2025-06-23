@@ -1,19 +1,14 @@
-
 import { useState, useRef } from 'react';
-
 const VirtualTryOn = () => {
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-
   const handleInteractionStart = () => {
     setIsDragging(true);
   };
-
   const handleInteractionEnd = () => {
     setIsDragging(false);
   };
-
   const handleInteractionMove = (clientX: number) => {
     if (!isDragging || !containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
@@ -21,19 +16,15 @@ const VirtualTryOn = () => {
     const percentage = x / rect.width * 100;
     setSliderPosition(Math.max(0, Math.min(100, percentage)));
   };
-
   const handleMouseMove = (e: React.MouseEvent) => {
     handleInteractionMove(e.clientX);
   };
-
   const handleTouchMove = (e: React.TouchEvent) => {
     if (e.touches && e.touches.length > 0) {
       handleInteractionMove(e.touches[0].clientX);
     }
   };
-
-  return (
-    <section className="py-32 bg-white">
+  return <section className="py-32 bg-white">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
           {/* Contenido izquierdo */}
@@ -59,34 +50,26 @@ const VirtualTryOn = () => {
 
           {/* Contenido derecho - Slider */}
           <div className="w-full max-w-md mx-auto lg:mx-0 lg:justify-self-end">
-            <div 
-              ref={containerRef} 
-              className="relative w-full aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl cursor-col-resize select-none" 
-              style={{ backgroundColor: '#FFFFFF' }}
-              onMouseMove={handleMouseMove} 
-              onMouseUp={handleInteractionEnd} 
-              onMouseLeave={handleInteractionEnd} 
-              onTouchMove={handleTouchMove} 
-              onTouchEnd={handleInteractionEnd} 
-              onTouchCancel={handleInteractionEnd}
-            >
+            <div ref={containerRef} className="relative w-full aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl cursor-col-resize select-none" style={{
+            backgroundColor: '#FFFFFF'
+          }} onMouseMove={handleMouseMove} onMouseUp={handleInteractionEnd} onMouseLeave={handleInteractionEnd} onTouchMove={handleTouchMove} onTouchEnd={handleInteractionEnd} onTouchCancel={handleInteractionEnd}>
               {/* Imagen de la derecha (fondo completo) - "Después" */}
               <div className="absolute inset-0">
-                <img alt="Imagen después" src="/lovable-uploads/af8d7912-29b8-4413-81b5-347573a50a36.png" className="w-full h-full object-contain" />
+                <img alt="Imagen después" className="w-full h-full object-contain" src="/lovable-uploads/f3ee0fee-b3a6-4487-9830-57a900406779.png" />
               </div>
 
               {/* Imagen de la izquierda (recortada por el slider) - "Antes" */}
               <div className="absolute inset-0 overflow-hidden" style={{
-                clipPath: `polygon(0 0, ${sliderPosition}% 0, ${sliderPosition}% 100%, 0 100%)`
-              }}>
-                <img alt="Imagen antes" src="/lovable-uploads/ab991d48-cba9-4620-999c-551bb38cdb18.jpg" className="w-full h-full object-contain" />
+              clipPath: `polygon(0 0, ${sliderPosition}% 0, ${sliderPosition}% 100%, 0 100%)`
+            }}>
+                <img alt="Imagen antes" className="w-full h-full object-contain" src="/lovable-uploads/de868706-f8e9-4331-9cae-4444121ab9d5.png" />
               </div>
 
               {/* Línea divisoria y control deslizante */}
               <div className="absolute top-0 h-full w-1 bg-white shadow-lg z-10 cursor-col-resize" style={{
-                left: `${sliderPosition}%`,
-                transform: 'translateX(-50%)'
-              }} onMouseDown={handleInteractionStart} onTouchStart={handleInteractionStart}>
+              left: `${sliderPosition}%`,
+              transform: 'translateX(-50%)'
+            }} onMouseDown={handleInteractionStart} onTouchStart={handleInteractionStart}>
                 {/* Círculo del slider */}
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full shadow-lg flex items-center justify-center cursor-col-resize">
                   <div className="flex gap-0.5">
@@ -107,8 +90,6 @@ const VirtualTryOn = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default VirtualTryOn;
