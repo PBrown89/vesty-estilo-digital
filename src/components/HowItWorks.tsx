@@ -1,12 +1,13 @@
 
 import { useInView } from "react-intersection-observer";
+import { Play } from "lucide-react";
 
 const HowItWorks = () => {
   const steps = [{
     number: "01",
     title: "Digitaliza tu armario",
     description: "Fotografía tus prendas y organízalas automáticamente. Vesty crea un catálogo visual de todo lo que tienes.",
-    image: "/lovable-uploads/71759eaa-d9e6-4c83-9574-cde7dca61ea3.png",
+    videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", // Replace with actual video URL
     bgColor: "from-pink-100 to-pink-200",
     iconBg: "bg-pink-500"
   }, {
@@ -73,14 +74,27 @@ const HowItWorks = () => {
                       {step.number}
                     </div>
                     
-                    {/* Image Container */}
+                    {/* Video/Image Container */}
                     <div className={`bg-gradient-to-br ${step.bgColor} rounded-2xl mb-6 mt-4 overflow-hidden`}>
                       <div className="aspect-square">
-                        <img 
-                          src={step.image} 
-                          alt={step.title} 
-                          className="w-full h-full object-cover rounded-2xl" 
-                        />
+                        {step.videoUrl ? (
+                          <a 
+                            href={step.videoUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-full h-full flex items-center justify-center group/video hover:bg-black/10 transition-colors duration-300 rounded-2xl"
+                          >
+                            <div className="bg-white/90 backdrop-blur-sm rounded-full p-6 shadow-lg group-hover/video:scale-110 transition-transform duration-300">
+                              <Play className="w-12 h-12 text-gray-800 ml-1" fill="currentColor" />
+                            </div>
+                          </a>
+                        ) : (
+                          <img 
+                            src={step.image} 
+                            alt={step.title} 
+                            className="w-full h-full object-cover rounded-2xl" 
+                          />
+                        )}
                       </div>
                     </div>
 
