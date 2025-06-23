@@ -74,12 +74,12 @@ const HowItWorks = () => {
                     </div>
                     
                     {/* Image Container */}
-                    <div className={`bg-gradient-to-br ${step.bgColor} rounded-2xl p-6 mb-6 mt-4`}>
-                      <div className="aspect-square flex items-center justify-center">
+                    <div className={`bg-gradient-to-br ${step.bgColor} rounded-2xl mb-6 mt-4 overflow-hidden`}>
+                      <div className="aspect-square">
                         <img 
                           src={step.image} 
                           alt={step.title} 
-                          className="w-full h-full object-contain max-w-[200px] max-h-[200px]" 
+                          className="w-full h-full object-cover rounded-2xl" 
                         />
                       </div>
                     </div>
