@@ -1,14 +1,14 @@
 
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import HowItWorks from "@/components/HowItWorks";
 import Problem from "@/components/Problem";
+import HowItWorks from "@/components/HowItWorks";
+import VirtualTryOn from "@/components/VirtualTryOn";
 import SwipeFeature from "@/components/SwipeFeature";
 import OutfitPlanner from "@/components/OutfitPlanner";
-import VirtualTryOn from "@/components/VirtualTryOn";
-import AppDownloadCTA from "@/components/AppDownloadCTA";
 import Testimonials from "@/components/Testimonials";
 import Pricing from "@/components/Pricing";
+import AppDownloadCTA from "@/components/AppDownloadCTA";
 import FinalCTA from "@/components/FinalCTA";
 
 const Index = () => {
@@ -16,14 +16,14 @@ const Index = () => {
     <div className="min-h-screen">
       <Header />
       <Hero />
-      <HowItWorks />
       <Problem />
+      <HowItWorks />
+      <VirtualTryOn />
       <SwipeFeature />
       <OutfitPlanner />
-      <VirtualTryOn />
-      <AppDownloadCTA />
       <Testimonials />
       <Pricing />
+      <AppDownloadCTA />
       <FinalCTA />
     </div>
   );
