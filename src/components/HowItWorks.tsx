@@ -68,7 +68,7 @@ const HowItWorks = () => {
                   style={{ transitionDelay: `${index * 200}ms` }}
                 >
                   {/* Card */}
-                  <div className="relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+                  <div className="relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 group/card">
                     {/* Number Badge */}
                     <div className={`absolute -top-4 left-8 ${step.iconBg} text-white w-12 h-12 rounded-2xl flex items-center justify-center font-black text-lg shadow-lg`}>
                       {step.number}
@@ -84,7 +84,7 @@ const HowItWorks = () => {
                             rel="noopener noreferrer"
                             className="w-full h-full flex items-center justify-center group/video hover:bg-black/10 transition-colors duration-300 rounded-2xl"
                           >
-                            <div className="bg-white/90 backdrop-blur-sm rounded-full p-6 shadow-lg group-hover/video:scale-110 transition-transform duration-300">
+                            <div className="bg-white/90 backdrop-blur-sm rounded-full p-6 shadow-lg group-hover/video:scale-110 group-hover/card:opacity-0 transition-all duration-500">
                               <Play className="w-12 h-12 text-gray-800 ml-1" fill="currentColor" />
                             </div>
                           </a>
