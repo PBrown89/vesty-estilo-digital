@@ -17,7 +17,7 @@ const HowItWorks = () => {
     number: "03",
     title: "Haz match con tu estilo",
     description: "Busca prendas que van con tu estilo y que realmente necesitas, pruébatelas y toma una decisión consciente y fundamentada. Se acabaron los arrepentimientos.",
-    image: "/lovable-uploads/5bfb2d50-21cc-4ed1-9b19-5fe6c0001deb.png",
+    image: "/lovable-uploads/0712663e-3178-4fd1-84e3-f40c498cca64.png",
     bgColor: "bg-purple-50"
   }];
   const {
@@ -71,7 +71,7 @@ const HowItWorks = () => {
                 {/* Imagen */}
                 <div className="flex-1 flex justify-center">
                   <div className={`${step.bgColor} rounded-3xl w-80 h-80 flex items-center justify-center`}>
-                    <img src="/lovable-uploads/ece7379a-26a8-4117-a7a3-c4a9336a7f8b.png" alt={step.title} className="w-full h-full object-contain" />
+                    <img src={step.image} alt={step.title} className="w-full h-full object-contain" />
                   </div>
                 </div>
               </div>;
