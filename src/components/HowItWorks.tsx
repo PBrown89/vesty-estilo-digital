@@ -6,7 +6,7 @@ const HowItWorks = () => {
     number: "01",
     title: "Digitaliza tu armario",
     description: "Fotografía tus prendas y organízalas automáticamente. Vesty crea un catálogo visual de todo lo que tienes.",
-    image: "/lovable-uploads/21525915-0d29-415a-bcef-5ed02f37e62f.png",
+    image: "/lovable-uploads/71759eaa-d9e6-4c83-9574-cde7dca61ea3.png",
     bgColor: "from-pink-100 to-pink-200",
     iconBg: "bg-pink-500"
   }, {
