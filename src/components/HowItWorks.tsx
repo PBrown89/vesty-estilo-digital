@@ -84,7 +84,7 @@ const HowItWorks = () => {
                             rel="noopener noreferrer"
                             className="w-full h-full flex items-center justify-center group/video hover:bg-black/10 transition-colors duration-300 rounded-2xl"
                           >
-                            <div className="bg-white/90 backdrop-blur-sm rounded-full p-6 shadow-lg group-hover/video:scale-110 hover:opacity-0 transition-all duration-500">
+                            <div className="bg-white/90 backdrop-blur-sm rounded-full p-6 shadow-lg group-hover/video:scale-110 transition-transform duration-300">
                               <Play className="w-12 h-12 text-gray-800 ml-1" fill="currentColor" />
                             </div>
                           </a>
