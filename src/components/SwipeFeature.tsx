@@ -1,11 +1,15 @@
+import { useState, useEffect, useRef } from 'react';
 
-import { useState } from 'react';
 const SwipeFeature = () => {
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [animatingCard, setAnimatingCard] = useState<number | null>(null);
   const [animationType, setAnimationType] = useState<'like' | 'dislike' | null>(null);
   const [showHearts, setShowHearts] = useState(false);
   const [nextActionIsLike, setNextActionIsLike] = useState(true);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+  const lastScrollY = useRef(0);
+
   const cards = [{
     id: 1,
     image: "/lovable-uploads/cf705711-ff72-4b82-b72e-e2e6541c967f.png",
@@ -19,6 +23,91 @@ const SwipeFeature = () => {
     image: "/lovable-uploads/281504be-8d09-46c7-af41-d1edf7d40d62.png",
     color: "bg-blue-100"
   }];
+
+  // Bloquear scroll durante animaciones
+  useEffect(() => {
+    const handleScroll = (e: Event) => {
+      if (isAnimating) {
+        e.preventDefault();
+        window.scrollTo(0, lastScrollY.current);
+      }
+    };
+
+    const handleWheel = (e: WheelEvent) => {
+      if (isAnimating) {
+        e.preventDefault();
+      }
+    };
+
+    if (isAnimating) {
+      lastScrollY.current = window.scrollY;
+      document.body.style.overflow = 'hidden';
+      window.addEventListener('scroll', handleScroll, { passive: false });
+      window.addEventListener('wheel', handleWheel, { passive: false });
+      window.addEventListener('touchmove', handleScroll, { passive: false });
+    } else {
+      document.body.style.overflow = 'unset';
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('wheel', handleWheel);
+      window.removeEventListener('touchmove', handleScroll);
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('wheel', handleWheel);
+      window.removeEventListener('touchmove', handleScroll);
+    };
+  }, [isAnimating]);
+
+  // Detectar scroll en la sección
+  useEffect(() => {
+    const handleSectionScroll = () => {
+      if (!sectionRef.current || isAnimating) return;
+
+      const rect = sectionRef.current.getBoundingClientRect();
+      const sectionMiddle = rect.top + rect.height / 2;
+      const windowMiddle = window.innerHeight / 2;
+
+      // Activar efecto cuando la sección esté en el centro de la pantalla
+      if (Math.abs(sectionMiddle - windowMiddle) < 100) {
+        triggerCardEffect();
+      }
+    };
+
+    const throttledScroll = throttle(handleSectionScroll, 200);
+    window.addEventListener('scroll', throttledScroll);
+
+    return () => {
+      window.removeEventListener('scroll', throttledScroll);
+    };
+  }, [isAnimating, currentCardIndex]);
+
+  // Función throttle para optimizar el scroll
+  const throttle = (func: Function, limit: number) => {
+    let inThrottle: boolean;
+    return function(this: any, ...args: any[]) {
+      if (!inThrottle) {
+        func.apply(this, args);
+        inThrottle = true;
+        setTimeout(() => inThrottle = false, limit);
+      }
+    };
+  };
+
+  const triggerCardEffect = () => {
+    if (isAnimating) return;
+    
+    setIsAnimating(true);
+    
+    if (nextActionIsLike) {
+      handleLike();
+    } else {
+      handleDislike();
+    }
+    setNextActionIsLike(!nextActionIsLike);
+  };
+
   const handleLike = () => {
     setAnimationType('like');
     setAnimatingCard(currentCardIndex);
@@ -28,8 +117,10 @@ const SwipeFeature = () => {
       setAnimatingCard(null);
       setAnimationType(null);
       setShowHearts(false);
+      setIsAnimating(false);
     }, 800);
   };
+
   const handleDislike = () => {
     setAnimationType('dislike');
     setAnimatingCard(currentCardIndex);
@@ -37,17 +128,14 @@ const SwipeFeature = () => {
       setCurrentCardIndex(prev => (prev + 1) % cards.length);
       setAnimatingCard(null);
       setAnimationType(null);
+      setIsAnimating(false);
     }, 800);
   };
+
   const handleCardClick = () => {
-    if (animatingCard !== null) return;
-    if (nextActionIsLike) {
-      handleLike();
-    } else {
-      handleDislike();
-    }
-    setNextActionIsLike(!nextActionIsLike);
+    triggerCardEffect();
   };
+
   const getCardStyle = (index: number) => {
     const isAnimating = animatingCard === index;
     const isCurrent = index === currentCardIndex;
@@ -93,7 +181,13 @@ const SwipeFeature = () => {
       opacity: 0.3
     };
   };
-  return <section id="funciones" className="bg-white py-[180px]">
+
+  return (
+    <section 
+      ref={sectionRef}
+      id="funciones" 
+      className="bg-white py-[180px] relative"
+    >
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
           {/* Contenido izquierdo */}
@@ -114,14 +208,24 @@ const SwipeFeature = () => {
               <p className="text-lg font-inter text-gray-600 leading-relaxed">
                 Cada swipe te acerca a ese outfit que te representa sin que tengas que buscar entre miles de opciones.
               </p>
+
+              {/* Indicador de scroll */}
+              <div className="mt-8 flex items-center gap-2 text-sm text-gray-500">
+                <span>↓ Haz scroll para ver el efecto</span>
+              </div>
             </div>
           </div>
 
           {/* Contenido derecho - Mockup */}
           <div className="relative flex justify-center lg:justify-end">
             <div className="relative">
-              {/* Mockup del teléfono - ahora ocupa toda la altura */}
-              <div className="w-80 h-96 bg-white rounded-3xl shadow-2xl overflow-hidden drop-shadow-xl cursor-pointer hover:shadow-3xl transition-all duration-300 hover:scale-105" onClick={handleCardClick}>
+              {/* Mockup del teléfono */}
+              <div 
+                className={`w-80 h-96 bg-white rounded-3xl shadow-2xl overflow-hidden drop-shadow-xl cursor-pointer transition-all duration-300 ${
+                  isAnimating ? 'pointer-events-none' : 'hover:shadow-3xl hover:scale-105'
+                }`} 
+                onClick={handleCardClick}
+              >
                 {/* Contenido del mockup */}
                 <div className="p-4 h-full flex flex-col">
                   <div className="text-center mb-4">
@@ -187,6 +291,13 @@ const SwipeFeature = () => {
           </div>
         </div>
       </div>
-    </section>;
+
+      {/* Overlay para bloquear interacciones durante animación */}
+      {isAnimating && (
+        <div className="fixed inset-0 z-50 pointer-events-none bg-transparent" />
+      )}
+    </section>
+  );
 };
+
 export default SwipeFeature;
