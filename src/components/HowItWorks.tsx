@@ -70,7 +70,7 @@ const HowItWorks = () => {
                   {/* Card */}
                   <div className="relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 group/card">
                     {/* Number Badge */}
-                    <div className={`absolute -top-4 left-8 ${step.iconBg} text-white w-12 h-12 rounded-2xl flex items-center justify-center font-black text-lg shadow-lg group-hover/card:opacity-0 transition-all duration-500`}>
+                    <div className={`absolute -top-4 left-8 ${step.iconBg} text-white w-12 h-12 rounded-2xl flex items-center justify-center font-black text-lg shadow-lg`}>
                       {step.number}
                     </div>
                     
@@ -92,14 +92,14 @@ const HowItWorks = () => {
                           <img 
                             src={step.image} 
                             alt={step.title} 
-                            className="w-full h-full object-cover rounded-2xl group-hover/card:opacity-0 transition-all duration-500" 
+                            className="w-full h-full object-cover rounded-2xl" 
                           />
                         )}
                       </div>
                     </div>
 
                     {/* Content */}
-                    <div className="space-y-4 group-hover/card:opacity-0 transition-all duration-500">
+                    <div className="space-y-4">
                       <h3 className="text-2xl font-bold text-gray-900 group-hover:text-vesty-purple transition-colors duration-300">
                         {step.title}
                       </h3>
@@ -110,7 +110,7 @@ const HowItWorks = () => {
                     </div>
 
                     {/* Decorative Elements */}
-                    <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-white/20 to-transparent rounded-bl-3xl rounded-tr-3xl group-hover/card:opacity-0 transition-all duration-500"></div>
+                    <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-white/20 to-transparent rounded-bl-3xl rounded-tr-3xl"></div>
                   </div>
 
                   {/* Connection Line (except for last item) */}
