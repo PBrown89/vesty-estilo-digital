@@ -20,7 +20,7 @@ const HowItWorks = () => {
   }, {
     number: "03",
     title: "Haz match con tu estilo",
-    description: "Busca prendas que van con tu estilo y que realmente necesitas, pruébatelas y toma una decisión consciente y fundamentada. Se acabaron los arrepentimientos.",
+    description: "Busca prendas que van con tu estilo y que realmente necesitas, pruébatelas y toma una decisión consciente y fundamentada.",
     videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", // Replace with actual video URL
     bgColor: "from-purple-100 to-purple-200",
     iconBg: "bg-purple-500"
@@ -74,27 +74,19 @@ const HowItWorks = () => {
                       {step.number}
                     </div>
                     
-                    {/* Video/Image Container */}
+                    {/* Video Container */}
                     <div className={`bg-gradient-to-br ${step.bgColor} rounded-2xl mb-6 mt-4 overflow-hidden`}>
                       <div className="aspect-square">
-                        {step.videoUrl ? (
-                          <a 
-                            href={step.videoUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="w-full h-full flex items-center justify-center group/video hover:bg-black/10 transition-colors duration-300 rounded-2xl"
-                          >
-                            <div className="bg-white/90 backdrop-blur-sm rounded-full p-6 shadow-lg group-hover/video:scale-110 group-hover/card:opacity-0 transition-all duration-500">
-                              <Play className="w-12 h-12 text-gray-800 ml-1" fill="currentColor" />
-                            </div>
-                          </a>
-                        ) : (
-                          <img 
-                            src={step.image} 
-                            alt={step.title} 
-                            className="w-full h-full object-cover rounded-2xl" 
-                          />
-                        )}
+                        <a 
+                          href={step.videoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-full h-full flex items-center justify-center group/video hover:bg-black/10 transition-colors duration-300 rounded-2xl"
+                        >
+                          <div className="bg-white/90 backdrop-blur-sm rounded-full p-6 shadow-lg group-hover/video:scale-110 group-hover/card:opacity-0 transition-all duration-500">
+                            <Play className="w-12 h-12 text-gray-800 ml-1" fill="currentColor" />
+                          </div>
+                        </a>
                       </div>
                     </div>
 
