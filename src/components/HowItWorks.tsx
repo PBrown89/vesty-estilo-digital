@@ -14,14 +14,14 @@ const HowItWorks = () => {
     number: "02",
     title: "Crea o sugiere looks",
     description: "Recibe sugerencias personalizadas y planifica tus looks. Nunca más tendrás dudas sobre qué ponerte.",
-    image: "/lovable-uploads/a70262fc-420a-4478-9893-f0800ea3d26b.png",
+   videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", // Replace with actual video URL
     bgColor: "from-yellow-100 to-orange-200",
     iconBg: "bg-orange-500"
   }, {
     number: "03",
     title: "Haz match con tu estilo",
-    description: "Busca prendas que van con tu estilo y que realmente necesitas, pruébatelas y toma una decisión consciente y fundamentada.",
-    image: "/lovable-uploads/0712663e-3178-4fd1-84e3-f40c498cca64.png",
+    description: "Busca prendas que van con tu estilo y que realmente necesitas, pruébatelas y toma una decisión consciente y fundamentada. Se acabaron los arrepentimientos.",
+    videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", // Replace with actual video URL
     bgColor: "from-purple-100 to-purple-200",
     iconBg: "bg-purple-500"
   }];
