@@ -12,7 +12,7 @@ const HowItWorks = () => {
     iconBg: "bg-pink-500"
   }, {
     number: "02",
-    title: "Crea looks perfectos",
+    title: "Crea o sugiere looks",
     description: "Recibe sugerencias personalizadas y planifica tus looks. Nunca más tendrás dudas sobre qué ponerte.",
     image: "/lovable-uploads/a70262fc-420a-4478-9893-f0800ea3d26b.png",
     bgColor: "from-yellow-100 to-orange-200",
