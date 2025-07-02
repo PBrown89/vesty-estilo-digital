@@ -16,7 +16,7 @@ const Pricing = () => {
       limitation: "Perfecto para empezar"
     },
     {
-      name: "Premium",
+      name: "Premium Unlimited",
       price: "19,99 €/mes",
       originalPrice: "39,99 €/mes",
       features: [
@@ -26,11 +26,13 @@ const Pricing = () => {
         "Probador virtual SIN LÍMITES",
         "Análisis de color personalizado",
         "Recomendaciones de compra inteligentes",
+        "Seguimiento de precios",
         "Soporte prioritario 24/7"
       ],
       popular: true,
       savings: "¡Ahorras 240€ al año!",
-      badge: "MÁS POPULAR"
+      badge: "PREMIUM UNLIMITED",
+      highlight: "¡TODO ILIMITADO!"
     }
   ];
 
