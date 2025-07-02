@@ -8,35 +8,29 @@ const Pricing = () => {
       price: "0 €/mes",
       features: [
         "Prendas ilimitadas en tu armario",
-        "Sin créditos disponibles.",
-        "Planificación de outfits de 2 semanas.",
-        "Cantidad de armarios limitados."
+        "Planificación de outfits de 2 semanas",
+        "1 armario disponible",
+        "Funciones básicas de organización"
       ],
-      popular: false
+      popular: false,
+      limitation: "Perfecto para empezar"
     },
     {
       name: "Premium",
-      price: "14,99 €/mes",
-      features: [
-        "Prendas ilimitadas en tu armario",
-        "Planifica hasta 1 mes de outfits.",
-        "Crea hasta 4 armarios.",
-        "60 créditos para usar tanto en el probador como en las pruebas de color."
-      ],
-      popular: false
-    },
-    {
-      name: "Unlimited",
       price: "19,99 €/mes",
+      originalPrice: "39,99 €/mes",
       features: [
-        "Prendas ilimitadas en tu armario",
-        "Crea todos los outfits que quieras, sin restricciones.",
-        "Añade tantos armarios como necesites.",
-        "Usa el probador virtual tantas veces como te apetezca.",
-        "Experimenta con todas las pruebas de color que necesites.",
-        "Combina, prueba y repite sin límites."
+        "TODO lo del plan gratuito +",
+        "Planificación ILIMITADA de outfits",
+        "Armarios ILIMITADOS",
+        "Probador virtual SIN LÍMITES",
+        "Análisis de color personalizado",
+        "Recomendaciones de compra inteligentes",
+        "Soporte prioritario 24/7"
       ],
-      popular: true
+      popular: true,
+      savings: "¡Ahorras 240€ al año!",
+      badge: "MÁS POPULAR"
     }
   ];
 
@@ -51,27 +45,55 @@ const Pricing = () => {
             </span>
           </h2>
           <p className="text-xl font-inter text-gray-600 max-w-2xl mx-auto">
-            Desde gratis hasta ilimitado. Encuentra el plan que mejor se adapte a tu estilo.
+            Comienza gratis y desbloquea todo el potencial de tu estilo con Premium.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {plans.map((plan, index) => (
             <div
               key={index}
-              className={`relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col min-h-[450px] ${
-                plan.popular ? 'border-2 border-vesty-purple scale-105' : 'border border-gray-200'
+              className={`relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col min-h-[500px] ${
+                plan.popular ? 'border-2 border-vesty-purple scale-105 transform' : 'border border-gray-200'
               }`}
             >
-              <h3 className="text-2xl font-black font-outfit text-gray-900 mb-2">
-                {plan.name}
-              </h3>
-              
-              <div className="text-3xl font-black font-outfit text-gray-900 mb-8">
-                {plan.price}
+              {plan.popular && (
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                  <span className="bg-vesty-purple text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg">
+                    {plan.badge}
+                  </span>
+                </div>
+              )}
+
+              <div className="text-center mb-6">
+                <h3 className="text-2xl font-black font-outfit text-gray-900 mb-2">
+                  {plan.name}
+                </h3>
+                
+                <div className="mb-4">
+                  {plan.originalPrice && (
+                    <div className="text-lg text-gray-400 line-through mb-1">
+                      {plan.originalPrice}
+                    </div>
+                  )}
+                  <div className="text-4xl font-black font-outfit text-gray-900">
+                    {plan.price}
+                  </div>
+                  {plan.savings && (
+                    <div className="text-sm font-semibold text-green-600 mt-2">
+                      {plan.savings}
+                    </div>
+                  )}
+                </div>
+
+                {plan.limitation && (
+                  <div className="text-sm text-gray-500 italic">
+                    {plan.limitation}
+                  </div>
+                )}
               </div>
 
-              <ul className="space-y-4 flex-grow">
+              <ul className="space-y-4 flex-grow mb-8">
                 {plan.features.map((feature, featureIndex) => (
                   <li key={featureIndex} className="flex items-start gap-3">
                     <div className={`w-5 h-5 rounded-full flex items-center justify-center mt-0.5 flex-shrink-0 ${
@@ -90,15 +112,46 @@ const Pricing = () => {
                       </svg>
                     </div>
                     <span className={`font-inter text-sm leading-relaxed ${
-                      plan.popular ? 'text-vesty-purple' : 'text-gray-600'
-                    }`}>
+                      plan.popular ? 'text-vesty-purple font-medium' : 'text-gray-600'
+                    } ${feature.includes('ILIMITADA') || feature.includes('ILIMITADOS') || feature.includes('SIN LÍMITES') ? 'font-bold' : ''}`}>
                       {feature}
                     </span>
                   </li>
                 ))}
               </ul>
+
+              <Button 
+                className={`w-full py-4 font-semibold text-lg rounded-2xl transition-all duration-300 ${
+                  plan.popular 
+                    ? 'bg-vesty-purple hover:bg-vesty-purple/90 text-white shadow-lg hover:shadow-xl transform hover:scale-105' 
+                    : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
+                }`}
+              >
+                {plan.popular ? '¡Empezar ahora!' : 'Comenzar gratis'}
+              </Button>
             </div>
           ))}
+        </div>
+
+        {/* Additional value proposition */}
+        <div className="text-center mt-12 max-w-3xl mx-auto">
+          <p className="text-gray-600 text-lg mb-4">
+            💡 <strong>¿Por qué Premium?</strong> Desbloquea tu potencial de estilo sin límites
+          </p>
+          <div className="grid md:grid-cols-3 gap-6 text-sm text-gray-500">
+            <div className="flex items-center justify-center gap-2">
+              <span className="text-green-500">✓</span>
+              <span>Sin restricciones de uso</span>
+            </div>
+            <div className="flex items-center justify-center gap-2">
+              <span className="text-green-500">✓</span>
+              <span>Funciones exclusivas</span>
+            </div>
+            <div className="flex items-center justify-center gap-2">
+              <span className="text-green-500">✓</span>
+              <span>Cancela cuando quieras</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
