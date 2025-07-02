@@ -1,5 +1,3 @@
-
-
 import { Button } from "@/components/ui/button";
 import { Apple } from "lucide-react";
 
@@ -124,7 +122,7 @@ const Pricing = () => {
                 ))}
               </ul>
 
-              <div className="flex flex-col sm:flex-row gap-3">
+              <div className="flex flex-col gap-3">
                 <a href="https://apps.apple.com/es/app/vesty/id6743717284" target="_blank" rel="noopener noreferrer" className="w-full">
                   <Button 
                     className={`w-full py-3 font-semibold text-sm rounded-2xl transition-all duration-300 flex items-center gap-2 justify-center ${
@@ -186,4 +184,3 @@ const Pricing = () => {
 };
 
 export default Pricing;
-
