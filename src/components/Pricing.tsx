@@ -136,7 +136,7 @@ const Pricing = () => {
                   </Button>
                 </a>
 
-                <a href="https://play.google.com/store/search?q=vesty&c=apps&hl=es" target="_blank" rel="noopener noreferrer" className="w-full">
+                <a href="https://play.google.com/store/apps/details?id=app.vesty.com&hl=es" target="_blank" rel="noopener noreferrer" className="w-full">
                   <Button 
                     className={`w-full py-3 font-semibold text-sm rounded-2xl transition-all duration-300 flex items-center gap-2 justify-center ${
                       plan.popular 
