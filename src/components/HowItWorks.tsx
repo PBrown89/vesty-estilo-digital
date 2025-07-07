@@ -9,6 +9,7 @@ const HowItWorks = () => {
     title: "Digitaliza tu armario",
     description: "Fotografía tus prendas y organízalas automáticamente. Vesty crea un catálogo visual de todo lo que tienes.",
     videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", // Replace with actual video URL
+    videoId: "VE_g-w1Z_lo",
     bgColor: "from-pink-100 to-pink-200",
     iconBg: "bg-pink-500"
   }, {
@@ -16,6 +17,7 @@ const HowItWorks = () => {
     title: "Crea o sugiere looks",
     description: "Recibe sugerencias personalizadas y planifica tus looks. Nunca más tendrás dudas sobre qué ponerte.",
    videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", // Replace with actual video URL
+    videoId: "te6xkCimwGk",
     bgColor: "from-yellow-100 to-orange-200",
     iconBg: "bg-orange-500"
   }, {
@@ -23,6 +25,7 @@ const HowItWorks = () => {
     title: "Haz match con tu estilo",
     description: "Busca prendas que van con tu estilo y que realmente necesitas, pruébatelas y toma una decisión consciente y fundamentada.",
     videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", // Replace with actual video URL
+    videoId: "e1KyNIIy7lk",
     bgColor: "from-purple-100 to-purple-200",
     iconBg: "bg-purple-500"
   }];
@@ -79,7 +82,7 @@ const HowItWorks = () => {
                     <div className={`bg-gradient-to-br ${step.bgColor} rounded-2xl mb-6 mt-4 overflow-hidden`}>
                       <div className="aspect-square relative">
                         <VideoHoverPlayer 
-                          videoId="te6xkCimwGk"
+                          videoId={step.videoId}
                           fallbackUrl={step.videoUrl}
                           className="w-full h-full"
                         />
