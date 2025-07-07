@@ -1,5 +1,6 @@
 
 import { Clock, Tag, Pencil } from "lucide-react";
+import { useInView } from "react-intersection-observer";
 
 const Problem = () => {
   const problems = [
@@ -23,10 +24,30 @@ const Problem = () => {
     }
   ];
 
+  const { ref: headerRef, inView: headerInView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1
+  });
+
+  const { ref: problemsRef, inView: problemsInView } = useInView({
+    triggerOnce: true,
+    threshold: 0.2
+  });
+
+  const { ref: ctaRef, inView: ctaInView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1
+  });
+
   return (
     <section className="py-32 bg-vesty-gradient-soft">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+        <div 
+          ref={headerRef}
+          className={`text-center mb-16 transition-all duration-700 ease-out ${
+            headerInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           <h2 className="text-4xl md:text-5xl font-black font-outfit text-gray-800 mb-6">
             ¿Te suena familiar?
           </h2>
@@ -35,12 +56,19 @@ const Problem = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div 
+          ref={problemsRef}
+          className={`grid md:grid-cols-3 gap-8 max-w-5xl mx-auto transition-all duration-700 ease-out ${
+            problemsInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           {problems.map((problem, index) => (
             <div 
               key={index}
-              className="bg-white/70 backdrop-blur-sm p-8 rounded-2xl shadow-lg flex flex-col items-start text-left animate-fade-in-up"
-              style={{animationDelay: problem.delay}}
+              className={`bg-white/70 backdrop-blur-sm p-8 rounded-2xl shadow-lg flex flex-col items-start text-left transition-all duration-700 ease-out ${
+                problemsInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}
+              style={{transitionDelay: problemsInView ? `${index * 200}ms` : '0ms'}}
             >
               <div className="mb-4">
                 {problem.icon}
@@ -55,8 +83,15 @@ const Problem = () => {
           ))}
         </div>
 
-        <div className="text-center mt-20">
-          <div className="inline-block bg-white rounded-full px-8 py-4 shadow-lg animate-scale-in" style={{animationDelay: '0.6s'}}>
+        <div 
+          ref={ctaRef}
+          className={`text-center mt-20 transition-all duration-700 ease-out ${
+            ctaInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          <div className={`inline-block bg-white rounded-full px-8 py-4 shadow-lg transition-all duration-700 ease-out ${
+            ctaInView ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+          }`} style={{transitionDelay: ctaInView ? '400ms' : '0ms'}}>
             <p className="text-xl font-bold font-outfit text-gray-800">
               ¡Vesty es tu solución! ✨
             </p>

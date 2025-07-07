@@ -1,10 +1,26 @@
+import { useInView } from "react-intersection-observer";
 
 const OutfitPlanner = () => {
+  const { ref: contentRef, inView: contentInView } = useInView({
+    triggerOnce: true,
+    threshold: 0.2
+  });
+
+  const { ref: mockupRef, inView: mockupInView } = useInView({
+    triggerOnce: true,
+    threshold: 0.2
+  });
+
   return <section className="bg-vesty-gradient-soft py-[208px]">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
           {/* Contenido derecho */}
-          <div className="space-y-6 lg:order-2">
+          <div 
+            ref={contentRef}
+            className={`space-y-6 lg:order-2 transition-all duration-700 ease-out ${
+              contentInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}
+          >
             <h2 className="text-4xl lg:text-5xl font-black font-outfit text-gray-900 leading-tight">
               Planifica tus outfits gratis y sin límite
             </h2>
@@ -24,7 +40,13 @@ const OutfitPlanner = () => {
           </div>
 
           {/* Contenido izquierdo - Mockup */}
-          <div className="relative flex justify-center lg:justify-start lg:order-1">
+          <div 
+            ref={mockupRef}
+            className={`relative flex justify-center lg:justify-start lg:order-1 transition-all duration-700 ease-out ${
+              mockupInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}
+            style={{transitionDelay: mockupInView ? '200ms' : '0ms'}}
+          >
             <div className="relative">
               {/* Mockup principal */}
               <div className="w-80 h-80 bg-white rounded-3xl shadow-2xl overflow-hidden p-6 py-[24px]">

@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react';
+import { useInView } from "react-intersection-observer";
 const VirtualTryOn = () => {
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
@@ -24,11 +25,26 @@ const VirtualTryOn = () => {
       handleInteractionMove(e.touches[0].clientX);
     }
   };
+
+  const { ref: contentRef, inView: contentInView } = useInView({
+    triggerOnce: true,
+    threshold: 0.2
+  });
+
+  const { ref: sliderRef, inView: sliderInView } = useInView({
+    triggerOnce: true,
+    threshold: 0.2
+  });
   return <section className="py-32 bg-white">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
           {/* Contenido izquierdo */}
-          <div className="space-y-6">
+          <div 
+            ref={contentRef}
+            className={`space-y-6 transition-all duration-700 ease-out ${
+              contentInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}
+          >
             <h2 className="text-4xl lg:text-5xl font-black font-outfit text-gray-900 leading-tight">
               Pruébate ropa desde tu sofá
             </h2>
@@ -49,7 +65,13 @@ const VirtualTryOn = () => {
           </div>
 
           {/* Contenido derecho - Slider */}
-          <div className="w-full max-w-md mx-auto lg:mx-0 lg:justify-self-end">
+          <div 
+            ref={sliderRef}
+            className={`w-full max-w-md mx-auto lg:mx-0 lg:justify-self-end transition-all duration-700 ease-out ${
+              sliderInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}
+            style={{transitionDelay: sliderInView ? '200ms' : '0ms'}}
+          >
             <div ref={containerRef} className="relative w-full aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl cursor-col-resize select-none" style={{
             backgroundColor: '#FFFFFF'
           }} onMouseMove={handleMouseMove} onMouseUp={handleInteractionEnd} onMouseLeave={handleInteractionEnd} onTouchMove={handleTouchMove} onTouchEnd={handleInteractionEnd} onTouchCancel={handleInteractionEnd}>
