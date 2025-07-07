@@ -37,9 +37,6 @@ const Header = () => {
               <button onClick={() => scrollToSection('como-funciona')} className="text-gray-700 hover:text-gray-900 transition-colors font-medium">
                 Cómo funciona
               </button>
-              <button onClick={() => scrollToSection('testimonios')} className="text-gray-700 hover:text-gray-900 transition-colors font-medium">
-                Testimonios
-              </button>
               <button onClick={() => scrollToSection('precios')} className="text-gray-700 hover:text-gray-900 transition-colors font-medium">
                 Precios
               </button>
@@ -64,7 +61,6 @@ const Header = () => {
               <nav className="flex flex-col space-y-4 pt-8 pb-6">
                 <button onClick={scrollToTop} className="text-gray-700 text-left font-medium py-2">Inicio</button>
                 <button onClick={() => scrollToSection('como-funciona')} className="text-gray-700 text-left font-medium py-2">Cómo funciona</button>
-                <button onClick={() => scrollToSection('testimonios')} className="text-gray-700 text-left font-medium py-2">Testimonios</button>
                 <button onClick={() => scrollToSection('precios')} className="text-gray-700 text-left font-medium py-2">Precios</button>
               </nav>
           </div>
