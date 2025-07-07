@@ -139,16 +139,18 @@ const VideoHoverPlayer = ({ videoId, fallbackUrl, className }: { videoId: string
           title="Video preview"
         />
       ) : (
-        <a 
-          href={fallbackUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-full h-full flex items-center justify-center group/video hover:bg-black/10 transition-colors duration-300 rounded-2xl"
-        >
-          <div className="bg-white/90 backdrop-blur-sm rounded-full p-6 shadow-lg group-hover/video:scale-110 transition-all duration-500">
-            <Play className="w-12 h-12 text-gray-800 ml-1" fill="currentColor" />
+        <div className="relative w-full h-full rounded-2xl overflow-hidden group/video cursor-pointer">
+          <img 
+            src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
+            alt="Video thumbnail"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/20 flex items-center justify-center group-hover/video:bg-black/30 transition-colors duration-300">
+            <div className="bg-white/90 backdrop-blur-sm rounded-full p-6 shadow-lg group-hover/video:scale-110 transition-all duration-500">
+              <Play className="w-12 h-12 text-gray-800 ml-1" fill="currentColor" />
+            </div>
           </div>
-        </a>
+        </div>
       )}
     </div>
   );
