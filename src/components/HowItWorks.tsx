@@ -1,6 +1,7 @@
 
 import { useInView } from "react-intersection-observer";
 import { Play } from "lucide-react";
+import { useState } from "react";
 
 const HowItWorks = () => {
   const steps = [{
@@ -76,17 +77,12 @@ const HowItWorks = () => {
                     
                     {/* Video Container */}
                     <div className={`bg-gradient-to-br ${step.bgColor} rounded-2xl mb-6 mt-4 overflow-hidden`}>
-                      <div className="aspect-square">
-                        <a 
-                          href={step.videoUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="w-full h-full flex items-center justify-center group/video hover:bg-black/10 transition-colors duration-300 rounded-2xl"
-                        >
-                          <div className="bg-white/90 backdrop-blur-sm rounded-full p-6 shadow-lg group-hover/video:scale-110 group-hover/card:opacity-0 transition-all duration-500">
-                            <Play className="w-12 h-12 text-gray-800 ml-1" fill="currentColor" />
-                          </div>
-                        </a>
+                      <div className="aspect-square relative">
+                        <VideoHoverPlayer 
+                          videoId="te6xkCimwGk"
+                          fallbackUrl={step.videoUrl}
+                          className="w-full h-full"
+                        />
                       </div>
                     </div>
 
@@ -118,6 +114,40 @@ const HowItWorks = () => {
         </div>
       </div>
     </section>
+  );
+};
+
+// Component for video hover functionality
+const VideoHoverPlayer = ({ videoId, fallbackUrl, className }: { videoId: string, fallbackUrl: string, className?: string }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <div 
+      className={`relative ${className}`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {isHovered ? (
+        <iframe
+          src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${videoId}&modestbranding=1&rel=0&showinfo=0`}
+          className="w-full h-full object-cover rounded-2xl"
+          allow="autoplay; encrypted-media"
+          allowFullScreen
+          title="Video preview"
+        />
+      ) : (
+        <a 
+          href={fallbackUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-full h-full flex items-center justify-center group/video hover:bg-black/10 transition-colors duration-300 rounded-2xl"
+        >
+          <div className="bg-white/90 backdrop-blur-sm rounded-full p-6 shadow-lg group-hover/video:scale-110 transition-all duration-500">
+            <Play className="w-12 h-12 text-gray-800 ml-1" fill="currentColor" />
+          </div>
+        </a>
+      )}
+    </div>
   );
 };
 
