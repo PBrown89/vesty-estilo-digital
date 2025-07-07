@@ -184,7 +184,7 @@ const ArmarioDigital = () => {
                   Descargar para iOS
                 </Button>
               </a>
-              <a href="https://play.google.com/store/search?q=vesty&c=apps&hl=es" target="_blank" rel="noopener noreferrer">
+              <a href="https://play.google.com/store/apps/details?id=app.vesty.com&hl=es" target="_blank" rel="noopener noreferrer">
                 <Button size="lg" className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-purple-600 px-8 py-4 rounded-full font-semibold">
                   Descargar para Android
                 </Button>
