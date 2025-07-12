@@ -15,34 +15,43 @@ const Hero = () => {
   }, [images.length]);
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-white relative overflow-hidden pt-20 pb-16">
-      {/* Elementos decorativos más sutiles */}
+    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-vesty-purple to-vesty-purple/80 relative overflow-hidden pt-20 pb-16">
+      {/* Elementos decorativos animados */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-32 right-16 w-32 h-32 bg-purple-50 rounded-full opacity-40"></div>
-        <div className="absolute bottom-40 left-16 w-24 h-24 bg-coral-50 rounded-full opacity-30"></div>
-        <div className="absolute top-64 left-1/4 w-16 h-16 bg-yellow-50 rounded-full opacity-50"></div>
+        <div className="absolute top-32 right-16 w-32 h-32 bg-white/10 rounded-full opacity-60 animate-pulse"></div>
+        <div className="absolute bottom-40 left-16 w-24 h-24 bg-white/15 rounded-full opacity-50 animate-bounce" style={{animationDuration: '3s'}}></div>
+        <div className="absolute top-64 left-1/4 w-16 h-16 bg-white/20 rounded-full opacity-70 animate-pulse" style={{animationDelay: '1s'}}></div>
+        <div className="absolute top-1/2 right-1/3 w-20 h-20 bg-white/5 rounded-full opacity-80 animate-bounce" style={{animationDuration: '4s', animationDelay: '2s'}}></div>
+        
+        {/* Partículas flotantes */}
+        <div className="absolute top-20 left-20 w-2 h-2 bg-white/40 rounded-full animate-ping" style={{animationDuration: '2s'}}></div>
+        <div className="absolute bottom-32 right-32 w-3 h-3 bg-white/30 rounded-full animate-ping" style={{animationDuration: '3s', animationDelay: '1s'}}></div>
+        <div className="absolute top-1/3 right-20 w-1 h-1 bg-white/50 rounded-full animate-ping" style={{animationDuration: '2.5s', animationDelay: '0.5s'}}></div>
       </div>
 
       <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center relative z-10 max-w-7xl">
         {/* Contenido izquierdo */}
-        <div className="space-y-8">
+        <div className="space-y-8 animate-fade-in">
           {/* Badge superior */}
-          <div className="inline-flex items-center gap-2 bg-gray-50 rounded-full px-4 py-2 text-sm font-medium text-gray-600 border border-gray-100">
-            <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-            #1 en Análisis de estilo personal
+          <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 text-sm font-medium text-white border border-white/30">
+            <span className="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+            #1 en análisis de estilo personal
           </div>
           
           {/* Título principal */}
           <div className="space-y-4">
-            <h1 className="text-5xl lg:text-6xl font-black text-gray-900 leading-tight tracking-tight">
-              Tu estilista personal{" "}
-              <span className="bg-gradient-to-r from-vesty-purple via-pink-500 to-coral-500 bg-clip-text text-transparent">
-                en el bolsillo
+            <h1 className="text-5xl lg:text-6xl font-black text-white leading-tight tracking-tight">
+              Tu armario inteligente{" "}
+              <span className="relative">
+                <span className="bg-gradient-to-r from-white via-white/90 to-white/80 bg-clip-text text-transparent animate-pulse">
+                  a tu medida
+                </span>
+                <div className="absolute -inset-1 bg-gradient-to-r from-white/20 to-transparent rounded-lg blur-sm opacity-50 animate-pulse"></div>
               </span>
             </h1>
             
-            <p className="text-xl lg:text-2xl text-gray-600 font-light leading-relaxed max-w-xl">
-              Organiza tu armario. Decide más fácil. Viste mejor.
+            <p className="text-xl lg:text-2xl text-white/90 font-light leading-relaxed max-w-xl">
+              Despierta con looks listos para brillar. Captura tu ropa y obtén combinaciones en segundos.
             </p>
           </div>
 
@@ -76,10 +85,10 @@ const Hero = () => {
                   <Star key={i} className="w-4 h-4 text-yellow-400 fill-yellow-400" />
                 ))}
               </div>
-              <span className="text-sm text-gray-500 font-medium">4.9/5</span>
+              <span className="text-sm text-white/80 font-medium">4.9/5</span>
             </div>
-            <div className="h-4 w-px bg-gray-300"></div>
-            <span className="text-sm text-gray-500 font-medium">
+            <div className="h-4 w-px bg-white/30"></div>
+            <span className="text-sm text-white/80 font-medium">
               +10,000 usuarios activos
             </span>
           </div>
