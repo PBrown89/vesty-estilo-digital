@@ -112,7 +112,20 @@
     }
   }
   
+  @keyframes scroll-smooth {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-33.333%);
+    }
+  }
+  
   .animate-scroll {
     animation: scroll 30s linear infinite;
+  }
+  
+  .animate-scroll-smooth {
+    animation: scroll-smooth 40s linear infinite;
   }
 }
