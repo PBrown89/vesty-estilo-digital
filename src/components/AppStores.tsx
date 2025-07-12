@@ -10,7 +10,7 @@ const AppStores = () => {
   ];
 
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 bg-white">
       <div className="container mx-auto px-6 text-center">
         <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-12">
           Disponible en las mejores tiendas
