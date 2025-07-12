@@ -10,18 +10,12 @@ const Hero = () => {
     }, 4000);
     return () => clearInterval(interval);
   }, [images.length]);
-  return <section className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden bg-gradient-to-br from-vesty-purple to-purple-400">
-      {/* Efecto circular de fondo */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-[1400px] h-[700px] bg-white rounded-full opacity-20"></div>
-        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/3 w-[1200px] h-[600px] bg-white rounded-full opacity-10"></div>
-        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/4 w-[1000px] h-[500px] bg-white rounded-full opacity-5"></div>
-      </div>
+  return <section className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden pt-[60px]" style={{backgroundImage: 'url(/lovable-uploads/acbd147c-ca1b-4e12-a13f-b9e79383d35f.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
 
       <div className="container mx-auto px-6 text-center relative z-10 max-w-4xl">
         {/* Logo */}
         <div className="mb-8">
-          <img src="/lovable-uploads/f3f956ab-76e8-4592-a091-0ab9f1794a0a.png" alt="Vesty" className="h-12 mx-auto" />
+          <img src="/lovable-uploads/b0d52d4b-d06e-458d-aab0-4113a7954fe3.png" alt="Vesty" className="h-12 mx-auto" />
         </div>
 
         {/* Badge superior */}
