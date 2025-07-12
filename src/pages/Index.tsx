@@ -1,5 +1,6 @@
 
 import Hero from "@/components/Hero";
+import AppStores from "@/components/AppStores";
 import Problem from "@/components/Problem";
 import HowItWorks from "@/components/HowItWorks";
 import VirtualTryOn from "@/components/VirtualTryOn";
@@ -14,6 +15,7 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <Hero />
+      <AppStores />
       <Problem />
       <HowItWorks />
       <VirtualTryOn />

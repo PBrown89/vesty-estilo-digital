@@ -28,7 +28,7 @@ const Hero = () => {
         <div className="space-y-6 mb-12">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
             Tu armario inteligente<br />
-            <span className="text-yellow-200">a tu medida</span>
+            <span className="text-white">a tu medida</span>
           </h1>
           
           <p className="text-xl md:text-2xl text-white/90 font-light leading-relaxed max-w-2xl mx-auto">
@@ -36,18 +36,8 @@ const Hero = () => {
           </p>
         </div>
 
-        {/* Imagen de la mujer con marco redondeado */}
-        <div className="mb-12 relative">
-          <div className="relative w-80 h-96 mx-auto">
-            <div className="absolute inset-0 bg-white/20 backdrop-blur-sm rounded-3xl border border-white/30"></div>
-          </div>
-          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-8 w-72 h-auto z-10">
-            {images.map((image, index) => <img key={index} src={image} alt={`Mujer con estilo elegante ${index + 1}`} className={`absolute inset-0 w-full h-auto object-contain transition-opacity duration-1000 ease-in-out ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`} />)}
-          </div>
-        </div>
-
         {/* Botones CTA principales */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
           <a href="https://apps.apple.com/es/app/vesty/id6743717284" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
             <Button size="lg" className="w-full justify-center bg-white text-vesty-purple text-lg px-8 py-4 rounded-full font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-3 border-0">
               <Apple className="w-6 h-6" />
@@ -67,6 +57,17 @@ const Hero = () => {
             </Button>
           </a>
         </div>
+
+        {/* Imagen de la mujer con marco redondeado */}
+        <div className="mb-12 relative">
+          <div className="relative w-80 h-96 mx-auto">
+            <div className="absolute inset-0 bg-white/20 backdrop-blur-sm rounded-3xl border border-white/30"></div>
+          </div>
+          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-8 w-72 h-auto z-10">
+            {images.map((image, index) => <img key={index} src={image} alt={`Mujer con estilo elegante ${index + 1}`} className={`absolute inset-0 w-full h-auto object-contain transition-opacity duration-1000 ease-in-out ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`} />)}
+          </div>
+        </div>
+
       </div>
     </section>;
 };
