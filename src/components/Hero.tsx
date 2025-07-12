@@ -1,21 +1,16 @@
-
 import { Button } from "@/components/ui/button";
 import { Apple } from "lucide-react";
 import { useState, useEffect } from "react";
-
 const Hero = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const images = ["/lovable-uploads/27123033-2eee-4e8e-8ca4-a5a74c308ad2.png", "/lovable-uploads/01b8ef1b-a2ae-4419-9a8b-d9ab8268c831.png", "/lovable-uploads/fa38c56a-46ea-4942-9720-d15111e89f3f.png"];
-
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex(prevIndex => (prevIndex + 1) % images.length);
     }, 4000);
     return () => clearInterval(interval);
   }, [images.length]);
-
-  return (
-    <section className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden bg-gradient-to-br from-vesty-purple to-purple-400">
+  return <section className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden bg-gradient-to-br from-vesty-purple to-purple-400">
       {/* Efecto circular de fondo */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-[1400px] h-[700px] bg-white rounded-full opacity-20"></div>
@@ -30,7 +25,7 @@ const Hero = () => {
         </div>
 
         {/* Badge superior */}
-        <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-6 py-3 text-sm font-medium text-white border border-white/30 mb-8">
+        <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-6 py-3 text-sm font-medium text-white border border-white/30 mb-8 rounded-2xl bg-[AB9BFE]">
           <span className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></span>
           n°1 en análisis de estilo personal
         </div>
@@ -52,14 +47,7 @@ const Hero = () => {
           <div className="relative w-80 h-96 mx-auto">
             <div className="absolute inset-0 bg-white/20 backdrop-blur-sm rounded-3xl border border-white/30"></div>
             <div className="relative w-full h-full rounded-3xl overflow-hidden">
-              {images.map((image, index) => (
-                <img 
-                  key={index} 
-                  src={image} 
-                  alt={`Mujer con estilo elegante ${index + 1}`} 
-                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`} 
-                />
-              ))}
+              {images.map((image, index) => <img key={index} src={image} alt={`Mujer con estilo elegante ${index + 1}`} className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`} />)}
             </div>
           </div>
         </div>
@@ -86,8 +74,6 @@ const Hero = () => {
           </a>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;
