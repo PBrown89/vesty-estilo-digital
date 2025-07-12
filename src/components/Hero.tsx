@@ -37,12 +37,12 @@ const Hero = () => {
         </div>
 
         {/* Imagen de la mujer con marco redondeado */}
-        <div className="mb-12">
+        <div className="mb-12 relative">
           <div className="relative w-80 h-96 mx-auto">
             <div className="absolute inset-0 bg-white/20 backdrop-blur-sm rounded-3xl border border-white/30"></div>
-            <div className="relative w-full h-full rounded-3xl overflow-hidden">
-              {images.map((image, index) => <img key={index} src={image} alt={`Mujer con estilo elegante ${index + 1}`} className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`} />)}
-            </div>
+          </div>
+          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-8 w-72 h-auto z-10">
+            {images.map((image, index) => <img key={index} src={image} alt={`Mujer con estilo elegante ${index + 1}`} className={`absolute inset-0 w-full h-auto object-contain transition-opacity duration-1000 ease-in-out ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`} />)}
           </div>
         </div>
 
