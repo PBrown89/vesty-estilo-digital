@@ -11,7 +11,7 @@ const Hero = () => {
     return () => clearInterval(interval);
   }, [images.length]);
   return <section className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden pt-[60px]" style={{
-    backgroundImage: 'url(/lovable-uploads/acbd147c-ca1b-4e12-a13f-b9e79383d35f.png)',
+    backgroundImage: 'url(/lovable-uploads/89e5c0c5-d397-4fa4-a314-f99c5ce5507d.png)',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat'
