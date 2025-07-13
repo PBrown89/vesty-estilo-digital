@@ -59,9 +59,9 @@ const Hero = () => {
         {/* Imagen de la mujer con marco redondeado */}
         <div className="mb-12 relative">
           <div className="relative w-[460px] h-[460px] mx-auto">
-            <div className="absolute inset-0 bg-white/20 backdrop-blur-sm rounded-3xl border border-white/30"></div>
+            <div className="absolute inset-0 bg-white/20 backdrop-blur-sm rounded-3xl border border-white/30 top-4 left-4 right-4 bottom-4"></div>
           </div>
-          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-8 w-72 h-auto z-10">
+          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-8 w-[400px] h-auto z-10">
             {images.map((image, index) => <img key={index} src={image} alt={`Mujer con estilo elegante ${index + 1}`} className={`absolute inset-0 w-full h-auto object-contain transition-opacity duration-1000 ease-in-out ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`} />)}
           </div>
         </div>
