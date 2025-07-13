@@ -84,22 +84,18 @@ const Hero = () => {
             {/* Marco de fondo con efecto carta flotante */}
             <div ref={cardRef} className="absolute inset-0 bg-white/20 backdrop-blur-sm border border-white/30 shadow-[0_10px_30px_rgba(0,0,0,0.1)] transition-transform duration-200 ease-out rounded-full"></div>
             
-            {/* Partículas de brillo */}
+            {/* Efecto shine alrededor del círculo */}
             {showSparkles && (
               <div className="absolute inset-0 pointer-events-none">
-                {[...Array(12)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="absolute w-2 h-2 bg-white rounded-full animate-pulse"
-                    style={{
-                      left: '50%',
-                      top: '50%',
-                      transform: `translate(-50%, -50%)`,
-                      animation: `sparkle-${i} 1s ease-out forwards`,
-                      animationDelay: `${i * 50}ms`
-                    }}
-                  />
-                ))}
+                <div className="absolute inset-0 rounded-full border-4 border-white/30 animate-ping"></div>
+                <div className="absolute inset-0 rounded-full shadow-[0_0_40px_10px_rgba(255,255,255,0.4)] animate-pulse"></div>
+                <div 
+                  className="absolute inset-0 rounded-full"
+                  style={{
+                    background: 'conic-gradient(from 0deg, transparent, rgba(255,255,255,0.6), transparent, rgba(255,255,255,0.6), transparent)',
+                    animation: 'spin 2s linear infinite'
+                  }}
+                ></div>
               </div>
             )}
             
@@ -108,24 +104,6 @@ const Hero = () => {
               {images.map((image, index) => <img key={index} src={image} alt={`Mujer con estilo elegante ${index + 1}`} className={`absolute inset-0 w-full h-auto object-contain transition-opacity duration-1000 ease-in-out ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`} />)}
             </div>
           </div>
-          
-          {/* Estilos para las animaciones de partículas */}
-          <style dangerouslySetInnerHTML={{
-            __html: `
-              @keyframes sparkle-0 { to { transform: translate(-50%, -50%) translate(200px, -100px); opacity: 0; } }
-              @keyframes sparkle-1 { to { transform: translate(-50%, -50%) translate(141px, 141px); opacity: 0; } }
-              @keyframes sparkle-2 { to { transform: translate(-50%, -50%) translate(0px, 200px); opacity: 0; } }
-              @keyframes sparkle-3 { to { transform: translate(-50%, -50%) translate(-141px, 141px); opacity: 0; } }
-              @keyframes sparkle-4 { to { transform: translate(-50%, -50%) translate(-200px, 0px); opacity: 0; } }
-              @keyframes sparkle-5 { to { transform: translate(-50%, -50%) translate(-141px, -141px); opacity: 0; } }
-              @keyframes sparkle-6 { to { transform: translate(-50%, -50%) translate(0px, -200px); opacity: 0; } }
-              @keyframes sparkle-7 { to { transform: translate(-50%, -50%) translate(141px, -141px); opacity: 0; } }
-              @keyframes sparkle-8 { to { transform: translate(-50%, -50%) translate(170px, -70px); opacity: 0; } }
-              @keyframes sparkle-9 { to { transform: translate(-50%, -50%) translate(70px, 170px); opacity: 0; } }
-              @keyframes sparkle-10 { to { transform: translate(-50%, -50%) translate(-70px, 170px); opacity: 0; } }
-              @keyframes sparkle-11 { to { transform: translate(-50%, -50%) translate(-170px, -70px); opacity: 0; } }
-            `
-          }} />
         </div>
 
       </div>
