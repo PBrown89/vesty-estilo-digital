@@ -1,15 +1,51 @@
 import { Button } from "@/components/ui/button";
 import { Apple } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 const Hero = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const cardRef = useRef<HTMLDivElement>(null);
   const images = ["/lovable-uploads/27123033-2eee-4e8e-8ca4-a5a74c308ad2.png", "/lovable-uploads/01b8ef1b-a2ae-4419-9a8b-d9ab8268c831.png", "/lovable-uploads/fa38c56a-46ea-4942-9720-d15111e89f3f.png"];
+  
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex(prevIndex => (prevIndex + 1) % images.length);
     }, 4000);
     return () => clearInterval(interval);
   }, [images.length]);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (cardRef.current) {
+        const rect = cardRef.current.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        const mouseX = e.clientX - centerX;
+        const mouseY = e.clientY - centerY;
+        
+        const rotateX = (mouseY / rect.height) * 10;
+        const rotateY = (mouseX / rect.width) * -10;
+        
+        cardRef.current.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      }
+    };
+
+    const handleMouseLeave = () => {
+      if (cardRef.current) {
+        cardRef.current.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+      }
+    };
+
+    const cardElement = cardRef.current;
+    if (cardElement) {
+      cardElement.addEventListener('mousemove', handleMouseMove);
+      cardElement.addEventListener('mouseleave', handleMouseLeave);
+      
+      return () => {
+        cardElement.removeEventListener('mousemove', handleMouseMove);
+        cardElement.removeEventListener('mouseleave', handleMouseLeave);
+      };
+    }
+  }, []);
   return <section className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden pt-[60px]" style={{
     backgroundImage: 'url(/lovable-uploads/89e5c0c5-d397-4fa4-a314-f99c5ce5507d.png)',
     backgroundSize: 'cover',
@@ -42,7 +78,7 @@ const Hero = () => {
         </div>
 
         {/* Botones CTA principales */}
-        <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
+        <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12">
           <a href="https://apps.apple.com/es/app/vesty/id6743717284" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
             <Button size="lg" className="w-full justify-center bg-white text-vesty-purple text-lg px-8 py-4 font-semibold transform hover:scale-105 hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-3 border-0 rounded-2xl">
               Obtener en iOS
@@ -60,7 +96,7 @@ const Hero = () => {
         <div className="relative z-20 transform translate-y-16">
           <div className="relative w-[460px] h-[460px] mx-auto group">
             {/* Marco de fondo con efecto carta flotante */}
-            <div className="absolute inset-0 bg-white/20 backdrop-blur-sm rounded-3xl border border-white/30 shadow-[0_10px_30px_rgba(0,0,0,0.1)] top-4 left-4 right-4 bottom-4 transition-transform duration-200 ease-out group-hover:transform group-hover:perspective-1000 group-hover:rotate-x-3 group-hover:-rotate-y-3"></div>
+            <div ref={cardRef} className="absolute inset-0 bg-white/20 backdrop-blur-sm rounded-3xl border border-white/30 shadow-[0_10px_30px_rgba(0,0,0,0.1)] top-4 left-4 right-4 bottom-4 transition-transform duration-200 ease-out"></div>
             
             {/* Imagen de la chica */}
             <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-8 w-[400px] h-auto z-10">
