@@ -16,35 +16,22 @@ const Hero = () => {
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (cardRef.current) {
-        const rect = cardRef.current.getBoundingClientRect();
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
-        const mouseX = e.clientX - centerX;
-        const mouseY = e.clientY - centerY;
-        
-        const rotateX = (mouseY / rect.height) * 10;
-        const rotateY = (mouseX / rect.width) * -10;
-        
-        cardRef.current.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        const x = e.clientX / window.innerWidth - 0.5; // -0.5 a 0.5
+        const y = e.clientY / window.innerHeight - 0.5;
+
+        const rotateX = y * 15; // Rotación suave
+        const rotateY = x * 15;
+
+        cardRef.current.style.transform = `perspective(1000px) rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`;
       }
     };
 
-    const handleMouseLeave = () => {
-      if (cardRef.current) {
-        cardRef.current.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
-      }
+    // Escuchar en todo el documento, no solo en el elemento
+    document.addEventListener('mousemove', handleMouseMove);
+    
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
     };
-
-    const cardElement = cardRef.current;
-    if (cardElement) {
-      cardElement.addEventListener('mousemove', handleMouseMove);
-      cardElement.addEventListener('mouseleave', handleMouseLeave);
-      
-      return () => {
-        cardElement.removeEventListener('mousemove', handleMouseMove);
-        cardElement.removeEventListener('mouseleave', handleMouseLeave);
-      };
-    }
   }, []);
   return <section className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden pt-[60px]" style={{
     backgroundImage: 'url(/lovable-uploads/89e5c0c5-d397-4fa4-a314-f99c5ce5507d.png)',
