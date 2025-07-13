@@ -5,7 +5,7 @@ const AppStores = () => {
     { name: "Nike", src: "/placeholder-logo-3.png", hasLogo: false },
     { name: "Adidas", src: "/lovable-uploads/be1b302b-f2c3-46f7-b8f3-547c8b3b7de7.png", hasLogo: true },
     { name: "Mango", src: "/lovable-uploads/90f0c826-e679-4feb-9a25-0a461d1287eb.png", hasLogo: true },
-    { name: "Massimo Dutti", src: "/lovable-uploads/22db39a5-cb59-4af7-9783-8f66466aa223.png", hasLogo: true },
+    { name: "Massimo Dutti", src: "/lovable-uploads/efb2c42d-5bdd-4480-b062-8c7af8a6b3da.png", hasLogo: true },
     { name: "C&A", src: "/lovable-uploads/e60b8188-6bdf-4367-826d-f563f43a6982.png", hasLogo: true },
     { name: "Pull&Bear", src: "/lovable-uploads/92ca18ba-59ae-4468-8838-914326ca6066.png", hasLogo: true },
   ];
