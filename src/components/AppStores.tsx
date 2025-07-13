@@ -63,21 +63,21 @@ const AppStores = () => {
             <div className="flex animate-scroll-smooth items-center space-x-16">
               {/* First set of logos */}
               {storeLogos.map((store, index) => <div key={`first-${index}`} className="flex-shrink-0 w-24 h-12 flex items-center justify-center opacity-40 hover:opacity-80 transition-opacity duration-300">
-                  {store.hasLogo ? <img src={store.src} alt={store.name} className="w-full h-full object-contain" /> : <div className="w-full h-full bg-gray-200 rounded-md flex items-center justify-center border border-gray-100">
+                  {store.hasLogo ? <img src={store.src} alt={store.name} className="w-full h-full object-contain mix-blend-multiply" /> : <div className="w-full h-full bg-gray-200 rounded-md flex items-center justify-center border border-gray-100">
                       <span className="text-gray-700 text-xs font-semibold tracking-wide">{store.name}</span>
                     </div>}
                 </div>)}
               
               {/* Second set for seamless loop */}
               {storeLogos.map((store, index) => <div key={`second-${index}`} className="flex-shrink-0 w-24 h-12 flex items-center justify-center opacity-40 hover:opacity-80 transition-opacity duration-300">
-                  {store.hasLogo ? <img src={store.src} alt={store.name} className="w-full h-full object-contain" /> : <div className="w-full h-full bg-gray-200 rounded-md flex items-center justify-center border border-gray-100">
+                  {store.hasLogo ? <img src={store.src} alt={store.name} className="w-full h-full object-contain mix-blend-multiply" /> : <div className="w-full h-full bg-gray-200 rounded-md flex items-center justify-center border border-gray-100">
                       <span className="text-gray-700 text-xs font-semibold tracking-wide">{store.name}</span>
                     </div>}
                 </div>)}
               
               {/* Third set for seamless loop */}
               {storeLogos.map((store, index) => <div key={`third-${index}`} className="flex-shrink-0 w-24 h-12 flex items-center justify-center opacity-40 hover:opacity-80 transition-opacity duration-300">
-                  {store.hasLogo ? <img src={store.src} alt={store.name} className="w-full h-full object-contain" /> : <div className="w-full h-full bg-gray-200 rounded-md flex items-center justify-center border border-gray-100">
+                  {store.hasLogo ? <img src={store.src} alt={store.name} className="w-full h-full object-contain mix-blend-multiply" /> : <div className="w-full h-full bg-gray-200 rounded-md flex items-center justify-center border border-gray-100">
                       <span className="text-gray-700 text-xs font-semibold tracking-wide">{store.name}</span>
                     </div>}
                 </div>)}
