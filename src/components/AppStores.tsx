@@ -1,8 +1,8 @@
 const AppStores = () => {
   const storeLogos = [
     { name: "Zara", src: "/lovable-uploads/4fb82b21-810a-4f80-babb-83e9e5f093d8.png", hasLogo: true },
-    { name: "H&M", src: "/placeholder-logo-2.png", hasLogo: false },
-    { name: "Nike", src: "/placeholder-logo-3.png", hasLogo: false },
+    { name: "H&M", src: "/lovable-uploads/5a0b8713-a9eb-49bb-9f1f-66a8161c0dee.png", hasLogo: true },
+    { name: "Nike", src: "/lovable-uploads/22860a36-ae24-43d4-b360-1b5e258ab201.png", hasLogo: true },
     { name: "Adidas", src: "/lovable-uploads/be1b302b-f2c3-46f7-b8f3-547c8b3b7de7.png", hasLogo: true },
     { name: "Mango", src: "/lovable-uploads/90f0c826-e679-4feb-9a25-0a461d1287eb.png", hasLogo: true },
     { name: "Massimo Dutti", src: "/lovable-uploads/efb2c42d-5bdd-4480-b062-8c7af8a6b3da.png", hasLogo: true },
