@@ -56,13 +56,16 @@ const Hero = () => {
           </a>
         </div>
 
-        {/* Imagen de la mujer con marco redondeado */}
-        <div className="mb-12 relative">
-          <div className="relative w-[460px] h-[460px] mx-auto">
-            <div className="absolute inset-0 bg-white/20 backdrop-blur-sm rounded-3xl border border-white/30 top-4 left-4 right-4 bottom-4"></div>
-          </div>
-          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-8 w-[400px] h-auto z-10">
-            {images.map((image, index) => <img key={index} src={image} alt={`Mujer con estilo elegante ${index + 1}`} className={`absolute inset-0 w-full h-auto object-contain transition-opacity duration-1000 ease-in-out ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`} />)}
+        {/* Imagen de la mujer con marco redondeado - Carta flotante */}
+        <div className="relative z-20 transform translate-y-16">
+          <div className="relative w-[460px] h-[460px] mx-auto group">
+            {/* Marco de fondo con efecto carta flotante */}
+            <div className="absolute inset-0 bg-white/20 backdrop-blur-sm rounded-3xl border border-white/30 shadow-[0_10px_30px_rgba(0,0,0,0.1)] top-4 left-4 right-4 bottom-4 transition-transform duration-200 ease-out group-hover:transform group-hover:perspective-1000 group-hover:rotate-x-3 group-hover:-rotate-y-3"></div>
+            
+            {/* Imagen de la chica */}
+            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-8 w-[400px] h-auto z-10">
+              {images.map((image, index) => <img key={index} src={image} alt={`Mujer con estilo elegante ${index + 1}`} className={`absolute inset-0 w-full h-auto object-contain transition-opacity duration-1000 ease-in-out ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`} />)}
+            </div>
           </div>
         </div>
 
