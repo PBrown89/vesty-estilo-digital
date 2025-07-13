@@ -10,7 +10,12 @@ const Hero = () => {
     }, 4000);
     return () => clearInterval(interval);
   }, [images.length]);
-  return <section className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden pt-[60px]" style={{backgroundImage: 'url(/lovable-uploads/acbd147c-ca1b-4e12-a13f-b9e79383d35f.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
+  return <section className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden pt-[60px]" style={{
+    backgroundImage: 'url(/lovable-uploads/acbd147c-ca1b-4e12-a13f-b9e79383d35f.png)',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat'
+  }}>
 
       <div className="container mx-auto px-6 text-center relative z-10 max-w-4xl">
         {/* Logo */}
@@ -39,14 +44,14 @@ const Hero = () => {
         {/* Botones CTA principales */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
           <a href="https://apps.apple.com/es/app/vesty/id6743717284" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
-            <Button size="lg" className="w-full justify-center bg-white text-vesty-purple text-lg px-8 py-4 rounded-full font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-3 border-0">
+            <Button size="lg" className="w-full justify-center bg-white text-vesty-purple text-lg px-8 py-4 font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-3 border-0 rounded-2xl">
               <Apple className="w-6 h-6" />
               Descargar para iOS
             </Button>
           </a>
 
           <a href="https://play.google.com/store/apps/details?id=app.vesty.com&hl=es" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
-            <Button size="lg" className="w-full justify-center text-lg px-8 py-4 rounded-full font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-3 border-2 bg-transparent text-white border-white hover:bg-white/10">
+            <Button size="lg" className="w-full justify-center text-lg px-8 py-4 font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-3 border-2 bg-transparent text-white border-white hover:bg-white/10 rounded-2xl">
               <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
                 <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
