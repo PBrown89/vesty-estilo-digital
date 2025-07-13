@@ -39,7 +39,7 @@ const AppStores = () => {
     backgroundRepeat: 'no-repeat'
   }}>
       <div className="container mx-auto px-6 relative z-10 py-[40px]">
-        <div className="text-center my-10 mb-16">
+        <div className="text-center my-10 mb-24">
           <h2 className="text-4xl md:text-5xl font-normal leading-tight" style={{
           color: '#7F7F7F'
         }}>
