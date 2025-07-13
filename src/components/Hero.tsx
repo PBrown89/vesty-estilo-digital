@@ -34,7 +34,7 @@ const Hero = () => {
     };
   }, []);
   return <section className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden pt-[60px] mb-10" style={{
-    backgroundImage: 'url(/lovable-uploads/89e5c0c5-d397-4fa4-a314-f99c5ce5507d.png)',
+    backgroundImage: 'url(/lovable-uploads/36e38b0b-5f28-4c2d-af39-5b3f0d276766.png)',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat'
