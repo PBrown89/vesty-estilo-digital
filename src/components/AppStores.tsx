@@ -1,14 +1,13 @@
 const AppStores = () => {
-  // Placeholder logos - will be replaced with actual store logos
   const storeLogos = [
-    { name: "Zara", src: "/placeholder-logo-1.png" },
-    { name: "H&M", src: "/placeholder-logo-2.png" },
-    { name: "Nike", src: "/placeholder-logo-3.png" },
-    { name: "Adidas", src: "/placeholder-logo-4.png" },
-    { name: "Mango", src: "/placeholder-logo-5.png" },
-    { name: "Uniqlo", src: "/placeholder-logo-6.png" },
-    { name: "COS", src: "/placeholder-logo-7.png" },
-    { name: "Massimo Dutti", src: "/placeholder-logo-8.png" },
+    { name: "Zara", src: "/lovable-uploads/4fb82b21-810a-4f80-babb-83e9e5f093d8.png", hasLogo: true },
+    { name: "H&M", src: "/placeholder-logo-2.png", hasLogo: false },
+    { name: "Nike", src: "/placeholder-logo-3.png", hasLogo: false },
+    { name: "Adidas", src: "/lovable-uploads/be1b302b-f2c3-46f7-b8f3-547c8b3b7de7.png", hasLogo: true },
+    { name: "Mango", src: "/placeholder-logo-5.png", hasLogo: false },
+    { name: "Uniqlo", src: "/placeholder-logo-6.png", hasLogo: false },
+    { name: "C&A", src: "/lovable-uploads/e60b8188-6bdf-4367-826d-f563f43a6982.png", hasLogo: true },
+    { name: "Pull&Bear", src: "/lovable-uploads/92ca18ba-59ae-4468-8838-914326ca6066.png", hasLogo: true },
   ];
 
   return (
@@ -46,9 +45,17 @@ const AppStores = () => {
                   key={`first-${index}`}
                   className="flex-shrink-0 w-24 h-12 flex items-center justify-center opacity-40 hover:opacity-80 transition-opacity duration-300"
                 >
-                  <div className="w-full h-full bg-gray-200 rounded-md flex items-center justify-center border border-gray-100">
-                    <span className="text-gray-700 text-xs font-semibold tracking-wide">{store.name}</span>
-                  </div>
+                  {store.hasLogo ? (
+                    <img 
+                      src={store.src} 
+                      alt={store.name} 
+                      className="w-full h-full object-contain"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gray-200 rounded-md flex items-center justify-center border border-gray-100">
+                      <span className="text-gray-700 text-xs font-semibold tracking-wide">{store.name}</span>
+                    </div>
+                  )}
                 </div>
               ))}
               
@@ -58,9 +65,17 @@ const AppStores = () => {
                   key={`second-${index}`}
                   className="flex-shrink-0 w-24 h-12 flex items-center justify-center opacity-40 hover:opacity-80 transition-opacity duration-300"
                 >
-                  <div className="w-full h-full bg-gray-200 rounded-md flex items-center justify-center border border-gray-100">
-                    <span className="text-gray-700 text-xs font-semibold tracking-wide">{store.name}</span>
-                  </div>
+                  {store.hasLogo ? (
+                    <img 
+                      src={store.src} 
+                      alt={store.name} 
+                      className="w-full h-full object-contain"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gray-200 rounded-md flex items-center justify-center border border-gray-100">
+                      <span className="text-gray-700 text-xs font-semibold tracking-wide">{store.name}</span>
+                    </div>
+                  )}
                 </div>
               ))}
               
@@ -70,9 +85,17 @@ const AppStores = () => {
                   key={`third-${index}`}
                   className="flex-shrink-0 w-24 h-12 flex items-center justify-center opacity-40 hover:opacity-80 transition-opacity duration-300"
                 >
-                  <div className="w-full h-full bg-gray-200 rounded-md flex items-center justify-center border border-gray-100">
-                    <span className="text-gray-700 text-xs font-semibold tracking-wide">{store.name}</span>
-                  </div>
+                  {store.hasLogo ? (
+                    <img 
+                      src={store.src} 
+                      alt={store.name} 
+                      className="w-full h-full object-contain"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gray-200 rounded-md flex items-center justify-center border border-gray-100">
+                      <span className="text-gray-700 text-xs font-semibold tracking-wide">{store.name}</span>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
