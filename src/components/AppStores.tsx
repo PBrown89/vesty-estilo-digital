@@ -22,13 +22,11 @@ const AppStores = () => {
       }}
     >
       <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Más +20k de productos de las mejores marcas
+        <div className="text-center my-10">
+          <h2 className="text-3xl md:text-4xl font-bold leading-tight" style={{ color: '#7F7F7F' }}>
+            Más de <span style={{ color: '#735BF2' }}>20.000 prendas</span><br />
+            de las marcas más top
           </h2>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            Descubre una amplia selección de marcas premium y encuentra el estilo perfecto para ti
-          </p>
         </div>
         
         {/* Carousel container with gradient masks */}
