@@ -5,30 +5,25 @@ const Hero = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const cardRef = useRef<HTMLDivElement>(null);
   const images = ["/lovable-uploads/27123033-2eee-4e8e-8ca4-a5a74c308ad2.png", "/lovable-uploads/01b8ef1b-a2ae-4419-9a8b-d9ab8268c831.png", "/lovable-uploads/fa38c56a-46ea-4942-9720-d15111e89f3f.png"];
-  
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex(prevIndex => (prevIndex + 1) % images.length);
     }, 4000);
     return () => clearInterval(interval);
   }, [images.length]);
-
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (cardRef.current) {
         const x = e.clientX / window.innerWidth - 0.5; // -0.5 a 0.5
         const y = e.clientY / window.innerHeight - 0.5;
-
         const rotateX = y * 15; // Rotación suave
         const rotateY = x * 15;
-
         cardRef.current.style.transform = `perspective(1000px) rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`;
       }
     };
 
     // Escuchar en todo el documento, no solo en el elemento
     document.addEventListener('mousemove', handleMouseMove);
-    
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
     };
@@ -83,7 +78,7 @@ const Hero = () => {
         <div className="relative z-20 transform translate-y-8">
           <div className="relative w-[460px] h-[460px] mx-auto group">
             {/* Marco de fondo con efecto carta flotante */}
-            <div ref={cardRef} className="absolute inset-0 bg-white/20 backdrop-blur-sm rounded-3xl border border-white/30 shadow-[0_10px_30px_rgba(0,0,0,0.1)] transition-transform duration-200 ease-out"></div>
+            <div ref={cardRef} className="absolute inset-0 bg-white/20 backdrop-blur-sm border border-white/30 shadow-[0_10px_30px_rgba(0,0,0,0.1)] transition-transform duration-200 ease-out rounded-full"></div>
             
             {/* Imagen de la chica */}
             <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-[400px] h-auto z-10">
