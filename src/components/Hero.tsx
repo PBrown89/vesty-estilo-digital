@@ -33,7 +33,7 @@ const Hero = () => {
       document.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
-  return <section className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden pt-[60px]" style={{
+  return <section className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden pt-[60px] mb-20" style={{
     backgroundImage: 'url(/lovable-uploads/89e5c0c5-d397-4fa4-a314-f99c5ce5507d.png)',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
@@ -65,7 +65,7 @@ const Hero = () => {
         </div>
 
         {/* Botones CTA principales */}
-        <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12">
+        <div className="flex flex-col sm:flex-row gap-6 justify-center mb-8">
           <a href="https://apps.apple.com/es/app/vesty/id6743717284" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
             <Button size="lg" className="w-full justify-center bg-white text-vesty-purple text-lg px-8 py-4 font-semibold transform hover:scale-105 hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-3 border-0 rounded-2xl">
               Obtener en iOS
@@ -81,12 +81,12 @@ const Hero = () => {
 
         {/* Imagen de la mujer con marco redondeado - Carta flotante */}
         <div className="relative z-20 transform translate-y-16">
-          <div className="relative w-[460px] h-[460px] mx-auto group">
+          <div className="relative w-[360px] h-[360px] mx-auto group">
             {/* Marco de fondo con efecto carta flotante */}
             <div ref={cardRef} className="absolute inset-0 bg-white/20 backdrop-blur-sm rounded-3xl border border-white/30 shadow-[0_10px_30px_rgba(0,0,0,0.1)] top-4 left-4 right-4 bottom-4 transition-transform duration-200 ease-out"></div>
             
             {/* Imagen de la chica */}
-            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-8 w-[400px] h-auto z-10">
+            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-8 w-[320px] h-auto z-10">
               {images.map((image, index) => <img key={index} src={image} alt={`Mujer con estilo elegante ${index + 1}`} className={`absolute inset-0 w-full h-auto object-contain transition-opacity duration-1000 ease-in-out ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`} />)}
             </div>
           </div>
