@@ -33,7 +33,7 @@ const Hero = () => {
       document.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
-  return <section className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden pt-[60px]" style={{
+  return <section className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden pt-[60px] mb-10" style={{
     backgroundImage: 'url(/lovable-uploads/89e5c0c5-d397-4fa4-a314-f99c5ce5507d.png)',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
