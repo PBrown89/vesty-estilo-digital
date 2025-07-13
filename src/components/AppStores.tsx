@@ -23,8 +23,8 @@ const AppStores = () => {
     >
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center my-10">
-          <h2 className="text-3xl md:text-4xl font-bold leading-tight" style={{ color: '#7F7F7F' }}>
-            Más de <span style={{ color: '#735BF2' }}>20.000 prendas</span><br />
+          <h2 className="text-3xl md:text-4xl font-normal leading-tight" style={{ color: '#7F7F7F' }}>
+            Más de <span className="font-bold" style={{ color: '#735BF2' }}>20.000 prendas</span><br />
             de las marcas más top
           </h2>
         </div>
