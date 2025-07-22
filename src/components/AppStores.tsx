@@ -34,7 +34,7 @@ const AppStores = () => {
   }];
   return <section className="py-20 bg-white relative overflow-hidden" style={{
     backgroundImage: `url('/lovable-uploads/b80afb35-236a-4e68-86ae-5fc651f23a8e.png')`,
-    backgroundSize: 'cover',
+    backgroundSize: window.innerWidth < 768 ? 'contain' : 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat'
   }}>
