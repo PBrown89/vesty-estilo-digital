@@ -1,11 +1,12 @@
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useInView } from "react-intersection-observer";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 
 const Problem = () => {
   const [selectedPerson, setSelectedPerson] = useState<any>(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const hoverTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   const people = [
     {
@@ -15,7 +16,7 @@ const Problem = () => {
       image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=400&fit=crop&crop=face",
       problem: "Nunca sé que ponerme los días de trabajo",
       story: "Carmen es una profesional que trabaja en marketing. Cada mañana se levanta 20 minutos antes solo para decidir qué ponerse. Su armario está lleno de ropa que compró con ilusión pero que nunca sabe cómo combinar. Desde que usa Vesty, tiene outfits predefinidos para cada día de la semana y puede dormir esos 20 minutos extra.",
-      position: { top: "5%", left: "12%", rotation: "-8deg" }
+      position: { top: "5%", left: "8%", rotation: "-8deg" }
     },
     {
       id: 2,
@@ -24,7 +25,7 @@ const Problem = () => {
       image: "https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?w=400&h=400&fit=crop&crop=face",
       problem: "Al no tener tiempo siempre pillo lo primero que veo",
       story: "María estudia y trabaja a tiempo parcial. Sus mañanas son una carrera contra el reloj y siempre termina poniéndose lo mismo. Con Vesty, puede planificar sus outfits la noche anterior y tener todo listo para salir corriendo por la mañana con estilo.",
-      position: { top: "18%", left: "42%", rotation: "12deg" }
+      position: { top: "25%", left: "18%", rotation: "12deg" }
     },
     {
       id: 3,
@@ -33,7 +34,7 @@ const Problem = () => {
       image: "https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=400&h=400&fit=crop&crop=face",
       problem: "Nunca soy capaz de verme bien en el espejo",
       story: "Ana perdió confianza en su estilo después de la maternidad. Su cuerpo cambió y siente que nada le queda como antes. Vesty le ayudó a redescubrir qué prendas la favorecen y cómo combinarlas para sentirse segura y hermosa cada día.",
-      position: { top: "8%", left: "72%", rotation: "-15deg" }
+      position: { top: "8%", left: "36%", rotation: "-15deg" }
     },
     {
       id: 4,
@@ -42,7 +43,7 @@ const Problem = () => {
       image: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=400&h=400&fit=crop&crop=face",
       problem: "Ojalá fuera más sencillo combinar la ropa, me resulta imposible",
       story: "Laura siempre se consideró 'mala para la moda'. Ve a otras mujeres con outfits increíbles y no entiende cómo lo hacen. Vesty le enseñó las reglas básicas de combinación y ahora puede crear looks que la hacen sentir como esas mujeres que admiraba.",
-      position: { top: "35%", left: "8%", rotation: "18deg" }
+      position: { top: "35%", left: "12%", rotation: "18deg" }
     },
     {
       id: 5,
@@ -51,7 +52,7 @@ const Problem = () => {
       image: "https://images.unsplash.com/photo-1485833077593-4278bba3f11f?w=400&h=400&fit=crop&crop=face",
       problem: "Creo que me he puesto esta misma camiseta 3 veces esta semana",
       story: "Sofia tiene un armario lleno pero siempre recurre a las mismas 5 prendas cómodas. Se aburre de su estilo pero no sabe cómo salir de la rutina. Vesty le mostró cómo usar todas sus prendas de formas diferentes y ahora disfruta experimentando con su ropa.",
-      position: { top: "45%", left: "52%", rotation: "-22deg" }
+      position: { top: "15%", left: "55%", rotation: "-22deg" }
     },
     {
       id: 6,
@@ -60,7 +61,7 @@ const Problem = () => {
       image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=400&fit=crop&crop=face",
       problem: "Compro ropa pero luego no sé con qué combinarla",
       story: "Elena ama ir de compras pero sus nuevas prendas terminan con etiquetas en el armario. No sabe cómo integrarlas con lo que ya tiene. Vesty le enseñó a comprar de forma estratégica y a maximizar cada prenda de su guardarropa.",
-      position: { top: "22%", left: "75%", rotation: "9deg" }
+      position: { top: "45%", left: "28%", rotation: "9deg" }
     },
     {
       id: 7,
@@ -69,7 +70,7 @@ const Problem = () => {
       image: "https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=400&h=400&fit=crop&crop=face",
       problem: "Mi estilo no refleja mi personalidad",
       story: "Claudia siempre sintió que su ropa no la representaba realmente. Quería verse más sofisticada pero no sabía cómo. Con Vesty descubrió su estilo personal y ahora se viste de manera que refleja su verdadera personalidad.",
-      position: { top: "58%", left: "15%", rotation: "-11deg" }
+      position: { top: "2%", left: "75%", rotation: "-11deg" }
     },
     {
       id: 8,
@@ -78,7 +79,7 @@ const Problem = () => {
       image: "https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?w=400&h=400&fit=crop&crop=face",
       problem: "No sé si esto me queda bien o no",
       story: "Patricia constantemente dudaba de sus elecciones de vestimenta. Se probaba múltiples outfits antes de salir y aún así no estaba segura. Vesty le dio las herramientas para saber qué le favorece y ahora sale de casa con total confianza.",
-      position: { top: "32%", left: "38%", rotation: "14deg" }
+      position: { top: "28%", left: "48%", rotation: "14deg" }
     },
     {
       id: 9,
@@ -87,7 +88,7 @@ const Problem = () => {
       image: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=400&h=400&fit=crop&crop=face",
       problem: "Siempre voy vestida igual que mis amigas",
       story: "Isabella se sentía perdida en su grupo de amigas, todas se vestían muy parecido. Quería encontrar su propio estilo pero no sabía por dónde empezar. Vesty la ayudó a descubrir qué la hace única y cómo expresarlo a través de su ropa.",
-      position: { top: "65%", left: "68%", rotation: "-7deg" }
+      position: { top: "52%", left: "65%", rotation: "-7deg" }
     },
     {
       id: 10,
@@ -96,7 +97,7 @@ const Problem = () => {
       image: "https://images.unsplash.com/photo-1485833077593-4278bba3f11f?w=400&h=400&fit=crop&crop=face",
       problem: "Gasto mucho dinero en ropa que no uso",
       story: "Valentina compraba por impulso y su armario estaba lleno de prendas que usó una sola vez. No sabía cómo crear un guardarropa funcional. Vesty le enseñó a comprar de manera inteligente y a maximizar cada prenda.",
-      position: { top: "48%", left: "25%", rotation: "16deg" }
+      position: { top: "38%", left: "72%", rotation: "16deg" }
     },
     {
       id: 11,
@@ -105,7 +106,7 @@ const Problem = () => {
       image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=400&fit=crop&crop=face",
       problem: "No tengo tiempo para pensar en outfits",
       story: "Rocío es madre trabajadora y sus mañanas son un caos. No tiene tiempo para pensar en qué ponerse y siempre sale corriendo con lo primero que encuentra. Vesty le dio un sistema para tener outfits listos toda la semana.",
-      position: { top: "72%", left: "45%", rotation: "-19deg" }
+      position: { top: "62%", left: "42%", rotation: "-19deg" }
     }
   ];
 
@@ -114,30 +115,21 @@ const Problem = () => {
     threshold: 0.1
   });
 
-  const handleMouseMove = (e: React.MouseEvent) => {
-    setMousePosition({ x: e.clientX, y: e.clientY });
-  };
-
-  const getCardTransform = (person: any, index: number) => {
-    const { x, y } = mousePosition;
-    const cardElement = document.getElementById(`card-${person.id}`);
-    if (!cardElement) return person.position.rotation;
-    
-    const rect = cardElement.getBoundingClientRect();
-    const cardCenterX = rect.left + rect.width / 2;
-    const cardCenterY = rect.top + rect.height / 2;
-    
-    const distance = Math.sqrt(Math.pow(x - cardCenterX, 2) + Math.pow(y - cardCenterY, 2));
-    const maxDistance = 200;
-    
-    if (distance < maxDistance) {
-      const intensity = (maxDistance - distance) / maxDistance;
-      const moveX = (x - cardCenterX) * intensity * 0.1;
-      const moveY = (y - cardCenterY) * intensity * 0.1;
-      return `translate(${moveX}px, ${moveY}px) rotate(${person.position.rotation}) scale(1.05)`;
+  const handleCardHover = (cardId: number) => {
+    if (hoverTimerRef.current) {
+      clearTimeout(hoverTimerRef.current);
     }
     
-    return `rotate(${person.position.rotation})`;
+    hoverTimerRef.current = setTimeout(() => {
+      setHoveredCard(cardId);
+    }, 1000);
+  };
+
+  const handleCardLeave = () => {
+    if (hoverTimerRef.current) {
+      clearTimeout(hoverTimerRef.current);
+    }
+    setHoveredCard(null);
   };
 
   return (
@@ -159,24 +151,23 @@ const Problem = () => {
           </div>
         </div>
 
-        <div 
-          className="relative h-[600px] max-w-6xl mx-auto"
-          onMouseMove={handleMouseMove}
-        >
+        <div className="relative h-[600px] max-w-6xl mx-auto">
           {people.map((person, index) => (
             <div
               key={person.id}
               id={`card-${person.id}`}
-              className={`absolute w-80 bg-white rounded-2xl p-6 border border-gray-200 cursor-pointer transition-all duration-300 ease-out hover:z-30 ${
+              className={`absolute w-80 bg-white rounded-2xl p-6 border border-gray-200 cursor-pointer transition-all duration-500 ease-out ${
                 inView ? 'opacity-100' : 'opacity-0'
-              }`}
+              } ${hoveredCard === person.id ? 'scale-110' : ''}`}
               style={{
                 top: person.position.top,
                 left: person.position.left,
-                transform: getCardTransform(person, index),
+                transform: `rotate(${person.position.rotation}) ${hoveredCard === person.id ? 'scale(1.1)' : ''}`,
                 transitionDelay: inView ? `${index * 200}ms` : '0ms',
-                zIndex: 20 + index
+                zIndex: hoveredCard === person.id ? 50 : 20 + index
               }}
+              onMouseEnter={() => handleCardHover(person.id)}
+              onMouseLeave={handleCardLeave}
               onClick={() => setSelectedPerson(person)}
             >
               <div className="flex items-start gap-4 mb-4">
