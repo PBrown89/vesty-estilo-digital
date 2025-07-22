@@ -1,12 +1,17 @@
 
 import { useState, useRef } from "react";
 import { useInView } from "react-intersection-observer";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import MobileCardStack from "./MobileCardStack";
 
 const Problem = () => {
   const [selectedPerson, setSelectedPerson] = useState<any>(null);
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const [showMobileStack, setShowMobileStack] = useState(true);
+  const [mobileStackComplete, setMobileStackComplete] = useState(false);
   const hoverTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const isMobile = useIsMobile();
 
   const people = [
     {
@@ -123,6 +128,17 @@ const Problem = () => {
     setHoveredCard(null);
   };
 
+  const handleMobileStackComplete = () => {
+    setMobileStackComplete(true);
+    setShowMobileStack(false);
+  };
+
+  // Mobile card stack experience
+  if (isMobile && showMobileStack && !mobileStackComplete) {
+    return <MobileCardStack people={people} onAllCardsDiscarded={handleMobileStackComplete} />;
+  }
+
+  // Desktop and mobile (after cards completed) experience
   return (
     <>
       <section className="min-h-screen py-32 bg-white relative overflow-hidden">

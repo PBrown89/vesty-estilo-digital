@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useIsMobile } from '@/hooks/use-mobile';
 
@@ -87,7 +88,7 @@ const FullPageScroll: React.FC<FullPageScrollProps> = ({ children, className = '
     };
   }, [handleWheel, handleKeyDown, isMobile]);
 
-  // Mobile: render normally
+  // Mobile: render normally with special handling for Problem section
   if (isMobile) {
     return (
       <div className={className}>
