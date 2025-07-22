@@ -69,7 +69,7 @@ const Problem = () => {
           {problems.map((problem, index) => (
             <div 
               key={index}
-              className={`bg-gradient-to-br from-white to-gray-50 p-8 rounded-3xl shadow-xl border border-gray-100 flex flex-col items-start text-left transition-all duration-1000 ease-out transform ${
+              className={`bg-gradient-to-br from-white to-gray-50 p-8 rounded-3xl border border-gray-200 flex flex-col items-start text-left transition-all duration-1000 ease-out transform ${
                 currentStep >= index + 2 
                   ? 'opacity-100 translate-y-0 scale-100' 
                   : 'opacity-0 translate-y-20 scale-95'
