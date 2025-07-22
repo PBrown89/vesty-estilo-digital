@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import React, { useState } from "react";
 import Hero from "@/components/Hero";
 import AppStores from "@/components/AppStores";
 import Problem from "@/components/Problem";
