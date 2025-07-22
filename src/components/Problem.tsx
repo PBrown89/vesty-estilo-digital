@@ -34,7 +34,7 @@ const Problem = () => {
       image: "https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=400&h=400&fit=crop&crop=face",
       problem: "Nunca soy capaz de verme bien en el espejo",
       story: "Ana perdió confianza en su estilo después de la maternidad. Su cuerpo cambió y siente que nada le queda como antes. Vesty le ayudó a redescubrir qué prendas la favorecen y cómo combinarlas para sentirse segura y hermosa cada día.",
-      position: { top: "8%", left: "36%", rotation: "-8deg" }
+      position: { top: "8%", left: "36%", rotation: "3deg" }
     },
     {
       id: 4,
@@ -43,7 +43,7 @@ const Problem = () => {
       image: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=400&h=400&fit=crop&crop=face",
       problem: "Ojalá fuera más sencillo combinar la ropa, me resulta imposible",
       story: "Laura siempre se consideró 'mala para la moda'. Ve a otras mujeres con outfits increíbles y no entiende cómo lo hacen. Vesty le enseñó las reglas básicas de combinación y ahora puede crear looks que la hacen sentir como esas mujeres que admiraba.",
-      position: { top: "35%", left: "12%", rotation: "7deg" }
+      position: { top: "52%", left: "15%", rotation: "4deg" }
     },
     {
       id: 5,
@@ -116,19 +116,10 @@ const Problem = () => {
   });
 
   const handleCardHover = (cardId: number) => {
-    if (hoverTimerRef.current) {
-      clearTimeout(hoverTimerRef.current);
-    }
-    
-    hoverTimerRef.current = setTimeout(() => {
-      setHoveredCard(cardId);
-    }, 500);
+    setHoveredCard(cardId);
   };
 
   const handleCardLeave = () => {
-    if (hoverTimerRef.current) {
-      clearTimeout(hoverTimerRef.current);
-    }
     setHoveredCard(null);
   };
 
