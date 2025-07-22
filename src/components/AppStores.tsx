@@ -1,9 +1,4 @@
-import { useInView } from 'react-intersection-observer';
-import { useState, useEffect } from 'react';
-
 const AppStores = () => {
-  const [visibleStores, setVisibleStores] = useState(0);
-  
   const storeLogos = [{
     name: "Zara",
     src: "/lovable-uploads/4fb82b21-810a-4f80-babb-83e9e5f093d8.png",
@@ -37,104 +32,59 @@ const AppStores = () => {
     src: "/lovable-uploads/92ca18ba-59ae-4468-8838-914326ca6066.png",
     hasLogo: true
   }];
-
-  const [titleRef, titleInView] = useInView({
-    threshold: 0.5,
-    triggerOnce: false
-  });
-
-  const [logosRef, logosInView] = useInView({
-    threshold: 0.3,
-    triggerOnce: false
-  });
-
-  // Reveal stores one by one when logos section is in view
-  useEffect(() => {
-    if (logosInView && visibleStores < storeLogos.length) {
-      const timer = setInterval(() => {
-        setVisibleStores(prev => {
-          if (prev >= storeLogos.length) {
-            clearInterval(timer);
-            return prev;
-          }
-          return prev + 1;
-        });
-      }, 200);
-      
-      return () => clearInterval(timer);
-    }
-  }, [logosInView, visibleStores, storeLogos.length]);
-
-  // Reset when section goes out of view
-  useEffect(() => {
-    if (!titleInView && !logosInView) {
-      setVisibleStores(0);
-    }
-  }, [titleInView, logosInView]);
-
-  return (
-    <section className="min-h-screen bg-white flex flex-col justify-center py-20 relative overflow-hidden">
-      <div className="container mx-auto px-6 relative z-10">
-        <div 
-          ref={titleRef}
-          className={`text-center mb-20 transition-all duration-1000 ${
-            titleInView 
-              ? 'opacity-100 transform translate-y-0' 
-              : 'opacity-0 transform translate-y-10'
-          }`}
-        >
-          <h2 className="text-4xl md:text-5xl font-normal leading-tight text-gray-500">
-            Más de <span className="font-bold text-purple-600">20.000 prendas</span><br />
+  return <section className="py-20 bg-white relative overflow-hidden" style={{
+    backgroundImage: `url('/lovable-uploads/b80afb35-236a-4e68-86ae-5fc651f23a8e.png')`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat'
+  }}>
+      <div className="container mx-auto px-6 relative z-10 py-[40px]">
+        <div className="text-center my-10 mb-24">
+          <h2 className="text-4xl md:text-5xl font-normal leading-tight" style={{
+          color: '#7F7F7F'
+        }}>
+            Más de <span className="font-bold" style={{
+            color: '#735BF2'
+          }}>20.000 prendas</span><br />
             de las marcas más top
           </h2>
         </div>
         
-        <div 
-          ref={logosRef}
-          className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto"
-        >
-          {storeLogos.map((store, index) => (
-            <div
-              key={index}
-              className={`flex items-center justify-center h-20 transition-all duration-700 transform ${
-                index < visibleStores
-                  ? 'opacity-100 scale-100 translate-y-0'
-                  : 'opacity-0 scale-75 translate-y-10'
-              }`}
-              style={{
-                transitionDelay: `${index * 200}ms`
-              }}
-            >
-              {store.hasLogo ? (
-                <img 
-                  src={store.src} 
-                  alt={store.name} 
-                  className="w-full h-full object-contain mix-blend-multiply hover:scale-110 transition-transform duration-300" 
-                />
-              ) : (
-                <div className="w-full h-full bg-gray-200 rounded-md flex items-center justify-center border border-gray-100">
-                  <span className="text-gray-700 text-xs font-semibold tracking-wide">{store.name}</span>
-                </div>
-              )}
+        {/* Carousel container with gradient masks */}
+        <div className="relative">
+          {/* Left gradient mask */}
+          <div className="absolute left-0 top-0 w-32 h-full bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+          
+          {/* Right gradient mask */}
+          <div className="absolute right-0 top-0 w-32 h-full bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+          
+          {/* Scrolling logos container */}
+          <div className="overflow-hidden">
+            <div className="flex animate-scroll-smooth items-center space-x-16">
+              {/* First set of logos */}
+              {storeLogos.map((store, index) => <div key={`first-${index}`} className="flex-shrink-0 w-24 h-12 flex items-center justify-center opacity-40 hover:opacity-80 transition-opacity duration-300">
+                  {store.hasLogo ? <img src={store.src} alt={store.name} className="w-full h-full object-contain mix-blend-multiply" /> : <div className="w-full h-full bg-gray-200 rounded-md flex items-center justify-center border border-gray-100">
+                      <span className="text-gray-700 text-xs font-semibold tracking-wide">{store.name}</span>
+                    </div>}
+                </div>)}
+              
+              {/* Second set for seamless loop */}
+              {storeLogos.map((store, index) => <div key={`second-${index}`} className="flex-shrink-0 w-24 h-12 flex items-center justify-center opacity-40 hover:opacity-80 transition-opacity duration-300">
+                  {store.hasLogo ? <img src={store.src} alt={store.name} className="w-full h-full object-contain mix-blend-multiply" /> : <div className="w-full h-full bg-gray-200 rounded-md flex items-center justify-center border border-gray-100">
+                      <span className="text-gray-700 text-xs font-semibold tracking-wide">{store.name}</span>
+                    </div>}
+                </div>)}
+              
+              {/* Third set for seamless loop */}
+              {storeLogos.map((store, index) => <div key={`third-${index}`} className="flex-shrink-0 w-24 h-12 flex items-center justify-center opacity-40 hover:opacity-80 transition-opacity duration-300">
+                  {store.hasLogo ? <img src={store.src} alt={store.name} className="w-full h-full object-contain mix-blend-multiply" /> : <div className="w-full h-full bg-gray-200 rounded-md flex items-center justify-center border border-gray-100">
+                      <span className="text-gray-700 text-xs font-semibold tracking-wide">{store.name}</span>
+                    </div>}
+                </div>)}
             </div>
-          ))}
-        </div>
-
-        {/* Progress indicator */}
-        <div className="flex justify-center mt-12">
-          <div className="flex space-x-2">
-            {storeLogos.map((_, index) => (
-              <div
-                key={index}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  index < visibleStores ? 'bg-purple-600' : 'bg-gray-300'
-                }`}
-              />
-            ))}
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
 export default AppStores;
