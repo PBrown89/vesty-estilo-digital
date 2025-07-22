@@ -162,7 +162,9 @@ const Problem = () => {
               style={{
                 top: person.position.top,
                 left: person.position.left,
-                transform: `rotate(${person.position.rotation}) ${hoveredCard === person.id ? 'scale(1.1)' : ''}`,
+                transform: hoveredCard === person.id 
+                  ? `rotate(${person.position.rotation}) scale(1.1)` 
+                  : `rotate(${person.position.rotation})`,
                 transitionDelay: inView ? `${index * 200}ms` : '0ms',
                 zIndex: hoveredCard === person.id ? 50 : 20 + index
               }}
