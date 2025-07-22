@@ -1,6 +1,5 @@
 
 import { useState, useEffect, useRef } from 'react';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 
 interface Person {
   id: number;
@@ -19,7 +18,6 @@ interface MobileCardStackProps {
 const MobileCardStack: React.FC<MobileCardStackProps> = ({ people, onAllCardsDiscarded }) => {
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
-  const [selectedPerson, setSelectedPerson] = useState<Person | null>(null);
   const [touchStart, setTouchStart] = useState<{ y: number; time: number } | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -49,9 +47,7 @@ const MobileCardStack: React.FC<MobileCardStackProps> = ({ people, onAllCardsDis
     const deltaY = touchStart.y - touch.clientY;
     
     // Prevent default scroll behavior during swipe
-    if (deltaY > 0) {
-      e.preventDefault();
-    }
+    e.preventDefault();
   };
 
   const handleTouchEnd = (e: React.TouchEvent) => {
@@ -70,6 +66,27 @@ const MobileCardStack: React.FC<MobileCardStackProps> = ({ people, onAllCardsDis
     }
   };
 
+  const handleWheel = (e: WheelEvent) => {
+    if (isAnimating || isComplete) return;
+    
+    e.preventDefault();
+    
+    if (e.deltaY > 0) {
+      discardCurrentCard();
+    }
+  };
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    container.addEventListener('wheel', handleWheel, { passive: false });
+    
+    return () => {
+      container.removeEventListener('wheel', handleWheel);
+    };
+  }, [isAnimating, isComplete]);
+
   const discardCurrentCard = () => {
     if (isAnimating || isComplete) return;
     
@@ -86,108 +103,67 @@ const MobileCardStack: React.FC<MobileCardStackProps> = ({ people, onAllCardsDis
   }
 
   return (
-    <>
-      <div className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div
-          ref={containerRef}
-          className="relative w-80 h-96"
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
-        >
-          {remainingCards.map((person, index) => {
-            const isTopCard = index === 0;
-            const zIndex = remainingCards.length - index;
-            const offset = Math.min(index * 3, 12);
-            
-            return (
-              <div
-                key={`${person.id}-${currentCardIndex}`}
-                className={`absolute inset-0 bg-white rounded-2xl p-6 border border-gray-200 shadow-lg transition-all duration-300 ${
-                  isTopCard && isAnimating ? 'opacity-0 translate-y-[-100vh]' : 'opacity-100'
-                }`}
-                style={{
-                  zIndex,
-                  transform: `translateY(${offset}px) scale(${1 - index * 0.02})`,
-                  filter: index > 0 ? 'brightness(0.95)' : 'brightness(1)'
-                }}
-                onClick={() => isTopCard && setSelectedPerson(person)}
-              >
-                <div className="flex items-start gap-4 mb-4">
-                  <img
-                    src={person.image}
-                    alt={person.name}
-                    className="w-16 h-16 rounded-full object-cover"
-                  />
-                  <div>
-                    <h3 className="font-bold font-outfit text-gray-800 text-lg">
-                      {person.name}
-                    </h3>
-                    <p className="text-gray-500 font-inter text-sm">
-                      {person.age} años
-                    </p>
-                  </div>
+    <div className="relative h-screen flex items-center justify-center overflow-hidden">
+      <div
+        ref={containerRef}
+        className="relative w-80 h-96"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
+        {remainingCards.map((person, index) => {
+          const isTopCard = index === 0;
+          const zIndex = remainingCards.length - index;
+          const offset = Math.min(index * 4, 16);
+          
+          return (
+            <div
+              key={`${person.id}-${currentCardIndex}`}
+              className={`absolute inset-0 bg-white rounded-2xl p-6 border border-gray-200 shadow-lg transition-all duration-300 ${
+                isTopCard && isAnimating ? 'opacity-0 translate-y-[-100vh]' : 'opacity-100'
+              }`}
+              style={{
+                zIndex,
+                transform: `translateY(${offset}px) scale(${1 - index * 0.03})`,
+                filter: index > 0 ? 'brightness(0.9)' : 'brightness(1)'
+              }}
+            >
+              <div className="flex items-start gap-4 mb-4">
+                <img
+                  src={person.image}
+                  alt={person.name}
+                  className="w-16 h-16 rounded-full object-cover"
+                />
+                <div>
+                  <h3 className="font-bold font-outfit text-gray-800 text-lg">
+                    {person.name}
+                  </h3>
+                  <p className="text-gray-500 font-inter text-sm">
+                    {person.age} años
+                  </p>
                 </div>
-                <p className="font-inter text-gray-600 italic leading-relaxed mb-4">
-                  "{person.problem}"
-                </p>
-                <button 
-                  className="text-blue-500 font-inter text-sm underline hover:text-blue-600 transition-colors"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setSelectedPerson(person);
-                  }}
-                >
-                  descubrir historia
-                </button>
               </div>
-            );
-          })}
-        </div>
-
-        {/* Swipe indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-gray-500">
-          <div className="animate-bounce mb-2">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
-            </svg>
-          </div>
-          <p className="text-sm font-inter">Desliza hacia arriba</p>
-          <p className="text-xs font-inter text-gray-400">
-            {remainingCards.length} de {people.length}
-          </p>
-        </div>
+              <p className="font-inter text-gray-600 italic leading-relaxed">
+                "{person.problem}"
+              </p>
+            </div>
+          );
+        })}
       </div>
 
-      <Dialog open={!!selectedPerson} onOpenChange={() => setSelectedPerson(null)}>
-        <DialogContent className="max-w-2xl">
-          {selectedPerson && (
-            <>
-              <DialogHeader>
-                <div className="flex items-center gap-4 mb-4">
-                  <img
-                    src={selectedPerson.image}
-                    alt={selectedPerson.name}
-                    className="w-20 h-20 rounded-full object-cover"
-                  />
-                  <div>
-                    <DialogTitle className="text-2xl font-outfit text-gray-800">
-                      {selectedPerson.name}
-                    </DialogTitle>
-                    <p className="text-gray-500 font-inter">
-                      {selectedPerson.age} años
-                    </p>
-                  </div>
-                </div>
-              </DialogHeader>
-              <DialogDescription className="text-gray-700 font-inter leading-relaxed text-base">
-                {selectedPerson.story}
-              </DialogDescription>
-            </>
-          )}
-        </DialogContent>
-      </Dialog>
-    </>
+      {/* Swipe indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-gray-500">
+        <div className="animate-bounce mb-2">
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+          </svg>
+        </div>
+        <p className="text-sm font-inter">Desliza hacia arriba</p>
+        <p className="text-xs font-inter text-gray-400">
+          {remainingCards.length} de {people.length}
+        </p>
+      </div>
+    </div>
   );
 };
 
