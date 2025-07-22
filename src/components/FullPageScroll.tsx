@@ -5,14 +5,24 @@ import { useIsMobile } from '@/hooks/use-mobile';
 interface FullPageScrollProps {
   children: React.ReactNode[];
   className?: string;
+  onProblemSectionScroll?: (direction: 'up' | 'down') => boolean;
+  isProblemSectionActive?: boolean;
+  onSectionChange?: (section: number) => void;
 }
 
-const FullPageScroll: React.FC<FullPageScrollProps> = ({ children, className = '' }) => {
+const FullPageScroll: React.FC<FullPageScrollProps> = ({ 
+  children, 
+  className = '', 
+  onProblemSectionScroll,
+  isProblemSectionActive = false,
+  onSectionChange
+}) => {
   const [currentSection, setCurrentSection] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
   const lastWheelTime = useRef(0);
+  const lastTouchTime = useRef(0);
 
   const totalSections = children.length;
 
@@ -23,15 +33,16 @@ const FullPageScroll: React.FC<FullPageScrollProps> = ({ children, className = '
 
     setIsTransitioning(true);
     setCurrentSection(sectionIndex);
+    onSectionChange?.(sectionIndex);
 
     // Reset transition state after animation completes
     setTimeout(() => {
       setIsTransitioning(false);
     }, 800);
-  }, [currentSection, totalSections, isTransitioning]);
+  }, [currentSection, totalSections, isTransitioning, onSectionChange]);
 
   const handleWheel = useCallback((e: WheelEvent) => {
-    if (isMobile || isTransitioning) return;
+    if (isTransitioning) return;
 
     e.preventDefault();
     
@@ -39,28 +50,45 @@ const FullPageScroll: React.FC<FullPageScrollProps> = ({ children, className = '
     if (now - lastWheelTime.current < 300) return; // Throttle
     lastWheelTime.current = now;
 
-    if (e.deltaY > 0) {
-      // Scroll down
+    const direction = e.deltaY > 0 ? 'down' : 'up';
+    
+    // If we're in the problem section and have a handler, use it
+    if (isProblemSectionActive && onProblemSectionScroll) {
+      const handled = onProblemSectionScroll(direction);
+      if (handled) return; // Problem section handled the scroll
+    }
+
+    // Normal section navigation
+    if (direction === 'down') {
       goToSection(currentSection + 1);
     } else {
-      // Scroll up
       goToSection(currentSection - 1);
     }
-  }, [currentSection, goToSection, isMobile, isTransitioning]);
+  }, [currentSection, goToSection, isTransitioning, isProblemSectionActive, onProblemSectionScroll]);
 
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
-    if (isMobile || isTransitioning) return;
+    if (isTransitioning) return;
 
     switch (e.key) {
       case 'ArrowDown':
       case 'PageDown':
         e.preventDefault();
-        goToSection(currentSection + 1);
+        if (isProblemSectionActive && onProblemSectionScroll) {
+          const handled = onProblemSectionScroll('down');
+          if (!handled) goToSection(currentSection + 1);
+        } else {
+          goToSection(currentSection + 1);
+        }
         break;
       case 'ArrowUp':
       case 'PageUp':
         e.preventDefault();
-        goToSection(currentSection - 1);
+        if (isProblemSectionActive && onProblemSectionScroll) {
+          const handled = onProblemSectionScroll('up');
+          if (!handled) goToSection(currentSection - 1);
+        } else {
+          goToSection(currentSection - 1);
+        }
         break;
       case 'Home':
         e.preventDefault();
@@ -71,33 +99,75 @@ const FullPageScroll: React.FC<FullPageScrollProps> = ({ children, className = '
         goToSection(totalSections - 1);
         break;
     }
-  }, [currentSection, goToSection, isMobile, isTransitioning, totalSections]);
+  }, [currentSection, goToSection, isTransitioning, totalSections, isProblemSectionActive, onProblemSectionScroll]);
+
+  // Mobile touch handling
+  const [touchStart, setTouchStart] = useState<{ y: number; time: number } | null>(null);
+
+  const handleTouchStart = useCallback((e: TouchEvent) => {
+    const touch = e.touches[0];
+    setTouchStart({
+      y: touch.clientY,
+      time: Date.now()
+    });
+  }, []);
+
+  const handleTouchEnd = useCallback((e: TouchEvent) => {
+    if (!touchStart || isTransitioning) return;
+    
+    const touch = e.changedTouches[0];
+    const deltaY = touchStart.y - touch.clientY;
+    const deltaTime = Date.now() - touchStart.time;
+    const velocity = Math.abs(deltaY) / deltaTime;
+    
+    setTouchStart(null);
+    
+    const now = Date.now();
+    if (now - lastTouchTime.current < 500) return; // Throttle
+    lastTouchTime.current = now;
+    
+    // Check if it's a valid swipe (minimum distance and velocity)
+    if (Math.abs(deltaY) > 50 && velocity > 0.3) {
+      const direction = deltaY > 0 ? 'down' : 'up';
+      
+      // If we're in the problem section and have a handler, use it
+      if (isProblemSectionActive && onProblemSectionScroll) {
+        const handled = onProblemSectionScroll(direction);
+        if (handled) return; // Problem section handled the scroll
+      }
+
+      // Normal section navigation
+      if (direction === 'down') {
+        goToSection(currentSection + 1);
+      } else {
+        goToSection(currentSection - 1);
+      }
+    }
+  }, [touchStart, isTransitioning, currentSection, goToSection, isProblemSectionActive, onProblemSectionScroll]);
 
   useEffect(() => {
-    if (isMobile) return;
-
     const container = containerRef.current;
     if (!container) return;
 
     container.addEventListener('wheel', handleWheel, { passive: false });
     document.addEventListener('keydown', handleKeyDown);
+    
+    if (isMobile) {
+      container.addEventListener('touchstart', handleTouchStart, { passive: true });
+      container.addEventListener('touchend', handleTouchEnd, { passive: true });
+    }
 
     return () => {
       container.removeEventListener('wheel', handleWheel);
       document.removeEventListener('keydown', handleKeyDown);
+      if (isMobile) {
+        container.removeEventListener('touchstart', handleTouchStart);
+        container.removeEventListener('touchend', handleTouchEnd);
+      }
     };
-  }, [handleWheel, handleKeyDown, isMobile]);
+  }, [handleWheel, handleKeyDown, handleTouchStart, handleTouchEnd, isMobile]);
 
-  // Mobile: render normally with special handling for Problem section
-  if (isMobile) {
-    return (
-      <div className={className}>
-        {children}
-      </div>
-    );
-  }
-
-  // Desktop: full-page scroll
+  // Both mobile and desktop: full-page scroll
   return (
     <div 
       ref={containerRef}

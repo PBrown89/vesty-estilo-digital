@@ -1,15 +1,15 @@
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import MobileCardStack from "./MobileCardStack";
 
-const Problem = () => {
+const Problem = ({ onSectionScroll, isActive }: { onSectionScroll?: (handler: (direction: 'up' | 'down') => boolean) => void; isActive?: boolean }) => {
   const [selectedPerson, setSelectedPerson] = useState<any>(null);
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
-  const [showMobileStack, setShowMobileStack] = useState(true);
-  const [mobileStackComplete, setMobileStackComplete] = useState(false);
+  const [currentCardIndex, setCurrentCardIndex] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
   const hoverTimerRef = useRef<NodeJS.Timeout | null>(null);
   const isMobile = useIsMobile();
 
@@ -128,20 +128,45 @@ const Problem = () => {
     setHoveredCard(null);
   };
 
-  const handleMobileStackComplete = () => {
-    setMobileStackComplete(true);
-    setShowMobileStack(false);
+  const handleCardAdvance = (direction: 'up' | 'down'): boolean => {
+    if (!isMobile || isAnimating) return false;
+    
+    if (direction === 'down' && currentCardIndex < people.length - 1) {
+      setIsAnimating(true);
+      setTimeout(() => {
+        setCurrentCardIndex(prev => prev + 1);
+        setIsAnimating(false);
+      }, 300);
+      return true; // Handled
+    }
+    
+    if (direction === 'up' && currentCardIndex > 0) {
+      setIsAnimating(true);
+      setTimeout(() => {
+        setCurrentCardIndex(prev => prev - 1);
+        setIsAnimating(false);
+      }, 300);
+      return true; // Handled
+    }
+    
+    return false; // Not handled, allow normal section navigation
   };
 
-  // Mobile card stack experience
-  if (isMobile && showMobileStack && !mobileStackComplete) {
-    return <MobileCardStack people={people} onAllCardsDiscarded={handleMobileStackComplete} />;
-  }
+  // Pass the handler to parent via onSectionScroll prop
+  useEffect(() => {
+    if (onSectionScroll && isMobile && isActive) {
+      // Update the parent's handler
+      onSectionScroll(handleCardAdvance);
+    }
+  }, [onSectionScroll, isMobile, isActive, currentCardIndex, isAnimating]);
 
-  // Desktop and mobile (after cards completed) experience
+  const remainingCards = people.slice(currentCardIndex);
+  const isComplete = currentCardIndex >= people.length;
+
+  // Mobile and desktop experience
   return (
     <>
-      <section className="min-h-screen py-32 bg-white relative overflow-hidden">
+      <section className="min-h-screen py-32 bg-white relative overflow-hidden flex flex-col justify-center">
         <div className="container mx-auto px-4 text-center mb-20">
           <div 
             ref={ref}
@@ -158,7 +183,66 @@ const Problem = () => {
           </div>
         </div>
 
-        <div className="relative h-[600px] max-w-6xl mx-auto">
+        {isMobile ? (
+          // Mobile: Card stack layout
+          <div className="flex-1 flex items-center justify-center">
+            <div className="relative w-80 h-96">
+              {remainingCards.map((person, index) => {
+                const isTopCard = index === 0;
+                const zIndex = remainingCards.length - index;
+                const offset = Math.min(index * 4, 16);
+                
+                return (
+                  <div
+                    key={`${person.id}-${currentCardIndex}`}
+                    className={`absolute inset-0 bg-white rounded-2xl p-6 border border-gray-200 shadow-lg transition-all duration-300 ${
+                      isTopCard && isAnimating ? 'opacity-0 translate-y-[-100vh]' : 'opacity-100'
+                    }`}
+                    style={{
+                      zIndex,
+                      transform: `translateY(${offset}px) scale(${1 - index * 0.03})`,
+                      filter: index > 0 ? 'brightness(0.9)' : 'brightness(1)'
+                    }}
+                  >
+                    <div className="flex items-start gap-4 mb-4">
+                      <img
+                        src={person.image}
+                        alt={person.name}
+                        className="w-16 h-16 rounded-full object-cover"
+                      />
+                      <div>
+                        <h3 className="font-bold font-outfit text-gray-800 text-lg">
+                          {person.name}
+                        </h3>
+                        <p className="text-gray-500 font-inter text-sm">
+                          {person.age} años
+                        </p>
+                      </div>
+                    </div>
+                    <p className="font-inter text-gray-600 italic leading-relaxed">
+                      "{person.problem}"
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+            
+            {/* Mobile swipe indicator */}
+            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-gray-500">
+              <div className="animate-bounce mb-2">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                </svg>
+              </div>
+              <p className="text-sm font-inter">Desliza hacia arriba</p>
+              <p className="text-xs font-inter text-gray-400">
+                {currentCardIndex + 1} de {people.length}
+              </p>
+            </div>
+          </div>
+        ) : (
+          // Desktop: Bulletin board layout
+          <div className="relative h-[600px] max-w-6xl mx-auto">
           {/* Pushpins for bulletin board effect */}
           <div className="absolute top-12 left-32 w-4 h-4 bg-pink-400 rounded-full shadow-lg transform rotate-12 z-10">
             <div className="absolute top-1 left-1 w-2 h-2 bg-pink-600 rounded-full"></div>
@@ -209,8 +293,9 @@ const Problem = () => {
                 descubrir historia
               </button>
             </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </section>
 
       <Dialog open={!!selectedPerson} onOpenChange={() => setSelectedPerson(null)}>

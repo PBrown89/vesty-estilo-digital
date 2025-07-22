@@ -1,4 +1,5 @@
 
+import { useState } from "react";
 import Hero from "@/components/Hero";
 import AppStores from "@/components/AppStores";
 import Problem from "@/components/Problem";
@@ -12,11 +13,26 @@ import FinalCTA from "@/components/FinalCTA";
 import FullPageScroll from "@/components/FullPageScroll";
 
 const Index = () => {
+  const [problemSectionHandler, setProblemSectionHandler] = useState<((direction: 'up' | 'down') => boolean) | null>(null);
+  const [currentSection, setCurrentSection] = useState(0);
+
+  const handleSectionScroll = (handler: (direction: 'up' | 'down') => boolean) => {
+    setProblemSectionHandler(() => handler);
+  };
+
+  const handleSectionChange = (section: number) => {
+    setCurrentSection(section);
+  };
+
   return (
-    <FullPageScroll>
+    <FullPageScroll 
+      onProblemSectionScroll={problemSectionHandler || undefined}
+      isProblemSectionActive={currentSection === 2}
+      onSectionChange={handleSectionChange}
+    >
       <Hero />
       <AppStores />
-      <Problem />
+      <Problem onSectionScroll={handleSectionScroll} isActive={currentSection === 2} />
       <HowItWorks />
       <VirtualTryOn />
       <SwipeFeature />
