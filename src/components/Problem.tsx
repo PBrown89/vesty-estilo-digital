@@ -143,6 +143,14 @@ const Problem = () => {
         </div>
 
         <div className="relative h-[600px] max-w-6xl mx-auto">
+          {/* Pushpins for bulletin board effect */}
+          <div className="absolute top-12 left-32 w-4 h-4 bg-pink-400 rounded-full shadow-lg transform rotate-12 z-10">
+            <div className="absolute top-1 left-1 w-2 h-2 bg-pink-600 rounded-full"></div>
+          </div>
+          <div className="absolute top-20 right-40 w-4 h-4 bg-yellow-400 rounded-full shadow-lg transform -rotate-6 z-10">
+            <div className="absolute top-1 left-1 w-2 h-2 bg-yellow-600 rounded-full"></div>
+          </div>
+          
           {people.map((person, index) => (
             <div
               key={person.id}
