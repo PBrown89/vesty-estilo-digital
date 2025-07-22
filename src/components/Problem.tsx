@@ -97,7 +97,7 @@ const Problem = () => {
 
   return (
     <>
-      <section className="min-h-screen py-32 bg-gradient-to-br from-purple-50 to-pink-50 relative overflow-hidden">
+      <section className="min-h-screen py-32 bg-white relative overflow-hidden">
         <div className="container mx-auto px-4 text-center mb-20">
           <div 
             ref={ref}
@@ -106,7 +106,7 @@ const Problem = () => {
             }`}
           >
             <h2 className="text-4xl md:text-5xl font-black font-outfit text-gray-800 mb-6">
-              ¿Te suena familiar?
+              Tablón de historias
             </h2>
             <p className="text-xl font-inter text-gray-600 max-w-2xl mx-auto mb-4">
               Pequeñas historias con las que quizás te sientas identificada
