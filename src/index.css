@@ -128,28 +128,4 @@
   .animate-scroll-smooth {
     animation: scroll-smooth 40s linear infinite;
   }
-  
-  /* Story-style animations */
-  @keyframes story-progress {
-    0% { width: 0%; }
-    100% { width: 100%; }
-  }
-  
-  .story-progress {
-    animation: story-progress var(--duration, 5s) linear forwards;
-  }
-  
-  /* Phone glow effect */
-  @keyframes phone-glow {
-    0%, 100% { 
-      box-shadow: 0 0 40px rgba(115, 91, 242, 0.3);
-    }
-    50% { 
-      box-shadow: 0 0 60px rgba(236, 72, 153, 0.4);
-    }
-  }
-  
-  .phone-glow {
-    animation: phone-glow 4s ease-in-out infinite;
-  }
 }

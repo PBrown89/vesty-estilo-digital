@@ -2,7 +2,7 @@
 import Hero from "@/components/Hero";
 import AppStores from "@/components/AppStores";
 import Problem from "@/components/Problem";
-import HowItWorksNew from "@/components/HowItWorksNew";
+import HowItWorks from "@/components/HowItWorks";
 import VirtualTryOn from "@/components/VirtualTryOn";
 import SwipeFeature from "@/components/SwipeFeature";
 import OutfitPlanner from "@/components/OutfitPlanner";
@@ -17,7 +17,7 @@ const Index = () => {
       <Hero />
       <AppStores />
       <Problem />
-      <HowItWorksNew />
+      <HowItWorks />
       <VirtualTryOn />
       <SwipeFeature />
       <OutfitPlanner />
