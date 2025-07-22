@@ -128,4 +128,14 @@
   .animate-scroll-smooth {
     animation: scroll-smooth 40s linear infinite;
   }
+
+  /* Disable default scrollbar on full-page scroll */
+  .fullpage-scroll::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .fullpage-scroll {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }

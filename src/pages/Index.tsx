@@ -6,14 +6,14 @@ import HowItWorks from "@/components/HowItWorks";
 import VirtualTryOn from "@/components/VirtualTryOn";
 import SwipeFeature from "@/components/SwipeFeature";
 import OutfitPlanner from "@/components/OutfitPlanner";
-
 import Pricing from "@/components/Pricing";
 import AppDownloadCTA from "@/components/AppDownloadCTA";
 import FinalCTA from "@/components/FinalCTA";
+import FullPageScroll from "@/components/FullPageScroll";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <FullPageScroll>
       <Hero />
       <AppStores />
       <Problem />
@@ -21,11 +21,10 @@ const Index = () => {
       <VirtualTryOn />
       <SwipeFeature />
       <OutfitPlanner />
-      
       <Pricing />
       <AppDownloadCTA />
       <FinalCTA />
-    </div>
+    </FullPageScroll>
   );
 };
 
