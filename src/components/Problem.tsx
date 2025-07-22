@@ -37,7 +37,7 @@ const Problem = () => {
   useEffect(() => {
     if (sectionInView && !sectionCompleted) {
       const timer = setTimeout(() => {
-        if (currentStep < problems.length) {
+        if (currentStep < problems.length + 1) { // +1 to account for header
           setCurrentStep(prev => prev + 1);
         } else {
           setSectionCompleted(true);
