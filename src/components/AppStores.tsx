@@ -53,11 +53,11 @@ const AppStores = () => {
   return (
     <section className="h-screen bg-white relative overflow-hidden flex items-center justify-center" style={{
       backgroundImage: `url('/lovable-uploads/b80afb35-236a-4e68-86ae-5fc651f23a8e.png')`,
-      backgroundSize: 'contain',
+      backgroundSize: 'cover',
       backgroundPosition: 'center top',
       backgroundRepeat: 'no-repeat'
     }}>
-      <div className="container mx-auto px-6 relative z-10 h-full flex flex-col justify-center items-center">
+      <div className="container mx-auto px-6 relative z-10 h-full flex flex-col justify-center items-center mt-10 md:mt-0">
         <div className="text-center">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-normal leading-tight" style={{
             color: '#7F7F7F'
@@ -71,7 +71,7 @@ const AppStores = () => {
         
         {/* Grid layout for logos */}
         <div className="flex items-center justify-center mt-16">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-6 max-w-4xl w-full">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-3 md:gap-6 max-w-4xl w-full">
             {storeLogos.map((store, index) => (
               <div 
                 key={index} 
@@ -82,7 +82,7 @@ const AppStores = () => {
                 }`}
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
-                <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-36 md:h-36 lg:w-40 lg:h-40 flex items-center justify-center p-4 bg-white/20 backdrop-blur-sm rounded-xl border border-white/30 hover:bg-white/30 hover:scale-110 transition-all duration-300">
+                <div className="w-32 h-32 sm:w-28 sm:h-28 md:w-36 md:h-36 lg:w-40 lg:h-40 flex items-center justify-center p-4 bg-white/20 backdrop-blur-sm rounded-xl border border-white/30 hover:bg-white/30 hover:scale-110 transition-all duration-300">
                   {store.hasLogo ? (
                     <img 
                       src={store.src} 
