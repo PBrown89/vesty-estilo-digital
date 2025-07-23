@@ -92,7 +92,7 @@ const HowItWorks = () => {
         <div className="max-w-7xl mx-auto">
           {/* Mobile Stack View */}
           {isMobile ? (
-            <div className="relative h-[500px] w-full flex items-center justify-center">
+            <div className="relative h-[500px] w-full flex justify-center">
               <div className="relative w-full max-w-xs h-auto">
                 {steps.map((step, index) => {
                   // Always call useInView to maintain hook consistency
