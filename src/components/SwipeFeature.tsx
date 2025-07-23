@@ -104,7 +104,7 @@ const SwipeFeature = () => {
     triggerOnce: true,
     threshold: 0.2
   });
-  return <section id="funciones" className="bg-white pb-[180px]">
+  return <section id="funciones" className="bg-white pb-[180px] mt-8">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
           {/* Contenido izquierdo */}
@@ -142,7 +142,7 @@ const SwipeFeature = () => {
               <img 
                 src="/lovable-uploads/14ec2b51-1920-4cd5-b34d-6909cb318644.png" 
                 alt="App mockup interface" 
-                className="w-full max-w-xs mx-auto h-auto rounded-3xl shadow-2xl"
+                className="w-full max-w-[19.2rem] mx-auto h-auto rounded-3xl shadow-2xl"
               />
             </div>
           </div>
