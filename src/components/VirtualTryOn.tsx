@@ -58,7 +58,7 @@ const VirtualTryOn = () => {
                 Sin esperas, sin colas, sin probadores. Solo tú, tu estilo y un espejo digital que entiende tu cuerpo y tus gustos.
               </p>
               
-              <p className="text-base lg:text-lg font-inter text-gray-600 leading-relaxed">
+              <p className="hidden md:block text-base lg:text-lg font-inter text-gray-600 leading-relaxed">
                 Descubre cómo te queda antes de comprar y ahorra tiempo, devoluciones y dudas.
               </p>
             </div>
