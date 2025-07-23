@@ -121,10 +121,10 @@ const Problem = () => {
               width: '280px'
             }}
           >
-            <div className="flex items-start gap-4 mb-4">
-              <div className="w-16 h-16 rounded-full bg-gray-300 flex-shrink-0"></div>
-              <div>
-                <h3 className="font-bold font-outfit text-gray-800 text-lg">
+            <div className="flex items-start gap-3 mb-3">
+              <div className="w-12 h-12 rounded-full bg-gray-300 flex-shrink-0"></div>
+              <div className="flex-1">
+                <h3 className="font-bold font-outfit text-gray-800 text-base">
                   {story.name}
                 </h3>
                 <p className="text-gray-500 font-inter text-sm">
@@ -132,9 +132,12 @@ const Problem = () => {
                 </p>
               </div>
             </div>
-            <p className="font-inter text-gray-600 italic leading-relaxed">
+            <p className="font-inter text-gray-600 italic leading-relaxed text-sm mb-3">
               "{story.quote}"
             </p>
+            <a href="#" className="text-blue-500 font-inter text-sm hover:underline">
+              descubrir historia
+            </a>
           </div>
         ))}
       </div>
