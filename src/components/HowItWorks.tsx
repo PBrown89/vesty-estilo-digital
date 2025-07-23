@@ -77,7 +77,7 @@ const HowItWorks = () => {
   });
 
   return (
-    <section id="como-funciona" className="py-24 bg-gradient-to-br from-gray-50 via-white to-gray-100" data-video-section>
+    <section id="como-funciona" className="py-24" data-video-section>
       <div className="container mx-auto px-6">
         {/* Header */}
         <div 
@@ -145,18 +145,26 @@ const HowItWorks = () => {
                         {step.number}
                       </div>
                       
-                      {/* Video Container */}
-                      <div className={`bg-gradient-to-br ${step.bgColor} rounded-2xl mb-4 mt-4 overflow-hidden`}>
-                        <div className="aspect-square relative">
-                          <iframe
-                            src={`https://www.youtube.com/embed/${step.videoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${step.videoId}&modestbranding=1&rel=0&showinfo=0`}
-                            className="w-full h-full object-cover rounded-2xl"
-                            allow="autoplay; encrypted-media"
-                            allowFullScreen
-                            title="Video preview"
-                          />
-                        </div>
-                      </div>
+                       {/* Video Container */}
+                       <div className={`bg-gradient-to-br ${step.bgColor} rounded-2xl mb-4 mt-4 overflow-hidden`}>
+                         <div className="aspect-square relative">
+                           {isActive ? (
+                             <iframe
+                               src={`https://www.youtube.com/embed/${step.videoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${step.videoId}&modestbranding=1&rel=0&showinfo=0`}
+                               className="w-full h-full object-cover rounded-2xl"
+                               allow="autoplay; encrypted-media"
+                               allowFullScreen
+                               title="Video preview"
+                             />
+                           ) : (
+                             <div className="w-full h-full flex items-center justify-center rounded-2xl bg-black/5">
+                               <div className="bg-white/90 backdrop-blur-sm rounded-full p-4 shadow-lg">
+                                 <Play className="w-8 h-8 text-gray-800 ml-1" fill="currentColor" />
+                               </div>
+                             </div>
+                           )}
+                         </div>
+                       </div>
 
                       {/* Content */}
                       <div className="space-y-3">
