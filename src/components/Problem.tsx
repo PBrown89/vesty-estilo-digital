@@ -241,59 +241,61 @@ const Problem = ({ onSectionScroll, isActive }: { onSectionScroll?: (handler: (d
             </div>
           </div>
         ) : (
-          // Desktop and Tablet: Horizontal scrollable layout
-          <div className="relative w-full max-w-7xl mx-auto overflow-hidden">
-            <div className="flex space-x-8 px-8 py-8 overflow-x-auto scrollbar-hide">
-              {people.map((person, index) => (
-                <div
-                  key={person.id}
-                  className={`flex-shrink-0 w-80 bg-white rounded-2xl p-6 border border-gray-200 cursor-pointer transition-all duration-500 ease-out shadow-lg hover:shadow-xl ${
-                    inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                  } ${hoveredCard === person.id ? 'scale-105' : ''}`}
-                  style={{
-                    transitionDelay: inView ? `${index * 100}ms` : '0ms',
-                    zIndex: hoveredCard === person.id ? 50 : 20 + index
-                  }}
-                  onMouseEnter={() => handleCardHover(person.id)}
-                  onMouseLeave={handleCardLeave}
-                  onClick={() => setSelectedPerson(person)}
-                >
-                  <div className="flex items-start gap-4 mb-4">
-                    <img
-                      src={person.image}
-                      alt={person.name}
-                      className="w-16 h-16 rounded-full object-cover"
-                    />
-                    <div>
-                      <h3 className="font-bold font-outfit text-gray-800 text-lg">
-                        {person.name}
-                      </h3>
-                      <p className="text-gray-500 font-inter text-sm">
-                        {person.age} años
-                      </p>
-                    </div>
-                  </div>
-                  <p className="font-inter text-gray-600 italic leading-relaxed mb-4">
-                    "{person.problem}"
-                  </p>
-                  <button className="text-blue-500 font-inter text-sm underline hover:text-blue-600 transition-colors">
-                    descubrir historia
-                  </button>
-                </div>
-              ))}
+          // Desktop and Tablet: Messy bulletin board layout
+          <div className="relative h-[600px] max-w-6xl mx-auto">
+            {/* Pushpins for bulletin board effect */}
+            <div className="absolute top-12 left-32 w-4 h-4 bg-pink-400 rounded-full shadow-lg transform rotate-12 z-10">
+              <div className="absolute top-1 left-1 w-2 h-2 bg-pink-600 rounded-full"></div>
+            </div>
+            <div className="absolute top-20 right-40 w-4 h-4 bg-yellow-400 rounded-full shadow-lg transform -rotate-6 z-10">
+              <div className="absolute top-1 left-1 w-2 h-2 bg-yellow-600 rounded-full"></div>
+            </div>
+            <div className="absolute bottom-24 left-1/4 w-4 h-4 bg-blue-400 rounded-full shadow-lg transform rotate-45 z-10">
+              <div className="absolute top-1 left-1 w-2 h-2 bg-blue-600 rounded-full"></div>
             </div>
             
-            {/* Scroll indicator */}
-            <div className="absolute right-8 top-1/2 transform -translate-y-1/2 flex flex-col items-center text-gray-500">
-              <div className="animate-bounce mb-2 rotate-90">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
+            {people.map((person, index) => (
+              <div
+                key={person.id}
+                className={`absolute w-80 bg-white rounded-2xl p-6 border border-gray-200 cursor-pointer transition-all duration-500 ease-out shadow-lg hover:shadow-xl ${
+                  inView ? 'opacity-100' : 'opacity-0'
+                } ${hoveredCard === person.id ? 'scale-110 z-50' : ''}`}
+                style={{
+                  top: person.position.top,
+                  left: person.position.left,
+                  transform: hoveredCard === person.id 
+                    ? `rotate(${person.position.rotation}) scale(1.1)` 
+                    : `rotate(${person.position.rotation})`,
+                  transitionDelay: inView ? `${index * 150}ms` : '0ms',
+                  zIndex: hoveredCard === person.id ? 50 : 20 + index
+                }}
+                onMouseEnter={() => handleCardHover(person.id)}
+                onMouseLeave={handleCardLeave}
+                onClick={() => setSelectedPerson(person)}
+              >
+                <div className="flex items-start gap-4 mb-4">
+                  <img
+                    src={person.image}
+                    alt={person.name}
+                    className="w-16 h-16 rounded-full object-cover"
+                  />
+                  <div>
+                    <h3 className="font-bold font-outfit text-gray-800 text-lg">
+                      {person.name}
+                    </h3>
+                    <p className="text-gray-500 font-inter text-sm">
+                      {person.age} años
+                    </p>
+                  </div>
+                </div>
+                <p className="font-inter text-gray-600 italic leading-relaxed mb-4">
+                  "{person.problem}"
+                </p>
+                <button className="text-blue-500 font-inter text-sm underline hover:text-blue-600 transition-colors">
+                  descubrir historia
+                </button>
               </div>
-              <p className="text-xs font-inter text-gray-400 writing-mode-vertical-rl text-orientation-mixed">
-                Desliza
-              </p>
-            </div>
+            ))}
           </div>
         )}
       </section>
