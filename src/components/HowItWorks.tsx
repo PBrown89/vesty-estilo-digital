@@ -101,6 +101,12 @@ const HowItWorks = () => {
             <div className="relative h-[600px] w-full px-4 flex items-center justify-center">
               <div className="relative w-full max-w-sm h-auto">
                 {steps.map((step, index) => {
+                  // Always call useInView to maintain hook consistency
+                  const { ref, inView } = useInView({
+                    triggerOnce: true,
+                    threshold: 0.2
+                  });
+                  
                   const isActive = index === currentVideoIndex;
                   const isNext = index === currentVideoIndex + 1;
                   const isPrev = index === currentVideoIndex - 1;
@@ -126,6 +132,7 @@ const HowItWorks = () => {
                   return (
                     <div
                       key={index}
+                      ref={ref}
                       className="absolute top-0 left-0 w-full bg-white rounded-3xl p-6 shadow-lg transition-all duration-500 ease-out"
                       style={{
                         transform,
