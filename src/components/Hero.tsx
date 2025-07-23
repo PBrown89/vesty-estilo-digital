@@ -46,7 +46,7 @@ const Hero = () => {
         </div>
 
         {/* Badge superior - Solo en desktop */}
-        <div className="hidden md:inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-3 md:px-6 py-1.5 md:py-3 text-xs md:text-sm font-medium text-white border border-white/30 mb-4 md:mb-8 rounded-2xl bg-[AB9BFE]">
+        <div className="hidden md:inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 text-sm font-medium text-white border border-white/30 mb-4 md:mb-8 rounded-2xl bg-[AB9BFE] w-fit">
           <span className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></span>
           n°1 en análisis de estilo personal
         </div>
