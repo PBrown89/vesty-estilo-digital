@@ -38,9 +38,9 @@ const AppStores = () => {
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat'
   }}>
-      <div className="container mx-auto px-6 relative z-10 h-full flex flex-col justify-center">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal leading-tight" style={{
+      <div className="container mx-auto px-6 relative z-10 py-[40px]">
+        <div className="text-center my-10 mb-24">
+          <h2 className="text-4xl md:text-5xl font-normal leading-tight" style={{
           color: '#7F7F7F'
         }}>
             Más de <span className="font-bold" style={{
@@ -50,51 +50,37 @@ const AppStores = () => {
           </h2>
         </div>
         
-        {/* Logo carousel - one at a time */}
-        <div className="flex-1 flex items-center justify-center">
-          <div className="relative w-full max-w-lg h-40 sm:h-48 lg:h-56">
-            <div className="overflow-hidden h-full">
-              <div className="flex animate-scroll-smooth items-center h-full">
-                {/* First set of logos */}
-                {storeLogos.map((store, index) => (
-                  <div 
-                    key={`first-${index}`} 
-                    className="flex-shrink-0 w-full h-full flex items-center justify-center px-8"
-                  >
-                    {store.hasLogo ? (
-                      <img 
-                        src={store.src} 
-                        alt={store.name} 
-                        className="max-w-full max-h-full object-contain opacity-60 hover:opacity-100 transition-opacity duration-500 mix-blend-multiply" 
-                      />
-                    ) : (
-                      <div className="w-32 h-16 bg-gray-200 rounded-md flex items-center justify-center border border-gray-100">
-                        <span className="text-gray-700 text-sm font-semibold tracking-wide">{store.name}</span>
-                      </div>
-                    )}
-                  </div>
-                ))}
-                
-                {/* Second set for seamless loop */}
-                {storeLogos.map((store, index) => (
-                  <div 
-                    key={`second-${index}`} 
-                    className="flex-shrink-0 w-full h-full flex items-center justify-center px-8"
-                  >
-                    {store.hasLogo ? (
-                      <img 
-                        src={store.src} 
-                        alt={store.name} 
-                        className="max-w-full max-h-full object-contain opacity-60 hover:opacity-100 transition-opacity duration-500 mix-blend-multiply" 
-                      />
-                    ) : (
-                      <div className="w-32 h-16 bg-gray-200 rounded-md flex items-center justify-center border border-gray-100">
-                        <span className="text-gray-700 text-sm font-semibold tracking-wide">{store.name}</span>
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
+        {/* Carousel container with gradient masks */}
+        <div className="relative">
+          {/* Left gradient mask */}
+          <div className="absolute left-0 top-0 w-32 h-full bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+          
+          {/* Right gradient mask */}
+          <div className="absolute right-0 top-0 w-32 h-full bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+          
+          {/* Scrolling logos container */}
+          <div className="overflow-hidden">
+            <div className="flex animate-scroll-smooth items-center space-x-16">
+              {/* First set of logos */}
+              {storeLogos.map((store, index) => <div key={`first-${index}`} className="flex-shrink-0 w-24 h-12 flex items-center justify-center opacity-40 hover:opacity-80 transition-opacity duration-300">
+                  {store.hasLogo ? <img src={store.src} alt={store.name} className="w-full h-full object-contain mix-blend-multiply" /> : <div className="w-full h-full bg-gray-200 rounded-md flex items-center justify-center border border-gray-100">
+                      <span className="text-gray-700 text-xs font-semibold tracking-wide">{store.name}</span>
+                    </div>}
+                </div>)}
+              
+              {/* Second set for seamless loop */}
+              {storeLogos.map((store, index) => <div key={`second-${index}`} className="flex-shrink-0 w-24 h-12 flex items-center justify-center opacity-40 hover:opacity-80 transition-opacity duration-300">
+                  {store.hasLogo ? <img src={store.src} alt={store.name} className="w-full h-full object-contain mix-blend-multiply" /> : <div className="w-full h-full bg-gray-200 rounded-md flex items-center justify-center border border-gray-100">
+                      <span className="text-gray-700 text-xs font-semibold tracking-wide">{store.name}</span>
+                    </div>}
+                </div>)}
+              
+              {/* Third set for seamless loop */}
+              {storeLogos.map((store, index) => <div key={`third-${index}`} className="flex-shrink-0 w-24 h-12 flex items-center justify-center opacity-40 hover:opacity-80 transition-opacity duration-300">
+                  {store.hasLogo ? <img src={store.src} alt={store.name} className="w-full h-full object-contain mix-blend-multiply" /> : <div className="w-full h-full bg-gray-200 rounded-md flex items-center justify-center border border-gray-100">
+                      <span className="text-gray-700 text-xs font-semibold tracking-wide">{store.name}</span>
+                    </div>}
+                </div>)}
             </div>
           </div>
         </div>
