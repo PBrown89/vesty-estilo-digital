@@ -2,11 +2,9 @@
 import { useState, useRef, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import MobileCardStack from "./MobileCardStack";
 
 const Problem = ({ onSectionScroll, isActive }: { onSectionScroll?: (handler: (direction: 'up' | 'down') => boolean) => void; isActive?: boolean }) => {
-  const [selectedPerson, setSelectedPerson] = useState<any>(null);
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -271,7 +269,6 @@ const Problem = ({ onSectionScroll, isActive }: { onSectionScroll?: (handler: (d
                 }}
                 onMouseEnter={() => handleCardHover(person.id)}
                 onMouseLeave={handleCardLeave}
-                onClick={() => setSelectedPerson(person)}
               >
                 <div className="flex items-start gap-4 mb-4">
                   <img
@@ -284,50 +281,18 @@ const Problem = ({ onSectionScroll, isActive }: { onSectionScroll?: (handler: (d
                       {person.name}
                     </h3>
                     <p className="text-gray-500 font-inter text-sm">
-                      {person.age} años
+                      {person.age} años - Estudiante
                     </p>
                   </div>
                 </div>
-                <p className="font-inter text-gray-600 italic leading-relaxed mb-4">
+                <p className="font-inter text-gray-600 italic leading-relaxed">
                   "{person.problem}"
                 </p>
-                <button className="text-blue-500 font-inter text-sm underline hover:text-blue-600 transition-colors">
-                  descubrir historia
-                </button>
               </div>
             ))}
           </div>
         )}
       </section>
-
-      <Dialog open={!!selectedPerson} onOpenChange={() => setSelectedPerson(null)}>
-        <DialogContent className="max-w-2xl">
-          {selectedPerson && (
-            <>
-              <DialogHeader>
-                <div className="flex items-center gap-4 mb-4">
-                  <img
-                    src={selectedPerson.image}
-                    alt={selectedPerson.name}
-                    className="w-20 h-20 rounded-full object-cover"
-                  />
-                  <div>
-                    <DialogTitle className="text-2xl font-outfit text-gray-800">
-                      {selectedPerson.name}
-                    </DialogTitle>
-                    <p className="text-gray-500 font-inter">
-                      {selectedPerson.age} años
-                    </p>
-                  </div>
-                </div>
-              </DialogHeader>
-              <DialogDescription className="text-gray-700 font-inter leading-relaxed text-base">
-                {selectedPerson.story}
-              </DialogDescription>
-            </>
-          )}
-        </DialogContent>
-      </Dialog>
     </>
   );
 };
