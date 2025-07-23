@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Hero from "@/components/Hero";
 import AppStores from "@/components/AppStores";
-import Problem from "@/components/Problem";
+
 import HowItWorks from "@/components/HowItWorks";
 import VirtualTryOn from "@/components/VirtualTryOn";
 import SwipeFeature from "@/components/SwipeFeature";
@@ -32,7 +32,7 @@ const Index = () => {
     >
       <Hero />
       <AppStores />
-      <Problem />
+      
       <HowItWorks />
       <VirtualTryOn />
       <SwipeFeature />
