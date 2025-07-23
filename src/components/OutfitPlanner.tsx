@@ -11,7 +11,7 @@ const OutfitPlanner = () => {
     threshold: 0.2
   });
 
-  return <section className="py-16 pb-[420px] md:py-[208px]">
+  return <section className="py-16 pb-48 md:py-[208px]">
       <div className="container px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
           {/* Contenido derecho */}
@@ -25,7 +25,7 @@ const OutfitPlanner = () => {
               Planifica tus outfits gratis y sin límite
             </h2>
             
-            <p className="text-lg font-inter text-gray-600 leading-relaxed font-normal">Deja el caos fuera y planifica tus outfits. Haz maletas sin estrés y saca más partido a tu armario.
+            <p className="text-lg font-inter text-gray-600 leading-relaxed font-normal">Deja el caos fuera y planifica tus outfits.
             </p>
 
             <div className="space-y-2">
@@ -50,7 +50,7 @@ const OutfitPlanner = () => {
             <img 
               src="/lovable-uploads/f78ee6b5-efc1-4dcb-baf4-1fd0de4db1fb.png" 
               alt="Planificador de outfits móvil" 
-              className="w-80 h-auto max-w-full"
+              className="w-48 h-auto max-w-full"
             />
           </div>
         </div>
