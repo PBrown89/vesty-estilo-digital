@@ -142,7 +142,7 @@ const SwipeFeature = () => {
               <img 
                 src="/lovable-uploads/f011518d-ac62-4e1b-9472-9eaf660a07c3.png" 
                 alt="App mockup interface" 
-                className="w-full max-w-[15.36rem] mx-auto h-auto rounded-3xl shadow-2xl"
+                className="w-full max-w-[15.36rem] mx-auto h-auto rounded-t-3xl"
               />
             </div>
           </div>
