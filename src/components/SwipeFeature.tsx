@@ -138,11 +138,11 @@ const SwipeFeature = () => {
             }`}
             style={{transitionDelay: mockupInView ? '200ms' : '0ms'}}
           >
-            <div className="relative">
+            <div className="relative my-8">
               <img 
                 src="/lovable-uploads/14ec2b51-1920-4cd5-b34d-6909cb318644.png" 
                 alt="App mockup interface" 
-                className="max-w-sm w-full h-auto rounded-3xl shadow-2xl"
+                className="w-full max-w-xs mx-auto h-auto rounded-3xl shadow-2xl"
               />
             </div>
           </div>
