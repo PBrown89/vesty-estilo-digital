@@ -51,7 +51,7 @@ const AppStores = () => {
   }, [storeLogos.length]);
 
   return (
-    <section className="h-screen bg-white relative overflow-hidden flex items-center justify-center touch-action-none" style={{
+    <section className="h-screen bg-white relative overflow-hidden flex items-center justify-center" style={{
       backgroundImage: `url('/lovable-uploads/b80afb35-236a-4e68-86ae-5fc651f23a8e.png')`,
       backgroundSize: 'contain',
       backgroundPosition: 'center top',

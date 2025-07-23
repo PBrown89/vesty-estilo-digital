@@ -42,18 +42,18 @@ const Hero = () => {
       <div className="container mx-auto px-4 md:px-6 text-center relative z-10 max-w-4xl h-full flex flex-col justify-center">
         {/* Logo */}
         <div className="mb-4 md:mb-8">
-          <img src="/lovable-uploads/b0d52d4b-d06e-458d-aab0-4113a7954fe3.png" alt="Vesty" className="h-8 md:h-12 mx-auto" />
+          <img src="/lovable-uploads/b0d52d4b-d06e-458d-aab0-4113a7954fe3.png" alt="Vesty" className="h-12 md:h-12 mx-auto" />
         </div>
 
-        {/* Badge superior */}
-        <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-3 md:px-6 py-1.5 md:py-3 text-xs md:text-sm font-medium text-white border border-white/30 mb-4 md:mb-8 rounded-2xl bg-[AB9BFE]">
+        {/* Badge superior - Solo en desktop */}
+        <div className="hidden md:inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-3 md:px-6 py-1.5 md:py-3 text-xs md:text-sm font-medium text-white border border-white/30 mb-4 md:mb-8 rounded-2xl bg-[AB9BFE]">
           <span className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></span>
           n°1 en análisis de estilo personal
         </div>
         
         {/* Título principal */}
         <div className="space-y-3 md:space-y-6 mb-6 md:mb-12">
-          <h1 className="text-2xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
             Tu armario inteligente<br />
             <span className="text-white">a tu medida</span>
           </h1>

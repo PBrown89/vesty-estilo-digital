@@ -105,6 +105,7 @@ const FullPageScroll: React.FC<FullPageScrollProps> = ({
   const [touchStart, setTouchStart] = useState<{ y: number; time: number } | null>(null);
 
   const handleTouchStart = useCallback((e: TouchEvent) => {
+    e.preventDefault(); // Prevent default touch behavior
     const touch = e.touches[0];
     setTouchStart({
       y: touch.clientY,
@@ -113,6 +114,7 @@ const FullPageScroll: React.FC<FullPageScrollProps> = ({
   }, []);
 
   const handleTouchEnd = useCallback((e: TouchEvent) => {
+    e.preventDefault(); // Prevent default touch behavior
     if (!touchStart || isTransitioning) return;
     
     const touch = e.changedTouches[0];
@@ -153,8 +155,8 @@ const FullPageScroll: React.FC<FullPageScrollProps> = ({
     document.addEventListener('keydown', handleKeyDown);
     
     if (isMobile) {
-      container.addEventListener('touchstart', handleTouchStart, { passive: true });
-      container.addEventListener('touchend', handleTouchEnd, { passive: true });
+      container.addEventListener('touchstart', handleTouchStart, { passive: false });
+      container.addEventListener('touchend', handleTouchEnd, { passive: false });
     }
 
     return () => {
