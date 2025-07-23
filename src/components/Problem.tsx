@@ -129,7 +129,7 @@ const Problem = () => {
 
   return (
     <section className="min-h-screen py-32 bg-white relative overflow-hidden flex flex-col justify-center mt-8 md:mt-0" data-problem-section>
-      <div className="container mx-auto px-4 text-center mb-20">
+      <div className="container mx-auto px-4 text-center mb-8 md:mb-20">
         <div ref={ref} className={`transition-all duration-1000 ease-out ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-4xl md:text-5xl font-black font-outfit text-gray-800 mb-6">
             Tablón de historias
@@ -142,8 +142,8 @@ const Problem = () => {
 
       {/* Mobile Stack View */}
       {isMobile ? (
-        <div className="relative h-[600px] w-full px-4 flex items-center justify-center">
-          <div className="relative w-80 h-80">
+        <div className="relative h-[500px] w-full px-4 flex items-center justify-center">
+          <div className="relative w-80 h-auto min-h-[320px]">
             {stories.slice(0, 6).map((story, index) => {
               const isActive = index === currentCardIndex;
               const isNext = index === currentCardIndex + 1;
@@ -170,11 +170,12 @@ const Problem = () => {
               return (
                 <div
                   key={story.id}
-                  className="absolute inset-0 bg-white rounded-2xl p-6 border border-gray-200 shadow-lg transition-all duration-500 ease-out"
+                  className="absolute top-0 left-0 w-full bg-white rounded-2xl p-6 border border-gray-200 shadow-lg transition-all duration-500 ease-out"
                   style={{
                     transform,
                     opacity,
-                    zIndex
+                    zIndex,
+                    minHeight: 'fit-content'
                   }}
                 >
                   <div className="flex items-start gap-3 mb-4">
