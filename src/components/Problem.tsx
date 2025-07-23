@@ -1,6 +1,20 @@
 import { useInView } from "react-intersection-observer";
+import { useState, useEffect } from "react";
 
 const Problem = () => {
+  const [currentCardIndex, setCurrentCardIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   const stories = [
     {
       id: 1,
@@ -89,8 +103,32 @@ const Problem = () => {
     threshold: 0.1
   });
 
+  // Handle card scrolling for mobile
+  const handleCardScroll = (direction: 'up' | 'down') => {
+    if (!isMobile) return false;
+    
+    if (direction === 'down' && currentCardIndex < stories.length - 1) {
+      setCurrentCardIndex(prev => prev + 1);
+      return true; // Consume the scroll event
+    } else if (direction === 'up' && currentCardIndex > 0) {
+      setCurrentCardIndex(prev => prev - 1);
+      return true; // Consume the scroll event
+    }
+    
+    return false; // Don't consume the scroll event
+  };
+
+  // Register with parent component
+  useEffect(() => {
+    const problemSection = document.querySelector('[data-problem-section]');
+    if (problemSection && isMobile) {
+      // @ts-ignore
+      problemSection.scrollHandler = handleCardScroll;
+    }
+  }, [currentCardIndex, isMobile]);
+
   return (
-    <section className="min-h-screen py-32 bg-white relative overflow-hidden flex flex-col justify-center">
+    <section className="min-h-screen py-32 bg-white relative overflow-hidden flex flex-col justify-center" data-problem-section>
       <div className="container mx-auto px-4 text-center mb-20">
         <div ref={ref} className={`transition-all duration-1000 ease-out ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-4xl md:text-5xl font-black font-outfit text-gray-800 mb-6">
@@ -102,44 +140,119 @@ const Problem = () => {
         </div>
       </div>
 
-      <div className="relative h-[600px] w-full px-4">
-        {stories.map((story, index) => (
-          <div
-            key={story.id}
-            className={`absolute bg-white rounded-2xl p-5 border border-gray-200 shadow-lg transition-all duration-500 hover:scale-105 hover:shadow-xl hover:z-50 ${
-              inView ? 'opacity-100' : 'opacity-0'
-            }`}
-            style={{
-              top: story.position.top,
-              left: story.position.left,
-              transform: `rotate(${story.position.rotation}) ${inView ? 'translateY(0)' : 'translateY(20px)'}`,
-              transformOrigin: 'center center',
-              transitionDelay: `${index * 100}ms`,
-              width: '240px',
-              zIndex: story.position.zIndex
-            }}
-          >
-            <div className="flex items-start gap-3 mb-3">
-              <img 
-                src={story.avatar} 
-                alt={story.name}
-                className="w-12 h-12 rounded-full object-cover flex-shrink-0"
-              />
-              <div className="flex-1">
-                <h3 className="font-bold font-outfit text-gray-800 text-base">
-                  {story.name}
-                </h3>
-                <p className="text-gray-500 font-inter text-sm">
-                  {story.age}
-                </p>
-              </div>
-            </div>
-            <p className="font-inter text-gray-600 italic leading-relaxed text-sm">
-              "{story.quote}"
-            </p>
+      {/* Mobile Stack View */}
+      {isMobile ? (
+        <div className="relative h-[600px] w-full px-4 flex items-center justify-center">
+          <div className="relative w-80 h-80">
+            {stories.map((story, index) => {
+              const isActive = index === currentCardIndex;
+              const isNext = index === currentCardIndex + 1;
+              const isPrev = index === currentCardIndex - 1;
+              
+              let transform = 'translateX(100%) scale(0.8)';
+              let opacity = 0;
+              let zIndex = 1;
+              
+              if (isActive) {
+                transform = 'translateX(0%) scale(1) rotate(0deg)';
+                opacity = 1;
+                zIndex = 10;
+              } else if (isPrev) {
+                transform = 'translateX(-100%) scale(0.8)';
+                opacity = 0.3;
+                zIndex = 5;
+              } else if (isNext) {
+                transform = 'translateX(50%) scale(0.9)';
+                opacity = 0.6;
+                zIndex = 8;
+              }
+              
+              return (
+                <div
+                  key={story.id}
+                  className="absolute inset-0 bg-white rounded-2xl p-6 border border-gray-200 shadow-lg transition-all duration-500 ease-out"
+                  style={{
+                    transform,
+                    opacity,
+                    zIndex
+                  }}
+                >
+                  <div className="flex items-start gap-3 mb-4">
+                    <img 
+                      src={story.avatar} 
+                      alt={story.name}
+                      className="w-12 h-12 rounded-full object-cover flex-shrink-0"
+                    />
+                    <div className="flex-1">
+                      <h3 className="font-bold font-outfit text-gray-800 text-lg">
+                        {story.name}
+                      </h3>
+                      <p className="text-gray-500 font-inter text-sm">
+                        {story.age}
+                      </p>
+                    </div>
+                  </div>
+                  <p className="font-inter text-gray-600 italic leading-relaxed text-base">
+                    "{story.quote}"
+                  </p>
+                </div>
+              );
+            })}
           </div>
-        ))}
-      </div>
+          
+          {/* Progress indicator */}
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-2">
+            {stories.map((_, index) => (
+              <div
+                key={index}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  index === currentCardIndex ? 'bg-purple-500 w-6' : 'bg-gray-300'
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+      ) : (
+        /* Desktop Scattered View */
+        <div className="relative h-[600px] w-full px-4">
+          {stories.map((story, index) => (
+            <div
+              key={story.id}
+              className={`absolute bg-white rounded-2xl p-5 border border-gray-200 shadow-lg transition-all duration-500 hover:scale-105 hover:shadow-xl hover:z-50 ${
+                inView ? 'opacity-100' : 'opacity-0'
+              }`}
+              style={{
+                top: story.position.top,
+                left: story.position.left,
+                transform: `rotate(${story.position.rotation}) ${inView ? 'translateY(0)' : 'translateY(20px)'}`,
+                transformOrigin: 'center center',
+                transitionDelay: `${index * 100}ms`,
+                width: '240px',
+                zIndex: story.position.zIndex
+              }}
+            >
+              <div className="flex items-start gap-3 mb-3">
+                <img 
+                  src={story.avatar} 
+                  alt={story.name}
+                  className="w-12 h-12 rounded-full object-cover flex-shrink-0"
+                />
+                <div className="flex-1">
+                  <h3 className="font-bold font-outfit text-gray-800 text-base">
+                    {story.name}
+                  </h3>
+                  <p className="text-gray-500 font-inter text-sm">
+                    {story.age}
+                  </p>
+                </div>
+              </div>
+              <p className="font-inter text-gray-600 italic leading-relaxed text-sm">
+                "{story.quote}"
+              </p>
+            </div>
+          ))}
+        </div>
+      )}
     </section>
   );
 };

@@ -54,8 +54,9 @@ const Hero = () => {
         {/* Título principal */}
         <div className="space-y-3 md:space-y-6 mb-6 md:mb-12">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight w-full">
-            Tu armario inteligente<br />
-            <span className="text-white">a tu medida</span>
+            <span className="block md:inline">Tu armario inteligente</span>
+            <span className="hidden md:inline"><br /></span>
+            <span className="block md:inline text-white">a tu medida</span>
           </h1>
           
           {/* Descripción solo en desktop */}
