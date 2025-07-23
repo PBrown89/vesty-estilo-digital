@@ -53,8 +53,8 @@ const AppStores = () => {
   return (
     <section className="h-screen bg-white relative overflow-hidden flex items-center justify-center" style={{
       backgroundImage: `url('/lovable-uploads/b80afb35-236a-4e68-86ae-5fc651f23a8e.png')`,
-      backgroundSize: '100% 100%',
-      backgroundPosition: 'center top',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat'
     }}>
       <div className="container mx-auto px-6 relative z-10 h-full flex flex-col justify-center items-center mt-16 md:mt-0">
