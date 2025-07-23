@@ -140,7 +140,7 @@ const SwipeFeature = () => {
           >
             <div className="relative my-8 bg-transparent">
               <img 
-                src="/lovable-uploads/14ec2b51-1920-4cd5-b34d-6909cb318644.png" 
+                src="/lovable-uploads/f011518d-ac62-4e1b-9472-9eaf660a07c3.png" 
                 alt="App mockup interface" 
                 className="w-full max-w-[15.36rem] mx-auto h-auto rounded-3xl shadow-2xl"
               />
