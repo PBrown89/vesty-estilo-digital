@@ -257,17 +257,17 @@ const Problem = ({ onSectionScroll, isActive }: { onSectionScroll?: (handler: (d
             {people.map((person, index) => (
               <div
                 key={person.id}
-                className={`absolute w-80 bg-white rounded-2xl p-6 border border-gray-200 cursor-pointer transition-all duration-500 ease-out shadow-lg hover:shadow-xl ${
+                className={`absolute w-80 bg-white rounded-2xl p-6 border border-gray-200 cursor-pointer transition-all duration-500 ease-out shadow-lg hover:shadow-2xl ${
                   inView ? 'opacity-100' : 'opacity-0'
-                } ${hoveredCard === person.id ? 'scale-110 z-50' : ''}`}
+                }`}
                 style={{
                   top: person.position.top,
                   left: person.position.left,
                   transform: hoveredCard === person.id 
-                    ? `rotate(${person.position.rotation}) scale(1.1)` 
-                    : `rotate(${person.position.rotation})`,
+                    ? 'rotate(0deg) scale(1.15)' 
+                    : `rotate(${person.position.rotation}) scale(1)`,
                   transitionDelay: inView ? `${index * 150}ms` : '0ms',
-                  zIndex: hoveredCard === person.id ? 50 : 20 + index
+                  zIndex: hoveredCard === person.id ? 100 : 20 + index
                 }}
                 onMouseEnter={() => handleCardHover(person.id)}
                 onMouseLeave={handleCardLeave}
