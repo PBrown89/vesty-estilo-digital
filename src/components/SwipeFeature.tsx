@@ -139,69 +139,11 @@ const SwipeFeature = () => {
             style={{transitionDelay: mockupInView ? '200ms' : '0ms'}}
           >
             <div className="relative">
-              {/* Mockup del teléfono - ahora ocupa toda la altura */}
-              <div className="w-80 h-96 bg-white rounded-3xl shadow-2xl overflow-hidden drop-shadow-xl cursor-pointer hover:shadow-3xl transition-all duration-300 hover:scale-105" onClick={handleCardClick}>
-                {/* Contenido del mockup */}
-                <div className="p-4 h-full flex flex-col">
-                  <div className="text-center mb-4">
-                    <img src="/lovable-uploads/0460637a-36de-431c-9b0e-0da91d42d0a8.png" alt="Match clothes interface" className="w-full h-16 object-contain" />
-                  </div>
-                  
-                  {/* Stack de cartas */}
-                  <div className="flex-1 relative">
-                    {cards.map((card, index) => <div key={card.id} className={`absolute inset-0 ${card.color} rounded-2xl p-4 transition-all duration-500 ease-out`} style={getCardStyle(index)}>
-                        {/* Indicador de acción */}
-                        {animatingCard === index && <div className="absolute top-2 right-2 z-10">
-                            {animationType === 'like' ? <div className="bg-green-500 text-white px-3 py-1 rounded-full text-xs font-inter font-bold">
-                                LIKE
-                              </div> : <div className="bg-red-500 text-white px-3 py-1 rounded-full text-xs font-inter font-bold">
-                                DISLIKE
-                              </div>}
-                          </div>}
-                        
-                        {/* Imagen de la prenda centrada */}
-                        <div className="flex items-center justify-center h-full">
-                          <img src={card.image} alt="Prenda de vestir" className="max-w-full max-h-full object-contain" />
-                        </div>
-                      </div>)}
-                    
-                    {/* Corazones flotantes asincrónicos */}
-                    {showHearts && <div className="absolute inset-0 pointer-events-none z-20">
-                        {[...Array(8)].map((_, i) => <div key={i} className="absolute text-2xl opacity-0 animate-bounce" style={{
-                      left: `${10 + Math.random() * 70}%`,
-                      top: `${20 + Math.random() * 50}%`,
-                      animationDelay: `${i * 0.15}s`,
-                      animationDuration: '1.2s',
-                      animationFillMode: 'forwards'
-                    }}>
-                            💖
-                          </div>)}
-                      </div>}
-                  </div>
-                  
-                  {/* Botones de acción */}
-                  <div className="flex justify-center gap-4 mt-4">
-                    <button onClick={e => {
-                    e.stopPropagation();
-                    handleDislike();
-                  }} className="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center hover:bg-red-200 transition-colors" disabled={animatingCard !== null}>
-                      <span className="text-red-500 text-lg">✕</span>
-                    </button>
-                    <button className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors">
-                      <span className="text-gray-500 text-lg">↺</span>
-                    </button>
-                    <button onClick={e => {
-                    e.stopPropagation();
-                    handleLike();
-                  }} className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center hover:bg-green-200 transition-colors" disabled={animatingCard !== null}>
-                      <span className="text-green-500 text-lg">♡</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              {/* Elemento decorativo */}
-              <div className="absolute -top-4 -right-4 w-16 h-16 border-2 border-purple-200 rounded-full border-dashed animate-float"></div>
+              <img 
+                src="/lovable-uploads/14ec2b51-1920-4cd5-b34d-6909cb318644.png" 
+                alt="App mockup interface" 
+                className="max-w-sm w-full h-auto rounded-3xl shadow-2xl"
+              />
             </div>
           </div>
         </div>
