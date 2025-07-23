@@ -262,7 +262,42 @@ const Problem = ({
               <div className="absolute top-1 left-1 w-2 h-2 bg-blue-600 rounded-full"></div>
             </div>
             
-            {people.map((person, index) => {})}
+            {people.map((person, index) => (
+              <div
+                key={person.id}
+                className={`absolute bg-white rounded-2xl p-6 border border-gray-200 shadow-lg transform transition-all duration-500 hover:scale-105 hover:shadow-xl cursor-pointer ${
+                  inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                }`}
+                style={{
+                  top: person.position.top,
+                  left: person.position.left,
+                  transform: `rotate(${person.position.rotation})`,
+                  transitionDelay: `${index * 100}ms`,
+                  width: '280px'
+                }}
+                onMouseEnter={() => handleCardHover(person.id)}
+                onMouseLeave={handleCardLeave}
+              >
+                <div className="flex items-start gap-4 mb-4">
+                  <img 
+                    src={person.image} 
+                    alt={person.name}
+                    className="w-16 h-16 rounded-full object-cover"
+                  />
+                  <div>
+                    <h3 className="font-bold font-outfit text-gray-800 text-lg">
+                      {person.name}
+                    </h3>
+                    <p className="text-gray-500 font-inter text-sm">
+                      {person.age} años
+                    </p>
+                  </div>
+                </div>
+                <p className="font-inter text-gray-600 italic leading-relaxed">
+                  "{person.problem}"
+                </p>
+              </div>
+            ))}
           </div>}
       </section>
     </>;
