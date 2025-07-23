@@ -35,7 +35,7 @@ const VirtualTryOn = () => {
     triggerOnce: true,
     threshold: 0.2
   });
-  return <section className="py-32 bg-white">
+  return <section className="pt-4 pb-32 md:py-32 bg-white">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
           {/* Contenido izquierdo */}
@@ -50,15 +50,15 @@ const VirtualTryOn = () => {
             </h2>
             
             <div className="space-y-4">
-              <p className="text-lg font-inter text-gray-600 leading-relaxed">
+              <p className="text-base lg:text-lg font-inter text-gray-600 leading-relaxed">
                 Elige cualquier prenda desde cualquier tienda online y pruébatela al instante gracias a nuestra tecnología con inteligencia artificial.
               </p>
               
-              <p className="text-lg font-inter text-gray-600 leading-relaxed">
+              <p className="text-base lg:text-lg font-inter text-gray-600 leading-relaxed">
                 Sin esperas, sin colas, sin probadores. Solo tú, tu estilo y un espejo digital que entiende tu cuerpo y tus gustos.
               </p>
               
-              <p className="text-lg font-inter text-gray-600 leading-relaxed">
+              <p className="text-base lg:text-lg font-inter text-gray-600 leading-relaxed">
                 Descubre cómo te queda antes de comprar y ahorra tiempo, devoluciones y dudas.
               </p>
             </div>
