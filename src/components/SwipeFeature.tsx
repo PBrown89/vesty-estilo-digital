@@ -133,16 +133,16 @@ const SwipeFeature = () => {
           {/* Contenido derecho - Mockup */}
           <div 
             ref={mockupRef}
-            className={`relative flex justify-center lg:justify-end transition-all duration-700 ease-out ${
+            className={`relative flex justify-center items-center transition-all duration-700 ease-out ${
               mockupInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
             style={{transitionDelay: mockupInView ? '200ms' : '0ms'}}
           >
-            <div className="relative my-8">
+            <div className="relative my-8 flex justify-center">
               <img 
                 src="/lovable-uploads/14ec2b51-1920-4cd5-b34d-6909cb318644.png" 
                 alt="App mockup interface" 
-                className="w-full max-w-[19.2rem] mx-auto h-auto rounded-3xl shadow-2xl"
+                className="w-full max-w-[12rem] mx-auto h-auto rounded-3xl shadow-2xl"
               />
             </div>
           </div>
