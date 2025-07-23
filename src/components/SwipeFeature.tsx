@@ -104,7 +104,7 @@ const SwipeFeature = () => {
     triggerOnce: true,
     threshold: 0.2
   });
-  return <section id="funciones" className="bg-white pb-[180px] mt-8">
+  return <section id="funciones" className="bg-white pb-8 md:pb-[180px] mt-8">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
           {/* Contenido izquierdo */}
