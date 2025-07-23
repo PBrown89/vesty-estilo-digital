@@ -21,7 +21,7 @@ const Problem = ({ onSectionScroll, isActive }: { onSectionScroll?: (handler: (d
       image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=400&fit=crop&crop=face",
       problem: "Nunca sé que ponerme los días de trabajo",
       story: "Carmen es una profesional que trabaja en marketing. Cada mañana se levanta 20 minutos antes solo para decidir qué ponerse. Su armario está lleno de ropa que compró con ilusión pero que nunca sabe cómo combinar. Desde que usa Vesty, tiene outfits predefinidos para cada día de la semana y puede dormir esos 20 minutos extra.",
-      position: { top: "5%", left: "8%", rotation: "-6deg" }
+      position: { top: "15%", left: "5%", rotation: "-6deg" }
     },
     {
       id: 2,
@@ -30,7 +30,7 @@ const Problem = ({ onSectionScroll, isActive }: { onSectionScroll?: (handler: (d
       image: "https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?w=400&h=400&fit=crop&crop=face",
       problem: "Al no tener tiempo siempre pillo lo primero que veo",
       story: "María estudia y trabaja a tiempo parcial. Sus mañanas son una carrera contra el reloj y siempre termina poniéndose lo mismo. Con Vesty, puede planificar sus outfits la noche anterior y tener todo listo para salir corriendo por la mañana con estilo.",
-      position: { top: "25%", left: "18%", rotation: "8deg" }
+      position: { top: "45%", left: "12%", rotation: "8deg" }
     },
     {
       id: 3,
@@ -39,7 +39,7 @@ const Problem = ({ onSectionScroll, isActive }: { onSectionScroll?: (handler: (d
       image: "https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=400&h=400&fit=crop&crop=face",
       problem: "Nunca soy capaz de verme bien en el espejo",
       story: "Ana perdió confianza en su estilo después de la maternidad. Su cuerpo cambió y siente que nada le queda como antes. Vesty le ayudó a redescubrir qué prendas la favorecen y cómo combinarlas para sentirse segura y hermosa cada día.",
-      position: { top: "8%", left: "36%", rotation: "3deg" }
+      position: { top: "8%", left: "28%", rotation: "3deg" }
     },
     {
       id: 4,
@@ -48,7 +48,7 @@ const Problem = ({ onSectionScroll, isActive }: { onSectionScroll?: (handler: (d
       image: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=400&h=400&fit=crop&crop=face",
       problem: "Ojalá fuera más sencillo combinar la ropa, me resulta imposible",
       story: "Laura siempre se consideró 'mala para la moda'. Ve a otras mujeres con outfits increíbles y no entiende cómo lo hacen. Vesty le enseñó las reglas básicas de combinación y ahora puede crear looks que la hacen sentir como esas mujeres que admiraba.",
-      position: { top: "52%", left: "15%", rotation: "4deg" }
+      position: { top: "60%", left: "25%", rotation: "4deg" }
     },
     {
       id: 5,
@@ -57,7 +57,7 @@ const Problem = ({ onSectionScroll, isActive }: { onSectionScroll?: (handler: (d
       image: "https://images.unsplash.com/photo-1485833077593-4278bba3f11f?w=400&h=400&fit=crop&crop=face",
       problem: "Creo que me he puesto esta misma camiseta 3 veces esta semana",
       story: "Sofia tiene un armario lleno pero siempre recurre a las mismas 5 prendas cómodas. Se aburre de su estilo pero no sabe cómo salir de la rutina. Vesty le mostró cómo usar todas sus prendas de formas diferentes y ahora disfruta experimentando con su ropa.",
-      position: { top: "15%", left: "55%", rotation: "-7deg" }
+      position: { top: "25%", left: "48%", rotation: "-7deg" }
     },
     {
       id: 6,
@@ -66,7 +66,7 @@ const Problem = ({ onSectionScroll, isActive }: { onSectionScroll?: (handler: (d
       image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=400&fit=crop&crop=face",
       problem: "Compro ropa pero luego no sé con qué combinarla",
       story: "Elena ama ir de compras pero sus nuevas prendas terminan con etiquetas en el armario. No sabe cómo integrarlas con lo que ya tiene. Vesty le enseñó a comprar de forma estratégica y a maximizar cada prenda de su guardarropa.",
-      position: { top: "45%", left: "28%", rotation: "5deg" }
+      position: { top: "50%", left: "45%", rotation: "5deg" }
     },
     {
       id: 7,
@@ -75,7 +75,7 @@ const Problem = ({ onSectionScroll, isActive }: { onSectionScroll?: (handler: (d
       image: "https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=400&h=400&fit=crop&crop=face",
       problem: "Mi estilo no refleja mi personalidad",
       story: "Claudia siempre sintió que su ropa no la representaba realmente. Quería verse más sofisticada pero no sabía cómo. Con Vesty descubrió su estilo personal y ahora se viste de manera que refleja su verdadera personalidad.",
-      position: { top: "2%", left: "75%", rotation: "-5deg" }
+      position: { top: "12%", left: "68%", rotation: "-5deg" }
     },
     {
       id: 8,
@@ -84,7 +84,7 @@ const Problem = ({ onSectionScroll, isActive }: { onSectionScroll?: (handler: (d
       image: "https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?w=400&h=400&fit=crop&crop=face",
       problem: "No sé si esto me queda bien o no",
       story: "Patricia constantemente dudaba de sus elecciones de vestimenta. Se probaba múltiples outfits antes de salir y aún así no estaba segura. Vesty le dio las herramientas para saber qué le favorece y ahora sale de casa con total confianza.",
-      position: { top: "28%", left: "48%", rotation: "6deg" }
+      position: { top: "35%", left: "70%", rotation: "6deg" }
     },
     {
       id: 9,
@@ -93,7 +93,7 @@ const Problem = ({ onSectionScroll, isActive }: { onSectionScroll?: (handler: (d
       image: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=400&h=400&fit=crop&crop=face",
       problem: "Siempre voy vestida igual que mis amigas",
       story: "Isabella se sentía perdida en su grupo de amigas, todas se vestían muy parecido. Quería encontrar su propio estilo pero no sabía por dónde empezar. Vesty la ayudó a descubrir qué la hace única y cómo expresarlo a través de su ropa.",
-      position: { top: "52%", left: "65%", rotation: "-4deg" }
+      position: { top: "58%", left: "65%", rotation: "-4deg" }
     },
     {
       id: 10,
@@ -102,7 +102,7 @@ const Problem = ({ onSectionScroll, isActive }: { onSectionScroll?: (handler: (d
       image: "https://images.unsplash.com/photo-1485833077593-4278bba3f11f?w=400&h=400&fit=crop&crop=face",
       problem: "Gasto mucho dinero en ropa que no uso",
       story: "Valentina compraba por impulso y su armario estaba lleno de prendas que usó una sola vez. No sabía cómo crear un guardarropa funcional. Vesty le enseñó a comprar de manera inteligente y a maximizar cada prenda.",
-      position: { top: "38%", left: "72%", rotation: "8deg" }
+      position: { top: "18%", left: "85%", rotation: "8deg" }
     },
     {
       id: 11,
@@ -111,7 +111,7 @@ const Problem = ({ onSectionScroll, isActive }: { onSectionScroll?: (handler: (d
       image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=400&fit=crop&crop=face",
       problem: "No tengo tiempo para pensar en outfits",
       story: "Rocío es madre trabajadora y sus mañanas son un caos. No tiene tiempo para pensar en qué ponerse y siempre sale corriendo con lo primero que encuentra. Vesty le dio un sistema para tener outfits listos toda la semana.",
-      position: { top: "62%", left: "42%", rotation: "-3deg" }
+      position: { top: "42%", left: "88%", rotation: "-3deg" }
     }
   ];
 
