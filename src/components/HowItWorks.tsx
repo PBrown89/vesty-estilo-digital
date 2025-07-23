@@ -43,8 +43,13 @@ const HowItWorks = () => {
     iconBg: "bg-purple-500"
   }];
 
-  // Handle video scrolling for all devices
+  // Handle video scrolling only for mobile devices
   const handleVideoScroll = (direction: 'up' | 'down') => {
+    // Only handle video scrolling on mobile
+    if (!isMobile) {
+      return false; // Don't consume scroll on desktop/tablet, allow progression to next section
+    }
+    
     if (direction === 'down' && currentVideoIndex < steps.length - 1) {
       setCurrentVideoIndex(prev => prev + 1);
       return true; // Consume the scroll event
