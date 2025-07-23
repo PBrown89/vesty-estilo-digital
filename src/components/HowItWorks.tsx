@@ -77,19 +77,19 @@ const HowItWorks = () => {
   });
 
   return (
-    <section id="como-funciona" className="py-24" data-video-section>
-      <div className="container mx-auto px-6">
+    <section id="como-funciona" className="py-16 lg:py-24 bg-white" data-video-section>
+      <div className="container mx-auto px-4 lg:px-6">
         {/* Header */}
         <div 
           ref={headerRef} 
-          className={`text-center mb-20 transition-all duration-700 ease-out ${
+          className={`text-center mb-12 lg:mb-20 transition-all duration-700 ease-out ${
             headerInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <h2 className="text-4xl lg:text-5xl font-black text-gray-900 mb-6">
+          <h2 className="text-3xl lg:text-5xl font-black text-gray-900 mb-4 lg:mb-6">
             Cómo funciona
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
             Tres pasos simples para transformar tu relación con la moda
           </p>
         </div>
@@ -98,8 +98,8 @@ const HowItWorks = () => {
         <div className="max-w-7xl mx-auto">
           {/* Mobile Stack View */}
           {isMobile ? (
-            <div className="relative h-[600px] w-full px-4 flex items-center justify-center">
-              <div className="relative w-full max-w-sm h-auto">
+            <div className="relative h-[500px] w-full flex items-center justify-center">
+              <div className="relative w-full max-w-xs h-auto">
                 {steps.map((step, index) => {
                   // Always call useInView to maintain hook consistency
                   const { ref, inView } = useInView({
@@ -133,7 +133,7 @@ const HowItWorks = () => {
                     <div
                       key={index}
                       ref={ref}
-                      className="absolute top-0 left-0 w-full bg-white rounded-3xl p-6 shadow-lg transition-all duration-500 ease-out"
+                      className="absolute top-0 left-0 w-full bg-white rounded-2xl p-4 shadow-lg transition-all duration-500 ease-out border border-gray-100"
                       style={{
                         transform,
                         opacity,
