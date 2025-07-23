@@ -65,7 +65,7 @@ const Hero = () => {
         </div>
 
         {/* Botones CTA principales */}
-        <div className="flex flex-col sm:flex-row gap-3 md:gap-6 justify-center mb-6 md:mb-12 px-2 md:px-0">
+        <div className="flex flex-row gap-3 md:gap-6 justify-center mb-6 md:mb-12 px-2 md:px-0">
           <a href="https://apps.apple.com/es/app/vesty/id6743717284" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
             <Button size="lg" className="w-full justify-center bg-white text-vesty-purple text-sm md:text-lg px-6 md:px-8 py-2.5 md:py-4 font-semibold transform hover:scale-105 hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-3 border-0 rounded-2xl">
               Obtener en iOS
