@@ -107,7 +107,7 @@ const Problem = () => {
   const handleCardScroll = (direction: 'up' | 'down') => {
     if (!isMobile) return false;
     
-    if (direction === 'down' && currentCardIndex < stories.length - 1) {
+    if (direction === 'down' && currentCardIndex < 5) { // Changed from stories.length - 1 to 5 (6 cards total)
       setCurrentCardIndex(prev => prev + 1);
       return true; // Consume the scroll event
     } else if (direction === 'up' && currentCardIndex > 0) {
@@ -128,7 +128,7 @@ const Problem = () => {
   }, [currentCardIndex, isMobile]);
 
   return (
-    <section className="min-h-screen py-32 bg-white relative overflow-hidden flex flex-col justify-center" data-problem-section>
+    <section className="min-h-screen py-32 bg-white relative overflow-hidden flex flex-col justify-center mt-8 md:mt-0" data-problem-section>
       <div className="container mx-auto px-4 text-center mb-20">
         <div ref={ref} className={`transition-all duration-1000 ease-out ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-4xl md:text-5xl font-black font-outfit text-gray-800 mb-6">
@@ -144,7 +144,7 @@ const Problem = () => {
       {isMobile ? (
         <div className="relative h-[600px] w-full px-4 flex items-center justify-center">
           <div className="relative w-80 h-80">
-            {stories.map((story, index) => {
+            {stories.slice(0, 6).map((story, index) => {
               const isActive = index === currentCardIndex;
               const isNext = index === currentCardIndex + 1;
               const isPrev = index === currentCardIndex - 1;
@@ -192,7 +192,7 @@ const Problem = () => {
                       </p>
                     </div>
                   </div>
-                  <p className="font-inter text-gray-600 italic leading-relaxed text-base">
+                  <p className="font-inter text-gray-600 italic leading-relaxed text-lg">
                     "{story.quote}"
                   </p>
                 </div>
@@ -202,7 +202,7 @@ const Problem = () => {
           
           {/* Progress indicator */}
           <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-2">
-            {stories.map((_, index) => (
+            {stories.slice(0, 6).map((_, index) => (
               <div
                 key={index}
                 className={`w-2 h-2 rounded-full transition-all duration-300 ${
