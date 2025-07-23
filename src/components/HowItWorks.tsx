@@ -133,9 +133,9 @@ const HowItWorks = () => {
                     <div
                       key={index}
                       ref={ref}
-                      className="absolute top-0 left-0 w-full bg-white rounded-2xl p-4 shadow-lg transition-all duration-500 ease-out border border-gray-100"
+                      className="absolute top-1/2 left-1/2 w-full bg-white rounded-2xl p-4 shadow-lg transition-all duration-500 ease-out border border-gray-100"
                       style={{
-                        transform,
+                        transform: `translate(-50%, -50%) ${transform}`,
                         opacity,
                         zIndex
                       }}
