@@ -126,8 +126,8 @@ const FullPageScroll: React.FC<FullPageScrollProps> = ({
     if (now - lastTouchTime.current < 500) return; // Throttle
     lastTouchTime.current = now;
     
-    // Check if it's a valid swipe (minimum distance and velocity)
-    if (Math.abs(deltaY) > 50 && velocity > 0.3) {
+    // Check if it's a valid swipe (minimum distance and velocity) - more permissive for mobile
+    if (Math.abs(deltaY) > 30 && velocity > 0.1) {
       const direction = deltaY > 0 ? 'down' : 'up';
       
       // If we're in the problem section and have a handler, use it

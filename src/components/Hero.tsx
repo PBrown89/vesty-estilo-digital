@@ -32,47 +32,48 @@ const Hero = () => {
       document.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
-  return <section className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden pt-[60px] mb-10 px-4 md:px-0" style={{
+  return <section className="h-screen flex flex-col items-center justify-center relative overflow-hidden px-4 md:px-0" style={{
     backgroundImage: 'url(/lovable-uploads/36e38b0b-5f28-4c2d-af39-5b3f0d276766.png)',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat'
   }}>
 
-      <div className="container mx-auto px-4 md:px-6 text-center relative z-10 max-w-4xl">
+      <div className="container mx-auto px-4 md:px-6 text-center relative z-10 max-w-4xl h-full flex flex-col justify-center">
         {/* Logo */}
-        <div className="mb-6 md:mb-8">
-          <img src="/lovable-uploads/b0d52d4b-d06e-458d-aab0-4113a7954fe3.png" alt="Vesty" className="h-10 md:h-12 mx-auto" />
+        <div className="mb-4 md:mb-8">
+          <img src="/lovable-uploads/b0d52d4b-d06e-458d-aab0-4113a7954fe3.png" alt="Vesty" className="h-8 md:h-12 mx-auto" />
         </div>
 
         {/* Badge superior */}
-        <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 md:px-6 py-2 md:py-3 text-xs md:text-sm font-medium text-white border border-white/30 mb-6 md:mb-8 rounded-2xl bg-[AB9BFE]">
+        <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-3 md:px-6 py-1.5 md:py-3 text-xs md:text-sm font-medium text-white border border-white/30 mb-4 md:mb-8 rounded-2xl bg-[AB9BFE]">
           <span className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></span>
           n°1 en análisis de estilo personal
         </div>
         
         {/* Título principal */}
-        <div className="space-y-4 md:space-y-6 mb-8 md:mb-12">
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+        <div className="space-y-3 md:space-y-6 mb-6 md:mb-12">
+          <h1 className="text-2xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
             Tu armario inteligente<br />
             <span className="text-white">a tu medida</span>
           </h1>
           
-          <p className="text-lg md:text-xl lg:text-2xl text-white/90 font-light leading-relaxed max-w-2xl mx-auto px-2 md:px-0">
+          {/* Descripción solo en desktop */}
+          <p className="hidden md:block text-xl lg:text-2xl text-white/90 font-light leading-relaxed max-w-2xl mx-auto">
             Despierta con looks listos para brillar. Captura tu ropa y obtén combinaciones en segundos.
           </p>
         </div>
 
         {/* Botones CTA principales */}
-        <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center mb-8 md:mb-12 px-2 md:px-0">
+        <div className="flex flex-col sm:flex-row gap-3 md:gap-6 justify-center mb-6 md:mb-12 px-2 md:px-0">
           <a href="https://apps.apple.com/es/app/vesty/id6743717284" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
-            <Button size="lg" className="w-full justify-center bg-white text-vesty-purple text-base md:text-lg px-6 md:px-8 py-3 md:py-4 font-semibold transform hover:scale-105 hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-3 border-0 rounded-2xl">
+            <Button size="lg" className="w-full justify-center bg-white text-vesty-purple text-sm md:text-lg px-6 md:px-8 py-2.5 md:py-4 font-semibold transform hover:scale-105 hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-3 border-0 rounded-2xl">
               Obtener en iOS
             </Button>
           </a>
 
           <a href="https://play.google.com/store/apps/details?id=app.vesty.com&hl=es" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
-            <Button size="lg" className="w-full justify-center text-base md:text-lg px-6 md:px-8 py-3 md:py-4 font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-3 border-2 bg-transparent text-white border-white hover:bg-white/20 rounded-2xl">
+            <Button size="lg" className="w-full justify-center text-sm md:text-lg px-6 md:px-8 py-2.5 md:py-4 font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-3 border-2 bg-transparent text-white border-white hover:bg-white/20 rounded-2xl">
               Obtener en Android
             </Button>
           </a>
