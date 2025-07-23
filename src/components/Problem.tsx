@@ -118,12 +118,16 @@ const Problem = () => {
     return false; // Don't consume the scroll event
   };
 
-  // Register with parent component
+  // Register with parent component for mobile only
   useEffect(() => {
     const problemSection = document.querySelector('[data-problem-section]');
     if (problemSection && isMobile) {
       // @ts-ignore
       problemSection.scrollHandler = handleCardScroll;
+    } else if (problemSection && !isMobile) {
+      // For desktop, remove any scroll handler to allow normal scrolling
+      // @ts-ignore
+      problemSection.scrollHandler = null;
     }
   }, [currentCardIndex, isMobile]);
 

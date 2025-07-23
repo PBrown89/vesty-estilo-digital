@@ -32,7 +32,7 @@ const Hero = () => {
       document.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
-  return <section className="h-screen flex flex-col items-center justify-center relative overflow-hidden px-4 md:px-0 md:mt-16" style={{
+  return <section className="h-screen flex flex-col items-center justify-center relative overflow-hidden px-4 md:px-0" style={{
     backgroundImage: 'url(/lovable-uploads/36e38b0b-5f28-4c2d-af39-5b3f0d276766.png)',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
@@ -41,7 +41,7 @@ const Hero = () => {
 
       <div className="container mx-auto px-4 md:px-6 text-center relative z-10 max-w-4xl h-full flex flex-col justify-center">
         {/* Logo */}
-        <div className="mb-4 md:mb-8">
+        <div className="mb-4 md:mb-8 md:mt-8">
           <img src="/lovable-uploads/b0d52d4b-d06e-458d-aab0-4113a7954fe3.png" alt="Vesty" className="h-12 md:h-12 mx-auto" />
         </div>
 
