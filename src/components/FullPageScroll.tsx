@@ -192,22 +192,6 @@ const FullPageScroll: React.FC<FullPageScrollProps> = ({
         ))}
       </div>
 
-      {/* Navigation dots */}
-      <div className="fixed right-8 top-1/2 transform -translate-y-1/2 z-50 flex flex-col space-y-3">
-        {children.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => goToSection(index)}
-            disabled={isTransitioning}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
-              currentSection === index
-                ? 'bg-vesty-purple scale-125'
-                : 'bg-muted border border-border hover:bg-accent'
-            }`}
-            aria-label={`Go to section ${index + 1}`}
-          />
-        ))}
-      </div>
 
       {/* Progress indicator */}
       <div className="fixed top-0 left-0 w-full h-1 bg-muted z-50">
