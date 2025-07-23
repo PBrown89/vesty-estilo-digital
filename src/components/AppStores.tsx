@@ -54,7 +54,7 @@ const AppStores = () => {
     <section className="h-screen bg-white relative overflow-hidden flex items-center justify-center" style={{
       backgroundImage: `url('/lovable-uploads/b80afb35-236a-4e68-86ae-5fc651f23a8e.png')`,
       backgroundSize: 'contain',
-      backgroundPosition: 'center',
+      backgroundPosition: 'center top',
       backgroundRepeat: 'no-repeat'
     }}>
       <div className="container mx-auto px-6 relative z-10 h-full flex flex-col justify-center items-center">
@@ -71,7 +71,7 @@ const AppStores = () => {
         
         {/* Grid layout for logos */}
         <div className="flex items-center justify-center mt-16">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-8 max-w-4xl w-full">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-6 max-w-4xl w-full">
             {storeLogos.map((store, index) => (
               <div 
                 key={index} 
