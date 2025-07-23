@@ -55,7 +55,7 @@ const VirtualTryOn = () => {
               </p>
               
               <p className="text-base lg:text-lg font-inter text-gray-600 leading-relaxed">
-                Sin esperas, sin colas, sin probadores. Solo tú, tu estilo y un espejo digital que entiende tu cuerpo y tus gustos.
+                Sin esperar, sin colas, sin probadores. Solo tú y tu estilo desde tu sofá.
               </p>
               
               <p className="hidden md:block text-base lg:text-lg font-inter text-gray-600 leading-relaxed">
