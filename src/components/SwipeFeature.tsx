@@ -104,7 +104,7 @@ const SwipeFeature = () => {
     triggerOnce: true,
     threshold: 0.2
   });
-  return <section id="funciones" className="bg-white py-[180px]">
+  return <section id="funciones" className="bg-white pb-[180px]">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
           {/* Contenido izquierdo */}
@@ -127,9 +127,6 @@ const SwipeFeature = () => {
                 Di sí, di no, y deja que Vesty aprenda de ti para mostrarte exactamente lo que va con tu estilo.
               </p>
               
-              <p className="text-lg font-inter text-gray-600 leading-relaxed">
-                Cada swipe te acerca a ese outfit que te representa sin que tengas que buscar entre miles de opciones.
-              </p>
             </div>
           </div>
 
@@ -147,7 +144,7 @@ const SwipeFeature = () => {
                 {/* Contenido del mockup */}
                 <div className="p-4 h-full flex flex-col">
                   <div className="text-center mb-4">
-                    <h3 className="font-outfit font-bold text-gray-900">Match clothes</h3>
+                    <img src="/lovable-uploads/0460637a-36de-431c-9b0e-0da91d42d0a8.png" alt="Match clothes interface" className="w-full h-16 object-contain" />
                   </div>
                   
                   {/* Stack de cartas */}
