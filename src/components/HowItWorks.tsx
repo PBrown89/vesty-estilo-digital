@@ -147,7 +147,7 @@ const HowItWorks = () => {
                       
                        {/* Video Container */}
                        <div className={`bg-gradient-to-br ${step.bgColor} rounded-2xl mb-4 overflow-hidden`}>
-                         <div className="aspect-square relative">
+                         <div className="aspect-square relative flex items-center justify-center">
                            {isActive ? (
                              <iframe
                                src={`https://www.youtube.com/embed/${step.videoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${step.videoId}&modestbranding=1&rel=0&showinfo=0`}
