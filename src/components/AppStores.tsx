@@ -71,7 +71,7 @@ const AppStores = () => {
         
         {/* Grid layout for logos */}
         <div className="flex items-center justify-center mt-8 md:mt-16">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-3 md:gap-6 max-w-4xl w-full">
+          <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-x-3 gap-y-2 md:gap-6 max-w-4xl w-full">
             {storeLogos.map((store, index) => (
               <div 
                 key={index} 
