@@ -33,10 +33,25 @@ const Index = () => {
     return false;
   };
 
+  // How it works section scroll handler
+  const handleHowItWorksSectionScroll = (direction: 'up' | 'down') => {
+    const videoSection = document.querySelector('[data-video-section]');
+    if (videoSection) {
+      // @ts-ignore
+      const handler = videoSection.scrollHandler;
+      if (handler) {
+        return handler(direction);
+      }
+    }
+    return false;
+  };
+
   return (
     <FullPageScroll 
       onProblemSectionScroll={handleProblemSectionScroll}
+      onHowItWorksSectionScroll={handleHowItWorksSectionScroll}
       isProblemSectionActive={currentSection === 2}
+      isHowItWorksSectionActive={currentSection === 3}
       onSectionChange={handleSectionChange}
     >
       <Hero />

@@ -6,7 +6,9 @@ interface FullPageScrollProps {
   children: React.ReactNode[];
   className?: string;
   onProblemSectionScroll?: (direction: 'up' | 'down') => boolean;
+  onHowItWorksSectionScroll?: (direction: 'up' | 'down') => boolean;
   isProblemSectionActive?: boolean;
+  isHowItWorksSectionActive?: boolean;
   onSectionChange?: (section: number) => void;
 }
 
@@ -14,7 +16,9 @@ const FullPageScroll: React.FC<FullPageScrollProps> = ({
   children, 
   className = '', 
   onProblemSectionScroll,
+  onHowItWorksSectionScroll,
   isProblemSectionActive = false,
+  isHowItWorksSectionActive = false,
   onSectionChange
 }) => {
   const [currentSection, setCurrentSection] = useState(0);
@@ -58,13 +62,19 @@ const FullPageScroll: React.FC<FullPageScrollProps> = ({
       if (handled) return; // Problem section handled the scroll
     }
 
+    // If we're in the how it works section and have a handler, use it
+    if (isHowItWorksSectionActive && onHowItWorksSectionScroll) {
+      const handled = onHowItWorksSectionScroll(direction);
+      if (handled) return; // How it works section handled the scroll
+    }
+
     // Normal section navigation
     if (direction === 'down') {
       goToSection(currentSection + 1);
     } else {
       goToSection(currentSection - 1);
     }
-  }, [currentSection, goToSection, isTransitioning, isProblemSectionActive, onProblemSectionScroll]);
+  }, [currentSection, goToSection, isTransitioning, isProblemSectionActive, onProblemSectionScroll, isHowItWorksSectionActive, onHowItWorksSectionScroll]);
 
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
     if (isTransitioning) return;
@@ -76,6 +86,9 @@ const FullPageScroll: React.FC<FullPageScrollProps> = ({
         if (isProblemSectionActive && onProblemSectionScroll) {
           const handled = onProblemSectionScroll('down');
           if (!handled) goToSection(currentSection + 1);
+        } else if (isHowItWorksSectionActive && onHowItWorksSectionScroll) {
+          const handled = onHowItWorksSectionScroll('down');
+          if (!handled) goToSection(currentSection + 1);
         } else {
           goToSection(currentSection + 1);
         }
@@ -85,6 +98,9 @@ const FullPageScroll: React.FC<FullPageScrollProps> = ({
         e.preventDefault();
         if (isProblemSectionActive && onProblemSectionScroll) {
           const handled = onProblemSectionScroll('up');
+          if (!handled) goToSection(currentSection - 1);
+        } else if (isHowItWorksSectionActive && onHowItWorksSectionScroll) {
+          const handled = onHowItWorksSectionScroll('up');
           if (!handled) goToSection(currentSection - 1);
         } else {
           goToSection(currentSection - 1);
@@ -99,7 +115,7 @@ const FullPageScroll: React.FC<FullPageScrollProps> = ({
         goToSection(totalSections - 1);
         break;
     }
-  }, [currentSection, goToSection, isTransitioning, totalSections, isProblemSectionActive, onProblemSectionScroll]);
+  }, [currentSection, goToSection, isTransitioning, totalSections, isProblemSectionActive, onProblemSectionScroll, isHowItWorksSectionActive, onHowItWorksSectionScroll]);
 
   // Mobile touch handling
   const [touchStart, setTouchStart] = useState<{ y: number; time: number } | null>(null);
@@ -138,6 +154,12 @@ const FullPageScroll: React.FC<FullPageScrollProps> = ({
         if (handled) return; // Problem section handled the scroll
       }
 
+      // If we're in the how it works section and have a handler, use it
+      if (isHowItWorksSectionActive && onHowItWorksSectionScroll) {
+        const handled = onHowItWorksSectionScroll(direction);
+        if (handled) return; // How it works section handled the scroll
+      }
+
       // Normal section navigation
       if (direction === 'down') {
         goToSection(currentSection + 1);
@@ -145,7 +167,7 @@ const FullPageScroll: React.FC<FullPageScrollProps> = ({
         goToSection(currentSection - 1);
       }
     }
-  }, [touchStart, isTransitioning, currentSection, goToSection, isProblemSectionActive, onProblemSectionScroll]);
+  }, [touchStart, isTransitioning, currentSection, goToSection, isProblemSectionActive, onProblemSectionScroll, isHowItWorksSectionActive, onHowItWorksSectionScroll]);
 
   useEffect(() => {
     const container = containerRef.current;

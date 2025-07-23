@@ -43,10 +43,8 @@ const HowItWorks = () => {
     iconBg: "bg-purple-500"
   }];
 
-  // Handle video scrolling for mobile
+  // Handle video scrolling for all devices
   const handleVideoScroll = (direction: 'up' | 'down') => {
-    if (!isMobile) return false;
-    
     if (direction === 'down' && currentVideoIndex < steps.length - 1) {
       setCurrentVideoIndex(prev => prev + 1);
       return true; // Consume the scroll event
@@ -55,21 +53,17 @@ const HowItWorks = () => {
       return true; // Consume the scroll event
     }
     
-    return false; // Don't consume the scroll event
+    return false; // Don't consume the scroll event, allow progression to next section
   };
 
-  // Register with parent component for mobile only
+  // Register scroll handler with parent component
   useEffect(() => {
     const videoSection = document.querySelector('[data-video-section]');
-    if (videoSection && isMobile) {
+    if (videoSection) {
       // @ts-ignore
       videoSection.scrollHandler = handleVideoScroll;
-    } else if (videoSection && !isMobile) {
-      // For desktop, remove any scroll handler to allow normal scrolling
-      // @ts-ignore
-      videoSection.scrollHandler = null;
     }
-  }, [currentVideoIndex, isMobile]);
+  }, [currentVideoIndex]);
 
   const { ref: headerRef, inView: headerInView } = useInView({
     triggerOnce: true,
