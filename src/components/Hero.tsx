@@ -32,7 +32,7 @@ const Hero = () => {
       document.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
-  return <section className="h-screen flex flex-col items-center justify-center relative overflow-hidden px-4 md:px-0" style={{
+  return <section className="h-screen flex flex-col items-center justify-center relative overflow-hidden px-4 md:px-0 md:mt-16" style={{
     backgroundImage: 'url(/lovable-uploads/36e38b0b-5f28-4c2d-af39-5b3f0d276766.png)',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
@@ -46,9 +46,11 @@ const Hero = () => {
         </div>
 
         {/* Badge superior - Solo en desktop */}
-        <div className="hidden md:inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 text-sm font-medium text-white border border-white/30 mb-4 md:mb-8 rounded-2xl bg-[AB9BFE] w-fit">
-          <span className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></span>
-          n°1 en análisis de estilo personal
+        <div className="hidden md:flex items-center justify-center mb-4 md:mb-8">
+          <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 text-sm font-medium text-white border border-white/30 rounded-2xl bg-[AB9BFE] w-fit">
+            <span className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></span>
+            n°1 en análisis de estilo personal
+          </div>
         </div>
         
         {/* Título principal */}
