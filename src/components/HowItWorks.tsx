@@ -146,7 +146,7 @@ const HowItWorks = () => {
                       </div>
                       
                        {/* Video Container */}
-                       <div className={`bg-gradient-to-br ${step.bgColor} rounded-2xl mb-4 mt-4 overflow-hidden`}>
+                       <div className={`bg-gradient-to-br ${step.bgColor} rounded-2xl mb-4 overflow-hidden`}>
                          <div className="aspect-square relative">
                            {isActive ? (
                              <iframe
@@ -219,7 +219,7 @@ const HowItWorks = () => {
                       </div>
                       
                       {/* Video Container */}
-                      <div className={`bg-gradient-to-br ${step.bgColor} rounded-2xl mb-6 mt-4 overflow-hidden`}>
+                      <div className={`bg-gradient-to-br ${step.bgColor} rounded-2xl mb-6 overflow-hidden`}>
                         <div className="aspect-square relative">
                           <VideoHoverPlayer 
                             videoId={step.videoId}
