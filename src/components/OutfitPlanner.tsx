@@ -12,7 +12,7 @@ const OutfitPlanner = () => {
   });
 
   return <section className="py-[208px]">
-      <div className="container mx-auto px-4">
+      <div className="container px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
           {/* Contenido derecho */}
           <div 
