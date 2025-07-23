@@ -32,7 +32,7 @@ const Index = () => {
     >
       <Hero />
       <AppStores />
-      <Problem onSectionScroll={handleSectionScroll} isActive={currentSection === 2} />
+      <Problem />
       <HowItWorks />
       <VirtualTryOn />
       <SwipeFeature />
