@@ -106,7 +106,7 @@ const Problem = () => {
         {stories.map((story, index) => (
           <div
             key={story.id}
-            className={`absolute bg-white rounded-xl p-3 border border-gray-200 shadow-md transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:z-50 ${
+            className={`absolute bg-white rounded-2xl p-5 border border-gray-200 shadow-lg transition-all duration-500 hover:scale-105 hover:shadow-xl hover:z-50 ${
               inView ? 'opacity-100' : 'opacity-0'
             }`}
             style={{
@@ -115,7 +115,7 @@ const Problem = () => {
               transform: `rotate(${story.position.rotation}) ${inView ? 'translateY(0)' : 'translateY(20px)'}`,
               transformOrigin: 'center center',
               transitionDelay: `${index * 100}ms`,
-              width: '180px',
+              width: '240px',
               zIndex: story.position.zIndex
             }}
           >
