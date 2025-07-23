@@ -32,55 +32,55 @@ const Hero = () => {
       document.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
-  return <section className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden pt-[60px] mb-10" style={{
+  return <section className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden pt-[60px] mb-10 px-4 md:px-0" style={{
     backgroundImage: 'url(/lovable-uploads/36e38b0b-5f28-4c2d-af39-5b3f0d276766.png)',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat'
   }}>
 
-      <div className="container mx-auto px-6 text-center relative z-10 max-w-4xl">
+      <div className="container mx-auto px-4 md:px-6 text-center relative z-10 max-w-4xl">
         {/* Logo */}
-        <div className="mb-8">
-          <img src="/lovable-uploads/b0d52d4b-d06e-458d-aab0-4113a7954fe3.png" alt="Vesty" className="h-12 mx-auto" />
+        <div className="mb-6 md:mb-8">
+          <img src="/lovable-uploads/b0d52d4b-d06e-458d-aab0-4113a7954fe3.png" alt="Vesty" className="h-10 md:h-12 mx-auto" />
         </div>
 
         {/* Badge superior */}
-        <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-6 py-3 text-sm font-medium text-white border border-white/30 mb-8 rounded-2xl bg-[AB9BFE]">
+        <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 md:px-6 py-2 md:py-3 text-xs md:text-sm font-medium text-white border border-white/30 mb-6 md:mb-8 rounded-2xl bg-[AB9BFE]">
           <span className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></span>
           n°1 en análisis de estilo personal
         </div>
         
         {/* Título principal */}
-        <div className="space-y-6 mb-12">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+        <div className="space-y-4 md:space-y-6 mb-8 md:mb-12">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
             Tu armario inteligente<br />
             <span className="text-white">a tu medida</span>
           </h1>
           
-          <p className="text-xl md:text-2xl text-white/90 font-light leading-relaxed max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl lg:text-2xl text-white/90 font-light leading-relaxed max-w-2xl mx-auto px-2 md:px-0">
             Despierta con looks listos para brillar. Captura tu ropa y obtén combinaciones en segundos.
           </p>
         </div>
 
         {/* Botones CTA principales */}
-        <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12">
+        <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center mb-8 md:mb-12 px-2 md:px-0">
           <a href="https://apps.apple.com/es/app/vesty/id6743717284" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
-            <Button size="lg" className="w-full justify-center bg-white text-vesty-purple text-lg px-8 py-4 font-semibold transform hover:scale-105 hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-3 border-0 rounded-2xl">
+            <Button size="lg" className="w-full justify-center bg-white text-vesty-purple text-base md:text-lg px-6 md:px-8 py-3 md:py-4 font-semibold transform hover:scale-105 hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-3 border-0 rounded-2xl">
               Obtener en iOS
             </Button>
           </a>
 
           <a href="https://play.google.com/store/apps/details?id=app.vesty.com&hl=es" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
-            <Button size="lg" className="w-full justify-center text-lg px-8 py-4 font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-3 border-2 bg-transparent text-white border-white hover:bg-white/20 rounded-2xl">
+            <Button size="lg" className="w-full justify-center text-base md:text-lg px-6 md:px-8 py-3 md:py-4 font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-3 border-2 bg-transparent text-white border-white hover:bg-white/20 rounded-2xl">
               Obtener en Android
             </Button>
           </a>
         </div>
 
         {/* Imagen de la mujer con marco redondeado - Carta flotante */}
-        <div className="relative z-20 transform translate-y-8">
-          <div className="relative w-[368px] h-[368px] mx-auto group">
+        <div className="relative z-20 transform translate-y-4 md:translate-y-8">
+          <div className="relative w-[280px] h-[280px] md:w-[368px] md:h-[368px] mx-auto group">
             {/* Marco de fondo con efecto carta flotante */}
             <div ref={cardRef} className="absolute inset-0 bg-white/20 backdrop-blur-sm border border-white/30 shadow-[0_10px_30px_rgba(0,0,0,0.1)] transition-transform duration-200 ease-out rounded-full"></div>
             
@@ -100,7 +100,7 @@ const Hero = () => {
             )}
             
             {/* Imagen de la chica */}
-            <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-[448px] h-auto z-10">
+            <div className="absolute -top-6 md:-top-8 left-1/2 transform -translate-x-1/2 w-[340px] md:w-[448px] h-auto z-10">
               {images.map((image, index) => <img key={index} src={image} alt={`Mujer con estilo elegante ${index + 1}`} className={`absolute inset-0 w-full h-auto object-contain transition-opacity duration-1000 ease-in-out ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`} />)}
             </div>
           </div>
