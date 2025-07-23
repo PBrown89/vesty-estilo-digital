@@ -53,13 +53,13 @@ const AppStores = () => {
   return (
     <section className="h-screen bg-white relative overflow-hidden flex items-center justify-center" style={{
       backgroundImage: `url('/lovable-uploads/b80afb35-236a-4e68-86ae-5fc651f23a8e.png')`,
-      backgroundSize: 'cover',
+      backgroundSize: '100% 100%',
       backgroundPosition: 'center top',
       backgroundRepeat: 'no-repeat'
     }}>
       <div className="container mx-auto px-6 relative z-10 h-full flex flex-col justify-center items-center mt-16 md:mt-0">
         <div className="text-center">
-          <h2 className="text-2xl md:text-5xl lg:text-6xl font-normal leading-tight" style={{
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-normal leading-tight" style={{
             color: '#7F7F7F'
           }}>
             Más de <span className="font-bold" style={{
