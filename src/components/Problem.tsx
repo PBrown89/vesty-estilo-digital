@@ -7,7 +7,7 @@ const Problem = () => {
       name: "María García",
       age: "23 años - Estudiante",
       quote: "Tengo el armario lleno, pero siempre siento que no tengo nada que ponerme...",
-      position: { top: "10%", left: "5%", rotation: "-8deg", zIndex: 1 },
+      position: { top: "10%", left: "15%", rotation: "-8deg", zIndex: 1 },
       avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b601?w=400&h=400&fit=crop&crop=face"
     },
     {
@@ -15,7 +15,7 @@ const Problem = () => {
       name: "Ana López", 
       age: "27 años - Profesional",
       quote: "Cada mañana pierdo 20 minutos decidiendo qué ponerme para el trabajo...",
-      position: { top: "50%", left: "8%", rotation: "6deg", zIndex: 2 },
+      position: { top: "50%", left: "18%", rotation: "6deg", zIndex: 2 },
       avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face"
     },
     {
@@ -23,7 +23,7 @@ const Problem = () => {
       name: "Carmen Ruiz",
       age: "25 años - Diseñadora", 
       quote: "Compro ropa nueva pero nunca la combino bien con lo que ya tengo...",
-      position: { top: "25%", left: "20%", rotation: "4deg", zIndex: 3 },
+      position: { top: "25%", left: "30%", rotation: "4deg", zIndex: 3 },
       avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=400&fit=crop&crop=face"
     },
     {
@@ -31,7 +31,7 @@ const Problem = () => {
       name: "Laura Martín",
       age: "22 años - Estudiante",
       quote: "Me encanta la moda pero no sé cómo crear looks únicos con mi ropa...",
-      position: { top: "5%", left: "38%", rotation: "-5deg", zIndex: 4 },
+      position: { top: "5%", left: "45%", rotation: "-5deg", zIndex: 4 },
       avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&h=400&fit=crop&crop=face"
     },
     {
@@ -39,7 +39,7 @@ const Problem = () => {
       name: "Isabel Fernández",
       age: "29 años - Marketing",
       quote: "Siempre acabo poniéndome lo mismo porque no tengo ideas nuevas...",
-      position: { top: "65%", left: "25%", rotation: "7deg", zIndex: 5 },
+      position: { top: "65%", left: "35%", rotation: "7deg", zIndex: 5 },
       avatar: "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=400&h=400&fit=crop&crop=face"
     },
     {
@@ -47,7 +47,7 @@ const Problem = () => {
       name: "Sofía Jiménez", 
       age: "26 años - Abogada",
       quote: "Necesito inspiración para combinar mi ropa de forma creativa...",
-      position: { top: "40%", left: "45%", rotation: "-6deg", zIndex: 6 },
+      position: { top: "40%", left: "52%", rotation: "-6deg", zIndex: 6 },
       avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
     },
     {
@@ -55,7 +55,7 @@ const Problem = () => {
       name: "Elena Torres",
       age: "24 años - Periodista",
       quote: "Quiero maximizar mi armario pero no sé cómo crear nuevos outfits...",
-      position: { top: "15%", left: "62%", rotation: "5deg", zIndex: 7 },
+      position: { top: "15%", left: "65%", rotation: "5deg", zIndex: 7 },
       avatar: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&h=400&fit=crop&crop=face"
     },
     {
@@ -63,7 +63,7 @@ const Problem = () => {
       name: "Patricia Vega",
       age: "28 años - Arquitecta", 
       quote: "Me gustaría tener más confianza en mis decisiones de estilo...",
-      position: { top: "55%", left: "50%", rotation: "-4deg", zIndex: 8 },
+      position: { top: "55%", left: "60%", rotation: "-4deg", zIndex: 8 },
       avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&crop=face"
     },
     {
