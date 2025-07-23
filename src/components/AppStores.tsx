@@ -57,9 +57,9 @@ const AppStores = () => {
       backgroundPosition: 'center top',
       backgroundRepeat: 'no-repeat'
     }}>
-      <div className="container mx-auto px-6 relative z-10 h-full flex flex-col justify-center items-center mt-10 md:mt-0">
+      <div className="container mx-auto px-6 relative z-10 h-full flex flex-col justify-center items-center mt-16 md:mt-0">
         <div className="text-center">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-normal leading-tight" style={{
+          <h2 className="text-2xl md:text-5xl lg:text-6xl font-normal leading-tight" style={{
             color: '#7F7F7F'
           }}>
             Más de <span className="font-bold" style={{
@@ -70,7 +70,7 @@ const AppStores = () => {
         </div>
         
         {/* Grid layout for logos */}
-        <div className="flex items-center justify-center mt-16">
+        <div className="flex items-center justify-center mt-8 md:mt-16">
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-3 md:gap-6 max-w-4xl w-full">
             {storeLogos.map((store, index) => (
               <div 
