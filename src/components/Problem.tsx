@@ -92,7 +92,7 @@ const Problem = () => {
         </div>
       </div>
 
-      <div className="relative h-[600px] max-w-6xl mx-auto px-4">
+      <div className="relative h-[600px] w-full px-4">
         {stories.map((story, index) => (
           <div
             key={story.id}
