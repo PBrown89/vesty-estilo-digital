@@ -42,7 +42,7 @@ const OutfitPlanner = () => {
           {/* Contenido izquierdo - Mockup */}
           <div 
             ref={mockupRef}
-            className={`relative flex justify-center lg:justify-start lg:order-1 transition-all duration-700 ease-out h-[150%] ${
+            className={`relative flex justify-center lg:justify-start lg:order-1 transition-all duration-700 ease-out h-full min-h-[500px] ${
               mockupInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
             style={{transitionDelay: mockupInView ? '200ms' : '0ms'}}
@@ -50,7 +50,7 @@ const OutfitPlanner = () => {
             <img 
               src="/lovable-uploads/f78ee6b5-efc1-4dcb-baf4-1fd0de4db1fb.png" 
               alt="Planificador de outfits móvil" 
-              className="w-28 md:w-34 h-auto max-w-full"
+              className="w-full h-full object-contain max-w-full"
             />
           </div>
         </div>
