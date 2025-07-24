@@ -50,7 +50,7 @@ const OutfitPlanner = () => {
             <img 
               src="/lovable-uploads/f78ee6b5-efc1-4dcb-baf4-1fd0de4db1fb.png" 
               alt="Planificador de outfits móvil" 
-              className="w-34 h-auto max-w-full"
+              className="w-28 md:w-34 h-auto max-w-full"
             />
           </div>
         </div>
