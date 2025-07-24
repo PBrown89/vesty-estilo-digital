@@ -29,7 +29,7 @@ const AppStores = () => {
     hasLogo: true
   }, {
     name: "C&A",
-    src: "/lovable-uploads/e60b8188-6bdf-4367-826d-f563f43a6982.png",
+    src: "/lovable-uploads/15f93b4e-da11-4e55-8a4d-a510ea43fcb4.png",
     hasLogo: true
   }, {
     name: "Pull&Bear",
