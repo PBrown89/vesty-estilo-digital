@@ -42,7 +42,7 @@ const OutfitPlanner = () => {
           {/* Contenido izquierdo - Mockup */}
           <div 
             ref={mockupRef}
-            className={`relative flex justify-center lg:justify-start lg:order-1 transition-all duration-700 ease-out ${
+            className={`relative flex justify-center lg:justify-start lg:order-1 transition-all duration-700 ease-out h-[150%] ${
               mockupInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
             style={{transitionDelay: mockupInView ? '200ms' : '0ms'}}
