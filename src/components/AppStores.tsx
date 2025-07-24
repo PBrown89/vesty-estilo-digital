@@ -87,7 +87,7 @@ const AppStores = () => {
                     <img 
                       src={store.src} 
                       alt={store.name} 
-                      className="w-full h-full object-contain filter brightness-0" 
+                      className="w-full h-full object-contain" 
                     />
                   ) : (
                     <span className="text-gray-700 text-xs font-semibold tracking-wide">
