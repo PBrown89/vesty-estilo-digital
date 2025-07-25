@@ -3,11 +3,19 @@ import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Apple, Star, Smartphone, Camera, Palette, Sparkles } from "lucide-react";
 import FinalCTA from "@/components/FinalCTA";
+import SEOEnhancer from "@/components/SEOEnhancer";
 
 const ArmarioDigital = () => {
   return (
-    <div className="min-h-screen">
-      <Header />
+    <>
+      <SEOEnhancer 
+        title="Armario Digital - Organiza tu Ropa Virtualmente | Vesty"
+        description="Digitaliza y organiza toda tu ropa con el armario digital de Vesty. Catálogo virtual inteligente con IA para gestionar tu guardarropa desde el móvil."
+        keywords="armario digital, organizar ropa, catálogo virtual, guardarropa digital, app organización ropa"
+        canonical="https://vesty.app/armario-digital"
+      />
+      <div className="min-h-screen">
+        <Header />
       
       {/* Hero Section */}
       <section className="pt-20 pb-16 bg-gradient-to-br from-purple-50 to-pink-50">
@@ -195,7 +203,8 @@ const ArmarioDigital = () => {
       </section>
 
       <FinalCTA />
-    </div>
+      </div>
+    </>
   );
 };
 
