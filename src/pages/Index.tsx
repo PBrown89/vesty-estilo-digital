@@ -12,7 +12,6 @@ import AppDownloadCTA from "@/components/AppDownloadCTA";
 import FinalCTA from "@/components/FinalCTA";
 import FullPageScroll from "@/components/FullPageScroll";
 import SEOEnhancer from "@/components/SEOEnhancer";
-import InternalLinks from "@/components/InternalLinks";
 import SEOFaq from "@/components/SEOFaq";
 
 const Index = () => {
@@ -67,7 +66,6 @@ const Index = () => {
         <OutfitPlanner />
         <Pricing />
         <SEOFaq />
-        <InternalLinks />
         <AppDownloadCTA />
         <FinalCTA />
       </FullPageScroll>

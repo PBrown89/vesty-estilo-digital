@@ -104,13 +104,13 @@ const SwipeFeature = () => {
     triggerOnce: true,
     threshold: 0.2
   });
-  return <section id="funciones" className="bg-white pb-8 md:pb-[180px] mt-8">
+  return <section id="funciones" className="bg-white py-16 md:py-24">
       <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-          {/* Contenido izquierdo */}
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16 max-w-7xl mx-auto">
+          {/* Contenido */}
           <div 
             ref={contentRef}
-            className={`space-y-6 transition-all duration-700 ease-out ${
+            className={`w-full lg:w-1/2 space-y-6 text-center lg:text-left transition-all duration-700 ease-out ${
               contentInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
           >
@@ -130,21 +130,19 @@ const SwipeFeature = () => {
             </div>
           </div>
 
-          {/* Contenido derecho - Mockup */}
+          {/* Mockup */}
           <div 
             ref={mockupRef}
-            className={`relative flex justify-center transition-all duration-700 ease-out ${
+            className={`w-full lg:w-1/2 flex justify-center transition-all duration-700 ease-out ${
               mockupInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
             style={{transitionDelay: mockupInView ? '200ms' : '0ms'}}
           >
-            <div className="relative my-8 bg-transparent">
-              <img 
-                src="/lovable-uploads/f011518d-ac62-4e1b-9472-9eaf660a07c3.png" 
-                alt="App mockup interface" 
-                className="w-full max-w-[15.36rem] mx-auto h-auto rounded-t-3xl"
-              />
-            </div>
+            <img 
+              src="/lovable-uploads/f011518d-ac62-4e1b-9472-9eaf660a07c3.png" 
+              alt="App mockup interface" 
+              className="w-full max-w-sm h-auto object-contain"
+            />
           </div>
         </div>
       </div>

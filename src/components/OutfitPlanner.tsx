@@ -11,13 +11,13 @@ const OutfitPlanner = () => {
     threshold: 0.2
   });
 
-  return <section className="py-16 pb-48 md:py-[208px]">
-      <div className="container px-4">
-        <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-          {/* Contenido derecho */}
+  return <section className="py-16 md:py-24">
+      <div className="container mx-auto px-4">
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16 max-w-7xl mx-auto">
+          {/* Contenido */}
           <div 
             ref={contentRef}
-            className={`space-y-6 lg:order-2 transition-all duration-700 ease-out ${
+            className={`w-full lg:w-1/2 space-y-6 text-center lg:text-left transition-all duration-700 ease-out ${
               contentInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
           >
@@ -28,7 +28,7 @@ const OutfitPlanner = () => {
             <p className="text-lg font-inter text-gray-600 leading-relaxed font-normal">Deja el caos fuera y planifica tus outfits.
             </p>
 
-            <div className="space-y-2">
+            <div className="space-y-4">
               <p className="text-xl font-outfit font-bold text-gray-900">
                 ¿Tienes un evento importante el finde y no sabes qué ponerte?
               </p>
@@ -39,10 +39,10 @@ const OutfitPlanner = () => {
             </div>
           </div>
 
-          {/* Contenido izquierdo - Mockup */}
+          {/* Mockup */}
           <div 
             ref={mockupRef}
-            className={`relative flex justify-center lg:justify-start lg:order-1 transition-all duration-700 ease-out h-full min-h-[500px] ${
+            className={`w-full lg:w-1/2 flex justify-center transition-all duration-700 ease-out ${
               mockupInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
             style={{transitionDelay: mockupInView ? '200ms' : '0ms'}}
@@ -50,7 +50,7 @@ const OutfitPlanner = () => {
             <img 
               src="/lovable-uploads/f78ee6b5-efc1-4dcb-baf4-1fd0de4db1fb.png" 
               alt="Planificador de outfits móvil" 
-              className="w-full h-full object-contain max-w-full"
+              className="w-full max-w-sm h-auto object-contain"
             />
           </div>
         </div>
