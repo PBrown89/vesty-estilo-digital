@@ -40,9 +40,9 @@ const Hero = () => {
   }}>
 
       <div className="container mx-auto px-1rem md:px-1.5rem text-center relative z-10 max-w-4xl flex-1 flex flex-col justify-center py-2rem">
-        {/* Logo - 20% más pequeño */}
+        {/* Logo - Con más presencia */}
         <div className="mb-1rem md:mb-2rem">
-          <img src="/lovable-uploads/b0d52d4b-d06e-458d-aab0-4113a7954fe3.png" alt="Vesty" className="h-8 md:h-10 mx-auto" />
+          <img src="/lovable-uploads/b0d52d4b-d06e-458d-aab0-4113a7954fe3.png" alt="Vesty" className="h-12 md:h-16 mx-auto" />
         </div>
         
         {/* Título principal - Más impactante */}
@@ -74,7 +74,7 @@ const Hero = () => {
         </div>
 
         {/* Botón CTA principal más agresivo */}
-        <div className="space-y-6 mb-1.5rem md:mb-2rem px-1rem md:px-0">
+        <div className="space-y-6 mb-8 md:mb-12 px-1rem md:px-0">
           <a href="https://apps.apple.com/es/app/vesty/id6743717284" target="_blank" rel="noopener noreferrer" className="block">
             <Button size="lg" className="w-full max-w-sm mx-auto justify-center bg-gradient-to-r from-white to-white/95 text-vesty-purple text-lg md:text-xl px-2rem py-1rem font-black transform hover:scale-105 hover:shadow-2xl transition-all duration-300 shadow-xl flex items-center gap-0.75rem border-0 rounded-full relative overflow-hidden group">
               <span className="relative z-10">🚀 Descargar Gratis</span>
