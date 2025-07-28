@@ -1,208 +1,132 @@
 import { Button } from "@/components/ui/button";
-import { Apple, Download, ChevronDown, Users } from "lucide-react";
+import { Apple } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
-
 const Hero = () => {
-  const [scrollY, setScrollY] = useState(0);
-  const [showStickyBar, setShowStickyBar] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const heroRef = useRef<HTMLDivElement>(null);
-  
-  const images = [
-    "/lovable-uploads/27123033-2eee-4e8e-8ca4-a5a74c308ad2.png", 
-    "/lovable-uploads/01b8ef1b-a2ae-4419-9a8b-d9ab8268c831.png", 
-    "/lovable-uploads/fa38c56a-46ea-4942-9720-d15111e89f3f.png"
-  ];
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-      setShowStickyBar(window.scrollY > window.innerHeight * 0.8);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
+  const [showSparkles, setShowSparkles] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+  const images = ["/lovable-uploads/27123033-2eee-4e8e-8ca4-a5a74c308ad2.png", "/lovable-uploads/01b8ef1b-a2ae-4419-9a8b-d9ab8268c831.png", "/lovable-uploads/fa38c56a-46ea-4942-9720-d15111e89f3f.png"];
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex(prevIndex => (prevIndex + 1) % images.length);
-    }, 5000);
+      // Trigger sparkles when image changes
+      setShowSparkles(true);
+      setTimeout(() => setShowSparkles(false), 1000);
+    }, 4000);
     return () => clearInterval(interval);
   }, [images.length]);
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (cardRef.current) {
+        const x = e.clientX / window.innerWidth - 0.5; // -0.5 a 0.5
+        const y = e.clientY / window.innerHeight - 0.5;
+        const rotateX = y * 15; // Rotación suave
+        const rotateY = x * 15;
+        cardRef.current.style.transform = `perspective(1000px) rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`;
+      }
+    };
 
-  const downloadIOS = () => {
-    window.open("https://apps.apple.com/es/app/vesty/id6743717284", "_blank");
-  };
+    // Escuchar en todo el documento, no solo en el elemento
+    document.addEventListener('mousemove', handleMouseMove);
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+  return <section className="min-h-screen flex flex-col relative overflow-hidden" style={{
+    backgroundImage: 'url(/lovable-uploads/36e38b0b-5f28-4c2d-af39-5b3f0d276766.png)',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat'
+  }}>
 
-  const downloadAndroid = () => {
-    window.open("https://play.google.com/store/apps/details?id=app.vesty.com&hl=es", "_blank");
-  };
+      <div className="container mx-auto px-1rem md:px-1.5rem text-center relative z-10 max-w-4xl flex-1 flex flex-col justify-center py-2rem">
+        {/* Logo - Más pequeño en mobile */}
+        <div className="mb-1rem md:mb-2rem">
+          <img src="/lovable-uploads/b0d52d4b-d06e-458d-aab0-4113a7954fe3.png" alt="Vesty" className="h-2.5rem md:h-3rem mx-auto" />
+        </div>
 
-  return (
-    <>
-      <section 
-        ref={heroRef}
-        className="min-h-screen relative overflow-hidden bg-gradient-to-br from-vesty-purple via-purple-600 to-vesty-pink"
-      >
-        {/* Fondo con efecto parallax */}
-        <div 
-          className="absolute inset-0 opacity-20"
-          style={{
-            transform: `translateY(${scrollY * 0.5}px)`,
-            backgroundImage: 'url(/lovable-uploads/36e38b0b-5f28-4c2d-af39-5b3f0d276766.png)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'
-          }}
-        />
+        {/* Badge superior - Visible en mobile también */}
+        <div className="flex items-center justify-center mb-1rem md:mb-2rem">
+          <div className="inline-flex items-center gap-0.5rem bg-white/25 backdrop-blur-sm px-0.75rem py-0.5rem text-xs md:text-sm font-semibold text-white border border-white/40 rounded-full shadow-lg">
+            <span className="w-0.375rem h-0.375rem bg-yellow-400 rounded-full animate-pulse"></span>
+            <span className="hidden sm:inline">+10,000 usuarias felices</span>
+            <span className="sm:hidden">10k+ usuarias</span>
+          </div>
+        </div>
         
-        {/* Elementos decorativos parallax */}
-        <div 
-          className="absolute top-20 left-10 w-16 h-16 bg-white/10 rounded-full blur-xl"
-          style={{ transform: `translateY(${scrollY * 0.3}px)` }}
-        />
-        <div 
-          className="absolute bottom-32 right-8 w-20 h-20 bg-yellow-300/20 rounded-full blur-2xl"
-          style={{ transform: `translateY(${scrollY * -0.2}px)` }}
-        />
+        {/* Título principal - Más impactante */}
+        <div className="space-y-0.75rem md:space-y-1.5rem mb-1.5rem md:mb-2rem">
+          <h1 className="text-2.5rem md:text-4rem lg:text-5rem font-black text-white leading-tight tracking-tight">
+            <span className="block">Combina tu ropa</span>
+            <span className="block text-yellow-300">en segundos</span>
+          </h1>
+          
+          {/* Descripción visible en mobile */}
+          <p className="text-lg md:text-xl lg:text-2xl text-white/95 font-medium leading-relaxed max-w-2xl mx-auto px-0.5rem">
+            <span className="block sm:hidden">Looks perfectos cada día</span>
+            <span className="hidden sm:block">Despierta con looks listos para brillar. Captura tu ropa y obtén combinaciones perfectas al instante.</span>
+          </p>
+        </div>
 
-        <div className="container mx-auto px-4 md:px-6 relative z-10 min-h-screen flex flex-col justify-center">
-          {/* Logo */}
-          <div className="text-center mb-6">
-            <img 
-              src="/lovable-uploads/b0d52d4b-d06e-458d-aab0-4113a7954fe3.png" 
-              alt="Vesty" 
-              className="h-10 md:h-12 mx-auto"
-            />
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center max-w-6xl mx-auto">
-            {/* Contenido de texto */}
-            <div className="text-center lg:text-left space-y-6 order-2 lg:order-1">
-              {/* Titular impactante */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight">
-                Revoluciona tu estilo
-                <span className="block text-yellow-300">cada día</span>
-              </h1>
-              
-              {/* Subtítulo */}
-              <p className="text-lg md:text-xl text-white/90 leading-relaxed max-w-xl mx-auto lg:mx-0">
-                Organiza, combina y planifica tus outfits de forma intuitiva. 
-                Olvídate del estrés de elegir qué ponerte y exprésate con confianza y creatividad.
-              </p>
-
-              {/* CTAs principales */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Button 
-                  onClick={downloadIOS}
-                  size="lg" 
-                  className="bg-black text-white hover:bg-gray-800 px-6 py-4 text-base font-semibold rounded-xl min-h-[44px] flex items-center gap-3 transition-all duration-300 transform hover:scale-105"
-                >
-                  <Apple className="h-5 w-5" />
-                  Descargar para iOS
-                </Button>
-                
-                <Button 
-                  onClick={downloadAndroid}
-                  variant="outline" 
-                  size="lg"
-                  className="bg-white/10 text-white border-white/30 hover:bg-white/20 px-6 py-4 text-base font-semibold rounded-xl min-h-[44px] flex items-center gap-3 transition-all duration-300 transform hover:scale-105 backdrop-blur-sm"
-                >
-                  <Download className="h-5 w-5" />
-                  Descargar para Android
-                </Button>
-              </div>
-
-              {/* Social proof */}
-              <div className="flex items-center justify-center lg:justify-start gap-4 pt-4">
-                <div className="flex items-center gap-2">
-                  <Users className="h-5 w-5 text-yellow-300" />
-                  <span className="text-white/90 text-sm font-medium">
-                    Únete a +10,000 personas que ya planifican sus looks con Vesty
-                  </span>
-                </div>
-              </div>
-
-              {/* Rating */}
-              <div className="flex items-center justify-center lg:justify-start gap-4">
-                <div className="flex items-center gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <span key={i} className="text-yellow-400 text-lg">★</span>
-                  ))}
-                  <span className="text-white/90 text-sm font-medium ml-2">4.9 en App Store</span>
-                </div>
-              </div>
+        {/* Elementos de confianza */}
+        <div className="flex items-center justify-center gap-1rem mb-1.5rem md:mb-2rem">
+          <div className="flex items-center gap-0.25rem">
+            <div className="flex">
+              {[...Array(5)].map((_, i) => (
+                <span key={i} className="text-yellow-400 text-sm md:text-base">★</span>
+              ))}
             </div>
+            <span className="text-white/90 text-xs md:text-sm font-medium ml-0.25rem">4.9</span>
+          </div>
+          <div className="w-px h-1rem bg-white/30"></div>
+          <span className="text-white/90 text-xs md:text-sm font-medium">Descarga gratuita</span>
+        </div>
 
-            {/* Visual principal - Mockup */}
-            <div className="relative order-1 lg:order-2 flex justify-center">
-              <div 
-                className="relative"
-                style={{ transform: `translateY(${scrollY * -0.1}px)` }}
-              >
-                {/* Efecto de resplandor */}
-                <div className="absolute -inset-8 bg-gradient-to-r from-yellow-300/20 to-pink-300/20 rounded-full blur-3xl animate-pulse" />
-                
-                {/* Mockup del teléfono */}
-                <div className="relative w-64 md:w-80 mx-auto">
-                  <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-[2.5rem] p-2 shadow-2xl">
-                    <div className="bg-black rounded-[2rem] overflow-hidden">
-                      {/* Pantalla del teléfono */}
-                      <div className="aspect-[9/19.5] bg-white relative overflow-hidden">
-                        {images.map((image, index) => (
-                          <img 
-                            key={index}
-                            src={image} 
-                            alt={`Interfaz de Vesty ${index + 1}`}
-                            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-                              index === currentImageIndex ? 'opacity-100' : 'opacity-0'
-                            }`}
-                          />
-                        ))}
-                        
-                        {/* Overlay con gradiente sutil */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-vesty-purple/10 to-transparent" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
+        {/* Botón CTA principal más agresivo */}
+        <div className="space-y-0.75rem mb-1.5rem md:mb-2rem px-1rem md:px-0">
+          <a href="https://apps.apple.com/es/app/vesty/id6743717284" target="_blank" rel="noopener noreferrer" className="block">
+            <Button size="lg" className="w-full max-w-sm mx-auto justify-center bg-gradient-to-r from-white to-white/95 text-vesty-purple text-lg md:text-xl px-2rem py-1rem font-black transform hover:scale-105 hover:shadow-2xl transition-all duration-300 shadow-xl flex items-center gap-0.75rem border-0 rounded-full relative overflow-hidden group">
+              <span className="relative z-10">🚀 Descargar Gratis</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-yellow-300/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </Button>
+          </a>
+
+          <a href="https://play.google.com/store/apps/details?id=app.vesty.com&hl=es" target="_blank" rel="noopener noreferrer" className="block">
+            <Button variant="outline" size="lg" className="w-full max-w-sm mx-auto justify-center text-sm md:text-lg px-1.5rem py-0.75rem font-semibold transform hover:scale-102 transition-all duration-300 flex items-center gap-0.5rem border-2 bg-white/10 text-white border-white/50 hover:bg-white/20 rounded-full backdrop-blur-sm">
+              También en Android
+            </Button>
+          </a>
+        </div>
+
+        {/* Imagen optimizada para mobile */}
+        <div className="relative z-20 flex-1 flex items-center justify-center">
+          <div className="relative w-[20rem] h-[20rem] md:w-[23rem] md:h-[23rem] mx-auto group">
+            {/* Marco de fondo con efecto carta flotante */}
+            <div ref={cardRef} className="absolute inset-0 bg-white/15 backdrop-blur-sm border border-white/25 shadow-[0_0.625rem_1.875rem_rgba(0,0,0,0.1)] transition-transform duration-200 ease-out rounded-full"></div>
+            
+            {/* Efecto shine alrededor del círculo */}
+            {showSparkles && (
+              <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute inset-0 rounded-full border-2 border-white/30 animate-ping"></div>
+                <div className="absolute inset-0 rounded-full shadow-[0_0_2.5rem_0.625rem_rgba(255,255,255,0.3)] animate-pulse"></div>
               </div>
+            )}
+            
+            {/* Imagen de la chica - Más grande en mobile */}
+            <div className="absolute -top-1.5rem md:-top-2rem left-1/2 transform -translate-x-1/2 w-[24rem] md:w-[28rem] h-auto z-10">
+              {images.map((image, index) => (
+                <img 
+                  key={index} 
+                  src={image} 
+                  alt={`Mujer con estilo elegante ${index + 1}`} 
+                  className={`absolute inset-0 w-full h-auto object-contain transition-opacity duration-1000 ease-in-out ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`} 
+                />
+              ))}
             </div>
           </div>
-
-          {/* Indicador de scroll */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center">
-            <div className="text-white/80 text-sm mb-2">Descubre más</div>
-            <ChevronDown className="h-6 w-6 text-white/80 mx-auto animate-bounce" />
-          </div>
         </div>
-      </section>
 
-      {/* Sticky CTA Bar para mobile */}
-      {showStickyBar && (
-        <div className="fixed bottom-0 left-0 right-0 bg-gradient-to-r from-vesty-purple to-vesty-pink p-4 z-50 transform transition-transform duration-300 shadow-2xl lg:hidden">
-          <div className="flex gap-3">
-            <Button 
-              onClick={downloadIOS}
-              className="flex-1 bg-black text-white hover:bg-gray-800 rounded-xl min-h-[44px] font-semibold"
-            >
-              <Apple className="h-4 w-4 mr-2" />
-              iOS
-            </Button>
-            <Button 
-              onClick={downloadAndroid}
-              variant="outline"
-              className="flex-1 bg-white/20 text-white border-white/30 hover:bg-white/30 rounded-xl min-h-[44px] font-semibold backdrop-blur-sm"
-            >
-              <Download className="h-4 w-4 mr-2" />
-              Android
-            </Button>
-          </div>
-        </div>
-      )}
-    </>
-  );
+      </div>
+    </section>;
 };
-
 export default Hero;
