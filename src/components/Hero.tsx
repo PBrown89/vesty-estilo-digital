@@ -60,7 +60,7 @@ const Hero = () => {
         </div>
 
         {/* Elementos de confianza */}
-        <div className="flex items-center justify-center gap-1rem mb-1.5rem md:mb-2rem">
+        <div className="flex items-center justify-center gap-1rem mb-8">
           <div className="flex items-center gap-0.25rem">
             <div className="flex">
               {[...Array(5)].map((_, i) => (
