@@ -1,123 +1,174 @@
 import { Button } from "@/components/ui/button";
-import { Apple } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
+
 const Hero = () => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [showSparkles, setShowSparkles] = useState(false);
-  const cardRef = useRef<HTMLDivElement>(null);
-  const images = ["/lovable-uploads/27123033-2eee-4e8e-8ca4-a5a74c308ad2.png", "/lovable-uploads/01b8ef1b-a2ae-4419-9a8b-d9ab8268c831.png", "/lovable-uploads/fa38c56a-46ea-4942-9720-d15111e89f3f.png"];
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex(prevIndex => (prevIndex + 1) % images.length);
-      // Trigger sparkles when image changes
-      setShowSparkles(true);
-      setTimeout(() => setShowSparkles(false), 1000);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, [images.length]);
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (cardRef.current) {
-        const x = e.clientX / window.innerWidth - 0.5; // -0.5 a 0.5
-        const y = e.clientY / window.innerHeight - 0.5;
-        const rotateX = y * 15; // Rotación suave
-        const rotateY = x * 15;
-        cardRef.current.style.transform = `perspective(1000px) rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`;
-      }
-    };
+  const [isOpen, setIsOpen] = useState(false);
+  const [showElements, setShowElements] = useState({
+    logo: false,
+    title: false,
+    subtitle: false,
+    wardrobe: false,
+    button: false,
+    downloadButton: false
+  });
 
-    // Escuchar en todo el documento, no solo en el elemento
-    document.addEventListener('mousemove', handleMouseMove);
-    return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-    };
+  useEffect(() => {
+    // Animación secuencial de aparición de elementos
+    const timeouts = [
+      setTimeout(() => setShowElements(prev => ({ ...prev, logo: true })), 300),
+      setTimeout(() => setShowElements(prev => ({ ...prev, title: true })), 600),
+      setTimeout(() => setShowElements(prev => ({ ...prev, subtitle: true })), 900),
+      setTimeout(() => setShowElements(prev => ({ ...prev, wardrobe: true })), 1200),
+      setTimeout(() => setShowElements(prev => ({ ...prev, button: true })), 1500),
+      setTimeout(() => setShowElements(prev => ({ ...prev, downloadButton: true })), 1800),
+    ];
+
+    return () => timeouts.forEach(clearTimeout);
   }, []);
-  return <section className="min-h-screen flex flex-col relative overflow-hidden" style={{
-    backgroundImage: 'url(/lovable-uploads/36e38b0b-5f28-4c2d-af39-5b3f0d276766.png)',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat'
-  }}>
 
-      <div className="container mx-auto px-1rem md:px-1.5rem text-center relative z-10 max-w-4xl flex-1 flex flex-col justify-center py-2rem">
-        {/* Logo - Con más presencia */}
-        <div className="mb-1rem md:mb-2rem">
-          <img src="/lovable-uploads/b0d52d4b-d06e-458d-aab0-4113a7954fe3.png" alt="Vesty" className="h-12 md:h-16 mx-auto" />
+  const handleOpenWardrobe = () => {
+    setIsOpen(true);
+  };
+
+  return (
+    <section className="min-h-screen flex flex-col relative overflow-hidden transition-all duration-1000 ease-in-out">
+      {/* Fondo dinámico */}
+      <div 
+        className={`absolute inset-0 transition-all duration-1000 ${
+          isOpen 
+            ? 'bg-white' 
+            : 'bg-gradient-to-br from-purple-600 via-purple-700 to-purple-800'
+        }`}
+      />
+      
+      {/* Estrellas decorativas */}
+      {!isOpen && (
+        <>
+          <div className="absolute top-20 right-20 text-yellow-300 text-2xl animate-pulse">✨</div>
+          <div className="absolute top-32 right-32 text-yellow-300 text-xl animate-pulse delay-300">✨</div>
+        </>
+      )}
+
+      <div className="container mx-auto px-6 md:px-8 text-center relative z-10 max-w-6xl flex-1 flex flex-col justify-center py-8">
+        
+        {/* Logo */}
+        <div className={`mb-8 md:mb-12 transition-all duration-800 ${
+          showElements.logo ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+        }`}>
+          <img 
+            src="/lovable-uploads/b0d52d4b-d06e-458d-aab0-4113a7954fe3.png" 
+            alt="Vesty" 
+            className="h-16 md:h-20 mx-auto" 
+          />
         </div>
         
-        {/* Título principal - Más impactante */}
-        <div className="space-y-0.75rem md:space-y-1.5rem mb-1.5rem md:mb-2rem">
-          <h1 className="text-2.5rem md:text-4rem lg:text-5rem font-black text-white leading-tight tracking-tight">
-            <span className="block">Combina tu ropa</span>
-            <span className="block text-yellow-300">en segundos</span>
-          </h1>
+        {/* Contenido principal */}
+        <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
           
-          {/* Descripción visible en mobile */}
-          <p className="text-lg md:text-xl lg:text-2xl text-white/95 font-medium leading-relaxed max-w-2xl mx-auto px-0.5rem">
-            <span className="block sm:hidden">Looks perfectos cada día</span>
-            <span className="hidden sm:block">Despierta con looks listos para brillar. Captura tu ropa y obtén combinaciones perfectas al instante.</span>
-          </p>
-        </div>
-
-        {/* Elementos de confianza */}
-        <div className="flex items-center justify-center gap-1rem mb-8">
-          <div className="flex items-center gap-0.25rem">
-            <div className="flex">
-              {[...Array(5)].map((_, i) => (
-                <span key={i} className="text-yellow-400 text-sm md:text-base">★</span>
-              ))}
-            </div>
-            <span className="text-white/90 text-xs md:text-sm font-medium ml-0.25rem">4.9</span>
-          </div>
-          <div className="w-px h-1rem bg-white/30"></div>
-          <span className="text-white/90 text-xs md:text-sm font-medium">Descarga gratuita</span>
-        </div>
-
-        {/* Botón CTA principal más agresivo */}
-        <div className="space-y-6 mb-8 md:mb-12 px-1rem md:px-0">
-          <a href="https://apps.apple.com/es/app/vesty/id6743717284" target="_blank" rel="noopener noreferrer" className="block">
-            <Button size="lg" className="w-full max-w-sm mx-auto justify-center bg-gradient-to-r from-white to-white/95 text-vesty-purple text-lg md:text-xl px-2rem py-1rem font-black transform hover:scale-105 hover:shadow-2xl transition-all duration-300 shadow-xl flex items-center gap-0.75rem border-0 rounded-full relative overflow-hidden group">
-              <span className="relative z-10">🚀 Descargar Gratis</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-yellow-300/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </Button>
-          </a>
-
-          <a href="https://play.google.com/store/apps/details?id=app.vesty.com&hl=es" target="_blank" rel="noopener noreferrer" className="block">
-            <Button variant="outline" size="lg" className="w-full max-w-sm mx-auto justify-center text-sm md:text-lg px-1.5rem py-0.75rem font-semibold transform hover:scale-102 transition-all duration-300 flex items-center gap-0.5rem border-2 bg-white/10 text-white border-white/50 hover:bg-white/20 rounded-full backdrop-blur-sm">
-              También en Android
-            </Button>
-          </a>
-        </div>
-
-        {/* Imagen optimizada para mobile */}
-        <div className="relative z-20 flex-1 flex items-center justify-center">
-          <div className="relative w-[20rem] h-[20rem] md:w-[23rem] md:h-[23rem] mx-auto group">
-            {/* Marco de fondo con efecto carta flotante */}
-            <div ref={cardRef} className="absolute inset-0 bg-white/15 backdrop-blur-sm border border-white/25 shadow-[0_0.625rem_1.875rem_rgba(0,0,0,0.1)] transition-transform duration-200 ease-out rounded-full"></div>
+          {/* Columna izquierda - Texto */}
+          <div className="space-y-8 text-left">
             
-            {/* Efecto shine alrededor del círculo */}
-            {showSparkles && (
-              <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute inset-0 rounded-full border-2 border-white/30 animate-ping"></div>
-                <div className="absolute inset-0 rounded-full shadow-[0_0_2.5rem_0.625rem_rgba(255,255,255,0.3)] animate-pulse"></div>
+            {/* Título principal */}
+            <div className={`space-y-4 transition-all duration-800 delay-300 ${
+              showElements.title ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}>
+              <h1 className={`text-4xl md:text-5xl lg:text-6xl font-bold leading-tight ${
+                isOpen ? 'text-purple-600' : 'text-white'
+              }`}>
+                {isOpen ? (
+                  <>
+                    <span className="block">Descubre</span>
+                  </>
+                ) : (
+                  <>
+                    <span className="block">Tu armario</span>
+                    <span className="block">como nunca lo</span>
+                    <span className="block">habías visto</span>
+                  </>
+                )}
+              </h1>
+            </div>
+
+            {/* Subtítulo */}
+            <div className={`transition-all duration-800 delay-500 ${
+              showElements.subtitle ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}>
+              <p className={`text-xl md:text-2xl font-medium leading-relaxed ${
+                isOpen ? 'text-purple-400' : 'text-white/90'
+              }`}>
+                {isOpen ? (
+                  <>
+                    <span className="block font-semibold text-purple-600">Looks listos para brillar.</span>
+                    <span className="block">Captura tu ropa y obtén</span>
+                    <span className="block">combinaciones en segundos.</span>
+                  </>
+                ) : null}
+              </p>
+            </div>
+
+            {/* Botón de abrir armario */}
+            {!isOpen && (
+              <div className={`transition-all duration-800 delay-1000 ${
+                showElements.button ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              }`}>
+                <Button 
+                  onClick={handleOpenWardrobe}
+                  size="lg" 
+                  className="bg-white text-purple-600 hover:bg-white/90 text-lg px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                >
+                  Abrir el armario
+                </Button>
               </div>
             )}
+
+            {/* Botón de descarga (solo cuando está abierto) */}
+            {isOpen && (
+              <div className={`space-y-4 transition-all duration-800 delay-1200 ${
+                showElements.downloadButton ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              }`}>
+                <a href="https://apps.apple.com/es/app/vesty/id6743717284" target="_blank" rel="noopener noreferrer">
+                  <Button 
+                    size="lg" 
+                    className="w-full max-w-sm bg-purple-600 text-white hover:bg-purple-700 text-lg px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                  >
+                    Descargar gratis
+                  </Button>
+                </a>
+              </div>
+            )}
+          </div>
+
+          {/* Columna derecha - Armario */}
+          <div className={`relative flex justify-center items-center transition-all duration-800 delay-700 ${
+            showElements.wardrobe ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+          }`}>
             
-            {/* Imagen de la chica - Más grande en mobile */}
-            <div className="absolute -top-1.5rem md:-top-2rem left-1/2 transform -translate-x-1/2 w-[24rem] md:w-[28rem] h-auto z-10">
-              {images.map((image, index) => (
-                <img 
-                  key={index} 
-                  src={image} 
-                  alt={`Mujer con estilo elegante ${index + 1}`} 
-                  className={`absolute inset-0 w-full h-auto object-contain transition-opacity duration-1000 ease-in-out ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`} 
-                />
-              ))}
+            {/* Armario cerrado */}
+            <div className={`transition-all duration-1000 ${
+              isOpen ? 'opacity-0 scale-95' : 'opacity-100 scale-100'
+            }`}>
+              <img 
+                src="/lovable-uploads/f3eb37dc-676b-474f-a310-64fd781f52f8.png" 
+                alt="Armario cerrado con luz mágica" 
+                className="w-80 md:w-96 h-auto mx-auto filter drop-shadow-2xl"
+              />
+            </div>
+
+            {/* Armario abierto */}
+            <div className={`absolute inset-0 transition-all duration-1000 ${
+              isOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
+            }`}>
+              <img 
+                src="/lovable-uploads/2fabf40a-b772-4a33-8b45-0d74b43ee8e0.png" 
+                alt="Armario abierto con ropa organizada" 
+                className="w-80 md:w-96 h-auto mx-auto filter drop-shadow-2xl"
+              />
             </div>
           </div>
         </div>
-
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default Hero;
