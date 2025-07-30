@@ -190,7 +190,7 @@ const Hero = () => {
               />
               
               {/* Logo Vesty superpuesto */}
-              <div className={`absolute bottom-24 left-1/2 transform -translate-x-1/2 transition-all duration-800 delay-900 ${
+              <div className={`absolute bottom-16 left-1/2 transform -translate-x-1/2 transition-all duration-800 delay-900 ${
                 showElements.logo ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
               }`}>
                 <div className="relative">
