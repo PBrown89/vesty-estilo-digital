@@ -33,7 +33,7 @@ const Hero = () => {
         <div className={`mb-6 transition-all duration-800 ${
           showElements.title ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
         }`}>
-          <h1 className="text-5xl md:text-6xl font-outfit font-bold leading-tight text-white mb-8">
+          <h1 className="text-5xl md:text-6xl font-outfit font-bold leading-tight text-white mb-8 tracking-tight">
             <span className="block">Bienvenida a</span>
             <span className="block">tu nuevo</span>
             <span className="block">armario</span>
@@ -123,7 +123,7 @@ const Hero = () => {
           <div className={`mb-6 transition-all duration-800 ${
             showElements.title ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           }`}>
-            <h1 className="text-6xl xl:text-7xl font-outfit font-bold leading-tight text-white mb-8 text-left">
+            <h1 className="text-6xl xl:text-7xl font-outfit font-bold leading-tight text-white mb-8 text-left tracking-tight">
               <span className="block">Bienvenida a</span>
               <span className="block">tu nuevo</span>
               <span className="block">armario</span>
