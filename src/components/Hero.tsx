@@ -8,24 +8,26 @@ const Hero = () => {
     image: false,
     logo: false
   });
+  
+  const [currentText, setCurrentText] = useState("tu nuevo armario");
+  const [isRewriting, setIsRewriting] = useState(false);
   useEffect(() => {
     // Animación secuencial de aparición de elementos
-    const timeouts = [setTimeout(() => setShowElements(prev => ({
-      ...prev,
-      title: true
-    })), 300), setTimeout(() => setShowElements(prev => ({
-      ...prev,
-      subtitle: true
-    })), 600), setTimeout(() => setShowElements(prev => ({
-      ...prev,
-      image: true
-    })), 900), setTimeout(() => setShowElements(prev => ({
-      ...prev,
-      buttons: true
-    })), 1200), setTimeout(() => setShowElements(prev => ({
-      ...prev,
-      logo: true
-    })), 1500)];
+    const timeouts = [
+      setTimeout(() => setShowElements(prev => ({ ...prev, title: true })), 300),
+      setTimeout(() => setShowElements(prev => ({ ...prev, subtitle: true })), 600), 
+      setTimeout(() => setShowElements(prev => ({ ...prev, image: true })), 900),
+      setTimeout(() => setShowElements(prev => ({ ...prev, buttons: true })), 1200),
+      setTimeout(() => setShowElements(prev => ({ ...prev, logo: true })), 1500),
+      // Efecto de reescritura del H1
+      setTimeout(() => {
+        setIsRewriting(true);
+        setTimeout(() => {
+          setCurrentText("tu nuevo armario con IA");
+          setIsRewriting(false);
+        }, 500);
+      }, 3000)
+    ];
     return () => timeouts.forEach(clearTimeout);
   }, []);
   return <section className="min-h-screen flex flex-col relative overflow-hidden" style={{
@@ -37,12 +39,13 @@ const Hero = () => {
         
         {/* Título principal */}
         <div className={`mb-6 transition-all duration-800 ${showElements.title ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-          <h1 className="text-5xl md:text-6xl font-outfit font-bold leading-none text-white mb-8 tracking-tight" style={{
+            <h1 className="text-5xl md:text-6xl font-outfit font-bold leading-none text-white mb-8 tracking-tight" style={{
           lineHeight: '100%'
         }}>
             <span className="block mb-1">Bienvenida a</span>
-            <span className="block mb-1">tu nuevo</span>
-            <span className="block">armario</span>
+            <span className={`block mb-1 transition-all duration-500 ${isRewriting ? 'opacity-50 scale-95' : 'opacity-100 scale-100'}`}>
+              {currentText}
+            </span>
           </h1>
         </div>
 
@@ -76,15 +79,32 @@ const Hero = () => {
         {/* Imagen de la chica con logo superpuesto */}
         <div className={`relative transition-all duration-800 delay-600 ${showElements.image ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           {/* Texto "Descubre" detrás */}
-          <div className="absolute inset-0 flex items-center justify-center z-0">
-            <span className="text-white/10 text-8xl font-bold font-outfit select-none">Descubre</span>
+          <div className="absolute inset-0 flex items-center justify-center z-0" style={{ bottom: '32px' }}>
+            <span 
+              className="text-8xl font-bold font-outfit select-none"
+              style={{
+                background: 'linear-gradient(135deg, white 0%, #CDB2DF 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextStroke: '1.4px transparent',
+                color: 'transparent',
+                backgroundClip: 'text'
+              }}
+            >
+              Descubre
+            </span>
           </div>
           
           {/* Imagen que se corta por el scroll */}
           <div className="relative max-w-sm mx-auto">
-            <img src="/lovable-uploads/9a70cc31-6cd8-4a6b-a733-46c7419dd4bb.png" alt="Chica feliz con flores en el cabello" className="w-full h-auto mx-auto filter drop-shadow-2xl" style={{
-            marginBottom: '-20vh'
-          }} />
+            <img 
+              src="/lovable-uploads/9a70cc31-6cd8-4a6b-a733-46c7419dd4bb.png" 
+              alt="Chica feliz con flores en el cabello" 
+              className="w-full h-auto mx-auto filter drop-shadow-2xl animate-float"
+              style={{
+                marginBottom: '-20vh',
+                animation: 'float 6s ease-in-out infinite, fade-in-up 1s ease-out'
+              }} 
+            />
             
             {/* Logo Vesty superpuesto */}
             <div className={`absolute bottom-20 left-1/2 transform -translate-x-1/2 transition-all duration-800 delay-900 ${showElements.logo ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
@@ -109,8 +129,9 @@ const Hero = () => {
             lineHeight: '100%'
           }}>
               <span className="block mb-1">Bienvenida a</span>
-              <span className="block mb-1">tu nuevo</span>
-              <span className="block">armario</span>
+              <span className={`block mb-1 transition-all duration-500 ${isRewriting ? 'opacity-50 scale-95' : 'opacity-100 scale-100'}`}>
+                {currentText}
+              </span>
             </h1>
           </div>
 
@@ -148,14 +169,31 @@ const Hero = () => {
           <div className={`relative transition-all duration-800 delay-600 ${showElements.image ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
             {/* Texto "Descubre" detrás */}
             <div className="absolute inset-0 flex items-center justify-center z-0">
-              <span className="text-white/10 text-9xl font-bold font-outfit select-none">Descubre</span>
+              <span 
+                className="text-9xl font-bold font-outfit select-none"
+                style={{
+                  background: 'linear-gradient(135deg, white 0%, #CDB2DF 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextStroke: '1.4px transparent',
+                  color: 'transparent',
+                  backgroundClip: 'text'
+                }}
+              >
+                Descubre
+              </span>
             </div>
             
             {/* Imagen que se corta por el scroll */}
             <div className="relative my-0 mx-[32px] py-[2px]">
-              <img src="/lovable-uploads/9a70cc31-6cd8-4a6b-a733-46c7419dd4bb.png" alt="Chica feliz con flores en el cabello" className="w-full h-auto lg:w-3/4 lg:mx-auto filter drop-shadow-2xl" style={{
-              marginBottom: '-15vh'
-            }} />
+              <img 
+                src="/lovable-uploads/9a70cc31-6cd8-4a6b-a733-46c7419dd4bb.png" 
+                alt="Chica feliz con flores en el cabello" 
+                className="w-full h-auto lg:w-3/4 lg:mx-auto filter drop-shadow-2xl"
+                style={{
+                  marginBottom: '-15vh',
+                  animation: 'float 6s ease-in-out infinite, fade-in-up 1s ease-out'
+                }} 
+              />
               
               {/* Logo Vesty superpuesto */}
               <div className={`absolute bottom-16 left-1/2 transform -translate-x-1/2 transition-all duration-800 delay-900 ${showElements.logo ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
