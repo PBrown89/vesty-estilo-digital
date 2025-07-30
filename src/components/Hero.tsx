@@ -185,7 +185,7 @@ const Hero = () => {
               <img 
                 src="/lovable-uploads/9a70cc31-6cd8-4a6b-a733-46c7419dd4bb.png"
                 alt="Chica feliz con flores en el cabello" 
-                className="w-full h-auto filter drop-shadow-2xl"
+                className="w-full h-auto lg:w-3/4 lg:mx-auto filter drop-shadow-2xl"
                 style={{marginBottom: '-15vh'}}
               />
               
