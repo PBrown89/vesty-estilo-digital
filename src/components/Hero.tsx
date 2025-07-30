@@ -90,7 +90,7 @@ const Hero = () => {
           {/* Imagen que se corta por el scroll */}
           <div className="relative max-w-sm mx-auto">
             <img 
-              src="/lovable-uploads/a9f60e2c-298d-4739-b759-f7b438432f0f.png"
+              src="/lovable-uploads/9a70cc31-6cd8-4a6b-a733-46c7419dd4bb.png"
               alt="Chica feliz con flores en el cabello" 
               className="w-full h-auto mx-auto filter drop-shadow-2xl"
               style={{marginBottom: '-20vh'}}
@@ -101,10 +101,11 @@ const Hero = () => {
               showElements.logo ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}>
               <div className="relative">
-                <h2 className="text-4xl md:text-5xl font-outfit font-bold text-white drop-shadow-lg">
-                  Vesty
-                </h2>
-                <div className="absolute -top-2 -right-6 text-yellow-300 text-2xl">✨</div>
+                <img 
+                  src="/lovable-uploads/8ba14a19-6738-47ec-a77e-3ebcbc421ddb.png"
+                  alt="Vesty logo"
+                  className="h-16 md:h-20 w-auto drop-shadow-lg"
+                />
               </div>
             </div>
           </div>
@@ -182,7 +183,7 @@ const Hero = () => {
             {/* Imagen que se corta por el scroll */}
             <div className="relative">
               <img 
-                src="/lovable-uploads/a9f60e2c-298d-4739-b759-f7b438432f0f.png"
+                src="/lovable-uploads/9a70cc31-6cd8-4a6b-a733-46c7419dd4bb.png"
                 alt="Chica feliz con flores en el cabello" 
                 className="w-full h-auto filter drop-shadow-2xl"
                 style={{marginBottom: '-15vh'}}
@@ -193,10 +194,11 @@ const Hero = () => {
                 showElements.logo ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
               }`}>
                 <div className="relative">
-                  <h2 className="text-6xl font-outfit font-bold text-white drop-shadow-lg">
-                    Vesty
-                  </h2>
-                  <div className="absolute -top-2 -right-8 text-yellow-300 text-3xl">✨</div>
+                <img 
+                  src="/lovable-uploads/8ba14a19-6738-47ec-a77e-3ebcbc421ddb.png"
+                  alt="Vesty logo"
+                  className="h-20 md:h-24 w-auto drop-shadow-lg"
+                />
                 </div>
               </div>
             </div>
