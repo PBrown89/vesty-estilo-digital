@@ -9,8 +9,9 @@ const Hero = () => {
     logo: false
   });
   
-  const [currentText, setCurrentText] = useState("tu nuevo armario");
+  const [currentText, setCurrentText] = useState("armario");
   const [isRewriting, setIsRewriting] = useState(false);
+  const [isWriting, setIsWriting] = useState(false);
   useEffect(() => {
     // Animación secuencial de aparición de elementos
     const timeouts = [
@@ -18,18 +19,33 @@ const Hero = () => {
       setTimeout(() => setShowElements(prev => ({ ...prev, subtitle: true })), 600), 
       setTimeout(() => setShowElements(prev => ({ ...prev, image: true })), 900),
       setTimeout(() => setShowElements(prev => ({ ...prev, buttons: true })), 1200),
-      setTimeout(() => setShowElements(prev => ({ ...prev, logo: true })), 1500),
-      // Efecto de reescritura del H1
-      setTimeout(() => {
-        setIsRewriting(true);
-        setTimeout(() => {
-          setCurrentText("tu nuevo armario con IA");
-          setIsRewriting(false);
-        }, 500);
-      }, 3000)
+      setTimeout(() => setShowElements(prev => ({ ...prev, logo: true })), 1500)
     ];
-    return () => timeouts.forEach(clearTimeout);
-  }, []);
+
+    // Efecto de reescritura cíclico cada 3 segundos
+    const rewriteEffect = () => {
+      setIsRewriting(true);
+      setIsWriting(true);
+      
+      // Simular borrado
+      setTimeout(() => {
+        setCurrentText(currentText === "armario" ? "armario con IA" : "armario");
+        setIsWriting(false);
+        setTimeout(() => {
+          setIsRewriting(false);
+        }, 300);
+      }, 800);
+    };
+
+    const initialTimeout = setTimeout(rewriteEffect, 3000);
+    const interval = setInterval(rewriteEffect, 6000);
+    
+    return () => {
+      timeouts.forEach(clearTimeout);
+      clearTimeout(initialTimeout);
+      clearInterval(interval);
+    };
+  }, [currentText]);
   return <section className="min-h-screen flex flex-col relative overflow-hidden" style={{
     background: 'linear-gradient(135deg, #715391 0%, #CDB2DF 100%)'
   }}>
@@ -43,7 +59,8 @@ const Hero = () => {
           lineHeight: '100%'
         }}>
             <span className="block mb-1">Bienvenida a</span>
-            <span className={`block mb-1 transition-all duration-500 ${isRewriting ? 'opacity-50 scale-95' : 'opacity-100 scale-100'}`}>
+            <span className="block mb-1">tu nuevo</span>
+            <span className={`block mb-1 transition-all duration-500 ${isRewriting ? 'opacity-50 scale-95' : 'opacity-100 scale-100'} ${isWriting ? 'animate-pulse' : ''}`}>
               {currentText}
             </span>
           </h1>
@@ -78,27 +95,20 @@ const Hero = () => {
 
         {/* Imagen de la chica con logo superpuesto */}
         <div className={`relative transition-all duration-800 delay-600 ${showElements.image ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-          {/* Texto "Descubre" detrás */}
+          {/* Imagen "Descubre" detrás */}
           <div className="absolute inset-0 flex items-center justify-center z-0" style={{ bottom: '32px' }}>
-            <span 
-              className="text-8xl font-bold font-outfit select-none"
-              style={{
-                background: 'linear-gradient(135deg, white 0%, #CDB2DF 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextStroke: '1.4px transparent',
-                color: 'transparent',
-                backgroundClip: 'text'
-              }}
-            >
-              Descubre
-            </span>
+            <img 
+              src="/lovable-uploads/992b232b-4a7e-4c20-b0d7-4f568ab6517e.png" 
+              alt="Descubre" 
+              className="w-80 h-auto opacity-30 select-none"
+            />
           </div>
           
           {/* Imagen que se corta por el scroll */}
           <div className="relative max-w-sm mx-auto">
             <img 
-              src="/lovable-uploads/9a70cc31-6cd8-4a6b-a733-46c7419dd4bb.png" 
-              alt="Chica feliz con flores en el cabello" 
+              src="/lovable-uploads/22f64040-25bf-41e8-826c-6e8ba8492211.png" 
+              alt="Vesty branding" 
               className="w-full h-auto mx-auto filter drop-shadow-2xl animate-float"
               style={{
                 marginBottom: '-20vh',
@@ -128,8 +138,8 @@ const Hero = () => {
             <h1 className="text-6xl xl:text-7xl font-outfit font-bold leading-none text-white mb-8 text-left tracking-tight" style={{
             lineHeight: '100%'
           }}>
-              <span className="block mb-1">Bienvenida a</span>
-              <span className={`block mb-1 transition-all duration-500 ${isRewriting ? 'opacity-50 scale-95' : 'opacity-100 scale-100'}`}>
+              <span className="block mb-1">Bienvenida a tu nuevo</span>
+              <span className={`block mb-1 transition-all duration-500 ${isRewriting ? 'opacity-50 scale-95' : 'opacity-100 scale-100'} ${isWriting ? 'animate-pulse' : ''}`}>
                 {currentText}
               </span>
             </h1>
@@ -167,27 +177,20 @@ const Hero = () => {
         {/* Contenido derecha - Imagen con logo */}
         <div className="w-1/2 relative">
           <div className={`relative transition-all duration-800 delay-600 ${showElements.image ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            {/* Texto "Descubre" detrás */}
+            {/* Imagen "Descubre" detrás */}
             <div className="absolute inset-0 flex items-center justify-center z-0">
-              <span 
-                className="text-9xl font-bold font-outfit select-none"
-                style={{
-                  background: 'linear-gradient(135deg, white 0%, #CDB2DF 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextStroke: '1.4px transparent',
-                  color: 'transparent',
-                  backgroundClip: 'text'
-                }}
-              >
-                Descubre
-              </span>
+              <img 
+                src="/lovable-uploads/992b232b-4a7e-4c20-b0d7-4f568ab6517e.png" 
+                alt="Descubre" 
+                className="w-96 h-auto opacity-30 select-none"
+              />
             </div>
             
             {/* Imagen que se corta por el scroll */}
             <div className="relative my-0 mx-[32px] py-[2px]">
               <img 
-                src="/lovable-uploads/9a70cc31-6cd8-4a6b-a733-46c7419dd4bb.png" 
-                alt="Chica feliz con flores en el cabello" 
+                src="/lovable-uploads/22f64040-25bf-41e8-826c-6e8ba8492211.png" 
+                alt="Vesty branding" 
                 className="w-full h-auto lg:w-3/4 lg:mx-auto filter drop-shadow-2xl"
                 style={{
                   marginBottom: '-15vh',
