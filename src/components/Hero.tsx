@@ -96,9 +96,9 @@ const Hero = () => {
             />
             
             {/* Logo Vesty superpuesto */}
-            <div className={`absolute bottom-20 left-1/2 transform -translate-x-1/2 transition-all duration-800 delay-900 ${showElements.logo ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+            <div className={`absolute bottom-30 left-1/2 transform -translate-x-1/2 transition-all duration-800 delay-900 ${showElements.logo ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
               <div className="relative">
-                <img src="/lovable-uploads/8ba14a19-6738-47ec-a77e-3ebcbc421ddb.png" alt="Vesty logo" className="h-16 md:h-20 w-auto drop-shadow-lg" />
+                <img src="/lovable-uploads/8ba14a19-6738-47ec-a77e-3ebcbc421ddb.png" alt="Vesty logo" className="h-24 md:h-28 w-auto drop-shadow-lg" />
               </div>
             </div>
           </div>
@@ -182,9 +182,9 @@ const Hero = () => {
               />
               
               {/* Logo Vesty superpuesto */}
-              <div className={`absolute bottom-16 left-1/2 transform -translate-x-1/2 transition-all duration-800 delay-900 ${showElements.logo ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+              <div className={`absolute bottom-26 left-1/2 transform -translate-x-1/2 transition-all duration-800 delay-900 ${showElements.logo ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
                 <div className="relative">
-                <img src="/lovable-uploads/8ba14a19-6738-47ec-a77e-3ebcbc421ddb.png" alt="Vesty logo" className="h-20 md:h-24 w-auto drop-shadow-lg" />
+                <img src="/lovable-uploads/8ba14a19-6738-47ec-a77e-3ebcbc421ddb.png" alt="Vesty logo" className="h-28 md:h-32 w-auto drop-shadow-lg" />
                 </div>
               </div>
             </div>
