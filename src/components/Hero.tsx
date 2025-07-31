@@ -65,10 +65,10 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Imagen de la chica con logo superpuesto */}
+        {/* Imagen de la chica con logo */}
         <div className={`relative transition-all duration-800 delay-600 ${showElements.image ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-          {/* Texto "Descubre" detrás */}
-          <div className="absolute inset-0 flex items-center justify-center z-0" style={{ bottom: '32px' }}>
+          {/* Texto "Descubre" */}
+          <div className="flex justify-center mb-4">
             <span 
               className="text-8xl font-bold font-outfit select-none"
               style={{
@@ -83,6 +83,11 @@ const Hero = () => {
             </span>
           </div>
           
+          {/* Logo Vesty debajo de Descubre */}
+          <div className={`flex justify-center mb-6 transition-all duration-800 delay-900 ${showElements.logo ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+            <img src="/lovable-uploads/8ba14a19-6738-47ec-a77e-3ebcbc421ddb.png" alt="Vesty logo" className="h-24 md:h-28 w-auto drop-shadow-lg" />
+          </div>
+          
           {/* Imagen que se corta por el scroll */}
           <div className="relative max-w-sm mx-auto">
             <img 
@@ -94,13 +99,6 @@ const Hero = () => {
                 animation: 'float 6s ease-in-out infinite, fade-in-up 1s ease-out'
               }} 
             />
-            
-            {/* Logo Vesty superpuesto */}
-            <div className={`absolute bottom-20 left-1/2 transform -translate-x-1/2 transition-all duration-800 delay-900 ${showElements.logo ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-              <div className="relative">
-                <img src="/lovable-uploads/8ba14a19-6738-47ec-a77e-3ebcbc421ddb.png" alt="Vesty logo" className="h-16 md:h-20 w-auto drop-shadow-lg" />
-              </div>
-            </div>
           </div>
         </div>
         
