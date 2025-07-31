@@ -9,8 +9,6 @@ const Hero = () => {
     logo: false
   });
   
-  const [currentText, setCurrentText] = useState("tu nuevo armario");
-  const [isRewriting, setIsRewriting] = useState(false);
   useEffect(() => {
     // Animación secuencial de aparición de elementos
     const timeouts = [
@@ -18,15 +16,7 @@ const Hero = () => {
       setTimeout(() => setShowElements(prev => ({ ...prev, subtitle: true })), 600), 
       setTimeout(() => setShowElements(prev => ({ ...prev, image: true })), 900),
       setTimeout(() => setShowElements(prev => ({ ...prev, buttons: true })), 1200),
-      setTimeout(() => setShowElements(prev => ({ ...prev, logo: true })), 1500),
-      // Efecto de reescritura del H1
-      setTimeout(() => {
-        setIsRewriting(true);
-        setTimeout(() => {
-          setCurrentText("tu nuevo armario con IA");
-          setIsRewriting(false);
-        }, 500);
-      }, 3000)
+      setTimeout(() => setShowElements(prev => ({ ...prev, logo: true })), 1500)
     ];
     return () => timeouts.forEach(clearTimeout);
   }, []);
@@ -43,9 +33,8 @@ const Hero = () => {
           lineHeight: '100%'
         }}>
             <span className="block mb-1">Bienvenida a</span>
-            <span className={`block mb-1 transition-all duration-500 ${isRewriting ? 'opacity-50 scale-95' : 'opacity-100 scale-100'}`}>
-              {currentText}
-            </span>
+            <span className="block mb-1">tu nuevo</span>
+            <span className="block mb-1">armario con IA</span>
           </h1>
         </div>
 
@@ -128,10 +117,7 @@ const Hero = () => {
             <h1 className="text-6xl xl:text-7xl font-outfit font-bold leading-none text-white mb-8 text-left tracking-tight" style={{
             lineHeight: '100%'
           }}>
-              <span className="block mb-1">Bienvenida a</span>
-              <span className={`block mb-1 transition-all duration-500 ${isRewriting ? 'opacity-50 scale-95' : 'opacity-100 scale-100'}`}>
-                {currentText}
-              </span>
+              <span className="block mb-1">Bienvenida a tu nuevo armario con IA</span>
             </h1>
           </div>
 
