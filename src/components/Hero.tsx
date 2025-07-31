@@ -9,8 +9,48 @@ const Hero = () => {
     logo: false
   });
   
-  const [currentText, setCurrentText] = useState("tu nuevo armario");
-  const [isRewriting, setIsRewriting] = useState(false);
+  const [displayedLine1, setDisplayedLine1] = useState("");
+  const [displayedLine2, setDisplayedLine2] = useState("");
+  const [displayedLine3, setDisplayedLine3] = useState("");
+  const [isTypewriting, setIsTypewriting] = useState(false);
+  
+  const fullTexts = {
+    line1: "Bienvenida a",
+    line2: "tu nuevo",
+    line3Short: "armario",
+    line3Long: "armario con IA"
+  };
+
+  const typeText = (text: string, setDisplayFunction: (text: string) => void, delay = 0) => {
+    return new Promise<void>((resolve) => {
+      setTimeout(() => {
+        let i = 0;
+        const typing = setInterval(() => {
+          setDisplayFunction(text.slice(0, i + 1));
+          i++;
+          if (i === text.length) {
+            clearInterval(typing);
+            resolve();
+          }
+        }, 50);
+      }, delay);
+    });
+  };
+
+  const eraseText = (setDisplayFunction: (text: string) => void, currentText: string) => {
+    return new Promise<void>((resolve) => {
+      let i = currentText.length;
+      const erasing = setInterval(() => {
+        setDisplayFunction(currentText.slice(0, i));
+        i--;
+        if (i < 0) {
+          clearInterval(erasing);
+          resolve();
+        }
+      }, 30);
+    });
+  };
+
   useEffect(() => {
     // Animación secuencial de aparición de elementos
     const timeouts = [
@@ -21,22 +61,34 @@ const Hero = () => {
       setTimeout(() => setShowElements(prev => ({ ...prev, logo: true })), 1500)
     ];
 
+    // Animación inicial de escritura
+    const initialTypewriting = async () => {
+      await typeText(fullTexts.line1, setDisplayedLine1, 500);
+      await typeText(fullTexts.line2, setDisplayedLine2, 100);
+      await typeText(fullTexts.line3Short, setDisplayedLine3, 100);
+    };
+
+    initialTypewriting();
+
     // Efecto de reescritura cíclico cada 3 segundos
-    const rewriteInterval = setInterval(() => {
-      setIsRewriting(true);
-      setTimeout(() => {
-        setCurrentText(prev => 
-          prev === "tu nuevo armario" ? "tu nuevo armario con IA" : "tu nuevo armario"
-        );
-        setIsRewriting(false);
-      }, 500);
-    }, 3000);
+    const rewriteInterval = setInterval(async () => {
+      setIsTypewriting(true);
+      
+      // Borrar línea 3
+      await eraseText(setDisplayedLine3, displayedLine3);
+      
+      // Escribir nueva línea 3
+      const newText = displayedLine3 === fullTexts.line3Short ? fullTexts.line3Long : fullTexts.line3Short;
+      await typeText(newText, setDisplayedLine3);
+      
+      setIsTypewriting(false);
+    }, 4000);
 
     return () => {
       timeouts.forEach(clearTimeout);
       clearInterval(rewriteInterval);
     };
-  }, []);
+  }, [displayedLine3]);
   return <section className="min-h-screen flex flex-col relative overflow-hidden" style={{
     background: 'linear-gradient(135deg, #715391 0%, #CDB2DF 100%)'
   }}>
@@ -49,9 +101,10 @@ const Hero = () => {
             <h1 className="text-5xl md:text-6xl font-outfit font-bold leading-none text-white mb-8 tracking-tight" style={{
           lineHeight: '100%'
         }}>
-            <span className="block mb-1">Bienvenida a</span>
-            <span className={`block mb-1 transition-all duration-500 ${isRewriting ? 'opacity-50 scale-95' : 'opacity-100 scale-100'}`}>
-              {currentText}
+            <span className="block mb-1">{displayedLine1}</span>
+            <span className="block mb-1">{displayedLine2}</span>
+            <span className={`block mb-1 transition-all duration-300 ${isTypewriting ? 'opacity-70' : 'opacity-100'}`}>
+              {displayedLine3}
             </span>
           </h1>
         </div>
@@ -137,9 +190,10 @@ const Hero = () => {
             <h1 className="text-6xl xl:text-7xl font-outfit font-bold leading-none text-white mb-8 text-left tracking-tight" style={{
             lineHeight: '100%'
           }}>
-              <span className="block mb-1">Bienvenida a</span>
-              <span className={`block mb-1 transition-all duration-500 ${isRewriting ? 'opacity-50 scale-95' : 'opacity-100 scale-100'}`}>
-                {currentText}
+              <span className="block mb-1">{displayedLine1}</span>
+              <span className="block mb-1">{displayedLine2}</span>
+              <span className={`block mb-1 transition-all duration-300 ${isTypewriting ? 'opacity-70' : 'opacity-100'}`}>
+                {displayedLine3}
               </span>
             </h1>
           </div>
