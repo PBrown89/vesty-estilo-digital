@@ -70,15 +70,18 @@ const Hero = () => {
 
     initialTypewriting();
 
-    // Efecto de reescritura cíclico cada 3 segundos
+    // Efecto de reescritura cíclico cada 4 segundos
     const rewriteInterval = setInterval(async () => {
       setIsTypewriting(true);
       
+      // Obtener el texto actual de la línea 3
+      const currentLine3 = displayedLine3 || fullTexts.line3Short;
+      
       // Borrar línea 3
-      await eraseText(setDisplayedLine3, displayedLine3);
+      await eraseText(setDisplayedLine3, currentLine3);
       
       // Escribir nueva línea 3
-      const newText = displayedLine3 === fullTexts.line3Short ? fullTexts.line3Long : fullTexts.line3Short;
+      const newText = currentLine3 === fullTexts.line3Short ? fullTexts.line3Long : fullTexts.line3Short;
       await typeText(newText, setDisplayedLine3);
       
       setIsTypewriting(false);
@@ -88,7 +91,7 @@ const Hero = () => {
       timeouts.forEach(clearTimeout);
       clearInterval(rewriteInterval);
     };
-  }, [displayedLine3]);
+  }, []); // Empty dependency array to avoid infinite loops
   return <section className="min-h-screen flex flex-col relative overflow-hidden" style={{
     background: 'linear-gradient(135deg, #715391 0%, #CDB2DF 100%)'
   }}>
