@@ -9,9 +9,8 @@ const Hero = () => {
     logo: false
   });
   
-  const [currentText, setCurrentText] = useState("armario");
+  const [currentText, setCurrentText] = useState("tu nuevo armario");
   const [isRewriting, setIsRewriting] = useState(false);
-  const [isWriting, setIsWriting] = useState(false);
   useEffect(() => {
     // Animación secuencial de aparición de elementos
     const timeouts = [
@@ -23,29 +22,21 @@ const Hero = () => {
     ];
 
     // Efecto de reescritura cíclico cada 3 segundos
-    const rewriteEffect = () => {
+    const rewriteInterval = setInterval(() => {
       setIsRewriting(true);
-      setIsWriting(true);
-      
-      // Simular borrado
       setTimeout(() => {
-        setCurrentText(currentText === "armario" ? "armario con IA" : "armario");
-        setIsWriting(false);
-        setTimeout(() => {
-          setIsRewriting(false);
-        }, 300);
-      }, 800);
-    };
+        setCurrentText(prev => 
+          prev === "tu nuevo armario" ? "tu nuevo armario con IA" : "tu nuevo armario"
+        );
+        setIsRewriting(false);
+      }, 500);
+    }, 3000);
 
-    const initialTimeout = setTimeout(rewriteEffect, 3000);
-    const interval = setInterval(rewriteEffect, 6000);
-    
     return () => {
       timeouts.forEach(clearTimeout);
-      clearTimeout(initialTimeout);
-      clearInterval(interval);
+      clearInterval(rewriteInterval);
     };
-  }, [currentText]);
+  }, []);
   return <section className="min-h-screen flex flex-col relative overflow-hidden" style={{
     background: 'linear-gradient(135deg, #715391 0%, #CDB2DF 100%)'
   }}>
@@ -59,8 +50,7 @@ const Hero = () => {
           lineHeight: '100%'
         }}>
             <span className="block mb-1">Bienvenida a</span>
-            <span className="block mb-1">tu nuevo</span>
-            <span className={`block mb-1 transition-all duration-500 ${isRewriting ? 'opacity-50 scale-95' : 'opacity-100 scale-100'} ${isWriting ? 'animate-pulse' : ''}`}>
+            <span className={`block mb-1 transition-all duration-500 ${isRewriting ? 'opacity-50 scale-95' : 'opacity-100 scale-100'}`}>
               {currentText}
             </span>
           </h1>
@@ -95,23 +85,32 @@ const Hero = () => {
 
         {/* Imagen de la chica con logo superpuesto */}
         <div className={`relative transition-all duration-800 delay-600 ${showElements.image ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-          {/* Imagen "Descubre" detrás */}
+          {/* Texto "Descubre" detrás */}
           <div className="absolute inset-0 flex items-center justify-center z-0" style={{ bottom: '32px' }}>
-            <img 
-              src="/lovable-uploads/992b232b-4a7e-4c20-b0d7-4f568ab6517e.png" 
-              alt="Descubre" 
-              className="w-80 h-auto opacity-30 select-none"
-            />
+            <span 
+              className="text-8xl font-bold font-outfit select-none"
+              style={{
+                WebkitTextStroke: '1.4px',
+                WebkitTextStrokeColor: 'white',
+                color: 'transparent',
+                background: 'linear-gradient(135deg, white 0%, #CDB2DF 100%)',
+                WebkitBackgroundClip: 'text',
+                backgroundClip: 'text'
+              }}
+            >
+              Descubre
+            </span>
           </div>
           
           {/* Imagen que se corta por el scroll */}
-          <div className="relative max-w-sm mx-auto">
+          <div className="relative max-w-sm mx-auto" style={{ marginTop: '-5vh' }}>
             <img 
-              src="/lovable-uploads/22f64040-25bf-41e8-826c-6e8ba8492211.png" 
-              alt="Vesty branding" 
+              src="/lovable-uploads/9a70cc31-6cd8-4a6b-a733-46c7419dd4bb.png" 
+              alt="Chica feliz con flores en el cabello" 
               className="w-full h-auto mx-auto filter drop-shadow-2xl animate-float"
               style={{
                 marginBottom: '-20vh',
+                transform: 'scale(1.1)',
                 animation: 'float 6s ease-in-out infinite, fade-in-up 1s ease-out'
               }} 
             />
@@ -138,8 +137,8 @@ const Hero = () => {
             <h1 className="text-6xl xl:text-7xl font-outfit font-bold leading-none text-white mb-8 text-left tracking-tight" style={{
             lineHeight: '100%'
           }}>
-              <span className="block mb-1">Bienvenida a tu nuevo</span>
-              <span className={`block mb-1 transition-all duration-500 ${isRewriting ? 'opacity-50 scale-95' : 'opacity-100 scale-100'} ${isWriting ? 'animate-pulse' : ''}`}>
+              <span className="block mb-1">Bienvenida a</span>
+              <span className={`block mb-1 transition-all duration-500 ${isRewriting ? 'opacity-50 scale-95' : 'opacity-100 scale-100'}`}>
                 {currentText}
               </span>
             </h1>
@@ -177,23 +176,32 @@ const Hero = () => {
         {/* Contenido derecha - Imagen con logo */}
         <div className="w-1/2 relative">
           <div className={`relative transition-all duration-800 delay-600 ${showElements.image ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            {/* Imagen "Descubre" detrás */}
+            {/* Texto "Descubre" detrás */}
             <div className="absolute inset-0 flex items-center justify-center z-0">
-              <img 
-                src="/lovable-uploads/992b232b-4a7e-4c20-b0d7-4f568ab6517e.png" 
-                alt="Descubre" 
-                className="w-96 h-auto opacity-30 select-none"
-              />
+              <span 
+                className="text-9xl font-bold font-outfit select-none"
+                style={{
+                  WebkitTextStroke: '1.4px',
+                  WebkitTextStrokeColor: 'white',
+                  color: 'transparent',
+                  background: 'linear-gradient(135deg, white 0%, #CDB2DF 100%)',
+                  WebkitBackgroundClip: 'text',
+                  backgroundClip: 'text'
+                }}
+              >
+                Descubre
+              </span>
             </div>
             
             {/* Imagen que se corta por el scroll */}
-            <div className="relative my-0 mx-[32px] py-[2px]">
+            <div className="relative my-0 mx-[32px] py-[2px]" style={{ marginTop: '-8vh' }}>
               <img 
-                src="/lovable-uploads/22f64040-25bf-41e8-826c-6e8ba8492211.png" 
-                alt="Vesty branding" 
+                src="/lovable-uploads/9a70cc31-6cd8-4a6b-a733-46c7419dd4bb.png" 
+                alt="Chica feliz con flores en el cabello" 
                 className="w-full h-auto lg:w-3/4 lg:mx-auto filter drop-shadow-2xl"
                 style={{
                   marginBottom: '-15vh',
+                  transform: 'scale(1.1)',
                   animation: 'float 6s ease-in-out infinite, fade-in-up 1s ease-out'
                 }} 
               />
