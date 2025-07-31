@@ -9,48 +9,8 @@ const Hero = () => {
     logo: false
   });
   
-  const [displayedLine1, setDisplayedLine1] = useState("");
-  const [displayedLine2, setDisplayedLine2] = useState("");
-  const [displayedLine3, setDisplayedLine3] = useState("");
-  const [isTypewriting, setIsTypewriting] = useState(false);
-  
-  const fullTexts = {
-    line1: "Bienvenida a",
-    line2: "tu nuevo",
-    line3Short: "armario",
-    line3Long: "armario con IA"
-  };
-
-  const typeText = (text: string, setDisplayFunction: (text: string) => void, delay = 0) => {
-    return new Promise<void>((resolve) => {
-      setTimeout(() => {
-        let i = 0;
-        const typing = setInterval(() => {
-          setDisplayFunction(text.slice(0, i + 1));
-          i++;
-          if (i === text.length) {
-            clearInterval(typing);
-            resolve();
-          }
-        }, 50);
-      }, delay);
-    });
-  };
-
-  const eraseText = (setDisplayFunction: (text: string) => void, currentText: string) => {
-    return new Promise<void>((resolve) => {
-      let i = currentText.length;
-      const erasing = setInterval(() => {
-        setDisplayFunction(currentText.slice(0, i));
-        i--;
-        if (i < 0) {
-          clearInterval(erasing);
-          resolve();
-        }
-      }, 30);
-    });
-  };
-
+  const [currentText, setCurrentText] = useState("tu nuevo armario");
+  const [isRewriting, setIsRewriting] = useState(false);
   useEffect(() => {
     // Animación secuencial de aparición de elementos
     const timeouts = [
@@ -58,40 +18,18 @@ const Hero = () => {
       setTimeout(() => setShowElements(prev => ({ ...prev, subtitle: true })), 600), 
       setTimeout(() => setShowElements(prev => ({ ...prev, image: true })), 900),
       setTimeout(() => setShowElements(prev => ({ ...prev, buttons: true })), 1200),
-      setTimeout(() => setShowElements(prev => ({ ...prev, logo: true })), 1500)
+      setTimeout(() => setShowElements(prev => ({ ...prev, logo: true })), 1500),
+      // Efecto de reescritura del H1
+      setTimeout(() => {
+        setIsRewriting(true);
+        setTimeout(() => {
+          setCurrentText("tu nuevo armario con IA");
+          setIsRewriting(false);
+        }, 500);
+      }, 3000)
     ];
-
-    // Animación inicial de escritura
-    const initialTypewriting = async () => {
-      await typeText(fullTexts.line1, setDisplayedLine1, 500);
-      await typeText(fullTexts.line2, setDisplayedLine2, 100);
-      await typeText(fullTexts.line3Short, setDisplayedLine3, 100);
-    };
-
-    initialTypewriting();
-
-    // Efecto de reescritura cíclico cada 4 segundos
-    const rewriteInterval = setInterval(async () => {
-      setIsTypewriting(true);
-      
-      // Obtener el texto actual de la línea 3
-      const currentLine3 = displayedLine3 || fullTexts.line3Short;
-      
-      // Borrar línea 3
-      await eraseText(setDisplayedLine3, currentLine3);
-      
-      // Escribir nueva línea 3
-      const newText = currentLine3 === fullTexts.line3Short ? fullTexts.line3Long : fullTexts.line3Short;
-      await typeText(newText, setDisplayedLine3);
-      
-      setIsTypewriting(false);
-    }, 4000);
-
-    return () => {
-      timeouts.forEach(clearTimeout);
-      clearInterval(rewriteInterval);
-    };
-  }, []); // Empty dependency array to avoid infinite loops
+    return () => timeouts.forEach(clearTimeout);
+  }, []);
   return <section className="min-h-screen flex flex-col relative overflow-hidden" style={{
     background: 'linear-gradient(135deg, #715391 0%, #CDB2DF 100%)'
   }}>
@@ -104,10 +42,9 @@ const Hero = () => {
             <h1 className="text-5xl md:text-6xl font-outfit font-bold leading-none text-white mb-8 tracking-tight" style={{
           lineHeight: '100%'
         }}>
-            <span className="block mb-1">{displayedLine1}</span>
-            <span className="block mb-1">{displayedLine2}</span>
-            <span className={`block mb-1 transition-all duration-300 ${isTypewriting ? 'opacity-70' : 'opacity-100'}`}>
-              {displayedLine3}
+            <span className="block mb-1">Bienvenida a</span>
+            <span className={`block mb-1 transition-all duration-500 ${isRewriting ? 'opacity-50 scale-95' : 'opacity-100 scale-100'}`}>
+              {currentText}
             </span>
           </h1>
         </div>
@@ -146,11 +83,10 @@ const Hero = () => {
             <span 
               className="text-8xl font-bold font-outfit select-none"
               style={{
-                WebkitTextStroke: '1.4px',
-                WebkitTextStrokeColor: 'white',
-                color: 'transparent',
                 background: 'linear-gradient(135deg, white 0%, #CDB2DF 100%)',
                 WebkitBackgroundClip: 'text',
+                WebkitTextStroke: '1.4px transparent',
+                color: 'transparent',
                 backgroundClip: 'text'
               }}
             >
@@ -159,14 +95,13 @@ const Hero = () => {
           </div>
           
           {/* Imagen que se corta por el scroll */}
-          <div className="relative max-w-sm mx-auto" style={{ marginTop: '-5vh' }}>
+          <div className="relative max-w-sm mx-auto">
             <img 
               src="/lovable-uploads/9a70cc31-6cd8-4a6b-a733-46c7419dd4bb.png" 
               alt="Chica feliz con flores en el cabello" 
               className="w-full h-auto mx-auto filter drop-shadow-2xl animate-float"
               style={{
                 marginBottom: '-20vh',
-                transform: 'scale(1.1)',
                 animation: 'float 6s ease-in-out infinite, fade-in-up 1s ease-out'
               }} 
             />
@@ -193,10 +128,9 @@ const Hero = () => {
             <h1 className="text-6xl xl:text-7xl font-outfit font-bold leading-none text-white mb-8 text-left tracking-tight" style={{
             lineHeight: '100%'
           }}>
-              <span className="block mb-1">{displayedLine1}</span>
-              <span className="block mb-1">{displayedLine2}</span>
-              <span className={`block mb-1 transition-all duration-300 ${isTypewriting ? 'opacity-70' : 'opacity-100'}`}>
-                {displayedLine3}
+              <span className="block mb-1">Bienvenida a</span>
+              <span className={`block mb-1 transition-all duration-500 ${isRewriting ? 'opacity-50 scale-95' : 'opacity-100 scale-100'}`}>
+                {currentText}
               </span>
             </h1>
           </div>
@@ -238,11 +172,10 @@ const Hero = () => {
               <span 
                 className="text-9xl font-bold font-outfit select-none"
                 style={{
-                  WebkitTextStroke: '1.4px',
-                  WebkitTextStrokeColor: 'white',
-                  color: 'transparent',
                   background: 'linear-gradient(135deg, white 0%, #CDB2DF 100%)',
                   WebkitBackgroundClip: 'text',
+                  WebkitTextStroke: '1.4px transparent',
+                  color: 'transparent',
                   backgroundClip: 'text'
                 }}
               >
@@ -251,14 +184,13 @@ const Hero = () => {
             </div>
             
             {/* Imagen que se corta por el scroll */}
-            <div className="relative my-0 mx-[32px] py-[2px]" style={{ marginTop: '-8vh' }}>
+            <div className="relative my-0 mx-[32px] py-[2px]">
               <img 
                 src="/lovable-uploads/9a70cc31-6cd8-4a6b-a733-46c7419dd4bb.png" 
                 alt="Chica feliz con flores en el cabello" 
                 className="w-full h-auto lg:w-3/4 lg:mx-auto filter drop-shadow-2xl"
                 style={{
                   marginBottom: '-15vh',
-                  transform: 'scale(1.1)',
                   animation: 'float 6s ease-in-out infinite, fade-in-up 1s ease-out'
                 }} 
               />
