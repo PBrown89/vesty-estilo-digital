@@ -3,14 +3,10 @@ import { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
 const SEOFaq = () => {
-  const [openItems, setOpenItems] = useState<number[]>([]);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggleItem = (index: number) => {
-    setOpenItems(prev => 
-      prev.includes(index) 
-        ? prev.filter(i => i !== index)
-        : [...prev, index]
-    );
+    setOpenIndex(prev => (prev === index ? null : index));
   };
 
   const faqs = [
@@ -31,7 +27,7 @@ const SEOFaq = () => {
     },
     {
       question: "¿Es gratis usar Vesty?",
-      answer: "Vesty ofrece funciones básicas gratuitas que incluyen organizar hasta 50 prendas y crear looks básicos. Para acceder a todas las funciones premium como el probador virtual avanzado, análisis de colores completo y organización ilimitada, ofrecemos planes de suscripción desde 4.99€/mes.",
+      answer: "Usar Vesty es completamente gratuito, exceptuando el probador virtual, que es una función de pago.",
       category: "precios"
     },
     {
@@ -76,14 +72,14 @@ const SEOFaq = () => {
                 >
                   {faq.question}
                 </h3>
-                {openItems.includes(index) ? (
+                {openIndex === index ? (
                   <ChevronUp className="w-5 h-5 text-gray-500 flex-shrink-0" />
                 ) : (
                   <ChevronDown className="w-5 h-5 text-gray-500 flex-shrink-0" />
                 )}
               </button>
               
-              {openItems.includes(index) && (
+              {openIndex === index && (
                 <div 
                   className="px-6 pb-4 border-t border-gray-100"
                   itemScope 
