@@ -12,33 +12,6 @@ const FinalCTA = () => {
 
       <div className="container mx-auto px-6 relative z-10 h-full flex flex-col justify-center md:justify-start">
         {/* Main footer content */}
-        {/* Desktop/Tablet Download CTA merged with footer */}
-        <div className="hidden md:block mb-12">
-          <div className="max-w-4xl mx-auto text-center space-y-6">
-            <h2 className="text-4xl lg:text-5xl font-black leading-tight">
-              Descárgala gratis y empieza a crear{" "}
-              <span className="bg-gradient-to-r from-vesty-purple via-pink-500 to-coral-500 bg-clip-text text-transparent">
-                tus looks hoy mismo
-              </span>
-            </h2>
-            <p className="text-lg text-gray-200 max-w-2xl mx-auto">
-              Únete a miles de personas que ya han transformado su forma de vestir con Vesty
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
-              <a href="https://apps.apple.com/es/app/vesty/id6743717284" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
-                <Button size="lg" className="w-full bg-white text-gray-900 text-lg px-8 py-4 rounded-full font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl border-0">
-                  Descargar para iOS
-                </Button>
-              </a>
-              <a href="https://play.google.com/store/apps/details?id=app.vesty.com&hl=es" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
-                <Button size="lg" className="w-full text-lg px-8 py-4 rounded-full font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl border-2 bg-transparent text-white border-white hover:bg-white/10">
-                  Descargar para Android
-                </Button>
-              </a>
-            </div>
-          </div>
-        </div>
-
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 mb-12">
           {/* Sobre Vesty */}
           <div className="space-y-4">

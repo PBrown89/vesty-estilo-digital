@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Apple, Star } from "lucide-react";
 const AppDownloadCTA = () => {
-  return <section className="bg-gray-50 text-gray-900 relative overflow-hidden py-[130px] md:hidden md:min-h-screen md:flex md:items-center">
+  return <section className="bg-gray-50 text-gray-900 relative overflow-hidden py-[130px] md:min-h-screen md:flex md:items-center">
       {/* Elementos decorativos */}
       <div className="absolute inset-0 pointer-events-none opacity-50">
         <div className="absolute top-20 -left-16 w-64 h-64 bg-vesty-purple/10 rounded-full"></div>
