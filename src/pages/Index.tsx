@@ -8,7 +8,8 @@ import VirtualTryOn from "@/components/VirtualTryOn";
 import SwipeFeature from "@/components/SwipeFeature";
 import OutfitPlanner from "@/components/OutfitPlanner";
 import Pricing from "@/components/Pricing";
-import CombinedFinalSlide from "@/components/CombinedFinalSlide";
+import AppDownloadCTA from "@/components/AppDownloadCTA";
+import FinalCTA from "@/components/FinalCTA";
 import FullPageScroll from "@/components/FullPageScroll";
 import SEOEnhancer from "@/components/SEOEnhancer";
 import SEOFaq from "@/components/SEOFaq";
@@ -65,7 +66,8 @@ const Index = () => {
         <OutfitPlanner />
         <Pricing />
         <SEOFaq />
-        <CombinedFinalSlide />
+        <AppDownloadCTA />
+        <FinalCTA />
       </FullPageScroll>
     </>
   );
