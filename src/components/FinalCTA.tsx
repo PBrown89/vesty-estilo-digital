@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Instagram } from "lucide-react";
 const FinalCTA = () => {
-  return <footer className="relative h-full text-white py-16 md:py-16 overflow-hidden" style={{
+  return <footer className="relative text-white py-16 md:py-16 min-h-screen md:min-h-screen overflow-hidden" style={{
     backgroundImage: `url('/lovable-uploads/55056cdc-2aca-4de0-a017-77259b4fe6de.png')`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
@@ -10,7 +10,7 @@ const FinalCTA = () => {
       {/* Dark overlay for better text readability */}
       <div className="absolute inset-0 bg-black/[0.40]"></div>
 
-      <div className="container mx-auto px-6 relative z-10 flex flex-col justify-center md:justify-start">
+      <div className="container mx-auto px-6 relative z-10 h-full flex flex-col justify-center md:justify-start">
         {/* Main footer content */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 mb-12">
           {/* Sobre Vesty */}
