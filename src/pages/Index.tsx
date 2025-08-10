@@ -67,8 +67,8 @@ const Index = () => {
         <Pricing />
         <SEOFaq />
         <AppDownloadCTA />
-        <FinalCTA />
       </FullPageScroll>
+      <FinalCTA />
     </>
   );
 };
