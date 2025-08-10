@@ -8,7 +8,7 @@ const FinalCTA = () => {
     backgroundRepeat: 'no-repeat'
   }}>
       {/* Dark overlay for better text readability */}
-      <div className="absolute inset-0 bg-black/[0.40]"></div>
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-screen-xl h-full bg-black/40 rounded-xl z-0 pointer-events-none"></div>
 
       <div className="container mx-auto px-6 relative z-10 flex flex-col justify-center md:justify-start">
         {/* Main footer content */}
