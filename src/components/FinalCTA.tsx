@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Instagram } from "lucide-react";
 const FinalCTA = () => {
-  return <footer className="relative text-white py-16 md:py-16 overflow-hidden" style={{
+  return <footer className="relative h-full text-white py-16 md:py-16 overflow-hidden" style={{
     backgroundImage: `url('/lovable-uploads/55056cdc-2aca-4de0-a017-77259b4fe6de.png')`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
